@@ -1,0 +1,63 @@
+MAP
+    NAME "Agricultura e pastagem"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection ============================================ #
+    #
+    WEB
+        METADATA
+            "wms_title" "Agricultura e pastagem"  ##required
+            "wms_onlineresource" "http://http://192.168.56.101/cgi-bin/mapserv?"   ##required
+            "wms_srs"   "EPSG:4674 EPSG:3857 EPSG:42101 EPSG:4269 EPSG:4326 EPSG:900913"  ##recommended
+            "wms_enable_request" "*"   ##necessary
+        END
+    END
+
+    PROJECTION
+        "init=epsg:4674"   ##required
+    END
+
+    #
+    # Camadas ====================================================== #
+    #
+
+    LAYER
+        NAME 'croppasture'
+        TYPE RASTER
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_years" "0708"
+            "years" "[0-9]+"
+            "default_class" "crop"
+            "class" "^[a-zA-Z\-]+$"
+        END
+
+        DATA '/data/imagens/classificacao/REFERENCIA/AGRICULTURAPASTAGEM/crop_pasture_%years%.tif'
+
+        # classes
+        CLASSITEM "[pixel]"
+        CLASS
+          EXPRESSION ([pixel] = 1 AND '%class%' = "crop")
+          STYLE
+            #COLOR 123 191 80
+            COLOR 218 152 54
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 2 AND '%class%' = "pasture")
+          STYLE
+            COLOR 232 230 107
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 3 AND '%class%' = "other")
+          STYLE
+            COLOR 242 241 240
+          END
+        END
+    END
+END

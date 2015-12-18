@@ -1,0 +1,180 @@
+# classes
+CLASSITEM "[pixel]"   
+
+# forest
+CLASS
+  EXPRESSION ([pixel] = 11 AND "11" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 12 AND "12" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 13 AND "13" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 14 AND "14" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 15 AND "15" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 16 AND "16" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 17 AND "17" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 18 AND "18" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 21 AND "22" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 22 AND "22" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 23 AND "23" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 24 AND "24" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 25 AND "25" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 26 AND "26" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 27 AND "27" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+CLASS
+  EXPRESSION ([pixel] = 28 AND "28" IN '%classification_ids%')
+  STYLE
+    COLOR 255 0 0
+  END
+END        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

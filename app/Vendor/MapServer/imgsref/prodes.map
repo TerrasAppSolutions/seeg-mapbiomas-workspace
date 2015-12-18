@@ -1,0 +1,81 @@
+MAP
+    NAME "Carta"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection =================================== #
+    #
+    INCLUDE '../includes/metadata_wms_projection.map'
+
+
+    #
+    # Camadas ====================================================== #
+    #
+
+    LAYER
+        NAME 'prodes'
+        TYPE RASTER
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_year" "0"
+            "year" "[0-9]+"
+
+            "default_class_forest" "true"
+            "class_forest" "^[a-zA-Z\-]+$"
+
+            "default_class_nonforest" "true"
+            "class_nonforest" "^[a-zA-Z\-]+$"
+
+            "default_class_water" "true"
+            "class_water" "^[a-zA-Z\-]+$"
+
+            "default_class_cloud" "true"
+            "class_cloud" "^[a-zA-Z\-]+$"
+
+            "default_class_deforestation" "true"
+            "class_deforestation" "^[a-zA-Z\-]+$"
+        END
+
+        DATA '/data/imagens/classificacao/VRT/REFERENCIA_AMAZONIA_PRODES_%year%.vrt'
+
+         # classes
+        CLASSITEM "[pixel]"
+        CLASS
+          # floresta
+          EXPRESSION ([pixel] = 1 AND '%class_forest%' = "true")
+          STYLE
+            COLOR 45 89 2
+          END
+        END
+        CLASS
+          # nao floresta
+          EXPRESSION ([pixel] = 2 AND '%class_nonforest%' = "true")
+          STYLE
+            COLOR 235 9 255
+          END
+        END
+        CLASS
+          # hidrografia
+          EXPRESSION ([pixel] = 3 AND '%class_water%' = "true")
+          STYLE
+            COLOR 11 1 246
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 4 AND '%class_cloud%' = "true")
+          STYLE
+            COLOR 0 0 0
+          END
+        END
+        CLASS
+          # agricultura
+          EXPRESSION ([pixel] = 5 AND '%class_deforestation%' = "true")
+          STYLE
+            COLOR 246 225 120
+          END
+        END
+    END
+END

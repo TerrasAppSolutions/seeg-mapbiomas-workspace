@@ -1,0 +1,320 @@
+<div class="header-custom md-whiteframe-z4">
+    <div layout flex="100">
+        <!-- <span flex class="md-subhead"><span style="color:#8bc53f;">Map</span><span style="color:#2490d1;">Biomas</span></span> -->
+        <!-- <img src="img/mapbiomas_logo.png" layout layout-align="center center" width="165" height="40" style="position: absolute; top: 1px; right: 89%;"/> -->
+        <!-- <md-menu style="position: absolute; top: -10px; right: 59%;">
+        <button class="md-button md-primary" ng-click="$mdOpenMenu()">
+        Classes
+        </button>
+        <md-menu-content width="2">
+        <md-menu-item class="md-indent">
+        <div layout>
+            <div layout layout-align="center center">
+                <span style="border: 1px solid #0B6238; background: rgb(11, 98,  56); width: 15px; height: 15px;"></span>
+                <span style="margin-left: 5px" class="md-actions">FLORESTA</span>
+            </div>
+            <div flex="30" layout layout-align="center left">
+                <md-switch class="md-primary" ng-model="forest" aria-label="Switch 1", ng-click="showClasses('forest', forest)">
+                </md-switch>
+            </div>
+        </div>
+        </md-menu-item>
+        <md-menu-item class="md-indent">
+        <div layout>
+            <div layout layout-align="center center">
+                <span style="border: 1px solid #000; background: rgb(0,0,0); width: 15px; height: 15px;"></span>
+                <span style="margin-left: 5px" class="md-actions">NÂO FLORESTA</span>
+            </div>
+            <div flex="30" layout layout-align="center center">
+                <md-switch class="md-primary" ng-model="nonforest" aria-label="Switch 1" ng-click="showClasses('nonforest', nonforest)">
+                </md-switch>
+            </div>
+        </div>
+        </md-menu-item>
+        <md-menu-item class="md-indent">
+        <div layout>
+            <div layout layout-align="center center">
+                <span style="border: 1px solid #0000FF; background: rgb(0, 0, 255); width: 15px; height: 15px;"></span>
+                <span style="margin-left: 5px" layout-align="left center" class="md-actions">ÁGUA</span>
+            </div>
+            <div flex="30" layout layout-align="center center">
+                <md-switch class="md-primary" ng-model="water" aria-label="Switch 1" ng-click="showClasses('water', water)">
+                </md-switch>
+            </div>
+        </div>
+        </md-menu-item>
+        </md-menu-content>
+        </md-menu> -->
+        <div layout="row" flex="70">
+            <div flex="5" layout layout-align="center center">
+            </div>
+            <div flex="55" layout layout-align="start center">
+              <div id="mapbiomas_icon" style="height: 55px; width: 200px; background: url('img/mapbiomas_logo.png'); -webkit-background-size: cover;  -moz-background-size: cover;  -o-background-size: cover;background-size:contain; background-position:center;  background-repeat: no-repeat;"></div>
+            </div>
+            <div flex="25" layout layout-align="center center">
+                <spam id="gee_icon" style="height: 55px; width: 150px; background: url('img/GoogleEarthEngine_v1.png');  -webkit-background-size: cover;  -moz-background-size: cover;  -o-background-size: cover;background-size:contain; background-position:center;  background-repeat: no-repeat;"></spam>
+            </div>
+            <div flex="15" layout layout-align="start center">
+                <spam id="terras_icon" style="height: 55px; width: 80px; background: url('img/powered_by_terras.png');  -webkit-background-size: cover;  -moz-background-size: cover;  -o-background-size: cover;background-size:contain; background-position:center; background-repeat: no-repeat;"></spam>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="workarea">
+    <div workmap imagens-processadas="imagensProcessadas" classificacao="classifProcess"></div>
+    <div id="workmap_loader" layout="row" layout-align="center center" ng-show="loadShow">
+        <md-progress-circular md-mode="indeterminate" md-diameter="100"></md-progress-circular>
+    </div>
+</div>
+<div layout="column" class="static-drawer md-whiteframe-z4">
+    <md-tabs flex="60" id="tabs-classification" class="md-primary" style="height:60%" md-selected="0" md-border-bottom>
+    <md-tab label="{{ 'CARTAS' | translate }}">
+    <md-content layout-padding>
+    <div ng-init="onloadCartas()" mapcartas carta-event-click="cartaEventClick" options="mapCartaOptions" image-data="imageData" layout-fill></div>
+    </md-content>
+    </md-tab>
+    <md-tab label="{{ 'CLASSSIFICACAO' | translate }}">
+    <md-content layout-padding layout-margin>
+    <div layout="row">
+        <div flex>
+            <h4 class="md-subhead">{{ 'PERIODO' | translate }}</h4>
+        </div>
+    </div>
+    <div layout="column">
+        <div flex="33">
+            <md-input-container>
+            <label>{{ 'ANO' | translate }}</label>
+            <md-select ng-model="classifProcess.Classificacao.year">
+            <md-option ng-repeat="resultado in classificacaoResultados" value="{{ resultado.Classificacao.year }}" ng-click="selectAnoChange(resultado)">
+            {{ resultado.Classificacao.year }}
+            </md-option>
+            </md-select>
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <div flex>
+              <md-input-container>
+                <label>{{ 'DATAINICIAL' | translate }}</label>
+                <input pikaday="date0" format="YYYY-MM-DD" ng-model="classifProcess.Classificacao.t0">
+              </md-input-container>
+            </div>
+            <div flex>
+              <md-input-container>
+                <label>{{ 'DATAFINAL' | translate }}</label>
+                <input pikaday="date1" format="YYYY-MM-DD" ng-model="classifProcess.Classificacao.t1">
+              </md-input-container>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div layout="column">
+        <div flex>
+            <md-input-container flex="25" style="margin-left: 16px;">
+            <label>{{ 'SENSOR' | translate }}</label>
+            <md-select ng-model="classifProcess.Classificacao.sensor">
+            <md-option value="L5">Landsat5</md-option>
+            <md-option value="LX">Landsat5/7</md-option>
+            <md-option value="L7">Landsat7</md-option>
+            <md-option value="L8">Landsat8</md-option>
+            </md-select>
+            </md-input-container>
+        </div>
+        <div flex=>
+            <p class="md-body-1">{{ 'COBERTURANUVEM' | translate }}</p>
+            <div layout="row">
+                <div flex="66" layout-padding>
+                    <md-slider class="md-primary" ng-model="classifProcess.Classificacao.cloudcover" step="1" min="1" max="100" aria-label="rating">
+                    </md-slider>
+                </div>
+                <div flex="10" layout-padding layout-align="center center">
+                    <md-input-container>
+                    <input ng-model="classifProcess.Classificacao.cloudcover" aria-label="rating">
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+    </div>
+    <md-menu>
+    <md-button class="md-raised md-primary" ng-click="$mdOpenMenu()">
+    <span class="md-actions">{{ 'ARVOREDECISAO' | translate }}</span>
+    </md-button>
+    <md-menu-content width="5">
+    <md-menu-item>
+    <div layout>
+        <div flex="80" layout layout-align="center center">
+            <span class="md-actions">GVS (v1)</span>
+            <md-slider style="margin-left: 15px;" flex="50" class="md-primary" ng-model="classifProcess.Classificacao.dtv.dtv1" step="1" min="0" max="100" aria-label="red" ng-change="filterUpdate(classifProcess)">
+            </md-slider>
+        </div>
+        <div layout="column" layout-align="start start">
+            <div flex layout layout-align="center center">
+                <span class="md-actions">{{ classifProcess.Classificacao.dtv.dtv1 || "-" }}</span>
+            </div>
+            <!-- <div flex style="height: 10px;">
+                <md-button class="md-icon-button" style="height: 10px; width: 10px;" ng-click="decreaseValue(classifProcess.Classificacao.dtv.dtv1)">
+                <span class="md-caption">-</span>
+                </md-button>
+                <md-button class="md-icon-button" style="height: 10px; width: 10px;" ng-click="increaseValue(classifProcess.Classificacao.dtv.dtv1)">
+                <span class="md-caption">+</span>
+                </md-button>
+            </div> -->
+        </div>
+        <!-- <div flex="15" layout layout-align="center center"></div> -->
+    </div>
+    </md-menu-item>
+    <md-menu-item>
+    <div layout>
+        <div flex="80" layout layout-align="center center">
+            <span class="md-body-1">GV (v2)</span>
+            <md-slider style="margin-left: 15px;" flex="50" class="md-primary" ng-model="classifProcess.Classificacao.dtv.dtv2" step="1" min="0" max="100" aria-label="rating" ng-change="filterUpdate(classifProcess)">
+            </md-slider>
+        </div>
+        <div layout="column" layout-align="start start">
+            <div flex layout layout-align="center center">
+                <span class="md-actions">{{ classifProcess.Classificacao.dtv.dtv2 || "-" }}</span>
+            </div>
+        </div>
+    </div>
+    </md-menu-item>
+    <md-menu-item>
+    <div layout>
+        <div flex="80" layout layout-align="center center">
+            <span class="md-body-1">NDFI (v3)</span>
+            <md-slider style="margin-left: 15px;" flex="50" class="md-primary" ng-model="classifProcess.Classificacao.dtv.dtv3" step="1" min="0" max="200" aria-label="rating" ng-change="filterUpdate(classifProcess)">
+            </md-slider>
+        </div>
+        <div layout="column" layout-align="start start">
+            <div flex layout layout-align="center center">
+                <span class="md-actions">{{ classifProcess.Classificacao.dtv.dtv3 || "-" }}</span>
+            </div>
+        </div>
+    </div>
+    </md-menu-item>
+    <md-menu-item>
+    <div layout>
+        <div flex="80" layout layout-align="center center">
+            <span class="md-body-1">NDFI (v4)</span>
+            <md-slider style="margin-left: 15px;" flex="50" class="md-primary" ng-model="classifProcess.Classificacao.dtv.dtv4" step="1" min="0" max="200" aria-label="rating" ng-change="filterUpdate(classifProcess)">
+            </md-slider>
+        </div>
+        <div layout="column" layout-align="start start">
+            <div flex layout layout-align="center center">
+                <span class="md-actions">{{ classifProcess.Classificacao.dtv.dtv4 || "-" }}</span>
+            </div>
+        </div>
+    </div>
+    </md-menu-item>
+    </md-menu-content>
+    </md-menu>
+    <!-- <md-menu>
+    <md-button class="md-raised md-primary" ng-click="$mdOpenMenu()">
+    Filtro Espacial
+    </md-button>
+    <md-menu-content width="5">
+    <md-menu-item>
+    <div layout>
+        <div flex layout layout-align="center center">
+            <span class="md-actions">Pixels</span>
+        </div>
+        <md-slider style="margin-right: 10px; margin-right: 10px;" flex="60" class="md-primary" ng-model="classifProcess.Classificacao.spatialFilter" step="1" min="0" max="9" aria-label="red"></md-slider>
+        <div flex="10" layout layout-align="center center">
+            <md-input-container>
+            <input ng-model="classifProcess.Classificacao.spatialFilter" aria-label="rating">
+            </md-input-container>
+        </div>
+    </div>
+    </md-menu-item>
+    </md-menu-content>
+    </md-menu> -->
+    <md-menu>
+    <md-button class="md-raised md-primary" ng-disabled="!elevation_on" ng-mouseenter="openMenu($mdOpenMenu, $event)">
+    {{ 'ELEVACAO' | translate }}
+    </md-button>
+    <md-menu-content width="2">
+    <md-menu-item>
+    <div layout>
+        <div flex="30" layout layout-align="center center">
+            <span class="md-actions">{{ 'MAXIMA' | translate }}</span>
+        </div>
+        <div flex="40" layout layout-align="center center">
+            <md-input-container>
+            <input ng-model="classifProcess.Classificacao.elevation_max" required ng-pattern="/^[0-9]{0,10000}$/" aria-label="rating" />
+            </md-input-container>
+            <span class="md-body-1"> (m)</span>
+        </div>
+    </div>
+    </md-menu-item>
+    <md-menu-item>
+    <div layout>
+        <div flex="30" layout layout-align="center center">
+            <span class="md-body-1">{{ 'MINIMA' | translate }}</span>
+        </div>
+        <div flex="40" layout layout-align="center center">
+            <md-input-container>
+            <input ng-model="classifProcess.Classificacao.elevation_min" required ng-pattern="/^[0-9]{0,10000}$/" aria-label="rating" />
+            </md-input-container>
+            <span class="md-body-1"> (m)</span>
+        </div>
+    </div>
+    </md-menu-item>
+    </md-menu-content>
+    </md-menu>
+    <div flex="50">
+        <md-checkbox class="md-primary" ng-model="elevation_on" aria-label="Checkbox 1">
+        {{ 'HABILITARELECACAO' | translate }}
+        </md-checkbox>
+    </div>
+    <div class="md-actions" layout="row" layout-align="end center">
+        <md-button class="md-accent" ng-disabled="!processar_on" ng-click="geeImagemProcessar(classifProcess)">{{ 'PROCESSAR' | translate }}</md-button>
+        <md-button class="md-accent" ng-disabled="!salvar_on" ng-click="salvarClassificacao(classifProcess)">{{ 'SALVAR' | translate }}</md-button>
+        <md-button class="md-accent" ng-click="salvarNovoClassificacao(classifProcess)" ng-show="classifProcess.Classificacao.id">{{ 'SALVARNOVO' | translate }}</md-button>
+        <!-- <md-button class="md-accent"  ng-click="processar()">processar</md-button> -->
+    </div>
+    </md-content>
+    </md-tab>
+    <md-tab label="{{ 'RESULTADOS' | translate }}" id="resultados">
+    <md-content>
+    <div id="resultados">
+        <div id="resultados_loader" layout="row" layout-align="center center" ng-show="loadResultados">
+            <md-progress-circular md-mode="indeterminate" md-diameter="50"></md-progress-circular>
+        </div>
+        <div layout="row" layout-sm="column">
+            <div flex>
+                <md-radio-group>
+                <md-subheader class="md-no-sticky">{{ 'PERIODOS' | translate }}</md-subheader>
+                <md-radio-button
+                class="md-primary"
+                ng-repeat="resultado in classificacaoResultados"
+                ng-value="resultado.Classificacao.year"
+                aria-label="{{resultado.Classificacao.year}}"
+                ng-click="processarResultado(resultado)">
+                <strong>{{ 'BIOMA' | translate }}:</strong> {{ resultado.Classificacao.bioma }} | <strong>{{ 'ANO' | translate }}:</strong> {{ resultado.Classificacao.year }} | <strong>{{ 'PERIODO' | translate }}:</strong> {{ resultado.Classificacao.t0 | formatDate }} {{ 'A' | translate }} {{ resultado.Classificacao.t1 | formatDate }}
+                </md-radio-button>
+                </md-radio-group>
+            </div>
+        </div>
+        <div layout="row" layout-sm="column">
+            <div flex>
+                <!-- <md-button class="md-raised md-primary">emporal
+                </md-button> -->
+            </div>
+        </div>
+    </div>
+    </md-content>
+    </md-tab>
+    <!-- <md-tab label="Análises">
+    <md-content>
+    <div id="analysis" style="width: 100%; height: 400px; margin:16px">interface de análise</div>
+    </md-content> -->
+    </md-tab>
+    <md-tooltip md-visible="mapCartaOptions.toolTipCarta">
+    <p class="md-body-1"> {{ mapCartaOptions.cartaName }}</p>
+    </md-tooltip>
+    </md-tabs>
+    <md-menu-divider></md-menu-divider>
+    <div flex="40" layout-padding>
+        <div mapcarta></div>
+    </div>
+</div>

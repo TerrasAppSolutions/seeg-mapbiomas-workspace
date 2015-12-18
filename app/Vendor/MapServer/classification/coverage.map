@@ -1,0 +1,92 @@
+MAP 
+    NAME "Coverages"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection =================================== #
+    #
+    INCLUDE '../includes/metadata_wms_projection.map'
+
+
+    #
+    # Camadas ====================================================== #
+    #
+
+    LAYER
+        NAME 'classification'
+        TYPE RASTER
+        STATUS ON
+
+        VALIDATION
+            "default_territory_id" "1"
+            "territory_id" "[0-9]+"
+
+            "default_year" "0"
+            "year" "[0-9]+"
+
+            "default_classification_ids" "0"
+            "classification_ids" ".+"            
+        END
+
+        DATA '/data/imagens/classificacao/VRT/PAIS_BRASIL_%year%.vrt'
+
+        MASK "territory_mask"
+
+        INCLUDE '../includes/style_bioma.map'
+    END
+
+    LAYER
+        NAME 'coverage'
+        TYPE RASTER
+        STATUS ON
+
+        VALIDATION
+            "default_territory_id" "1"
+            "territory_id" "[0-9]+"
+
+            "default_year" "0"
+            "year" "[0-9]+"
+
+            "default_classification_ids" "0"
+            "classification_ids" ".+"            
+        END
+
+        DATA '/data/imagens/classificacao/VRT/INTEGRACAO_PAIS_BRASIL_%year%.vrt'
+
+        MASK "territory_mask"
+
+        INCLUDE '../includes/style_bioma_integrate.map'
+    END
+
+    LAYER
+        NAME "territory_mask"
+        TYPE POLYGON
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_territory_id" "1"
+            "territory_id" "[0-9]+"
+        END
+
+        INCLUDE '../includes/database.map'
+
+        DATA "the_geom from 
+         (
+            SELECT 
+            id, the_geom
+            FROM territorios
+            WHERE id = '%territory_id%'                                     
+         ) 
+         as territorio
+         USING UNIQUE id USING SRID=4674"
+
+        CLASS
+            STYLE
+                OPACITY 1         
+                COLOR 0 0 0
+            END
+        END
+    END
+END

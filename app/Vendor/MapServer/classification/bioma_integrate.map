@@ -1,0 +1,68 @@
+MAP 
+    NAME "Carta"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection =================================== #
+    #
+    INCLUDE '../includes/metadata_wms_projection.map'
+
+    #
+    # Camadas ====================================================== #
+    #    
+
+    LAYER
+        NAME 'bioma'
+        TYPE RASTER
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_bioma_collection" "AMAZONIA"
+            "bioma_collection" "^[a-zA-Z\-]+$"
+
+            "default_year" "0"
+            "year" "[0-9]+"
+
+            "default_classification_ids" "1"
+            "classification_ids" ".+"            
+        END
+
+        DATA '/data/imagens/classificacao/VRT/INTEGRACAO_BIOMA_%bioma_collection%_%year%.vrt'
+
+        MASK "bioma_mask"
+
+        INCLUDE '../includes/style_bioma_integrate.map'
+    END
+
+    LAYER
+        NAME "bioma_mask"
+        TYPE POLYGON
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_bioma_collection" "AMAZONIA"
+            "bioma_collection" "^[a-zA-Z\-]+$"
+        END
+
+        INCLUDE '../includes/database.map'
+
+        DATA "the_geom from 
+         (
+            SELECT 
+            id, the_geom
+            FROM biomas
+            WHERE colecao = '%bioma_collection%'                                     
+         ) 
+         as biom
+         USING UNIQUE id USING SRID=4674"
+
+        CLASS
+            STYLE
+                OPACITY 1         
+                COLOR 0 0 0
+            END
+        END
+    END
+END

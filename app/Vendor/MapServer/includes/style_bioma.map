@@ -1,0 +1,34 @@
+# classes
+CLASSITEM "[pixel]"   
+
+# forest
+CLASS
+  EXPRESSION ([pixel] = 1 AND "1" IN '%classification_ids%')
+  STYLE
+    COLOR 11 98 56
+  END
+END        
+
+# nonforest
+CLASS
+  EXPRESSION ([pixel] = 2 AND "2" IN '%classification_ids%')
+  STYLE
+    COLOR 0 0 0
+  END
+END
+
+# nonforest
+CLASS
+  EXPRESSION ([pixel] = 4 AND "2" IN '%classification_ids%')
+  STYLE
+    COLOR 0 0 0
+  END
+END
+
+# water
+CLASS
+  EXPRESSION ([pixel] = 3 AND "3" IN '%classification_ids%')
+  STYLE
+    COLOR 0 0 255
+  END
+END        

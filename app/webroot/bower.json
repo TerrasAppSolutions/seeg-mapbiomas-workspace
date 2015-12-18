@@ -1,0 +1,35 @@
+{
+    "name": "MapBiomas",
+    "version": "0.0.1",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "bower_components"
+    ],
+    "dependencies": {
+        "angular": "1.*",
+        "angular-route": "1.*",
+        "angular-resource": "1.*",
+        "angular-sanitize": "1.*",
+        "angular-animate": "1.*",
+        "angular-i18n": "1.*",
+        "angular-ui-router": "latest",
+        "angular-ui-slider": "latest",
+        "angular-material": "latest",
+        "angular-translate": "latest",
+        "bootstrap-material-design": "latest",
+        "pikaday-angular": "latest",
+        "pouchdb": "latest",
+        "underscore": "latest",
+        "jquery": "2.1.4",
+        "jquery-ui": "1.11.4",
+        "bootstrap": "latest",
+        "leaflet-dist": "latest",
+        "leaflet-draw": "latest",
+        "leaflet-plugins": "latest",
+        "turf": "latest",
+        "modernizr": "2.8.3",
+        "moment": "2.10.6",
+        "jstree": "3.0.8"
+    }
+}
