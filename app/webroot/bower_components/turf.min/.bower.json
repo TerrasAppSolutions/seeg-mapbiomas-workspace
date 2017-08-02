@@ -1,0 +1,13 @@
+{
+  "name": "turf.min",
+  "_cacheHeaders": {
+    "ETag": "\"41fb6fca2b4b077b232595d34d2e58fe\"",
+    "Last-Modified": "Tue, 05 Jul 2016 16:05:14 GMT",
+    "Content-Type": "application/javascript"
+  },
+  "_release": "e-tag:41fb6fca2",
+  "main": "index.js",
+  "_source": "https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js",
+  "_target": "*",
+  "_originalSource": "https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"
+}

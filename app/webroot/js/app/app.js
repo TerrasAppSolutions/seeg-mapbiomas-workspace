@@ -1,42 +1,106 @@
 'use strict';
 angular.module('MapBiomasApp', [
-    'MapBiomas', 'ngMaterial', 'pascalprecht.translate'
-]).config(['$routeProvider', '$stateProvider', '$urlRouterProvider', '$mdThemingProvider', 'pikadayConfigProvider', '$translateProvider',
-    function ($routeProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider, pikaday, $translateProvider) {
+    'MapBiomas'
+])
+    .config(['$routeProvider', '$stateProvider', '$urlRouterProvider', 'pikadayConfigProvider', '$translateProvider',
+        function ($routeProvider, $stateProvider, $urlRouterProvider, pikaday, $translateProvider) {
 
+            $stateProvider
+                .state("workspace", {
+                    url: "/",
+                    views: {
+                        '': {
+                            templateUrl: "js/app/views/workspace/workspace.html",
+                        },
+                        'workspace-right@workspace': {
+                            templateUrl: 'js/app/views/workspace/workspace-right.html',
+                        }
+                    }
+                })
+                .state("classificacoes-parametros", {
+                    url: "/classifications/parameters",
+                    views: {
+                        '': {
+                            templateUrl: 'js/app/views/classificacoes/list.html',
+                        }
+                    }
+                })
+                .state("classificacoes-parametros.edit", {
+                    url: "^/classifications/parameters/edit/:classificacaoId",
+                    views: {
+                        'classificationForm@classificacoes-parametros': {
+                            templateUrl: 'js/app/views/classificacoes/save_modal.html'
+                        }
+                    }
+                })
+                .state("classificacoes-parametros.edit-forcereload", {
+                    url: "^/classifications/parameters/edit/:classificacaoId/:forcereload",
+                    views: {
+                        'classificationForm@classificacoes-parametros': {
+                            templateUrl: 'js/app/views/classificacoes/save_modal.html'
+                        }
+                    }
+                })
+                .state("classificacoes-parametros-viewmode", {
+                    url: "/classifications/parameters/:viewmode",
+                    views: {
+                        '': {
+                            templateUrl: 'js/app/views/classificacoes/list.html',
+                        }
+                    }
+                })
+                .state("integracao-tarefas", {
+                    url: "/consolidation/tasks",
+                    views: {
+                        '': {
+                            templateUrl: 'js/app/views/classificacoes/tarefas_list.html',
+                        }
+                    }
+                })
+                .state("classificacao-tarefas", {
+                    url: "/classifications/tasks", // remover, substituido por ""/consolidation/tasks""                                     
+                    views: {
+                        '': {
+                            templateUrl: 'js/app/views/classificacoes/tarefas_list.html',
+                        }
+                    }
+                })
+                .state("dtree", {
+                    url: "/dtree", // remover, substituido por ""/consolidation/tasks""                                     
+                    views: {
+                        '': {
+                            templateUrl: 'js/app/views/dtree/dtreemap.html',
+                        }
+                    }
+                });
 
-        $mdThemingProvider.theme('default')
-            .primaryPalette('teal', {
-                'default': '500'
-            })
-            .accentPalette('blue', {
-                'default': '300'
-            });
+            $urlRouterProvider.otherwise('/');
 
-        $stateProvider
-            .state("map", {
-                url: "/",
-                controller: 'MapBiomasController',
-                templateUrl: "js/app/views/workmap/workmap.html"
-            });
-
-        $urlRouterProvider.otherwise('/');
-
-
-        pikaday.setConfig({
-            format: "DD/MM/YYYY"
+            pikaday.setConfig({
+                format: "DD/MM/YYYY"
                 //format: "YYYY-MM-DD"
-        });
+            });
 
-        angular.forEach(langs, function (lang, key) {              
-              $translateProvider.translations(key, lang);
-        });
+            angular.forEach(langs, function (lang, key) {
+                $translateProvider.translations(key, lang);
+            });
 
-        $translateProvider.preferredLanguage('en');
-    }
-]).run(['$rootScope', '$injector',
-    function ($rootScope, $injector) {
-        var AppAuth = $injector.get('AppAuth');
-        var AppConfig = $injector.get('AppConfig');
-    }
-]);
+            $translateProvider.preferredLanguage('en');
+        }
+    ])
+    .run(['$rootScope', '$injector',
+        function ($rootScope, $injector) {
+            var AppAuth = $injector.get('AppAuth');
+            var AppConfig = $injector.get('AppConfig');
+
+            // refatorar, criar servico gee de autenticação
+            var CLIENT_ID = AppConfig['GOOGLECREDENTIALS']['client_id'];
+            ee.data.authenticate(CLIENT_ID, function () {
+                // auth success
+            }, function () {
+                // auth error
+            }, null, function () {
+                ee.data.authenticateViaPopup();
+            });
+        }
+    ]);

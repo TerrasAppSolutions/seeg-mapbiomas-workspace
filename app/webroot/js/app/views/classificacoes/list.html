@@ -1,0 +1,371 @@
+<section class="content-header">
+    <h1>
+        {{ 'PARAMSCLASSIF' | translate }}
+        <small>
+            {{ 'PARAMSLISTAR' | translate }}
+        </small>
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <i class="fa fa-dashboard">
+                </i>
+                Workspace
+            </a>
+        </li>
+        <li class="active">
+            {{ 'PARAMSCLASSIF' | translate }}
+        </li>
+    </ol>
+</section>
+<section class="content" ng-controller="ClassificacoesListarController">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        {{ 'PARAMSCLASSIF' | translate }} <span ng-show="pageBoxTitle">: {{pageBoxTitle}}</span>
+                    </h3>
+                    <div class="pull-right">
+                        <select ng-model="viewMode" ng-change="viewModeChange()" class="form-control">
+                            <option value="table">
+                                {{ 'VIEWTABLE' | translate }}
+                            </option>
+                            <option value="map">
+                                {{ 'VIEWMAP' | translate }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form name="formFilter">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-md-2">
+                                                <div class="form-group">
+                                                    <input ng-model="formFilterConditions.carta_paramid" ng-change="formFilterChange()" type="text" placeholder="{{'CARTA'| translate}} or {{'PARAM'| translate}} ID" class="form-control"/>
+                                                </div>
+                                            </div>
+                                            <div ng-hide="selectBiomasDisabled" class="col-xs-6 col-md-2">
+                                                <div class="form-group">
+                                                    <select ng-model="formFilterConditions.bioma_id" ng-options="bioma.Bioma.id as bioma.Bioma.colecao | translate for bioma in biomas" ng-change="formFilterChange()" class="form-control" placeholder="Bioma">
+                                                        <option value="">
+                                                            {{ 'BIOMATODOS' | translate }}
+                                                        </option>                                                        
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-6 col-md-2">
+                                                <div class="form-group">
+                                                    <select ng-model="formFilterConditions.year" ng-options="ano as ano for ano in selectAnos" ng-change="formFilterChange()" class="form-control" placeholder="{{'YEAR'| translate}}">
+                                                        <option value="">
+                                                            {{'ANOTODOS'| translate}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>                                    
+                                            <div class="col-xs-6 col-md-2">
+                                                <div class="form-group">                    
+                                                    <select id="classificacao-colecaoid" ng-model="formFilterConditions.colecao_id" ng-options="colecao.Colecao.id as colecao.Colecao.colecao for colecao in colecoes" ng-change="formFilterChange()" class="form-control" placeholder="{{ 'COLECAO' | translate }}">
+                                                        <option value="">
+                                                            All Collections
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>                                            
+                                            <!--
+                                            <div class="col-xs-6 col-md-1">
+                                                <div class="form-group">
+                                                    <input id="formFilter-data_inicial" pikaday="formFilterConditions.data_inicial" on-select="formFilterChange()" type="text" placeholder="{{'DATAINICIAL' | translate}}" class="form-control"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-md-1">
+                                                <div class="form-group">
+                                                    <input id="formFilter-data_final" pikaday="formFilterConditions.data_final" on-select="formFilterChange()" type="text" placeholder="{{'DATAFINAL' | translate}}" class="form-control"/>
+                                                </div>
+                                            </div>
+                                            -->                                            
+                                            <div class="col-xs-6 col-md-2">
+                                                <div class="form-group">
+                                                    <select class="form-control" ng-change="formFilterChange()" ng-model="formFilterConditions.fase" placeholder="{{'FASE'| translate}}">
+                                                        <option value="">
+                                                            {{'FASETODOS'| translate}}
+                                                        </option>
+                                                        <option value="0">
+                                                            Mosaic
+                                                        </option>
+                                                        <option value="1">
+                                                            {{'EXPORTTASKFASE-1'| translate}}
+                                                        </option>
+                                                        <option value="2">
+                                                            {{'EXPORTTASKFASE-2'| translate}}
+                                                        </option>
+                                                        <option value="3">
+                                                            {{'EXPORTTASKFASE-3'| translate}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-md-2">
+                                                <div class="form-group">
+                                                    <select class="form-control" ng-change="formFilterChange()" ng-model="formFilterConditions.status" placeholder="{{'STATUS'| translate}}">
+                                                        <option value="">
+                                                            {{'STATUSTODOS'| translate}}
+                                                        </option>
+                                                        <option value="0">
+                                                            {{'EXPORTTASKSTATUS-0'| translate}}
+                                                        </option>
+                                                        <option value="1">
+                                                            {{'EXPORTTASKSTATUS-1'| translate}}
+                                                        </option>
+                                                        <option value="2">
+                                                            {{'EXPORTTASKSTATUS-2'| translate}}
+                                                        </option>
+                                                        <option value="3">
+                                                            {{'EXPORTTASKSTATUS-3'| translate}}
+                                                        </option>                 
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-md-2">
+                                                <div class="form-group">
+                                                    <select ng-model="formFilterConditions.versao_final" ng-change="formFilterChange()" class="form-control" placeholder="{{'ARVORE'| translate}}">
+                                                        <option value="">
+                                                            All Versions
+                                                        </option>
+                                                        <option value="TRUE">
+                                                            Final Version
+                                                        </option>
+                                                        <option value="FALSE">
+                                                            Non Final
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-md-2" ng-show="appAuthUser.Usuario.id == 1">
+                                                <div class="form-group">
+                                                    <select ng-model="formFilterConditions.gee_asset_verificacao" ng-change="formFilterChange()" class="form-control" placeholder="Asset verificado">
+                                                        <option value="">
+                                                            Asset verificado ?
+                                                        </option>
+                                                        <option value="0">
+                                                            Não
+                                                        </option>
+                                                        <option value="1">
+                                                            Sim
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-2">
+                                        <div class="form-group">
+                                            <button ng-click="formFilterClear()" class="btn btn-default" type="button">
+                                                <i class="fa fa-eraser">
+                                                </i>
+                                                {{'LIMPARPARAMS'| translate }}
+                                            </button>                                            
+                                            <button ng-click="exportToCSV()" ng-disabled="exportCSVloading || paramsClassificacoes.length == 0 || paramsClassificacoes.length > 1500" class="btn btn-success pull-right" type="button">
+                                                <i ng-show="!exportCSVloading" class="glyphicon glyphicon-export">
+                                                </i>
+                                                <span ng-show="!exportCSVloading">                                    
+                                                    {{ 'EXPORTCSV' | translate }}
+                                                    <span ng-show="paramsClassificacoes.length > 1500">
+                                                        Limit 1500 records
+                                                    </span>
+                                                </span>
+                                                <i ng-show="exportCSVloading" class="glyphicon glyphicon-hourglass">
+                                                </i>
+                                                <span ng-show="exportCSVloading">  
+                                                    {{ 'EXPORTCSVLOAD' | translate }}
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div ng-if="viewMode == 'table'" class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" ng-show="paramsClassificacoes.length > 0">
+                                    <thead style="font-size: 12px;text-transform:uppercase">
+                                        <tr>
+                                            <th>
+                                                #
+                                            </th>
+                                            <th>
+                                                {{ 'CARTA' | translate }}
+                                            </th>
+                                            <th>
+                                               {{ 'BIOMA' | translate }} 
+                                            </th>
+                                            <th>
+                                                YEAR
+                                            </th>
+                                            <th>
+                                                T0
+                                            </th>
+                                            <th>
+                                                T1
+                                            </th>
+                                            <th>
+                                                CLOUD %
+                                            </th>
+                                            <th>
+                                                D. TREE
+                                            </th>
+                                            <th>
+                                                DTV
+                                            </th>                                            
+                                            <th>
+                                                SENSOR
+                                            </th>
+                                            <th>
+                                                ELEV. ON
+                                            </th>
+                                            <th>
+                                                ELEV. MIN
+                                            </th>
+                                            <th>
+                                                ELEV. MAX
+                                            </th>
+                                            <th>
+                                                {{ 'REGIAO' | translate }}
+                                            </th>
+                                            <th>
+                                                LABEL
+                                            </th>
+                                            <th>
+                                                {{ 'VERSAO' | translate }}
+                                            </th>
+                                            <th>
+                                                Consolidate {{ 'EXPORTTASKSTATUS' | translate }}
+                                            </th>
+                                            <th>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="classificacao in paramsClassificacoes">
+                                            <th>
+                                                {{classificacao.Classificacao.id}}
+                                            </th>
+                                            <td>
+                                                {{classificacao.Classificacao.carta}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.bioma}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.year}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.t0}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.t1}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.cloudcover}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.decision_tree_id}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.dtv| dtreevstr}}
+                                            </td>                                            
+                                            <td>
+                                                {{classificacao.Classificacao.sensor}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.elevation_on}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.elevation_min}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.elevation_max}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.regiao}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.identificador}}
+                                            </td>
+                                            <td>
+                                                {{classificacao.Classificacao.versao}}
+                                                <span ng-show="classificacao.Classificacao.versao_final">
+                                                    &nbsp;FINAL
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span ng-if="classificacao.ClassificacaoTarefa[0].id">
+                                                    {{'EXPORTTASKFASE-' + classificacao.ClassificacaoTarefa[0].fase| translate}} : <br/> {{'EXPORTTASKSTATUS-' + classificacao.ClassificacaoTarefa[0].status| translate}}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button data-toggle="dropdown" class="btn btn-info btn-xs dropdown-toggle" type="button">
+                                                        <i class="fa fa-fw fa-th-list">
+                                                        </i>
+                                                    </button>
+                                                    <ul role="menu" class="dropdown-menu" style="right: 0;left: auto;">
+                                                        <li>
+                                                            <a href="javascript:;" ng-click="editarClassificacao(classificacao)">
+                                                                <i class="fa fa-fw fa-edit">
+                                                                </i>
+                                                                Edit parameters
+                                                            </a>
+                                                        </li> 
+                                                        <li>
+                                                            <a ng-click="mosaicTaskCreate(classificacao)" href="javascript:;">
+                                                                <i class="fa fa-fw fa-tasks">
+                                                                </i>
+                                                                Mosaic task
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a ng-click="consolidateTaskCreate(classificacao)" href="javascript:;">
+                                                                <i class="fa fa-fw fa-tasks">
+                                                                </i>
+                                                                Consolidate task
+                                                            </a>
+                                                        </li>
+                                                        <!--
+                                                            <li class="divider">
+                                                            </li>
+                                                            <li>
+                                                                <a ng-click="removeResultado(classificacao)" href="javascript:;">
+                                                                    <i class="fa fa-fw fa-trash">
+                                                                    </i>
+                                                                    Remove parameter
+                                                                </a>
+                                                            </li>
+                                                        -->
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div ng-show='paramsClassificacoes.length > 0' paginate-links paginate="paginate" total-pages="totalPages" page-size="pageSize" page="page" class="pull-left">
+                            </div>
+                            <span class="pull-right" style="padding:5px">
+                                {{classificacoesTotal}} records found.
+                            </span>
+                        </div>
+                    </div>
+                    <div ng-if="viewMode == 'map'" ng-include="'js/app/views/classificacoes/list_maptable.html'"></div>
+                    <div ui-view="classificationForm"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

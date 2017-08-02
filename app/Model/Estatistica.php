@@ -7,10 +7,10 @@ App::uses('AppModel', 'Model');
  */
 class Estatistica extends AppModel { 
 
-	public $useTable = 'estatisticas'; 
+	public $useTable = 'estatisticas';    
 
 	public $contains = array(
         'default' => array()
-    );   
+    );      
     
 }

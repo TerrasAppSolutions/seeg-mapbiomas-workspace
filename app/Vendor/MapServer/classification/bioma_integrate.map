@@ -29,7 +29,7 @@ MAP
             "classification_ids" ".+"            
         END
 
-        DATA '/data/imagens/classificacao/VRT/INTEGRACAO_BIOMA_%bioma_collection%_%year%.vrt'
+        DATA '/mnt/disks/data/collections/COLECAO2/VRT/INTEGRACAO_BIOMA_%bioma_collection%_%year%.vrt'
 
         MASK "bioma_mask"
 

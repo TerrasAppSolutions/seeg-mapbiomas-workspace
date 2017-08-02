@@ -1,0 +1,218 @@
+<div class="modal-header bg-aqua-active">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="modalClose()">
+        <span aria-hidden="true">
+            &times;
+        </span>
+    </button>
+    <h4 class="modal-title">
+        {{ 'PARAMSCLASSIF' | translate }}
+    </h4>
+</div>
+<div class="modal-body" ng-controller="ClassificacoesListarController">
+    <div class="row">
+        <div class="col-md-12">
+            <form name="formFilter">
+                <div class="row">
+                    <div class="col-xs-6 col-md-2">
+                        <div class="form-group">
+                            <input ng-model="formFilterConditions.carta_paramid" ng-change="formFilterChange()" type="text" placeholder="{{ 'CARTA' | translate }} or {{ 'PARAM' | translate }} ID" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-2">
+                        <div class="form-group">
+                            <input ng-model="formFilterConditions.year" ng-change="formFilterChange()" type="number" min="1985" max="2015" placeholder="{{ 'YEAR' | translate }}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-1">
+                        <div class="form-group">
+                            <select ng-model="formFilterConditions.dtree" ng-change="formFilterChange()" class="form-control" placeholder="{{ 'ARVORE' | translate }}">
+                                <option value="">
+                                    {{ 'ARVORETODOS' | translate }}
+                                </option>
+                                <option value="1">
+                                    {{ 'ARVORE' | translate }} 1
+                                </option>
+                                <option value="2">
+                                    {{ 'ARVORE' | translate }} 2
+                                </option>
+                                <option value="3">
+                                    {{ 'ARVORE' | translate }} 3
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-1">
+                        <div class="form-group">
+                            <button ng-click="formFilterClear()" class="btn btn-default" type="button">
+                                <i class="fa fa-eraser">
+                                </i>
+                                {{ 'LIMPARPARAMS' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" ng-show="paramsClassificacoes.length> 0">
+                    <thead style="font-size: 12px;text-transform:uppercase">
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                {{ 'CARTA' | translate }}
+                            </th>
+                            <th>
+                                {{ 'BIOMA' | translate }}
+                            </th>
+                            <th>
+                                YEAR
+                            </th>
+                            <th>
+                                T0
+                            </th>
+                            <th>
+                                T1
+                            </th>
+                            <th>
+                                CLOUD %
+                            </th>
+                            <th>
+                                D. TREE
+                            </th>
+                            <th>
+                                DTV
+                            </th>                           
+                            <th>
+                                SENSOR
+                            </th>                            
+                            <th>
+                                {{ 'REGIAO' | translate }}
+                            </th>
+                            <th>
+                                LABEL
+                            </th>
+                            <th>
+                                {{ 'VERSAO' | translate }}
+                            </th>
+                            <th>
+                                Consolidate {{ 'EXPORTTASKSTATUS' | translate }}
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="classificacao in paramsClassificacoes">
+                            <th>
+                                {{ classificacao.Classificacao.id }}
+                            </th>
+                            <td>
+                                {{ classificacao.Classificacao.carta }}
+                            </td>
+                            <td>
+                                {{ classificacao.Classificacao.bioma }}
+                            </td>
+                            <td>
+                                {{ classificacao.Classificacao.year }}
+                            </td>
+                            <td>
+                                {{ classificacao.Classificacao.t0 }}
+                            </td>
+                            <td>
+                                {{ classificacao.Classificacao.t1 }}
+                            </td>
+                            <td>
+                                {{ classificacao.Classificacao.cloudcover }}
+                            </td>
+                            <td>
+                                {{ classificacao.Classificacao.decision_tree_id }}
+                            </td>
+                            <td>
+                                {{ classificacao.Classificacao.dtv | dtreevstr }}
+                            </td>                            
+                            <td>
+                                {{ classificacao.Classificacao.sensor }}
+                            </td>                            
+                            <td>
+                                {{ classificacao.Classificacao.regiao }}
+                            </td>
+                            <td>
+                                {{ classificacao.Classificacao.identificador }}
+                            </td>
+                            <td>
+                                {{ classificacao.Classificacao.versao }}
+                                <span ng-show="classificacao.Classificacao.versao_final">
+                                    &nbsp;FINAL
+                                </span>
+                            </td>
+                            <td>
+                                <div classificacao-tarefa-status="classificacao.ClassificacaoTarefa"></div>  
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <button data-toggle="dropdown" class="btn btn-info btn-xs dropdown-toggle" type="button">
+                                        <i class="fa fa-fw fa-th-list">
+                                        </i>
+                                    </button>
+                                    <ul role="menu" class="dropdown-menu" style="right: 0;left: auto;">
+                                        <li>
+                                            <a href="javascript:;" ng-click="editarClassificacao(classificacao)">
+                                                <i class="fa fa-fw fa-edit">
+                                                </i>
+                                                Edit parameters
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a ng-click="processarResultado(classificacao)" href="javascript:;">
+                                                <i class="fa fa-fw fa-gears">
+                                                </i>
+                                                Process
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a ng-click="mosaicTaskCreate(classificacao)" href="javascript:;">
+                                                <i class="fa fa-fw fa-tasks">
+                                                </i>
+                                                Mosaic task
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a ng-click="consolidateTaskCreate(classificacao)" href="javascript:;">
+                                                <i class="fa fa-fw fa-tasks">
+                                                </i>
+                                                Consolidate task
+                                            </a>
+                                        </li>                                        
+                                        <!--<li class="divider"></li>
+                                        <li>
+                                            <a ng-click="removeTask(classificacao)" href="javascript:;">
+                                                <i class="fa fa-fw fa-trash">
+                                                </i>
+                                                Remove parameter
+                                            </a>
+                                        </li>    -->                                    
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show='paramsClassificacoes.length > 0' paginate-links paginate="paginate" total-pages="totalPages" page-size="pageSize" page="page" class="pull-left">
+            </div>
+            <span class="pull-right" style="padding:5px">
+                {{ classificacoesTotal }} records found.
+            </span>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button ng-click="modalClose()" type="button" class="btn btn-default" data-dismiss="modal">
+        {{ 'FECHAR' | translate }}
+    </button>
+</div>

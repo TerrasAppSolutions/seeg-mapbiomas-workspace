@@ -97,10 +97,6 @@ Router::connect(
         "/:plugin/views/:controller/*", array('prefix' => 'service', "action" => "view")
 );
 
-Router::connect(
-        "/:plugin/views/:controller/*", array('prefix' => 'service', "action" => "view")
-);
-
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on

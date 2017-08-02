@@ -1,0 +1,260 @@
+<div ng-controller="DtreeController" ng-init="init()" class="row fill">
+    <div class="col-xs-6 col-md-8 fill nopadding-right">
+        <div class="workarea fill">
+            <div dtreemap imagens-processadas="imagensProcessadas" carta-event-click="cartaEventClick" class="fill">
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-4 fill nopadding-left">
+        <div class="box box-solid flex-column fill" style="margin-bottom: 0px">
+            <div class="box-header with-border">
+                <i class="fa fa-sitemap">
+                </i>
+                <h3 class="box-title">
+                    Decision Tree Builder
+                </h3>
+            </div>
+            <div class="box-body flex-1 scrolly">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-map-o">
+                            </i>
+                            Workspace
+                        </a>
+                    </li>
+                    <li class="active">
+                        Decision Tree Builder
+                    </li>
+                </ol>
+                <form name="classificationForm" role="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>
+                                    {{ 'CARTA' | translate }}
+                                </label>
+                                <span ng-hide="classifProcess.Classificacao.carta">(Double click on map)</span>
+                                <input ng-model="classifProcess.Classificacao.carta" required disabled type="text" placeholder="{{ 'CARTA' | translate }}" class="form-control"/>
+                            </div>
+                        </div>                       
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" ng-if="cartaRegioes.length> 0">
+                            <div class="form-group">
+                                <label>
+                                    {{ 'REGIAO' | translate }}
+                                </label>
+                                <select ng-model="classifProcess.Classificacao.regiao_id" ng-options="regiao.CartaRegiao.id as regiao.CartaRegiao.regiao for regiao in cartaRegioes" class="form-control">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>
+                                    {{ 'ANO' | translate }}
+                                </label>
+                                <select class="form-control" ng-model="classifProcess.Classificacao.year" ng-change="selectAnoChange(classifProcess.Classificacao.year)" required>
+                                    <option ng-repeat="ano in selectAnos" value="{{ ano }}">
+                                        {{ ano }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>
+                                    {{ 'DATAINICIAL' | translate }}
+                                </label>
+                                <input pikaday="date0" format="YYYY-MM-DD" ng-model="classifProcess.Classificacao.t0" type="text" placeholder="Enter ..." class="form-control" required/>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>
+                                    {{ 'DATAFINAL' | translate }}
+                                </label>
+                                <input pikaday="date1" format="YYYY-MM-DD" ng-model="classifProcess.Classificacao.t1" type="text" placeholder="Enter ..." class="form-control" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                    {{ 'SENSOR' | translate }}
+                                </label>
+                                <select ng-model="classifProcess.Classificacao.sensor" class="form-control" required>
+                                    <option value="L5">
+                                        Landsat5
+                                    </option>
+                                    <option value="LX">
+                                        Landsat5/7
+                                    </option>
+                                    <option value="L7">
+                                        Landsat7
+                                    </option>
+                                    <option value="L8">
+                                        Landsat8
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label>
+                                    {{ 'COBERTURANUVEM' | translate }}
+                                </label>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <div ui-slider="slider.options" min="0" max="100" ng-model="classifProcess.Classificacao.cloudcover">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="number" min="0" max="100" ng-model="classifProcess.Classificacao.cloudcover" placeholder="" class="form-control" required/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <section>
+                                <legend>
+                                    <h4>
+                                        {{ 'ARVORESDECISAO' | translate }}
+                                    </h4>
+                                </legend>
+                                <div class="form-group">
+                                    <select ng-model="dtreeSelected" ng-options="dtree as dtree.DecisionTree.selectLabel for dtree in decisiontrees" class="form-control" ng-change="dtreeSelectedChange()">
+                                        <option value="">
+                                            + {{ 'ARVORESDECISAONOVA' | translate }}
+                                        </option>
+                                    </select>
+                                    <span class="pull-right text-info">Legend {{dtreeSelected.DecisionTree.classe_legenda_id}}</span>                                    
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>
+                                    {{ 'VERSAO' | translate }}
+                                </label>
+                                <input ng-model="dtreeForm.DecisionTree.version" type="number" placeholder="Enter ..." class="form-control" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>
+                                    {{ 'PARAMSIDENTIFICADOR' | translate }}
+                                </label>
+                                <input ng-model="dtreeForm.DecisionTree.label" type="text" placeholder="Enter ..." class="form-control" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">                        
+                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label>
+                                    <input ng-model="dtreeForm.DecisionTree.version_final" type="checkbox"/>
+                                    {{ 'VERSAOFINAL' | translate }}
+                                </label>                                
+                            </div>
+                        </div>                    
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label style="float:left;margin-right: 10px">
+                                    {{ 'BIOMA' | translate }}
+                                </label>
+                                <div class="radio">
+                                    <label>
+                                        <input ng-model="dtreeForm.DecisionTree.bioma_id" type="radio" name="dtreebiomaid" id="dtreebiomaid1" ng-value="null" checked=""/>
+                                        All {{ 'BIOMA' | translate }}s
+                                    </label>
+                                    &nbsp;
+                                    <label>
+                                        <input ng-model="dtreeForm.DecisionTree.bioma_id" type="radio" name="dtreebiomaid" id="dtreebiomaid2" ng-value="appAuthUser.UsuarioBioma.bioma_id"/>
+                                        {{appAuthUser.UsuarioBioma.Bioma.nome}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div decision-tree="dtreeForm" dtree-render="dtreeRender">
+                            </div>
+                            <input ng-model="dtreeForm.DecisionTree.dtree" type="text" style="display: none" required/>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="form-group" id="form-save-group">
+                                <button ng-click="saveDtree(dtreeForm)" ng-show="!dtreeForm.DecisionTree.id" class="btn btn-block btn-success" type="submit" ng-disabled="classificationForm.$invalid">
+                                    <i class="fa fa-save">
+                                    </i>
+                                    {{ 'SALVAR' | translate }}
+                                </button>
+                                <div ng-show="dtreeForm.DecisionTree.id" class="input-group-btn dropup">
+                                    <button data-toggle="dropdown" class="btn btn-block btn-success dropdown-toggle" type="button" ng-disabled="classificationForm.$invalid" aria-expanded="false">
+                                        <i class="fa fa-save">
+                                        </i>
+                                        {{ 'SALVAR' | translate }}
+                                        <span class="fa fa-caret-down">
+                                        </span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li ng-show="dtreeForm.DecisionTree.id && dtreeForm.Classificacao.length == 0">
+                                            <a ng-click="saveDtree(dtreeForm)" href="javascript:;" ng-disabled="classificationForm.$invalid">
+                                                {{ 'ATUALIZAR' | translate }}
+                                            </a>
+                                        </li>
+                                        <li ng-show="!dtreeForm.DecisionTree.id">
+                                            <a ng-click="saveDtree(dtreeForm)" href="javascript:;" ng-disabled="classificationForm.$invalid">
+                                                {{ 'SALVAR' | translate }}
+                                            </a>
+                                        </li>
+                                        <li ng-show="dtreeForm.DecisionTree.id">
+                                            <a ng-click="saveNewDtree(dtreeForm)" href="javascript:;" ng-disabled="classificationForm.$invalid">
+                                                {{ 'SALVARNOVO' | translate }}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <button  ng-click="geeImagemProcessar(classifProcess)" ng-disabled="classificationForm.$invalid" class="btn btn-block btn-info" type="submit">
+                                    <i class="fa fa-gears">
+                                    </i>
+                                    {{ 'PROCESSAR' | translate }}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <button ng-click="removeDtree(dtreeForm)" ng-disabled="!dtreeForm.DecisionTree.id || dtreeForm.Classificacao.length> 0" class="btn btn-block btn-warning" type="button">
+                                    <i class="fa fa-eraser">
+                                    </i>
+                                    {{ 'REMOVER' | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

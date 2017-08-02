@@ -437,7 +437,7 @@
     margin-top: 40px;        
 }
 .wgis .slTree .slTreeList{
-    max-height: 270px;
+    max-height: 570px;
     min-height: 160px;
     overflow: auto; 
 }

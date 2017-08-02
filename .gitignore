@@ -1,3 +1,6 @@
+/app/Config/CONFIG.ini
+/app/Config/CONFIG__*.ini
+/**/database.map
 /app/sftp-config.json
 /nbproject/
 /app/nbproject/
@@ -16,4 +19,5 @@ gulpfile.js
 sftp-config.json
 .remote-sync.json
 /lib/Cake/Console/Templates/skel/tmp/**
-
+/app/Vendor/MapServer/MapServer
+.vscode/**

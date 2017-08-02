@@ -1,0 +1,10 @@
+<div ng-controller="MapBiomasController" ng-init="init()" class="row fill">
+    <div class="col-xs-6 col-md-8 fill nopadding-right">
+        <div class="workarea fill">
+            <div workmap imagens-processadas="imagensProcessadas" classificacao="setClassificacao" carta-event-click="cartaEventClick" salvar-classe-area="salvarClasseArea" dialog-classe-areas-listar="dialogClasseAreasListar" class="fill">
+            </div>
+        </div>
+    </div>
+    <div ui-view="workspace-right" class="col-xs-6 col-md-4 fill nopadding-left">
+    </div>
+</div>

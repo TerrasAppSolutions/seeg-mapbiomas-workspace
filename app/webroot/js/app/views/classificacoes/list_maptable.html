@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" ng-show="paramsClassificacoes.length> 0">
+                <thead style="font-size: 12px;text-transform:uppercase">
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            {{ 'CARTA' | translate }}
+                        </th>
+                        <th>
+                            {{ 'BIOMA' | translate }}
+                        </th>
+                        <th>
+                            YEAR
+                        </th>                        
+                        <th>
+                            LABEL
+                        </th>                       
+                        <th>
+                            Consolidate {{ 'EXPORTTASKSTATUS' | translate }}
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="classificacao in paramsClassificacoes">
+                        <th>
+                            {{ classificacao.Classificacao.id }}
+                        </th>
+                        <td>
+                            {{ classificacao.Classificacao.carta }}
+                        </td>
+                        <td>
+                            {{ classificacao.Classificacao.bioma }}
+                        </td>
+                        <td>
+                            {{ classificacao.Classificacao.year }}
+                        </td>                        
+                        <td>
+                            {{ classificacao.Classificacao.identificador }}
+                        </td>                       
+                        <td>
+                            <!--
+                            <span ng-if="classificacao.ClassificacaoTarefa[0].id">
+                                {{ 'EXPORTTASKFASE-'+classificacao.ClassificacaoTarefa[0].fase | translate }} :
+                                <br/>
+                                {{ 'EXPORTTASKSTATUS-'+classificacao.ClassificacaoTarefa[0].status | translate }}
+                            </span>
+                            -->
+                            <div classificacao-tarefa-status="classificacao.ClassificacaoTarefa"></div>                            
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button data-toggle="dropdown" class="btn btn-info btn-xs dropdown-toggle" type="button">
+                                    <i class="fa fa-fw fa-th-list">
+                                    </i>
+                                </button>
+                                <ul role="menu" class="dropdown-menu" style="right: 0;left: auto;">
+                                    <li>
+                                        <a href="javascript:;" ng-click="editarClassificacao(classificacao)">
+                                            <i class="fa fa-fw fa-edit">
+                                            </i>
+                                            Edit parameters
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="mosaicTaskCreate(classificacao)" href="javascript:;">
+                                            <i class="fa fa-fw fa-tasks">
+                                            </i>
+                                            Mosaic task
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="consolidateTaskCreate(classificacao)" href="javascript:;">
+                                            <i class="fa fa-fw fa-tasks">
+                                            </i>
+                                            Consolidate
+                                            task
+                                        </a>
+                                    </li>                                    
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-show='paramsClassificacoes.length>
+            0' paginate-links paginate="paginate" total-pages="totalPages" page-size="pageSize" page="page"
+            class="pull-left">
+        </div>
+        <span class="pull-right" style="padding:5px">
+            {{ classificacoesTotal }} records found.
+        </span>
+    </div>
+    <div class="col-md-6">
+        <div mapcartaslist="mapcartaslist" buscar-carta="buscarCartaMap">
+        </div>
+    </div>      
+</div>

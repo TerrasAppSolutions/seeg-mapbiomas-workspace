@@ -1,0 +1,20 @@
+{
+    "carta": "TE-ST-TEE",
+    "periodo": {
+        "t0": 2000,
+        "t1": 2001
+    },
+    "areas": [{
+            "territorio_id": 123,
+            "bioma": "AMAZONIA",
+            "classe": 321,
+            "area_km2": 123123
+        },
+        {
+            "territorio_id": 123,
+            "bioma": "AMAZONIA",
+            "classe": 321,
+            "area_km2": 123123
+        }
+    ]
+}

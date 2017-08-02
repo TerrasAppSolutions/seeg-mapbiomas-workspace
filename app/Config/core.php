@@ -23,11 +23,11 @@
  * CakePHP Debug Level:
  *
  * Production Mode:
- * 	0: No error messages, errors, or warnings shown. Flash messages redirect.
+ *  0: No error messages, errors, or warnings shown. Flash messages redirect.
  *
  * Development Mode:
- * 	1: Errors and warnings shown, model caches refreshed, flash messages halted.
- * 	2: As in 1, but also with full debug messages and SQL output.
+ *  1: Errors and warnings shown, model caches refreshed, flash messages halted.
+ *  2: As in 1, but also with full debug messages and SQL output.
  *
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
@@ -104,11 +104,11 @@ Configure::write('App.encoding', 'UTF-8');
  * Set to an array of prefixes you want to use in your application. Use for
  * admin or other prefixed routes.
  *
- * 	Routing.prefixes = array('admin', 'manager');
+ *  Routing.prefixes = array('admin', 'manager');
  *
  * Enables:
- * 	`admin_index()` and `/admin/controller/index`
- * 	`manager_index()` and `/manager/controller/index`
+ *  `admin_index()` and `/admin/controller/index`
+ *  `manager_index()` and `/manager/controller/index`
  *
  */
 //Configure::write('Routing.prefixes', array('admin'));
@@ -174,8 +174,17 @@ define('LOG_ERROR', LOG_ERR);
  *
  */
 Configure::write('Session', array(
-    'defaults' => 'php'
+    'defaults' => 'php',
+    'timeout' => 14400 // 1 day,
 ));
+
+//Configure::write('Session', array(
+//    'defaults' => 'cake',
+//    'timeout' => 1440000, 
+//    'cookieTimeout' => 1440000, 
+//    'checkAgent' => false,
+//    'autoRegenerate' => true,
+//));
 
 /**
  * The level of CakePHP security.
@@ -185,12 +194,12 @@ Configure::write('Security.level', 'medium');
 /**
  * A random string used in security hashing methods.
  */
-Configure::write('Security.salt', 'DYhGie84984jfkjf984uVoUubWwvniR2G0FgaC9mi');
+Configure::write('Security.salt', 'DYhG93b0qyJfsIxfs2guVoUubWwvniR2G0FgaC9mi');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-Configure::write('Security.cipherSeed', '768593096573468787676543578645');
+Configure::write('Security.cipherSeed', '768593096574153542496749683645');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).

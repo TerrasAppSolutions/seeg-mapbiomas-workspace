@@ -40,7 +40,7 @@ MAP
             "naofloresta" "[0-1]"
         END
 
-        DATA '/data/imagens/classificacao/REFERENCIA/CANAFLORESTA/MapBiomas_Cana_FlorestaPlantada_%year%.tif'
+        DATA '/mnt/disks/data/collections/classificacao/REFERENCIA/CANAFLORESTA/MapBiomas_Cana_FlorestaPlantada_%year%.tif'
 
         # classes
         CLASSITEM "[pixel]"

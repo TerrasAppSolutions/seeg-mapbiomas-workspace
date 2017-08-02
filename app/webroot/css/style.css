@@ -1,0 +1,242 @@
+html, body {
+    height: 100%;
+    min-height: 100%;
+}
+
+.main-header{
+    /*z-index: 10001;*/
+}
+
+.main-header > .navbar {
+    margin-left: auto;
+    background-color: white !important;
+}
+
+.main-sidebar{
+    /*z-index: 10000;*/
+}
+
+.content-wrapper, .right-side, .main-footer {
+    margin-left: auto;
+}
+
+.modal {    
+    z-index: 10500;
+}
+
+.notifyjs-corner {
+    z-index: 1050000 !important;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.nopadding-left {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+.scrolly {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.nopadding-right {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+}
+
+.wrapper {
+    height: 100%;
+    min-height: 100%;    
+}
+
+.main-header {
+    position: fixed;
+    min-height: 55px;
+}
+
+.btn{
+    text-transform: capitalize;
+}
+
+.content-wrapper {
+    height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 55px;
+}
+
+.fill {
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 100%;
+}
+
+.fill-90 {
+    box-sizing: border-box;
+    height: 90%;
+    min-height: 90%;
+}
+.fill-60 {
+    box-sizing: border-box;
+    height: 60%;
+    min-height: 60%;
+}
+.fill-50 {
+    box-sizing: border-box;
+    height: 50%;
+    min-height: 50%;
+}
+.fill-40 {
+    box-sizing: border-box;
+    height: 40%;
+    min-height: 40%;
+}
+.fill-10 {
+    box-sizing: border-box;
+    height: 10%;
+    min-height: 10%;
+}
+
+.flex-column{    
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-1{
+    flex: 1;
+}
+
+.workarea {
+    min-height: 100%;
+    height: 100%;
+}
+
+.col-table {
+    overflow-y: auto;    
+}
+
+.control_container {
+  width: 170px !important;
+  min-height: 120px !important;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+.opacity_slider_control{
+    width: 150px !important;
+  height: 4px !important;
+  margin-left: 10px !important;
+  margin-bottom: 5px !important;
+    background: #646464 !important;
+}
+
+.opacity_slider_control .ui-slider-range {
+    background: #009688;
+}
+
+.opacity_slider_control .ui-slider-horizontal .ui-slider-handle {
+    top: -.3em !important;
+    margin-left: -.6em !important;
+}
+
+.opacity_slider_control .ui-slider-handle {
+    position: absolute !important;
+    z-index: 2 !important;
+    width: 1.0em !important;
+    height: 1.0em !important;
+    top: -.4em !important;
+    cursor: default !important;
+}
+
+.opacity_slider_control .ui-state-default {
+    background: #009688 !important;
+}
+
+.leaflet-control-coordinates {
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+    cursor: pointer;
+    padding: 2px 5px;
+}
+
+.leaflet-control-coordinates.hidden {
+    display: none;
+}
+
+.leaflet-control-coordinates-lng {
+    padding-left: 5px;
+}
+
+.classification-list .modal-dialog{
+    width: 90%;
+}
+
+.ui-slider{
+    /*position: absolute !important;*/
+    /*width: 60px !important;*/
+    height: 2px !important;
+    margin: 7px !important;
+    background: #ACABAB !important;
+    /*right: 7% !important;*/
+}
+
+.ui-slider .ui-slider-range {
+    position: absolute;
+    height: 2px;
+    background: #646464;
+}
+
+.ui-slider .ui-slider-horizontal .ui-slider-handle {
+    top: -.3em !important;
+    margin-left: -.6em !important;
+}
+
+.ui-slider .ui-slider-handle {
+    position: absolute !important;
+    z-index: 2 !important;
+    width: 0.7em !important;
+    height: 1.2em !important;
+    top: -.5em !important;
+    cursor: default !important;
+    border: 1px solid black;
+    cursor: pointer !important;
+}
+
+.ui-slider .ui-state-default {
+    background: #fff !important;
+}
+
+.ui-slider .ui-corner-all {
+    border-radius: 0px !important;
+}
+
+.select2-chosen {
+    font-size: 14px !important;
+}
+
+.node-rule{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.pika-single {
+    z-index: 10501 !important;
+}
+
+
+form.ng-dirty .ng-untouched.ng-invalid {
+    border-color: #e0604c;
+}
+
+form.ng-dirty .ng-touched.ng-valid {
+    border-color: #80CBE2;
+}
+

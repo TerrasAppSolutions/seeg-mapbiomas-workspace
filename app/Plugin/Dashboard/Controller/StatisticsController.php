@@ -7,7 +7,7 @@ class StatisticsController extends DashboardAppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('service_coverage','service_transitions');
+        $this->Auth->allow('service_coverage','service_transitions','service_groupedcover');
         $this->EstatisticaService = new EstatisticaService();
     }    
 
@@ -20,11 +20,29 @@ class StatisticsController extends DashboardAppController {
 
             $responseData = $this->EstatisticaService->coverage($this->request->query);
 
-            echo json_encode($responseData);
+            $this->response->body(json_encode($responseData));
+            return $this->response;
+            
         }
         catch(Exception $exc) {
             $this->response->statusCode("403");
-            echo $exc->getMessage();
+            
+        }
+    }
+
+    public function service_groupedcover() {
+        try {
+            $responseData = null;
+
+            $responseData = $this->EstatisticaService->groupedcover($this->request->query);
+
+            $this->response->body(json_encode($responseData));
+            return $this->response;
+            
+        }
+        catch(Exception $exc) {
+            $this->response->statusCode("403");
+            
         }
     }
 
@@ -37,11 +55,13 @@ class StatisticsController extends DashboardAppController {
             
             $responseData = $this->EstatisticaService->transitions($this->request->query);
 
-            echo json_encode($responseData);
+            $this->response->body(json_encode($responseData));
+            return $this->response;
+            
         }
         catch(Exception $exc) {
             $this->response->statusCode("403");
-            echo $exc->getMessage();
+            
         }
     }
 

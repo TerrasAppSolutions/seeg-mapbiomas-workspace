@@ -237,10 +237,16 @@ Cache::config('appCache', array(
     'path' => CACHE . DS . 'app',
 ));
 
-Cache::config('pdfCache', array(
+Cache::config('exportIsAlive', array(
     'engine' => 'File',
     'duration' => '+10 years',
-    'path' => CACHE . DS . 'pdf',
+    'path' => CACHE . DS . 'app',
+));
+
+Cache::config('downloadCache', array(
+    'engine' => 'File',
+    'duration' => '+1 hours',
+    'path' => CACHE . DS . 'download',
 ));
 
 App::uses('IniReader', 'Configure');
@@ -257,3 +263,4 @@ define('APP_WEBROOT_BASE_PATH', ROOT . DS . APP_DIR . DS . WEBROOT_DIR);
 CakePlugin::load('Mapbiomas');
 CakePlugin::load('Export');
 CakePlugin::load('Dashboard');
+CakePlugin::load('Statistics');

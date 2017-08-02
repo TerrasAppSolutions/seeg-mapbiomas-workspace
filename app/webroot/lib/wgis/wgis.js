@@ -5,9 +5,9 @@
 /* global L */
 
 ;
-(function ($, window, document) {
+(function($, window, document) {
 
-    $.fn.wgis = function (options) {
+    $.fn.wgis = function(options) {
         return new WgisPlugin(this, options);
     };
 
@@ -38,7 +38,7 @@
      * Construtor do plugin
      * @constructor
      */
-    var WgisPlugin = function (element, options) {
+    var WgisPlugin = function(element, options) {
 
         this.$elem = element;
 
@@ -57,12 +57,20 @@
      * Inicializa plugin
      * @public     
      */
-    WgisPlugin.prototype.init = function () {
+    WgisPlugin.prototype.init = function() {
         this._wgis = new WGIS(this.$elem, this._options);
     };
 
-    WgisPlugin.prototype.addBaseLayer = function (layer, layerName) {
+    WgisPlugin.prototype.addBaseLayer = function(layer, layerName) {
         this._wgis.Layers.addBaseLayer(layer, layerName);
+    };
+
+    WgisPlugin.prototype.addBaseTileLayer = function(layer, layerName, treePath, visibility, iconPath) {
+        this._wgis.Layers.addBaseTileLayer(layer, layerName, treePath, visibility, iconPath);
+    };
+
+    WgisPlugin.prototype.addLayer = function(layer, layerName, treePath, visibility, iconPath) {
+        this._wgis.Layers.addLayer(layer, layerName, treePath, visibility, iconPath);
     };
 
     /**
@@ -73,11 +81,11 @@
      * @param Boolean visibility
      * @param String iconPath
      */
-    WgisPlugin.prototype.addLayerWMS = function (layer, layerName, treePath, visibility, iconPath) {
+    WgisPlugin.prototype.addLayerWMS = function(layer, layerName, treePath, visibility, iconPath) {
         if (!$.isArray(layer)) {
             this._wgis.Layers.addWMS(layer, layerName, treePath, visibility, iconPath);
         } else {
-            $.each(layer, function (index, value) {
+            $.each(layer, function(index, value) {
                 this._wgis.Layers.addWMS(value, layerName, treePath, visibility, iconPath);
             });
         }
@@ -91,11 +99,11 @@
      * @param Boolean visibility
      * @param String iconPath
      */
-    WgisPlugin.prototype.addLayerTile = function (layer, layerName, treePath, visibility, iconPath) {
+    WgisPlugin.prototype.addLayerTile = function(layer, layerName, treePath, visibility, iconPath) {
         if (!$.isArray(layer)) {
             this._wgis.Layers.addTile(layer, layerName, treePath, visibility, iconPath);
         } else {
-            $.each(layer, function (index, value) {
+            $.each(layer, function(index, value) {
                 this._wgis.Layers.addTile(value, layerName, treePath, visibility, iconPath);
             });
         }
@@ -111,7 +119,7 @@
      * @param Boolean se o mapa será centralizado no geojson adicionado 
      * @return Leaflet.Layer camada adicionada
      */
-    WgisPlugin.prototype.addLayerGeoJSON = function (geojson, layerName, treePath, visibility, iconPath, fitbounds) {
+    WgisPlugin.prototype.addLayerGeoJSON = function(geojson, layerName, treePath, visibility, iconPath, fitbounds) {
         return this._wgis.Layers.addGeoJSON(geojson, layerName, treePath, visibility, iconPath, fitbounds);
     };
 
@@ -119,7 +127,7 @@
      * Adiciona Layers.WMS como base layer     
      * @param Layers.WMS layer     
      */
-    WgisPlugin.prototype.addBaseLayer = function (layer, layerName) {
+    WgisPlugin.prototype.addBaseLayer = function(layer, layerName) {
         this._wgis.Layers.addBaseLayer(layer, layerName);
     };
 
@@ -129,7 +137,7 @@
      * @param String caminho no seletor
      * @param String caminho da imagem icone
      */
-    WgisPlugin.prototype.addNodeLabel = function (name, treePath, iconPath) {
+    WgisPlugin.prototype.addNodeLabel = function(name, treePath, iconPath) {
         this._wgis.Layers.addNodeLabel(name, treePath, iconPath);
     };
 
@@ -137,7 +145,7 @@
      * Recupera todas as camadas inseridas mapeadas em arvore
      * @return Object objeto mapeado de camadas
      */
-    WgisPlugin.prototype.getLayersTree = function () {
+    WgisPlugin.prototype.getLayersTree = function() {
         return this._wgis.SwitchLayer.LayerTree.treeObj;
     };
 
@@ -147,7 +155,7 @@
      * @param int lng coordenada longitude
      * @param int zoom zoom do mapa
      */
-    WgisPlugin.prototype.setCenter = function (lat, lng, zoom) {
+    WgisPlugin.prototype.setCenter = function(lat, lng, zoom) {
         this._wgis.Map.setCenter(lat, lng, zoom);
     };
 
@@ -155,7 +163,7 @@
      * Centraliza o mapa com um geojson
      * @param geojson coordenada latitude     
      */
-    WgisPlugin.prototype.setCenterGeoJSON = function (geojson) {
+    WgisPlugin.prototype.setCenterGeoJSON = function(geojson) {
         var center = turf.center(geojson);
         this._wgis.lmap.setView([center.geometry.coordinates[1], center.geometry.coordinates[0]], 10);
     };
@@ -164,14 +172,14 @@
      * Centraliza o mapa numa determinada camada
      * @param Layer layer     
      */
-    WgisPlugin.prototype.fitBounds = function (layer) {
+    WgisPlugin.prototype.fitBounds = function(layer) {
         this._wgis.Map.fitBounds(layer);
     };
 
     /**
      * Remove todas as camadas     
      */
-    WgisPlugin.prototype.resetLayers = function () {
+    WgisPlugin.prototype.resetLayers = function() {
         this._wgis.Layers.reset();
     };
 
@@ -179,13 +187,13 @@
      * Componente WGIS
      * @param jQueryElement elemento selecionado jquery
      */
-    var WGIS = function ($pluginElem, opts) {
+    var WGIS = function($pluginElem, opts) {
 
         var _wgis = this;
 
         this.lmap = null;
 
-        this.init = function () {
+        this.init = function() {
             /*
              * inicia componentes
              */
@@ -197,15 +205,14 @@
             _wgis.Layers.init();
 
             _wgis.Style.init();
-
-            _wgis.Control.Draw.Events.init();
+            
         };
 
         /*
          * Componente de mapa
          */
         this.Map = {
-            init: function () {
+            init: function() {
                 /*
                  *  adiciona classe css do plugin
                  */
@@ -233,23 +240,23 @@
              * @param int longituide
              * @param int zoom             
              */
-            setCenter: function (lat, lng, zoom) {
+            setCenter: function(lat, lng, zoom) {
                 var z = zoom || 10;
                 _wgis.lmap.setView([lat, lng], z);
             },
-            fitBounds: function (layer) {
+            fitBounds: function(layer) {
                 _wgis.lmap.fitBounds(layer.getBounds(), {
                     paddingBottomRight: [100, 100],
                     maxZoom: 12
                 });
             },
             Events: {
-                init: function () {
-                    _wgis.lmap.on('click', function (e) {
+                init: function() {
+                    _wgis.lmap.on('click', function(e) {
                         _wgis.Map.Events.click(e);
                     });
                 },
-                click: function (e) {}
+                click: function(e) {}
             }
         };
 
@@ -257,7 +264,7 @@
          * Componente de camadas
          */
         this.Layers = {
-            init: function () {
+            init: function() {
                 if (opts.google) {
                     _wgis.Layers.defaults.googleBaseLayer();
                 }
@@ -266,7 +273,7 @@
                 }
             },
             defaults: {
-                openStreetMap: function () {
+                openStreetMap: function() {
                     var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
                     var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
                     var osm = new L.TileLayer(osmUrl, {
@@ -274,7 +281,7 @@
                     });
                     _wgis.SwitchLayer.LayerTree.addBaseLayer(osm, "Open Street Maps");
                 },
-                googleBaseLayer: function () {
+                googleBaseLayer: function() {
                     try {
                         var googleTerrain = new L.Google('SATELLITE');
                         _wgis.SwitchLayer.LayerTree.addBaseLayer(googleTerrain, "Google");
@@ -284,8 +291,8 @@
                 }
             },
             viewLayers: [],
-            reset: function () {
-                $.each(this.viewLayers, function (index, layer) {
+            reset: function() {
+                $.each(this.viewLayers, function(index, layer) {
                     _wgis.lmap.removeLayer(layer);
                     delete layer;
                 });
@@ -303,7 +310,7 @@
              *     }
              *  };
              */
-            addWMS: function (wmsLayer, layerName, treePath, visibility, iconPath) {
+            addWMS: function(wmsLayer, layerName, treePath, visibility, iconPath) {
                 var wmsUrl = wmsLayer.url;
                 var wmsParams = wmsLayer.params;
                 var wmsLayer = L.tileLayer.wms(wmsUrl, wmsParams);
@@ -328,7 +335,7 @@
              *     }
              *  };
              */
-            addTile: function (tileLayer, layerName, treePath, visibility, iconPath) {
+            addTile: function(tileLayer, layerName, treePath, visibility, iconPath) {
                 var tileUrl = tileLayer.url;
                 var tileParams = tileLayer.params;
                 var tileLayer = L.tileLayer(tileUrl, tileParams);
@@ -343,7 +350,7 @@
              * Adiciona camada GeoJSON ao mapa
              * @param Layer.GeoJSON GeoJSON
              */
-            addGeoJSON: function (geojson, layerName, treePath, visibility, iconPath, fitbounds) {
+            addGeoJSON: function(geojson, layerName, treePath, visibility, iconPath, fitbounds) {
 
                 visibility = visibility !== undefined ? visibility : true;
 
@@ -373,7 +380,7 @@
              * Adiciona base layer camada WMS ao mapa
              * @param Layer.WMS camada wms              
              */
-            addBaseLayer: function (wmsLayer, layerName) {
+            addBaseLayer: function(wmsLayer, layerName) {
                 var wmsUrl = wmsLayer.url;
                 var wmsParams = wmsLayer.params;
                 var wmsLayer = L.tileLayer.wms(wmsUrl, wmsParams);
@@ -381,17 +388,44 @@
                 _wgis.SwitchLayer.LayerTree.addBaseLayer(wmsLayer, layerName);
             },
             /**
+             * Adiciona base tile layer ao mapa
+             * @param TileLayer camada tileLaye
+             */
+            addBaseTileLayer: function(tileLayer, layerName) {
+                var tileUrl = tileLayer.url;
+                var tileParams = tileLayer.params;
+                var tileLayer = L.tileLayer(tileUrl, tileParams);
+
+                _wgis.SwitchLayer.LayerTree.addBaseLayer(tileLayer, layerName);
+            },
+            /**
+             * Adiciona layer ao mapa
+             * @param L.Layers layer
+             * @param String treePath
+             * @param Boolean visibility
+             * @param String iconPath 
+             */
+            addLayer: function(layer, layerName, treePath, visibility, iconPath) {
+
+                if (visibility) {
+                    _wgis.lmap.addLayer(layer);
+                }
+
+                _wgis.SwitchLayer.LayerTree.addLayer(layer, layerName, treePath, visibility, iconPath);
+
+            },
+            /**
              * Adiciona um label no seletor de camadas
              * @param String nome do label
              * @param String caminho no seletor
              * @param String caminho da imagem icone
              */
-            addNodeLabel: function (name, treePath, iconPath) {
+            addNodeLabel: function(name, treePath, iconPath) {
                 _wgis.SwitchLayer.LayerTree.addNode(name, treePath, iconPath);
             },
-            setZIndex: function (layer, zindex) {
+            setZIndex: function(layer, zindex) {
                 if (layer._layers) {
-                    $.each(layer.getLayers(), function (i, l) {
+                    $.each(layer.getLayers(), function(i, l) {
                         if (l.setZIndex) {
                             l.setZIndex(zindex);
                         }
@@ -406,7 +440,7 @@
              * @param {Object} layer
              * @param {type} visibility             
              */
-            setVisibility: function (layer, visibility) {
+            setVisibility: function(layer, visibility) {
 
                 var leaflet_id = layer._leaflet_id ? layer._leaflet_id : "";
 
@@ -427,15 +461,15 @@
                 }
             },
             Events: {
-                apply: function (layer) {
-                    layer.on('click', function (e) {
+                apply: function(layer) {
+                    layer.on('click', function(e) {
                         _wgis.Layers.Events.click(e);
                     });
                 },
-                click: function (e) {}
+                click: function(e) {}
             },
             Utils: {
-                createGeoJSONLayer: function (geoJSON) {
+                createGeoJSONLayer: function(geoJSON) {
 
                     var layerGeoJSON = L.geoJson(geoJSON);
 
@@ -463,7 +497,7 @@
          * Componente de estilo
          */
         this.Style = {
-            init: function () {
+            init: function() {
                 if (opts.styles.patterns) {
                     var $patternDiv = $(document.createElement("div"));
                     $pluginElem.append($patternDiv);
@@ -474,7 +508,7 @@
                     });
                 }
             },
-            setStyle: function (layer, styleClass, style2) {
+            setStyle: function(layer, styleClass, style2) {
                 var style = this.getStyle(styleClass);
 
                 if (layer._leaflet_id) {
@@ -496,7 +530,7 @@
                 }
 
             },
-            getStyle: function (styleClass) {
+            getStyle: function(styleClass) {
                 var style = opts.styles[styleClass];
                 if (!style) {
                     style = opts.styles.padrao;
@@ -511,7 +545,7 @@
         this.SwitchLayer = {
             $slTree: null,
             $slBaseLayers: null,
-            init: function () {
+            init: function() {
                 /*
                  * Elementos dom do switch layer
                  */
@@ -530,7 +564,7 @@
                  * Botão de exibir o switch layer
                  */
                 var slToggleBtnAberto;
-                $slToggleBtn.click(function (evt) {
+                $slToggleBtn.click(function(evt) {
                     if (slToggleBtnAberto) {
                         $slTreeDiv.animate({
                             right: "-355px"
@@ -574,7 +608,7 @@
                 }
             },
             Events: {
-                selectNode: function (node, selected, event) {
+                selectNode: function(node, selected, event) {
                     var selectedNodeIds = selected.node.children
                         .concat(selected.node.children_d)
                         .concat([selected.node.id]);
@@ -582,7 +616,7 @@
                     var nodes = _wgis.SwitchLayer.Jstree.getNodesByIds(selectedNodeIds);
                     _wgis.SwitchLayer.Jstree.selectNodeLayers(nodes, true);
                 },
-                deselectNode: function (node, selected, event) {
+                deselectNode: function(node, selected, event) {
                     var selectedNodeIds = selected.node.children
                         .concat(selected.node.children_d)
                         .concat([selected.node.id]);
@@ -592,14 +626,14 @@
                     _wgis.SwitchLayer.Jstree.selectNodeLayers(nodes, false);
                 },
                 timeoutRefresh: null,
-                addedLayer: function () {
+                addedLayer: function() {
                     _wgis.SwitchLayer.$slTree.settings.core.data = _wgis.SwitchLayer.LayerTree.tree;
                     if (this.timeoutRefresh) {
                         clearTimeout(this.timeoutRefresh);
                         this.timeoutRefresh = null;
                     }
-                    this.timeoutRefresh = setTimeout(function () {
-                        _wgis.SwitchLayer.$slTree.refresh();                        
+                    this.timeoutRefresh = setTimeout(function() {
+                        _wgis.SwitchLayer.$slTree.refresh();
                     }, 10);
                 }
             },
@@ -620,7 +654,7 @@
                  * @param Boolean selected determina de se o nó iniciará selecionado ou não
                  * @param String path url da imagem icone
                  */
-                addLayer: function (layer, layerName, treePath, selected, iconPath) {
+                addLayer: function(layer, layerName, treePath, selected, iconPath) {
 
                     var tree = this.tree;
                     var treeObj = this.treeObj;
@@ -718,7 +752,7 @@
                  * @param String treePath rota de nós onde será inserido o nó
                  * @param String iconPath caminho da imagem icone
                  */
-                addNode: function (nodeName, treePath, iconPath) {
+                addNode: function(nodeName, treePath, iconPath) {
 
                     var tree = this.tree;
                     var treeObj = this.treeObj;
@@ -783,7 +817,7 @@
                  * Adiciona uma camada base wms
                  * @param LayerWMS camada a ser adicionada                 
                  */
-                addBaseLayer: function (wmsLayer, layerName) {
+                addBaseLayer: function(wmsLayer, layerName) {
                     var $slBaseLayers = _wgis.SwitchLayer.$slBaseLayers;
                     var baseLayers = this.baseLayers;
 
@@ -796,7 +830,7 @@
                     // recria os radiobox
                     $slBaseLayers.html("");
 
-                    $.each(baseLayers, function (index, value) {
+                    $.each(baseLayers, function(index, value) {
                         var $baselayer = $(document.createElement("li"));
 
                         $baselayer.layer = value;
@@ -814,19 +848,19 @@
                     });
 
                     // evento de click nos radioboxs
-                    $slBaseLayers.find('input').click(function (evt) {
+                    $slBaseLayers.find('input').click(function(evt) {
                         var layerIdChecked = $(evt.target).val();
 
                         _wgis.lmap.addLayer(baseLayers[layerIdChecked].layer);
 
-                        $.each(baseLayers, function (index, value) {
+                        $.each(baseLayers, function(index, value) {
                             if (parseInt(index) !== parseInt(layerIdChecked)) {
                                 _wgis.lmap.removeLayer(value.layer);
                             }
                         });
                     });
                 },
-                getNodeByPath: function (treePath) {
+                getNodeByPath: function(treePath) {
                     var node = null;
                     var pathArray = treePath.split('+>');
                     for (var i = 0; i < pathArray.length; i++) {
@@ -848,7 +882,7 @@
                     }
                     return node;
                 },
-                findNode: function (nodes, nodeText) {
+                findNode: function(nodes, nodeText) {
                     var target = null;
                     for (var i = 0; i < nodes.length; i++) {
                         var node = nodes[i];
@@ -866,11 +900,11 @@
                  * @param Array nodeIds 
                  * @returns Array array de nós da árvore
                  */
-                getNodesByIds: function (nodeIds) {
+                getNodesByIds: function(nodeIds) {
                     var $slTree = _wgis.SwitchLayer.$slTree;
 
                     var nodes = [];
-                    $.each(nodeIds, function (index, value) {
+                    $.each(nodeIds, function(index, value) {
                         nodes.push($slTree.get_node(value));
                     });
                     return nodes;
@@ -881,8 +915,8 @@
                  * altera a visibilidade das camadas openlayers
                  * repectivas aos nos selecionados
                  */
-                selectNodeLayers: function (nodes, selected) {
-                    $.each(nodes, function (index, node) {
+                selectNodeLayers: function(nodes, selected) {
+                    $.each(nodes, function(index, node) {
                         if (node.original.layerId) {
                             var layer = _wgis.SwitchLayer.LayerTree.layers[node.original.layerId];
                             _wgis.Layers.setVisibility(layer, selected);
@@ -890,17 +924,17 @@
                     });
                 }
             },
-            selectLayerById: function (layerId) {
+            selectLayerById: function(layerId) {
                 var $slTree = _wgis.SwitchLayer.$slTree;
                 var slId = "sl_" + layerId.toString();
                 $slTree.select_node(slId);
             },
-            deselectLayerById: function (layerId) {
+            deselectLayerById: function(layerId) {
                 var $slTree = _wgis.SwitchLayer.$slTree;
                 var slId = "sl_" + layerId.toString();
                 $slTree.deselect_node(slId);
             },
-            deselectLayerAll: function () {
+            deselectLayerAll: function() {
                 var $slTree = _wgis.SwitchLayer.$slTree;
                 $slTree.deselect_all();
             }
@@ -914,7 +948,7 @@
                 _drawFeatureGroup: null,
                 _drawControl: null,
                 _drawTarget: null,
-                init: function (opts, labels) {
+                init: function(opts, labels) {
                     /*
                      * Aplica labels traduzidos
                      */
@@ -936,13 +970,13 @@
                     this.Events.init();
 
                 },
-                exit: function () {
+                exit: function() {
                     if (this._drawControl) {
                         _wgis.lmap.removeControl(this._drawControl);
                         this._drawControl = null;
                     }
                 },
-                drawControlInit: function (drawFeatureGroup, drawOpts) {
+                drawControlInit: function(drawFeatureGroup, drawOpts) {
                     /*
                      * camada de desenho
                      */
@@ -977,20 +1011,20 @@
                     /**
                      * Configura eventos de criação e edição de poligonos
                      */
-                    init: function () {
-                        _wgis.lmap.on('draw:created', function (e) {
+                    init: function() {
+                        _wgis.lmap.on('draw:created', function(e) {
                             if (_wgis.Control.Draw.Events.created) {
                                 _wgis.Control.Draw.Events.created(e);
                             }
                         });
 
-                        _wgis.lmap.on('draw:edited', function (e) {
+                        _wgis.lmap.on('draw:edited', function(e) {
                             if (_wgis.Control.Draw.Events.edited) {
                                 _wgis.Control.Draw.Events.edited(e);
                             }
                         });
                     },
-                    created: function (e) {
+                    created: function(e) {
                         var type = e.layerType,
                             layer = e.layer;
 
@@ -999,8 +1033,8 @@
                         }
                         _wgis.Control.Draw._drawFeatureGroup.addLayer(layer);
                     },
-                    edited: function (e) {},
-                    layerClick: function (e) {
+                    edited: function(e) {},
+                    layerClick: function(e) {
                         /*
                          * Seleciona camada Polygon que sera editada
                          */
@@ -1012,14 +1046,14 @@
                             featureGroup: targetFeatureGroup
                         });
                     },
-                    mapClick: function (e) {
+                    mapClick: function(e) {
                         if (_wgis.Control.Draw._drawTarget) {
                             //_wgis.Control.Draw.Utils.deselectTarget(_wgis.Control.Draw._drawTarget);
                         }
                     }
                 },
                 Utils: {
-                    selectTarget: function (selected) {
+                    selectTarget: function(selected) {
 
                         if (_wgis.Control.Draw._drawTarget) {
                             _wgis.Control.Draw.Utils.deselectTarget(_wgis.Control.Draw._drawTarget);
@@ -1047,7 +1081,7 @@
                         _wgis.Control.Draw._drawFeatureGroup.setStyle(styleSelecionado);
 
                     },
-                    deselectTarget: function (selected) {
+                    deselectTarget: function(selected) {
                         /*
                          * Reinicia controle de desenho
                          */
@@ -1074,17 +1108,17 @@
                         _wgis.Control.Draw._drawTarget = null;
 
                     },
-                    geoJSONLayerToPolygons: function (geoJSONLayer) {
+                    geoJSONLayerToPolygons: function(geoJSONLayer) {
                         var polygons = [];
-                        $.each(geoJSONLayer.getLayers(), function (ig, gLayer) {
-                            $.each(gLayer.getLayers(), function (i, layer) {
+                        $.each(geoJSONLayer.getLayers(), function(ig, gLayer) {
+                            $.each(gLayer.getLayers(), function(i, layer) {
                                 polygons.push(L.polygon(layer.getLatLngs()));
                             });
                         });
                         return polygons;
                     }
                 },
-                DefaultOptions: function () {
+                DefaultOptions: function() {
                     this.draw = {
                         position: 'topleft',
                         polyline: {
@@ -1219,7 +1253,7 @@
          * Componente de analise espacial
          */
         this.SpatialAnalysis = {
-            buffer: function (layer) {
+            buffer: function(layer) {
                 /*
                  * converte para geojson
                  */
@@ -1236,7 +1270,7 @@
 
                 return layerBuffer;
             },
-            intersect: function (layer, layer2) {
+            intersect: function(layer, layer2) {
 
                 /*
                  * converte para geojson
@@ -1267,7 +1301,7 @@
                 }
                 return layerIntersection;
             },
-            mergeFeatureGroup: function (featureGroup) {
+            mergeFeatureGroup: function(featureGroup) {
 
                 var featureGroupGeoJSON = featureGroup.toGeoJSON();
 

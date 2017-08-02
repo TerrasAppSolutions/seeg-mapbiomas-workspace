@@ -36,7 +36,7 @@ MAP
             "naofloresta" "[0-1]"
         END
 
-        DATA '/data/imagens/classificacao/REFERENCIA/ZONACOSTEIRA/ZONACOSTEIRA_IMAGE.tif'
+        DATA '/mnt/disks/data/collections/classificacao/REFERENCIA/ZONACOSTEIRA/ZONACOSTEIRA_IMAGE.tif'
 
         # classes
         CLASSITEM "[pixel]"

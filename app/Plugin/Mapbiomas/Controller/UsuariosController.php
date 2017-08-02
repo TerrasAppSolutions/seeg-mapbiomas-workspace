@@ -23,7 +23,10 @@ class UsuariosController extends MapbiomasAppController {
             } else {
                 $responseData = $this->UsuarioService->query($this->serviceOptions, $this->servicePaginate);
             }
-            echo json_encode($responseData);
+            
+            $this->response->body(json_encode($responseData));
+            return $this->response;
+            
         } catch (Exception $exc) {
             $this->response->statusCode("403");
             echo $exc->getMessage();
@@ -36,7 +39,9 @@ class UsuariosController extends MapbiomasAppController {
 
             $responseData = $this->UsuarioService->cadastrar($postData);
 
-            echo json_encode($responseData);
+            $this->response->body(json_encode($responseData));
+            return $this->response;
+            
         } catch (Exception $exc) {
             $this->response->statusCode("403");
             echo $exc->getMessage();

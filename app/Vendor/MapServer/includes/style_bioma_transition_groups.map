@@ -1,0 +1,8631 @@
+CLASS 
+   EXPRESSION ([pixel] = 31 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 32 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 33 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 34 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 35 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 36 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 37 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 38 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 40 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 41 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 42 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 43 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 44 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 45 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 46 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 47 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 48 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 49 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 50 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 51 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 58 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 52 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 53 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 54 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 55 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 39 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 56 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 57 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 61 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 62 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 63 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 64 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 65 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 66 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 67 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 68 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 70 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 71 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 72 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 73 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 74 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 75 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 76 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 77 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 78 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 79 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 80 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 81 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 88 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 82 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 83 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 84 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 85 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 69 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 86 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 87 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 91 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 92 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 93 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 94 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 95 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 96 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 97 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 98 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 100 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 101 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 102 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 103 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 104 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 105 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 106 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 107 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 108 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 109 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 110 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 111 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 118 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 112 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 113 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 114 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 115 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 99 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 116 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 117 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 121 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 122 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 123 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 124 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 125 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 126 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 127 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 128 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 130 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 131 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 132 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 133 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 134 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 135 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 136 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 137 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 138 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 139 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 140 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 141 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 148 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 142 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 143 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 144 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 145 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 129 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 146 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 147 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 151 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 152 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 153 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 154 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 155 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 156 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 157 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 158 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 160 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 161 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 162 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 163 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 164 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 165 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 166 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 167 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 168 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 169 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 170 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 171 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 178 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 172 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 173 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 174 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 175 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 159 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 176 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 177 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 181 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 182 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 183 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 184 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 185 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 186 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 187 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 188 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 190 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 191 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 192 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 193 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 194 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 195 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 196 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 197 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 198 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 199 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 200 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 201 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 208 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 202 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 203 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 204 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 205 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 189 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 206 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 207 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 211 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 212 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 213 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 214 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 215 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 216 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 217 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 218 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 220 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 221 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 222 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 223 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 224 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 225 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 226 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 227 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 228 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 229 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 230 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 231 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 238 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 232 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 233 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 234 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 235 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 219 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 236 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 237 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 241 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 242 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 243 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 244 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 245 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 246 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 247 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 248 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 250 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 251 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 252 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 253 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 254 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 255 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 256 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 257 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 258 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 259 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 260 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 261 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 268 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 262 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 263 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 264 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 265 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 249 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 266 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 267 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 301 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 302 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 303 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 304 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 305 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 306 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 307 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 308 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 310 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 311 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 312 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 313 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 314 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 315 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 316 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 317 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 318 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 319 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 320 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 321 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 328 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 322 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 323 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 324 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 325 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 309 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 326 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 327 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 331 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 332 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 333 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 334 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 335 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 336 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 337 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 338 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 340 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 341 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 342 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 343 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 344 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 345 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 346 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 347 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 348 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 349 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 350 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 351 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 358 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 352 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 353 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 354 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 355 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 339 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 356 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 357 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 361 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 362 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 363 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 364 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 365 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 366 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 367 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 368 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 370 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 371 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 372 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 373 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 374 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 375 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 376 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 377 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 378 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 379 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 380 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 381 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 388 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 382 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 383 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 384 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 385 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 369 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 386 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 387 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 391 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 392 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 393 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 394 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 395 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 396 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 397 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 398 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 400 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 401 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 402 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 403 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 404 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 405 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 406 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 407 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 408 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 409 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 410 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 411 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 418 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 412 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 413 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 414 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 415 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 399 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 416 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 417 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 310 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 311 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 312 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 313 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 301 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 302 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 303 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 304 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 305 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 306 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 307 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 308 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 314 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 315 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 316 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 317 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 318 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 319 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 320 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 321 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 328 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 322 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 323 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 324 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 325 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 309 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 326 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 327 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 340 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 341 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 342 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 343 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 331 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 332 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 333 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 334 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 335 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 336 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 337 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 338 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 344 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 345 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 346 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 347 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 348 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 349 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 350 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 351 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 358 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 352 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 353 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 354 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 355 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 339 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 356 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 357 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 370 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 371 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 372 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 373 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 361 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 362 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 363 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 364 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 365 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 366 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 367 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 368 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 374 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 375 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 376 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 377 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 378 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 379 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 380 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 381 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 388 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 382 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 383 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 384 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 385 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 369 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 386 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 387 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 400 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 401 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 402 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 403 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 391 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 392 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 393 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 394 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 395 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 396 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 397 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 398 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 404 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 405 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 406 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 407 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 408 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 409 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 410 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 411 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 418 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 412 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 413 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 414 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 415 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 399 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 416 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 417 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 434 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 435 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 436 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 437 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 438 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 439 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 440 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 441 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 448 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 442 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 443 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 445 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 421 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 422 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 423 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 424 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 425 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 426 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 427 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 428 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 430 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 431 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 432 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 433 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 444 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 429 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 446 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 447 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 464 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 465 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 466 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 467 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 468 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 469 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 470 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 471 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 478 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 472 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 473 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 475 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 451 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 452 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 453 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 454 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 455 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 456 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 457 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 458 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 460 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 461 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 462 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 463 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 474 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 459 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 476 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 477 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 494 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 495 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 496 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 497 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 498 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 499 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 500 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 501 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 508 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 502 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 503 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 505 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 481 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 482 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 483 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 484 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 485 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 486 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 487 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 488 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 490 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 491 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 492 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 493 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 504 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 489 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 506 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 507 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 524 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 525 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 526 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 527 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 528 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 529 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 530 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 531 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 538 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 532 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 533 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 535 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 511 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 512 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 513 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 514 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 515 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 516 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 517 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 518 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 520 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 521 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 522 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 523 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 534 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 519 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 536 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 537 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 554 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 555 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 556 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 557 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 558 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 559 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 560 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 561 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 568 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 562 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 563 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 565 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 541 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 542 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 543 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 544 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 545 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 546 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 547 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 548 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 550 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 551 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 552 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 553 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 564 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 549 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 566 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 567 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 584 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 585 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 586 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 587 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 588 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 589 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 590 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 591 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 598 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 592 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 593 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 595 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 571 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 572 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 573 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 574 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 575 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 576 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 577 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 578 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 580 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 581 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 582 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 583 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 594 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 579 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 596 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 597 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 614 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 615 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 616 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 617 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 618 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 619 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 620 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 621 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 628 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 622 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 623 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 625 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 601 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 602 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 603 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 604 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 605 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 606 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 607 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 608 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 610 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 611 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 612 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 613 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 624 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 609 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 626 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 627 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 644 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 645 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 646 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 647 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 648 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 649 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 650 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 651 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 658 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 652 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 653 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 655 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 631 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 632 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 633 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 634 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 635 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 636 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 637 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 638 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 640 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 641 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 642 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 643 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 654 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 639 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 656 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 657 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 854 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 855 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 856 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 857 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 858 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 859 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 860 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 861 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 868 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 862 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 863 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 865 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 841 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 842 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 843 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 844 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 845 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 846 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 847 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 848 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 850 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 851 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 852 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 853 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 864 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 849 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 866 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 867 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 674 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 675 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 676 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 677 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 678 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 679 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 680 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 681 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 688 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 682 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 683 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 685 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 661 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 662 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 663 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 664 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 665 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 666 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 667 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 668 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 670 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 671 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 672 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 673 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 684 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 669 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 686 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 687 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 704 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 705 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 706 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 707 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 708 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 709 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 710 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 711 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 718 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 712 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 713 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 715 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 691 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 692 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 693 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 694 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 695 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 696 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 697 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 698 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 700 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 701 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 702 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 703 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 714 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 699 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 716 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 717 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 764 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 765 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 766 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 767 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 768 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 769 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 770 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 771 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 778 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 772 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 773 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 775 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 751 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 752 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 753 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 754 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 755 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 756 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 757 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 758 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 760 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 761 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 762 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 763 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 774 AND ("4" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 255 0 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 759 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 776 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 777 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 434 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 435 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 436 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 437 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 438 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 439 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 440 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 441 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 448 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 442 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 443 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 444 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 445 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 421 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 422 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 423 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 424 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 425 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 426 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 427 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 428 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 430 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 431 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 432 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 433 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 429 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 446 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 447 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 464 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 465 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 466 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 467 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 468 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 469 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 470 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 471 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 478 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 472 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 473 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 474 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 475 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 451 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 452 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 453 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 454 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 455 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 456 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 457 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 458 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 460 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 461 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 462 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 463 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 459 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 476 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 477 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 494 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 495 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 496 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 497 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 498 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 499 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 500 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 501 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 508 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 502 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 503 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 504 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 505 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 481 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 482 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 483 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 484 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 485 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 486 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 487 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 488 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 490 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 491 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 492 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 493 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 489 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 506 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 507 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 524 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 525 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 526 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 527 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 528 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 529 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 530 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 531 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 538 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 532 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 533 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 534 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 535 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 511 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 512 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 513 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 514 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 515 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 516 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 517 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 518 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 520 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 521 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 522 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 523 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 519 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 536 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 537 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 554 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 555 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 556 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 557 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 558 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 559 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 560 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 561 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 568 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 562 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 563 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 564 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 565 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 541 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 542 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 543 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 544 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 545 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 546 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 547 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 548 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 550 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 551 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 552 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 553 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 549 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 566 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 567 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 584 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 585 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 586 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 587 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 588 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 589 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 590 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 591 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 598 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 592 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 593 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 594 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 595 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 571 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 572 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 573 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 574 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 575 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 576 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 577 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 578 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 580 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 581 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 582 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 583 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 579 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 596 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 597 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 614 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 615 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 616 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 617 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 618 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 619 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 620 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 621 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 628 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 622 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 623 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 624 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 625 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 601 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 602 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 603 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 604 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 605 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 606 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 607 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 608 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 610 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 611 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 612 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 613 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 609 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 626 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 627 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 644 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 645 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 646 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 647 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 648 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 649 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 650 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 651 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 658 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 652 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 653 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 654 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 655 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 631 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 632 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 633 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 634 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 635 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 636 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 637 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 638 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 640 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 641 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 642 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 643 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 639 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 656 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 657 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 854 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 855 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 856 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 857 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 858 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 859 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 860 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 861 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 868 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 862 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 863 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 864 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 865 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 841 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 842 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 843 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 844 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 845 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 846 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 847 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 848 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 850 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 851 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 852 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 853 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 849 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 866 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 867 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 674 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 675 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 676 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 677 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 678 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 679 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 680 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 681 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 688 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 682 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 683 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 684 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 685 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 661 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 662 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 663 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 664 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 665 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 666 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 667 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 668 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 670 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 671 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 672 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 673 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 669 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 686 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 687 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 704 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 705 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 706 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 707 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 708 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 709 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 710 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 711 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 718 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 712 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 713 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 714 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 715 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 691 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 692 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 693 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 694 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 695 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 696 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 697 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 698 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 700 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 701 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 702 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 703 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 699 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 716 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 717 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 734 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 735 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 736 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 737 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 738 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 739 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 740 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 741 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 748 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 742 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 743 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 744 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 745 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 721 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 722 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 723 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 724 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 725 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 726 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 727 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 728 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 730 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 731 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 732 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 733 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 729 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 746 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 747 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 764 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 765 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 766 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 767 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 768 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 769 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 770 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 771 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 778 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 772 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 773 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 774 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 775 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 751 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 752 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 753 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 754 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 755 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 756 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 757 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 758 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 760 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 761 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 762 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 763 AND ("1" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 6 255 0 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 759 AND ("3" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 165 92 214 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 776 AND ("2" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 30 144 255 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 777 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 279 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 271 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 272 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 273 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 274 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 275 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 276 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 277 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 278 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 279 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 280 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 281 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 282 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 283 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 284 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 285 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 286 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 287 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 288 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 289 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 290 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 291 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 298 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 292 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 293 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 294 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 295 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 296 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 297 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 806 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 781 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 782 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 783 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 784 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 785 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 786 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 787 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 788 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 789 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 790 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 791 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 792 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 793 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 794 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 795 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 796 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 797 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 798 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 799 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 800 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 801 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 808 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 802 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 803 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 804 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 805 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 807 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 837 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 811 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 812 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 813 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 814 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 815 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 816 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 817 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 818 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 819 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 820 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 821 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 822 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 823 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 824 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 825 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 826 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 827 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 828 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 829 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 830 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 831 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 838 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 832 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 833 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 834 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 835 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+
+CLASS 
+   EXPRESSION ([pixel] = 836 AND ("5" IN '%transitions_group%')) 
+   STYLE 
+       COLOR 206 206 206 
+   END 
+END 
+

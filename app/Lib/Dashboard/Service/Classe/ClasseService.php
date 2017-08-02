@@ -1,5 +1,6 @@
 <?php
 App::uses('Classe', 'Model');
+App::uses('File', 'Utility');
 
 class ClasseService {
 
@@ -13,7 +14,10 @@ class ClasseService {
      * API
     */
     public function findAll($query) {
-      $result = [];
+
+      $translateClasses = null;
+
+      $result = [];      
 
       $limit = 50;
       if(isset($query['limit']) && $query['limit'] < 50){
@@ -23,18 +27,46 @@ class ClasseService {
       $page = 1;
       if(isset($query['page'])){
          $page = $query['page'];
-      }
+      }      
 
-      $array = array('page' => $page,  'limit' => $limit);
+      if(isset($query['language'])){
+         
+         $lang = $query['language'];
+         
+         $translateClassesFile = new File(
+             APP_BASE_PATH . DS .
+             "webroot" . DS .
+             "js" . DS .          
+             "assets" . DS .
+             "langs" . DS .
+             "classes_$lang.json"
+         );
 
-      foreach ($this->Classe->find("all", $array) as $key => $classe) {
-                  $r = array(
-                      "id" => $classe['Classe']['id'],
-                      "name" => $classe['Classe']['classe'],
-                      "color" => $classe['Classe']['cor']
-                  );
-                  $result[] = $r;
+         if($translateClassesFile->exists()){
+            $translateClasses = json_decode($translateClassesFile->read(),true);
+         }                 
+      }   
+
+      $options = array('page' => $page,  'limit' => $limit);    
+
+      foreach ($this->Classe->find("all", $options) as $key => $classe) {   
+
+          $classeName = null;
+
+          if(!empty($translateClasses) && !empty($translateClasses[$classe['Classe']['valor']])){
+              $classeName = $translateClasses[$classe['Classe']['valor']]['name'];
           }
+
+          $r = array(
+              "id" => $classe['Classe']['valor'],
+              "name" => $classeName ? $classeName:$classe['Classe']['classe'],
+              "color" => $classe['Classe']['cor'],
+              "l1" => $classe['Classe']['valor_l1'],
+              "l2" => $classe['Classe']['valor_l2'],
+              "l3" => $classe['Classe']['valor_l3']
+          );
+          $result[] = $r;
+      }
 
       return $result;
 

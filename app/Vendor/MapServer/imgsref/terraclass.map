@@ -47,7 +47,7 @@ MAP
             "class_deforestation" "^[a-zA-Z\-]+$"
         END
 
-        DATA '/data/imagens/classificacao/REFERENCIA/AMAZONIA/TERRACLASS/TERRACLASS2012_IMAGE.tif'        
+        DATA '/mnt/disks/data/collections/classificacao/REFERENCIA/AMAZONIA/TERRACLASS/TERRACLASS2012_IMAGE.tif'        
 
         # classes
         CLASSITEM "[pixel]"

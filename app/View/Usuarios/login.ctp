@@ -54,20 +54,11 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Bioma</label>
-                                        <select id="form-usuario-bioma" name="bioma" class="form-control" required>
-                                            <option value="">Selecione um bioma</option>
-                                            <option value="AMAZONIA">Amazônia</option>
-                                            <option value="MATA ATLANTICA">Mata Atlântica</option>
-                                            <option value="PANTANAL">Pantanal</option>
-                                            <option value="CERRADO">Cerrado</option>
-                                            <option value="CAATINGA">Caatinga</option>
-                                            <option value="PAMPA">Pampa</option>
-                                            <option value="ZONA COSTEIRA">Zona Costeira</option>
-                                        </select>
+                                        <label>Region</label>
+                                        <?php echo $this->Form->select('bioma',$biomas,array('class' => 'form-control', 'empty' => false, 'required','id' => 'form-usuario-bioma'));?>                                        
                                     </div>
                                     <div class="form-group">
-                                        <input id="form-usuario-cadastrar" type="submit" class="btn btn-lg btn-primary btn-block" value="Cadastrar">
+                                        <input id="form-usuario-cadastrar" type="submit" class="btn btn-lg btn-primary btn-block" value="Confirm">
                                     </div>
                                 </div>
                             </div>
@@ -79,8 +70,8 @@
     </div>
     <div class="row">
         <div class="col-12-md">
-            <div id="cadastro-sucesso" class="alert alert-success" role="alert" style="display: none">Cadastro concluído. Aguarde a aprovação do seu cadastro.</div>
-            <div id="cadastro-aprovar" class="alert alert-warning" role="alert" style="display: none">Aguarde a aprovação do seu cadastro.</div>
+            <div id="cadastro-sucesso" class="alert alert-success" role="alert" style="display: none">Successful registration. Please, wait for the registration acceptance.</div>
+            <div id="cadastro-aprovar" class="alert alert-warning" role="alert" style="display: none">Please, wait for the registration acceptance.</div>
         </div>
     </div>
 </div>
@@ -88,11 +79,11 @@
 <script>
     var user = {};
     window.onload = function(){
-    $('#form-usuario').submit(function(e){
-        user.bioma = $('#form-usuario-bioma').val();
-        googleCadastro(user);
-        return false;
-    });
+        $('#form-usuario').submit(function(e){
+            user.bioma = $('#form-usuario-bioma').val();
+            googleCadastro(user);
+            return false;
+        });
     };
     function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
@@ -124,7 +115,7 @@
             callback(data);
         });
     }
-    function googleLogin(userData){
+    function googleLogin(userData){                       
         $.post('../service/usuarios/googlelogin', userData, function(data) {
             location.reload();
         });

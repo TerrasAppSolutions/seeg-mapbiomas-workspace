@@ -1,0 +1,331 @@
+<section class="content-header">
+    <h1>
+        {{ 'EXPORTPARAMS' | translate }}
+        <small>
+            {{ 'TAREFAEXPORT' | translate }}
+        </small>
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <i class="fa fa-dashboard">
+                </i>
+                Workspace
+            </a>
+        </li>
+        <li class="active">
+            {{ 'EXPORTPARAMS' | translate }}
+        </li>
+    </ol>
+</section>
+<section class="content" ng-controller="ClassificacaoTarefasListarController">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">
+                        {{ 'TAREFAEXPORT' | translate }}
+                    </h3>
+                    <div class="pull-right">
+                        <select class="form-control" ng-change="viewModeChange()" ng-model="viewMode">
+                            <option value="table">
+                                {{ 'VIEWTABLE' | translate }}
+                            </option>
+                            <option value="map">
+                                {{ 'VIEWMAP' | translate }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form name="formFilter">
+                                <div class="row">
+                                    <div class="col-xs-6 col-md-2">
+                                        <div class="form-group">
+                                            <input class="form-control" ng-change="formFilterChange()" ng-model="formFilterConditions.carta_paramid" placeholder="{{'CARTA' | translate}} or {{'PARAM' | translate}} ID" type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-1">
+                                        <div class="form-group">
+                                            <select class="form-control" ng-change="formFilterChange()" ng-model="formFilterConditions.bioma_id" placeholder="Bioma">
+                                                <option value="">
+                                                    {{ 'BIOMATODOS' | translate }}
+                                                </option>
+                                                <option value="1">
+                                                    {{ 'AMAZONIA' | translate }}
+                                                </option>
+                                                <option value="2">
+                                                    {{ 'MATAATLANTICA' | translate }}
+                                                </option>
+                                                <option value="3">
+                                                    {{ 'PANTANAL' | translate }}
+                                                </option>
+                                                <option value="4">
+                                                    {{ 'CERRADO' | translate }}
+                                                </option>
+                                                <option value="5">
+                                                    {{ 'CAATINGA' | translate }}
+                                                </option>
+                                                <option value="6">
+                                                    {{ 'PAMPA' | translate }}
+                                                </option>
+                                                <option value="7">
+                                                    {{ 'ZONACOSTEIRA' | translate }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-1">
+                                        <div class="form-group">
+                                            <select class="form-control" ng-change="formFilterChange()" ng-model="formFilterConditions.year" ng-options="ano as ano for ano in selectAnos" placeholder="{{'YEAR' | translate}}">
+                                                <option value="">
+                                                    {{'ANOTODOS' | translate}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-1">
+                                        <div class="form-group">
+                                            <select class="form-control" ng-change="formFilterChange()" ng-model="formFilterConditions.versao_final" placeholder="{{'ARVORE' | translate}}">
+                                                <option value="">
+                                                    Final Versions?
+                                                </option>
+                                                <option value="TRUE">
+                                                    Final Version
+                                                </option>
+                                                <option value="FALSE">
+                                                    Non Final
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-2">
+                                        <div class="form-group">
+                                            <select class="form-control" ng-change="formFilterChange()" ng-model="formFilterConditions.fase" placeholder="{{'FASE' | translate}}">
+                                                <option value="">
+                                                    {{'FASETODOS' | translate}}
+                                                </option>
+                                                <option value="0">
+                                                    Mosaic
+                                                </option>
+                                                <option value="1">
+                                                    {{'EXPORTTASKFASE-1' | translate}}
+                                                </option>
+                                                <option value="2">
+                                                    {{'EXPORTTASKFASE-2' | translate}}
+                                                </option>
+                                                <option value="3">
+                                                    {{'EXPORTTASKFASE-3' | translate}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-2">
+                                        <div class="form-group">
+                                            <select class="form-control" ng-change="formFilterChange()" ng-model="formFilterConditions.status" placeholder="{{'STATUS' | translate}}">
+                                                <option value="">
+                                                    {{'STATUSTODOS' | translate}}
+                                                </option>
+                                                <option value="0">
+                                                    {{'EXPORTTASKSTATUS-0' | translate}}
+                                                </option>
+                                                <option value="1">
+                                                    {{'EXPORTTASKSTATUS-1' | translate}}
+                                                </option>
+                                                <option value="2">
+                                                    {{'EXPORTTASKSTATUS-2' | translate}}
+                                                </option>
+                                                <option value="3">
+                                                    {{'EXPORTTASKSTATUS-3' | translate}}
+                                                </option>                 
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-1">
+                                        <div class="form-group">
+                                            <input class="form-control" id="formFilter-data_inicial" on-select="formFilterChange()" pikaday="formFilterConditions.data_inicial" placeholder="{{'DATAINICIAL' | translate}}" type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-1">
+                                        <div class="form-group">
+                                            <input class="form-control" id="formFilter-data_final" on-select="formFilterChange()" pikaday="formFilterConditions.data_final" placeholder="{{'DATAFINAL' | translate}}" type="text"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-md-1">
+                                        <div class="form-group">
+                                            <button class="btn btn-default" ng-click="formFilterClear()" type="button">
+                                                <i class="fa fa-eraser">
+                                                </i>
+                                                {{'LIMPARPARAMS' | translate }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="viewMode == 'table'">
+                        <div class="col-md-12 col-table">
+                            <table class="table table-bordered table-striped" ng-show="exportacaoTarefas.length &gt;0">
+                                <thead style="font-size: 12px;text-transform:uppercase">
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>
+                                            {{ 'PARAMETRO' | translate }} ID
+                                        </th>
+                                        <th>
+                                            {{ 'CARTA' | translate }}
+                                        </th>
+                                        <th>
+                                            LABEL
+                                        </th>
+                                        <th>
+                                            {{ 'BIOMA' | translate }}
+                                        </th>
+                                        <th>
+                                            YEAR
+                                        </th>
+                                        <th>
+                                            T0
+                                        </th>
+                                        <th>
+                                            T1
+                                        </th>
+                                        <th>
+                                            CLOUD %
+                                        </th>
+                                        <th>
+                                            D. TREE
+                                        </th>
+                                        <th>
+                                            {{ 'REGIAO' | translate }}
+                                        </th>
+                                        <th>
+                                            {{ 'VERSAO' | translate }}
+                                        </th>
+                                        <th>
+                                            {{ 'TAREFAINICIO' | translate }}
+                                        </th>
+                                        <th>
+                                            {{ 'FASE' | translate }}
+                                        </th>
+                                        <th>
+                                            {{ 'STATUS' | translate }}
+                                        </th>
+                                        <th>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="tarefa in exportacaoTarefas">
+                                        <th>
+                                            {{tarefa.ClassificacaoTarefa.id}}
+                                        </th>
+                                        <td>
+                                            {{tarefa.Classificacao.id}}
+                                        </td>
+                                        <td>
+                                            {{tarefa.Classificacao.Carta.codigo}}
+                                        </td>
+                                        <td>
+                                            {{tarefa.Classificacao.identificador}}
+                                        </td>
+                                        <td>
+                                            {{tarefa.Classificacao.Bioma.nome}}
+                                        </td>
+                                        <td>
+                                            {{tarefa.Classificacao.year | formatDate}}
+                                        </td>
+                                        <td>
+                                            {{tarefa.Classificacao.t0 | formatDate}}
+                                        </td>
+                                        <td>
+                                            {{tarefa.Classificacao.t1 | formatDate}}
+                                        </td>
+                                        <td>
+                                            {{tarefa.Classificacao.cloudcover}}
+                                        </td>
+                                        <td>
+                                            {{tarefa.Classificacao.dtree}}
+                                        </td>
+                                        <td>
+                                            {{tarefa.Classificacao.CartaRegiao.regiao}}
+                                        </td>
+                                        <td>
+                                            {{tarefa.Classificacao.versao}}
+                                            <span ng-show="tarefa.Classificacao.versao_final">
+                                                FINAL
+                                            </span>
+                                        </td>
+                                        <td>
+                                            {{tarefa.ClassificacaoTarefa.created | formatDatehms}} <br/>
+                                            {{tarefa.ClassificacaoTarefa.modified | formatDatehms}}
+                                        </td>
+                                        <td>
+                                            {{'EXPORTTASKFASE-'+tarefa.ClassificacaoTarefa.fase | translate}}
+                                        </td>
+                                        <td>
+                                            {{'EXPORTTASKSTATUS-'+tarefa.ClassificacaoTarefa.status | translate}}
+                                            <span ng-show="tarefa.ClassificacaoTarefa.status == 3" data-placement="top" data-toggle="tooltip"  title="{{tarefa.ClassificacaoTarefa.log}}">
+                                               <i class="fa fa-fw fa-warning"></i> 
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown" type="button">
+                                                    <i class="fa fa-fw fa-th-list">
+                                                    </i>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu" style="right: 0;left: auto;">
+                                                    <li>
+                                                        <a href="javascript:;" ng-click="taskAction(tarefa,'restart')">
+                                                            <i class="fa fa-fw fa-refresh">
+                                                            </i>
+                                                            Restart task
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:;" ng-click="taskAction(tarefa,'complete')">
+                                                            <i class="fa fa-fw fa-check-circle">
+                                                            </i>
+                                                            Force complete  
+                                                        </a>
+                                                    </li>
+                                                    <li class="divider">
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:;" ng-click="taskAction(tarefa,'remove')">
+                                                            <i class="fa fa-fw fa-trash">
+                                                            </i>
+                                                            Remove task
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pull-left" ng-show="exportacaoTarefas.length &gt;
+                                0" page="page" page-size="pageSize" paginate="paginate" paginate-links="" total-pages="totalPages">
+                            </div>
+                            <span class="pull-right" style="padding:5px">
+                                {{exportacaoTarefasTotal}} records found.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="viewMode == 'map'">
+                        <div class="col-md-12">
+                            <div mapcartasexportlist="mapcartaslist">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

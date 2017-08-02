@@ -3,6 +3,8 @@ App::uses('AppController', 'Controller');
 
 App::uses('UsuarioService', 'Lib/Mapbiomas/Service/Usuario');
 
+App::uses('Bioma', 'Model');
+
 class UsuariosController extends AppController {
     
     public $uses = array(
@@ -10,6 +12,8 @@ class UsuariosController extends AppController {
     );
     
     public $UsuarioService;
+    
+    public $Bioma;
     
     public function beforeFilter() {
         parent::beforeFilter();
@@ -25,12 +29,13 @@ class UsuariosController extends AppController {
         ));
         
         $this->UsuarioService = new UsuarioService();
+        
+        $this->Bioma = new Bioma();
     }
     
     public function login() {
         $this->layout = "login";
-        if ($this->request->is('post')) {
-            
+        if ($this->request->is('post')) {            
             //Capturando o IP da maquna do usuário
             $clienteIp = $this->request->clientIp();
             if ($this->Auth->login()) {
@@ -48,6 +53,12 @@ class UsuariosController extends AppController {
                 $this->redirect('/');
             }
         }
+
+        $biomas = $this->Bioma->find('list',array(
+            'fields' => ['Bioma.nome','Bioma.nome']
+        ));
+
+        $this->set('biomas',$biomas);
         
         /*
          * status code "não autorizado"
@@ -64,7 +75,9 @@ class UsuariosController extends AppController {
             )
         );
 
-        if ($this->Auth->login()) {            
+        $guest = $this->Usuario->findByEmail('guest@mapbiomas.org');
+
+        if ($this->Auth->login($guest)) {            
             //$this->Session->write('App', $this->request->data['Usuario']['app']);
             if (strstr($redirect, "services/")) {
                 $redirect = "/";

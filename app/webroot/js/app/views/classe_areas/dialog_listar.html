@@ -1,0 +1,170 @@
+<div class="modal-header bg-aqua-active">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="modalClose()">
+        <span aria-hidden="true">
+            &times;
+        </span>
+    </button>
+    <h4 class="modal-title">
+        Samples
+    </h4>
+</div>
+<div class="modal-body" ng-controller="ClasseAreasListarController">
+    <div class="row">
+        <div class="col-md-12">
+            <form name="formFilter">
+                <div class="row">
+                    <div class="col-xs-6 col-md-2">
+                        <div class="form-group">
+                            <input ng-model="formFilterConditions.carta" ng-change="formFilterChange()" type="text" placeholder="{{ 'CARTA' | translate }}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div ng-hide="selectBiomasDisabled" class="col-xs-6 col-md-2">
+                        <div class="form-group">
+                            <select ng-model="formFilterConditions.bioma_id" ng-change="formFilterChange()" class="form-control" placeholder="Bioma">
+                                <option value="">
+                                    {{ 'BIOMATODOS' | translate }}
+                                </option>
+                                <option value="1">
+                                    {{ 'AMAZONIA' | translate }}
+                                </option>
+                                <option value="2">
+                                    {{ 'MATAATLANTICA' | translate }}
+                                </option>
+                                <option value="3">
+                                    {{ 'PANTANAL' | translate }}
+                                </option>
+                                <option value="4">
+                                    {{ 'CERRADO' | translate }}
+                                </option>
+                                <option value="5">
+                                    {{ 'CAATINGA' | translate }}
+                                </option>
+                                <option value="6">
+                                    {{ 'PAMPA' | translate }}
+                                </option>
+                                <option value="7">
+                                    {{ 'ZONACOSTEIRA' | translate }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-2">
+                        <div class="form-group">
+                            <select ng-model="formFilterConditions.year" ng-options="ano as ano for ano in selectAnos" ng-change="formFilterChange()" class="form-control" placeholder="{{ 'YEAR' | translate }}">
+                                <option value="">
+                                    {{ 'ANOTODOS' | translate }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>                                        
+                    <div class="col-xs-6 col-md-1">
+                        <div class="form-group">
+                            <input id="formFilter-data_inicial" pikaday="formFilterConditions.data_inicial" on-select="formFilterChange()" type="text" placeholder="{{ 'DATAINICIAL' | translate }}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-1">
+                        <div class="form-group">
+                            <input id="formFilter-data_final" pikaday="formFilterConditions.data_final" on-select="formFilterChange()" type="text" placeholder="{{ 'DATAFINAL' | translate }}" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-1">
+                        <div class="form-group">
+                            <button ng-click="formFilterClear()" class="btn btn-default" type="button">
+                                <i class="fa fa-eraser">
+                                </i>
+                                {{ 'LIMPARPARAMS' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <div class="form-group">
+                            <button ng-click="exportToCSV()" ng-disabled="exportCSVloading || !classeAreas.length" class="btn btn-success pull-right" type="button">
+                                <i ng-show="!exportCSVloading" class="glyphicon glyphicon-export">
+                                </i>
+                                <span ng-show="!exportCSVloading">                                    
+                                {{ 'EXPORTCSV' | translate }}
+                                </span>
+                                <i ng-show="exportCSVloading" class="glyphicon glyphicon-hourglass">
+                                </i>
+                                <span ng-show="exportCSVloading">  
+                                {{ 'EXPORTCSVLOAD' | translate }}
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" ng-show="classeAreas.length> 0">
+                    <thead style="font-size: 12px;text-transform:uppercase">
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                {{ 'CLASSE' | translate }}
+                            </th>
+                            <th>
+                                {{ 'CARTA' | translate }}
+                            </th>
+                            <th>
+                                {{ 'BIOMA' | translate }}
+                            </th>
+                            <th>
+                                YEAR
+                            </th>
+                            <th>
+                                {{ 'AREAOBJETIVO' | translate }}
+                            </th>
+                            <th>
+                                STATUS
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="classeArea in classeAreas">
+                            <th>
+                                {{ classeArea.ClasseArea.id }}
+                            </th>
+                            <td>
+                                <span class="label" style="background-color: {{ classeArea.ClasseArea.classe_id | areaclassecolor }};text-shadow: 0px 1px 1px #000;">
+                                    {{ classeArea.ClasseArea.classe_id | areaclasse }}
+                                </span>
+                            </td>
+                            <td>
+                                {{ classeArea.ClasseArea.carta }}
+                            </td>
+                            <td>
+                                {{ classeArea.Bioma.nome }}
+                            </td>
+                            <td>
+                                {{ classeArea.ClasseArea.year }}
+                            </td>
+                            <td>
+                                {{ AreaClasseType[classeArea.ClasseArea.type_id].type }}
+                            </td>
+                            <td>
+                            {{'EXPORTTASKSTATUS-'+classeArea.ClasseArea.status | translate}}                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show='classeAreas.length>
+                0' paginate-links paginate="paginate" total-pages="totalPages" page-size="pageSize" page="page" class="pull-left">
+            </div>
+            <span class="pull-right" style="padding:5px">
+                {{ classeAreasTotal }} records found.
+            </span>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button ng-click="modalClose()" type="button" class="btn btn-default" data-dismiss="modal">
+        {{ 'FECHAR' | translate }}
+    </button>
+</div>

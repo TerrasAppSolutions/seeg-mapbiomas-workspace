@@ -1,0 +1,84 @@
+<div class="modal-header bg-aqua-active">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="modalClose()">
+        <span aria-hidden="true">
+            &times;
+        </span>
+    </button>
+    <h4 class="modal-title">
+        Decision Tree Rule
+    </h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <form name="formRule" role="form">
+                <section>
+                    <legend>
+                        Rule
+                    </legend>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>
+                                    Variable                                    
+                                </label>
+                                <select class="form-control" ng-model="rule.variable" ng-options="layer for layer in layers" required>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>
+                                    Operator                                    
+                                </label>
+                                <select class="form-control" ng-model="rule.operator" ng-options="operator for operator in operators" required>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <label>
+                                    Value                                    
+                                </label>
+                                <input ng-model="rule.thresh" type="number" placeholder="Number" class="form-control" required/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section ng-show="classTrueShow || classFalseShow">
+                    <legend>
+                        Results Classes
+                    </legend>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group" ng-if="classTrueShow">
+                                <label style="color: {{ rule.classTrueId | areaclassecolor }};">
+                                    Class 1 (Yes)                                    
+                                </label>
+                                <select class="form-control" ng-model="rule.classTrueId" ng-options="classe.id as classe.classe for (id,classe) in classes" required>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group" ng-if="classFalseShow">
+                                <label style="color: {{ rule.classFalseId | areaclassecolor }};">
+                                    Class 2 (No)                                    
+                                </label>
+                                <select class="form-control" ng-model="rule.classFalseId" ng-options="classe.id as classe.classe for (id,classe) in classes" required>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button ng-click="confirm()" type="button" ng-disabled="formRule.$invalid" class="btn btn-success" data-dismiss="modal">
+        {{ 'CONFIRM' | translate }}
+    </button>
+    <button ng-click="modalClose()" type="button" class="btn btn-default" data-dismiss="modal">
+        {{ 'FECHAR' | translate }}
+    </button>
+</div>

@@ -104,7 +104,9 @@ class Usuario extends AppModel {
     public $contains = array(
         'default' => array(
             'UsuarioBioma' => array(
-                'Bioma'
+                'Bioma' => array(
+                    'fields' => array('id','nome')
+                )
             )
         )
     );

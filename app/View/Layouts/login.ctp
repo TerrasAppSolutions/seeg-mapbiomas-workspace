@@ -5,7 +5,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
         <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"/>
-        <meta name="google-signin-client_id" content="643939449792-4klbvomidq0pskb9oo9ps2rdqdjvnu5t.apps.googleusercontent.com">
+        <meta name="google-signin-client_id" content="<?php echo $appConfig['GOOGLECREDENTIALS']['client_id'];?>">
         <?php echo $this->Html->charset(); ?>
         <title>
         MapBiomas :: <?php echo $title_for_layout; ?>
@@ -23,7 +23,7 @@
         <nav class="navbar navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <img width="165" height="40" style="position: absolute; top: 1px; right: 89%;" src="../img/mapbiomas_logo.png">
+                    <img width="165" height="40" style="position: absolute; top: 1px; right: 89%;" src="../img/logo/<?php echo $appConfig['IMG']['logo_file'];?>">
                 </div>
             </div>
         </nav>

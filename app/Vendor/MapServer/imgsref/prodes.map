@@ -39,7 +39,7 @@ MAP
             "class_deforestation" "^[a-zA-Z\-]+$"
         END
 
-        DATA '/data/imagens/classificacao/VRT/REFERENCIA_AMAZONIA_PRODES_%year%.vrt'
+        DATA '/mnt/disks/data/collections/classificacao/VRT/REFERENCIA_AMAZONIA_PRODES_%year%.vrt'
 
          # classes
         CLASSITEM "[pixel]"

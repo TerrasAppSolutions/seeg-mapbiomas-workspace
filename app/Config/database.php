@@ -17,6 +17,17 @@ class DATABASE_CONFIG {
             'database' => $appConfig['DB']['database'],
             'encoding' => 'utf8'
         );
+        
+        // remover depois, bug de dependencias, quando migrar para doc
+        $this->territorio = array(
+            'datasource' => 'Database/Postgres',
+            'persistent' => false,
+            'host' => '172.17.0.7',
+            'login' => $appConfig['DB']['login'],
+            'password' => $appConfig['DB']['password'],
+            'database' => 'mapbiomas',
+            'encoding' => 'utf8'
+        );
 
         $this->test = array(
             'datasource' => 'Database/Mysql',

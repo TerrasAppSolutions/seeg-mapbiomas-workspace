@@ -36,7 +36,7 @@ MAP
             "class" "^[a-zA-Z\-]+$"
         END
 
-        DATA '/data/imagens/classificacao/REFERENCIA/AGRICULTURAPASTAGEM/crop_pasture_%years%.tif'
+        DATA '/mnt/disks/data/collections/classificacao/REFERENCIA/AGRICULTURAPASTAGEM/crop_pasture_%years%.tif'
 
         # classes
         CLASSITEM "[pixel]"

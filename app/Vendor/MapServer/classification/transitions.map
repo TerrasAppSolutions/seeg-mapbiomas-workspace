@@ -23,14 +23,20 @@ MAP
             "default_territory_id" "1"
             "territory_id" "[0-9]+"
 
-            "default_years" "2008-2009"
-            "years" ".+"
+            "default_year_t0" "2000"
+            "year_t0" ".+"            
 
-            "default_transition_id" "0"
-            "transition_id" ".+"            
+            "default_year_t1" "2001"
+            "year_t1" ".+"                        
+
+            "default_transition_c0" "0"
+            "transition_c0" ".+" 
+
+            "default_transition_c1" "0"
+            "transition_c1" ".+"            
         END
 
-        DATA '/data/imagens/classificacao/VRT/TRANSICAO_PAIS_BRASIL_%years%.vrt'
+        DATA '/data/collections/COLECAO2/VRT/TRANSICAO_PAIS_BRASIL_%year_t0%_%year_t1%.vrt'
 
         MASK "territory_mask"
 

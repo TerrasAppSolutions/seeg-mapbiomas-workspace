@@ -31,7 +31,7 @@ MAP
         NAME 'crop-0709'          
         TYPE RASTER
         STATUS ON
-        DATA '/data/imagens/referencia/pastagem/crop_pasture_0708.tif'
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_0708.tif'
         CLASSITEM "[pixel]"   
         # crop class     
         CLASS
@@ -45,7 +45,7 @@ MAP
         NAME 'crop-0809'          
         TYPE RASTER
         STATUS ON
-        DATA '/data/imagens/referencia/pastagem/crop_pasture_0809.tif'
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_0809.tif'
         CLASSITEM "[pixel]"   
         # crop class     
         CLASS
@@ -59,7 +59,7 @@ MAP
         NAME 'crop-0910'          
         TYPE RASTER
         STATUS ON
-        DATA '/data/imagens/referencia/pastagem/crop_pasture_0910.tif'
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_0910.tif'
         CLASSITEM "[pixel]"   
         # crop class     
         CLASS
@@ -73,7 +73,7 @@ MAP
         NAME 'crop-1011'          
         TYPE RASTER
         STATUS ON
-        DATA '/data/imagens/referencia/pastagem/crop_pasture_1011.tif'
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_1011.tif'
         CLASSITEM "[pixel]"   
         # crop class     
         CLASS
@@ -87,7 +87,7 @@ MAP
         NAME 'crop-111213'          
         TYPE RASTER
         STATUS ON
-        DATA '/data/imagens/referencia/pastagem/crop_pasture_111213.tif'
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_111213.tif'
         CLASSITEM "[pixel]"   
         # crop class     
         CLASS
@@ -101,7 +101,7 @@ MAP
         NAME 'crop-1314'          
         TYPE RASTER
         STATUS ON
-        DATA '/data/imagens/referencia/pastagem/crop_pasture_1314.tif'
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_1314.tif'
         CLASSITEM "[pixel]"   
         # crop class     
         CLASS
@@ -119,7 +119,7 @@ MAP
         NAME 'pasture-0709'          
         TYPE RASTER
         STATUS ON
-        DATA '/data/imagens/referencia/pastagem/crop_pasture_0708.tif'
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_0708.tif'
         CLASSITEM "[pixel]"   
         # pasture class     
         CLASS
@@ -133,7 +133,7 @@ MAP
         NAME 'pasture-0809'          
         TYPE RASTER
         STATUS ON
-        DATA '/data/imagens/referencia/pastagem/crop_pasture_0809.tif'
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_0809.tif'
         CLASSITEM "[pixel]"   
         # pasture class     
         CLASS
@@ -147,7 +147,7 @@ MAP
         NAME 'pasture-0910'          
         TYPE RASTER
         STATUS ON
-        DATA '/data/imagens/referencia/pastagem/crop_pasture_0910.tif'
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_0910.tif'
         CLASSITEM "[pixel]"   
         # pasture class     
         CLASS
@@ -161,7 +161,7 @@ MAP
         NAME 'pasture-1011'          
         TYPE RASTER
         STATUS ON
-        DATA '/data/imagens/referencia/pastagem/crop_pasture_1011.tif'
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_1011.tif'
         CLASSITEM "[pixel]"   
         # pasture class     
         CLASS
@@ -175,7 +175,7 @@ MAP
         NAME 'pasture-111213'          
         TYPE RASTER
         STATUS ON
-        DATA '/data/imagens/referencia/pastagem/crop_pasture_111213.tif'
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_111213.tif'
         CLASSITEM "[pixel]"   
         # pasture class     
         CLASS
@@ -189,7 +189,7 @@ MAP
         NAME 'pasture-1314'          
         TYPE RASTER
         STATUS ON
-        DATA '/data/imagens/referencia/pastagem/crop_pasture_1314.tif'
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_1314.tif'
         CLASSITEM "[pixel]"   
         # pasture class     
         CLASS

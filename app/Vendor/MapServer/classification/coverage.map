@@ -12,30 +12,7 @@ MAP
 
     #
     # Camadas ====================================================== #
-    #
-
-    LAYER
-        NAME 'classification'
-        TYPE RASTER
-        STATUS ON
-
-        VALIDATION
-            "default_territory_id" "1"
-            "territory_id" "[0-9]+"
-
-            "default_year" "0"
-            "year" "[0-9]+"
-
-            "default_classification_ids" "0"
-            "classification_ids" ".+"            
-        END
-
-        DATA '/data/imagens/classificacao/VRT/PAIS_BRASIL_%year%.vrt'
-
-        MASK "territory_mask"
-
-        INCLUDE '../includes/style_bioma.map'
-    END
+    #   
 
     LAYER
         NAME 'coverage'
@@ -53,7 +30,7 @@ MAP
             "classification_ids" ".+"            
         END
 
-        DATA '/data/imagens/classificacao/VRT/INTEGRACAO_PAIS_BRASIL_%year%.vrt'
+        DATA '/data/collections/COLECAO2/VRT/INTEGRACAO_PAIS_BRASIL_%year%.vrt'
 
         MASK "territory_mask"
 

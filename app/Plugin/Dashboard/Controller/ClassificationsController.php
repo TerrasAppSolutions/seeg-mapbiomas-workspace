@@ -21,11 +21,13 @@ class ClassificationsController extends DashboardAppController {
 
           $responseData = $this->ClasseService->findAll($this->request->query);
 
-          echo json_encode($responseData);
+          $this->response->body(json_encode($responseData));
+          return $this->response;
+            
       }
       catch(Exception $exc) {
           $this->response->statusCode("403");
-          echo $exc->getMessage();
+          
       }
        
     } 

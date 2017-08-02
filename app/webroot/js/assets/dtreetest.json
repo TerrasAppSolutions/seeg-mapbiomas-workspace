@@ -1,0 +1,48 @@
+{
+    "gv": {
+        "url": "http://tile.openstreetmap.org/{z}/{x}/{y}.png"
+    },
+    "soil": {
+        "url": "https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png"
+    },
+    "gvs": {
+        "url": "http://b.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png"
+    },
+    "water_mask": {
+        "url": "http://c.tile.thunderforest.com/landscape/{z}/{x}/{y}.jpg"
+    },
+    "savi": {
+        "url": "http://b.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+    },
+    "ndfirgb": {
+        "url": "http://a.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png"
+    },
+    "evi2": {
+        "url": "http://b.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+    },
+    "rgb": {
+        "url": "http://c.tile.thunderforest.com/landscape/{z}/{x}/{y}.jpg"
+    },
+    "shade": {
+        "url": "http://c.tile.thunderforest.com/landscape/{z}/{x}/{y}.jpg"
+    },
+    "ndfi": {
+        "url": "http://b.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png"
+    },
+    "ndvi": {
+        "url": "http://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+    },
+    "ndwi": {
+        "url": "http://b.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+    },
+    "npv": {
+        "url": "http://b.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png"
+    },
+    "cloud": {
+        "url": "http://b.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png"
+    }
+}
+
+
+
+{"DecisionTree":{"id":1,"dtree":{"1-1":{"kind":"decision","rule":{"variable":"water_mask","operator":">","thresh":0},"node":{"level":1,"position":1},"children":[{"level":2,"position":1},{"level":2,"position":2}],"class":null},"2-1":{"kind":"decision","rule":{"variable":"ndfi","operator":">=","thresh":200},"node":{"level":2,"position":1},"children":[{"level":3,"position":1},{"level":3,"position":2}],"class":null},"2-2":{"kind":"class","rule":null,"node":{"level":2,"position":2},"children":null,"class":{"value":3,"name":"water","color":"#0000FF"}},"3-1":{"kind":"decision","rule":{"variable":"gvs","operator":">=","thresh":55},"node":{"level":3,"position":1},"children":[{"level":4,"position":1},{"level":4,"position":2}],"class":null},"3-2":{"kind":"class","rule":null,"node":{"level":3,"position":2},"children":null,"class":{"value":1,"name":"forest","color":"#006630"}},"4-1":{"kind":"class","rule":null,"node":{"level":4,"position":1},"children":null,"class":{"value":2,"name":"non-forest","color":"#000000"}},"4-2":{"kind":"decision","rule":{"variable":"gv","operator":">=","thresh":55},"node":{"level":4,"position":2},"children":[{"level":5,"position":3},{"level":5,"position":4}],"class":null},"5-3":{"kind":"decision","rule":{"variable":"ndfi","operator":"<=","thresh":185},"node":{"level":5,"position":3},"children":[{"level":6,"position":5},{"level":6,"position":6}],"class":null},"5-4":{"kind":"class","rule":null,"node":{"level":5,"position":4},"children":null,"class":{"value":2,"name":"non-forest","color":"#000000"}},"6-5":{"kind":"class","rule":null,"node":{"level":6,"position":5},"children":null,"class":{"value":1,"name":"forest","color":"#006630"}},"6-6":{"kind":"class","rule":null,"node":{"level":6,"position":6},"children":null,"class":{"value":2,"name":"non-forest","color":"#000000"}}},"usuario_id":1,"created":null,"modified":null,"bioma_id":null}}

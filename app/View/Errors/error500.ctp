@@ -7,6 +7,7 @@
 		"<strong>'{$url}'</strong>"
 	); ?>
 <?php
+	$this->response->type('html');
 	$this->layout = "html";
 	echo Configure::read('debug');
 if (Configure::read('debug') > 0):

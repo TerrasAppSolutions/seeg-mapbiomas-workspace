@@ -40,7 +40,7 @@ MAP
             "agua" "[0-1]"            
         END
 
-        DATA '/data/imagens/classificacao/BIOMA/AMAZONIA/SC-21-X-D/AMAZONIA_SC-21-X-D_2013.tif'        
+        DATA '/mnt/disks/data/collections/COLECAO_ATUAL/BIOMA/AMAZONIA/SC-21-X-D/AMAZONIA_SC-21-X-D_2013.tif'        
 
         # classes
         CLASSITEM "[pixel]"   

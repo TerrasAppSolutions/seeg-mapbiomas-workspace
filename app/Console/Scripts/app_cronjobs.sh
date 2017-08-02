@@ -1,0 +1,1 @@
+#/var/www/app/Console/cake export_assets_status_update

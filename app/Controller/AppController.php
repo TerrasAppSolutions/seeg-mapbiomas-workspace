@@ -33,8 +33,12 @@ class AppController extends Controller {
     public $serviceOptions;
     public $servicePaginate;
 
+    public $limitMax = 1000;
+
     public function beforeFilter() {
         parent::beforeFilter();
+
+        $AppConfig = $this->getAppConfig();
         
         /* ----------------------------
          * Rest service configurações
@@ -50,38 +54,19 @@ class AppController extends Controller {
             // configurando response
             $this->autoRender = false;
             $this->response->type('json');
+            $this->response->header('Access-Control-Allow-Origin', '*');
         }
         else {
             $this->layout = "default";
-        }
-
-        /*
-         * opcoes usadas para
-         * metodos de busca
-        */
-        if (isset($this->request->query['options'])) {
-            if (is_string($this->request->query['options'])) {
-                $this->serviceOptions = json_decode($this->request->query['options'], true);
-            }
-            else {
-                $this->serviceOptions = $this->request->query['options'];
+            if(isset($AppConfig['layout'])){                
+                $this->layout = $AppConfig['layout'];
             }
         }
 
-        /*
-         * opcoes de paginaçao
-         * para busca paginada
-        */
-        if (isset($this->request->query['page'])) {
-            $this->servicePaginate['page'] = $this->request->query['page'];
-            $this->serviceOptions['page'] = $this->request->query['page'];
-            $this->servicePaginate['limit'] = isset($this->request->query['limit']) ? $this->request->query['limit'] : 10;
-        }
+        $this->serviceOptions = $this->getServiceOptions();
 
-        if (isset($this->request->query['limit'])) {
-            $this->serviceOptions['limit'] = $this->request->query['limit'];
-        }
-
+        $this->servicePaginate = $this->getServicePaginate();
+        
         /* ------------------------------
          * Rescupera usuario autenticado
          * e seta para view
@@ -94,12 +79,72 @@ class AppController extends Controller {
          * Variaveis de configuração do sistema
          * -------------------------------------
         */
-        $this->set('appConfig', $this->getAppConfig());
+        $this->set('appConfig', $AppConfig);
 
     }
 
     public function isAuthorized($user) {
         return true;
+    }
+
+
+    /**
+     * Retorna array padrão de parâmetros de configurações utilizados nos serviços
+     * @return array parametro de confifuração
+     */
+    public function getServiceOptions()
+    {
+
+        $options = null;
+
+        if (isset($this->request->query['options'])) {
+            if (is_string($this->request->query['options'])) {
+                $options = json_decode($this->request->query['options'], true);
+            } else {
+                $options = $this->request->query['options'];
+            }
+        }
+
+        $limit = $this->limitMax;
+
+        if (isset($options['limit']) && $options['limit'] <= $this->limitMax) {
+            $limit = $options['limit'] <= $this->limitMax ? $options['limit'] : $this->limitMax;
+        }
+
+        if (isset($this->request->query['limit'])) {
+            $limit = $this->request->query['limit'] <= $this->limitMax ? $this->request->query['limit'] : $this->limitMax;
+        }
+
+        if (isset($this->request->query['page'])) {
+            $options['page'] = $this->request->query['page'];
+        }
+
+        $options['limit'] = $limit;
+        
+
+        unset($options['recursive']);
+        unset($options['group']);
+        unset($options['offset']);
+        unset($options['callbacks']);
+
+        return $options;
+    }
+
+    /**
+     * Retorna array padrão de parâmetros de paginação utilizados nos serviços
+     * @return array parametro de paginação
+     */
+    public function getServicePaginate()
+    {
+
+        $paginate = null;
+
+        if (isset($this->request->query['page'])) {
+            $paginate['page']  = $this->request->query['page'];
+            $paginate['limit'] = isset($this->request->query['limit']) && $this->request->query['limit'] <= $this->limitMax ? $this->request->query['limit'] : $this->limitMax;
+        }
+
+        return $paginate;
     }
 
     public function getAppConfig() {        
