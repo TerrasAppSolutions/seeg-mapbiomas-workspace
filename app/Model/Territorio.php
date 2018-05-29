@@ -12,8 +12,4 @@ class Territorio extends AppModel {
 		'bounds' => "ST_AsGeoJSON(ST_Envelope(ST_Transform(ST_SetSRID(the_geom,4674),4326)))"       
 	);     
 
-	// remover depois, bug de dependencias, quando migrar para doc
-	public $useDbConfig = 'territorio';
-	
-
 }

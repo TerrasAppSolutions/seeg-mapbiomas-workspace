@@ -21,9 +21,7 @@ class MapFileGenTransitionShell extends AppShell
      * configurações de cache
      */
     public function main()
-    {
-        $this->Classe = new Classe();        
-
+    {        
         //$fileJson  = new File($this->args[0]);
         //$json      = utf8_decode($fileJson->read());
         //$jsonDados = json_decode($json, true);
@@ -192,7 +190,7 @@ class MapFileGenTransitionShell extends AppShell
 
         echo $this->mapfileStr;
 
-        $mapfile = new File('../Vendor/MapServer/includes/style_bioma_transition_groups.map');
+        $mapfile = new File('../Vendor/MapServer/v/2.3/includes/style_bioma_transition_groups.map');
 
         $mapfile->write($this->mapfileStr);        
 
@@ -200,7 +198,9 @@ class MapFileGenTransitionShell extends AppShell
 
 
     
-    public function transition(){       
+    public function transition(){    
+        
+        $this->Classe = new Classe();                
 
         $classes = $this->Classe->find('all',array(
             'order' => array(
@@ -257,7 +257,7 @@ class MapFileGenTransitionShell extends AppShell
 
         echo $this->mapfileStr;
 
-        $mapfile = new File('../Vendor/MapServer/includes/style_bioma_transition_combinations.map');
+        $mapfile = new File('../Vendor/MapServer/v/2.3/includes/style_bioma_transition_combinations.map');
 
         $mapfile->write($this->mapfileStr);        
 
@@ -266,6 +266,6 @@ class MapFileGenTransitionShell extends AppShell
 
 
     private function pixelValue($c0,$c1){
-        return ($c0*30)+$c1;
+        return ($c0*100)+$c1;
     }
 }

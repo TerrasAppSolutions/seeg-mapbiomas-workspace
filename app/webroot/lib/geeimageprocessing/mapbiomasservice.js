@@ -673,7 +673,7 @@ var MapbiomasAssetService = function(opts) {
 
         var colClass = ee.ImageCollection(colClassId)
             .filterMetadata('year', 'equals', assetAno)
-            .filterMetadata('biome', 'equals', assetBioma);
+            .filterMetadata('biome', 'equals', assetBioma).map(function(image){return image.toByte();});
 
         // var classif = colClass.mosaic();
 

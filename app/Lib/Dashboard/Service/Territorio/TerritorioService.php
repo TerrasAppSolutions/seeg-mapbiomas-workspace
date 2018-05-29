@@ -1,5 +1,7 @@
 <?php
 App::uses('Territorio', 'Model');
+App::uses('Municipio', 'Model');
+
 
 class TerritorioService {
     
@@ -7,6 +9,7 @@ class TerritorioService {
     
     public function __construct() {
         $this->Territorio = new Territorio();
+        $this->Municipio = new Municipio();
     }
     
     /*
@@ -55,30 +58,50 @@ class TerritorioService {
                 'Municipio' => 'City',
                 'Bioma' => 'Biome',
             ];
-        }        
+        }
         
         $resultBrasil1 = [];
         
         foreach ($this->Territorio->find("all", $options) as $key => $territorio) {
             $bounds = json_decode($territorio['Territorio']['bounds'], true) ['coordinates'][0];
+            
+            $municipio = null;
+
+            if($territorio['Territorio']['categoria'] == 'Municipio'){
+                $municipio = $this->Municipio->find('first',array(
+                    'conditions' => array(
+                        'Municipio.id' => $territorio['Territorio']['id']
+                    ),
+                    'fields' => array('id'),
+                    'contain' => array(
+                        'Estado' => array(
+                            'fields' => array('sigla')
+                        )
+                    )
+                ));                
+            }
+
             $r = array(
                 "id" => $territorio['Territorio']['id'],
                 "name" => $territorio['Territorio']['descricao'],
-                "category" =>  $lang[$territorio['Territorio']['categoria']] ? $lang[$territorio['Territorio']['categoria']] : $territorio['Territorio']['categoria'],
+                "state" => $municipio ? $municipio['Estado']['sigla'] : "",
+                "category" =>  !empty($lang[$territorio['Territorio']['categoria']]) ? $lang[$territorio['Territorio']['categoria']] : $territorio['Territorio']['categoria'],
                 "area" => floatval($territorio['Territorio']['area']) ,
                 "bounds" => [[$bounds[0][1],
                 $bounds[0][0]],
                 [$bounds[2][1],
                 $bounds[2][0]]]
             );
+
+
             if ($r['id'] == '10') {
                 $resultBrasil1[] = $r;
             } 
             else {
                 $result[] = $r;
             }
-        }
-
+        }        
+        
         foreach ($result as $key => $value) {
             $resultBrasil1[] = $value;
         }
@@ -92,6 +115,8 @@ class TerritorioService {
                 'totalPages' => ceil($this->Territorio->find('count') / $limit)
             );
         }
+
+
         
         return $result;
     }

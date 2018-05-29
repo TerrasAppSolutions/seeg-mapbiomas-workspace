@@ -1,0 +1,207 @@
+<section class="content-header">
+    <h1>
+        Filters
+        <small>
+            Temporal Filter
+        </small>
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <i class="fa fa-dashboard">
+                </i>
+                Workspace
+            </a>
+        </li>
+        <li class="active">
+            Filters
+        </li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="filter-map">
+                        <!-- Criação de mapas on the fly -->
+                        <div filter class="map-show" filter-number="i" ng-repeat="i in [1, 2]" rules='vm.allRules' biome='vm.biomeName'>
+                            <div class="wraper-years select-years">
+                                <!-- <select class="form-control select-years" ng-if="i == 1">
+                                    <option value="" selected disabled>year</option>
+                                    <option ng-repeat="n in vm.years">{{n}}</option>
+                                </select> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 2rem;">
+                        <div class="col-sm-6 col-sm-offset-6">
+                            <div class="input-group margin">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary" ng-click="vm.createProjectModal()">
+                                        <i class="fa fa-plus"></i> project</button>
+                                </div>
+                                <!-- /btn-group -->
+                                <select ng-model="vm.tfProjectChoosed" ng-options="options.TemporalFilterProject as options.TemporalFilterProject.name for options in vm.temporalFilterProjectOptions"
+                                    class="form-control" ng-change="vm.chooseTFProject(vm.tfProjectChoosed)">
+                                    <option value="" selected disabled>Select a project</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert without-data-area" ng-if="!vm.tfProjectChoosed">
+                        <h4>
+                            <strong>Hey!</strong> Choose a project or create a new one.
+                        </h4>
+                    </div>
+                    <div ng-if="vm.tfProjectChoosed">
+                        <fieldset class="fieldset-temporal-rule">
+                            <legend class="legend-title">
+                                <strong>{{vm.tfProjectChoosed.name}}</strong>
+                                <small>({{vm.tfProjectChoosed.application}} - {{vm.tfProjectChoosed.biome_name}})</small>
+                                <br>
+                                <small class="light-grey">{{vm.tfProjectChoosed.description || 'No description here'}}</small>
+                            </legend>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <select class="form-control" ng-model="vm.ruleToSave.kernel" ng-options="'kernel ' + kv for kv in vm.kernelValues" ng-change="vm.enableSelect(vm.ruleToSave.kernel, vm.ruleToSave.type)">
+                                        <option value="" selected disabled>Select kernel</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control" ng-model="vm.ruleToSave.type" ng-change="vm.enableSelect(vm.ruleToSave.kernel, vm.ruleToSave.type)">
+                                        <option value="" selected disabled>
+                                            Select type
+                                        </option>
+                                        <option value="RG">
+                                            RG
+                                        </option>
+                                        <option value="RP">
+                                            RP
+                                        </option>
+                                        <option value="RU">
+                                            RU
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" ng-model="vm.ruleToSave.label" placeholder="label">
+                                </div>
+                            </div>
+                            <div class="row table-of-selections">
+                                <div class="col-xs-12">
+                                    <table class="">
+                                        <tbody>
+                                            <tr>
+                                                <td class="right-padding-5px">
+                                                    <select class="form-control" ng-model="vm.ruleToSave.tminus2" ng-options="class.Classe.valor as class.Classe.valor + ' - ' + class.Classe.classe  disable when (vm.selectToEnable !== 'tminus2' && !class.Classe.valor) for class in vm.classeValues"
+                                                        ng-disabled="vm.ruleToSave.kernel == 3" ng-class="{'select-active':vm.selectToEnable === 'tminus2'}">
+                                                        <option value="" selected disabled>Select a class t-2</option>
+                                                    </select>
+                                                </td>
+                                                <td class="two-padding-5px">
+                                                    <select class="form-control" ng-model="vm.ruleToSave.tminus1" ng-options="class.Classe.valor as class.Classe.valor + ' - ' + class.Classe.classe disable when (vm.selectToEnable !== 'tminus1' && !class.Classe.valor) for class in vm.classeValues"
+                                                        ng-class="{'select-active':vm.selectToEnable === 'tminus1'}">
+                                                        <option value="" selected disabled>Select a class t-1</option>
+                                                    </select>
+                                                </td>
+                                                <td class="two-padding-5px">
+                                                    <select class="form-control" ng-class="{'select-active':vm.selectToEnable === 't'}" ng-model="vm.ruleToSave.t" ng-options="class.Classe.valor as class.Classe.valor + ' - ' + class.Classe.classe disable when (vm.selectToEnable !== 't' && !class.Classe.valor) for class in vm.classeValues">
+                                                        <option value="" selected disabled>Select a class t</option>
+                                                    </select>
+                                                </td>
+                                                <td class="two-padding-5px">
+                                                    <select class="form-control" ng-model="vm.ruleToSave.tplus1" ng-options="class.Classe.valor as class.Classe.valor + ' - ' + class.Classe.classe disable when (vm.selectToEnable !== 'tplus1' && !class.Classe.valor) for class in vm.classeValues"
+                                                        ng-class="{'select-active':vm.selectToEnable === 'tplus1'}">
+                                                        <option value="" selected disabled>Select a class t+1</option>
+                                                    </select>
+                                                </td>
+                                                <td class="two-padding-5px">
+                                                    <select class="form-control" ng-model="vm.ruleToSave.tplus2" ng-options="class.Classe.valor as class.Classe.valor + ' - ' + class.Classe.classe disable when (vm.selectToEnable !== 'tplus2' && !class.Classe.valor) for class in vm.classeValues"
+                                                        ng-disabled="vm.ruleToSave.kernel == 3" ng-class="{'select-active':vm.selectToEnable === 'tplus2'}">
+                                                        <option value="" selected disabled>Select a class t+2</option>
+                                                    </select>
+                                                </td>
+                                                <td class="two-padding-5px">
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                </td>
+                                                <td class="left-padding-5px">
+                                                    <select class="form-control select-result" ng-model="vm.ruleToSave.result" ng-options="class.Classe.valor as class.Classe.valor + ' - ' + class.Classe.classe disable when (!class.Classe.valor) for class in vm.classeValues">
+                                                        <option value="" selected disabled>Define result</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <a href class=" button-save-select" ng-click="vm.cloneProjectModal()">
+                                <i class="fa fa-clone" aria-hidden="true"></i> clone project
+                            </a>
+                            <button type="button" class="btn btn-success button-add-select" ng-click="vm.saveRuleTemporal(vm.ruleToSave)">
+                                <i class="fa fa-plus" aria-hidden="true"></i> add
+                            </button>
+                        </fieldset>
+                        <div class="table-responsive" ng-if="vm.allRules.length">
+                            <table class="table table-filters">
+                                <thead>
+                                    <th>Regra</th>
+                                    <th>label</th>
+                                    <th>kernel</th>
+                                    <th>Type</th>
+                                    <th>t-2</th>
+                                    <th>t-1</th>
+                                    <th>t</th>
+                                    <th>t+1</th>
+                                    <th>t+2</th>
+                                    <th></th>
+                                    <th>Result</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="rule in vm.allRules track by $index">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{rule.TemporalFilter.label}}</td>
+                                        <td>{{rule.TemporalFilter.kernel}}</td>
+                                        <td>{{rule.TemporalFilter.type}}</td>
+                                        <td>
+                                            <span ng-if="rule.TemporalFilter.tminus2 || rule.TemporalFilter.tminus2 == 0">{{vm.classesObject[rule.TemporalFilter.tminus2].valor}} - {{vm.classesObject[rule.TemporalFilter.tminus2].classe}}</span>
+                                        </td>
+                                        <td>{{vm.classesObject[rule.TemporalFilter.tminus1].valor}} - {{vm.classesObject[rule.TemporalFilter.tminus1].classe}}</td>
+                                        <td>{{vm.classesObject[rule.TemporalFilter.t].valor}} - {{vm.classesObject[rule.TemporalFilter.t].classe}}</td>
+                                        <td>{{vm.classesObject[rule.TemporalFilter.tplus1].valor}} - {{vm.classesObject[rule.TemporalFilter.tplus1].classe}}</td>
+                                        <td>
+                                            <span ng-if="rule.TemporalFilter.tplus2 || rule.TemporalFilter.tplus2 == 0">{{vm.classesObject[rule.TemporalFilter.tplus2].valor}} - {{vm.classesObject[rule.TemporalFilter.tplus2].classe}}</span>
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                        </td>
+                                        <td>{{vm.classesObject[rule.TemporalFilter.result].valor}} - {{vm.classesObject[rule.TemporalFilter.result].classe}}</td>
+                                        <td class="element-switch-delete">
+                                            <div class="material-switch">
+                                                <input id="someSwitchOptionSuccess{{$index}}" name="someSwitchOption001" ng-model="rule.TemporalFilter.active" type="checkbox"
+                                                    ng-change="vm.saveRuleTemporal(rule.TemporalFilter, true)" />
+                                                <label for="someSwitchOptionSuccess{{$index}}" class="label-success"></label>
+                                            </div>
+                                            <div class="icon-trash">
+                                                <i class="fa fa-trash" ng-click="vm.deleteRule(rule.TemporalFilter.id, $index)"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div ng-show='vm.allRules.length > 0' paginate-links paginate="paginate" total-pages="totalPages" page-size="pageSize" page="page"
+                            class="pull-right"></div>
+                        <div class="alert without-data-area" ng-if="!vm.allRules.length">
+                            <h4>
+                                <strong>Hey!</strong> No rules saved for this project.
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -13,6 +13,7 @@ class ClassificationsController extends DashboardAppController {
 
     /*
      * Service API
+     * http://workspace.localhost/dashboard/services/classifications
     */
 
     public function service_get() {

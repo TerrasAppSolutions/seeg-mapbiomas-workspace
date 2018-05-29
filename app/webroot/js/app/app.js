@@ -17,6 +17,48 @@ angular.module('MapBiomasApp', [
                         }
                     }
                 })
+                .state("filters", {
+                    url: "/filters",
+                    views: {
+                        '': {
+                            templateUrl: 'js/app/views/filtros/filters.html',
+                        }
+                    }
+                })
+                .state("filters.temporal", {
+                    url: "/temporal",
+                    views: {
+                        '': {
+                            templateUrl: 'js/app/views/filtros/temporal-filter.html',
+                            controller: 'TemporalFilterController as vm'
+                        }
+                    },
+                })
+                .state("filters.integration", {
+                    url: "/integration",
+                    views: {
+                        '': {
+                            templateUrl: 'js/app/views/filtros/integration-filter.html',
+                            // controller: 'IntegrationFilterController as vm'
+                        }
+                    },
+                })
+                .state("manager", {
+                    url: "/manager",
+                    views: {
+                        '': {
+                            templateUrl: 'js/app/views/manager/manager.html',
+                        }
+                    }
+                })
+                .state("manager.task", {
+                    url: "/task",
+                    views: {
+                        '': {
+                            templateUrl: 'js/app/views/manager/task-manager.html',
+                        }
+                    }
+                })
                 .state("classificacoes-parametros", {
                     url: "/classifications/parameters",
                     views: {

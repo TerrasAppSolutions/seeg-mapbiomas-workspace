@@ -1,6 +1,7 @@
 <?php
 App::uses('Classificacao', 'Model');
 App::uses('CartaRegiao', 'Model');
+App::uses('CartaRegiaoInfo', 'Model');
 
 class ClassificacaoService {
 
@@ -8,6 +9,7 @@ class ClassificacaoService {
 
     public function __construct() {
         $this->Classificacao = new Classificacao();
+        $this->CartaRegiaoInfo = new CartaRegiaoInfo();
     }
 
     /*
@@ -22,8 +24,18 @@ class ClassificacaoService {
             'contain'    => $this->Classificacao->contains['default'],
         ));
 
+        // http://workspace.localhost/mapbiomas/services/classificacoes/2661
         if ($classificacao) {
             $classificacao = $this->getAssociateData([$classificacao])[0];
+        }
+
+        /**
+         * Verificação se possui dado de carta regiao info
+         */
+        if (isset($classificacao['Classificacao']['regiao_info_id'])) {
+            if(isset($classificacao['CartaRegiaoInfo']) && !empty($classificacao['CartaRegiaoInfo'])) {
+                $classificacao['Classificacao']['regiao_info'] = $classificacao['CartaRegiaoInfo'];
+            }
         }
 
         return $classificacao;
@@ -98,13 +110,9 @@ class ClassificacaoService {
             'Bioma.id',
             'Colecao.id',
             'CartaRegiao.id',
-            'DecisionTree.id'
-        );
-
-        // nao exibe status 5 cancelado
-        if(!isset($options['conditions']['ClassificacaoTarefa.status'])){
-            //$options['conditions']['ClassificacaoTarefa.status <>'] = '5' ;
-        }        
+            'DecisionTree.id',
+            'CartaRegiaoInfo.id'
+        );    
 
         // se o usuarioAuth não for admin ou visitante, lista somente 
         // parametros do bioma associado ao usuario
@@ -171,7 +179,7 @@ class ClassificacaoService {
                 ),
                 'recursive'  => '-1',
             ));
-            $data['Classificacao']['bioma_id'] = $bioma['Bioma']['id'];
+            $data['Classificacao']['bioma_id'] = $bioma['Bioma']['id'];            
         } else {
             $bioma = $this->Classificacao->Bioma->read('nome', $data['Classificacao']['bioma_id']);
         }
@@ -184,12 +192,7 @@ class ClassificacaoService {
         if ($usuarioBioma != $bioma['Bioma']['nome']) {
             throw new Exception("Usuário não tem permissão para salvar neste bioma");
         }
-
-        /*
-        if($this->validaColecao){
-        }
-        */
-
+        
         // salva classificação                
         unset($data['Classificacao']['modified']);
         $dataSaved = $this->Classificacao->save($data);
@@ -214,7 +217,7 @@ class ClassificacaoService {
     }
 
     public function getBiomaCartaRegioes($biomaNome, $cartaCodigo) {
-
+        
         $carta = $this->Classificacao->Carta->findByCodigo($cartaCodigo);
 
         $bioma = $this->Classificacao->Bioma->findByNome($biomaNome);
@@ -335,7 +338,6 @@ class ClassificacaoService {
 
         $options['contain'] = $this->Classificacao->contains['default'];
 
-
         $options['conditions'] = isset($options['conditions']) ? $options['conditions'] : array();
 
         // joins de dados associados
@@ -369,7 +371,8 @@ class ClassificacaoService {
             'Bioma.id',
             'Colecao.id',
             'CartaRegiao.id',
-            'DecisionTree.id'
+            'DecisionTree.id',
+            'CartaRegiaoInfo.id'
         );
 
         $data = $this->Classificacao->find('all', $options);
@@ -448,6 +451,12 @@ class ClassificacaoService {
                 $value['Classificacao']['regiao'] = $value['CartaRegiao']['regiao'];
             } else {
                 $value['Classificacao']['regiao'] = "";
+            }
+
+            if (isset($value['Classificacao']['regiao_info_id'])) {
+                if(isset($value['CartaRegiaoInfo']) && !empty($value['CartaRegiaoInfo'])) {
+                    $value['Classificacao']['regiao_info'] = $value['CartaRegiaoInfo'];
+                }
             }
         }
         return $data;

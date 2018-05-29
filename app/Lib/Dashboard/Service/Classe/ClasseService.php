@@ -49,6 +49,14 @@ class ClasseService {
 
       $options = array('page' => $page,  'limit' => $limit);    
 
+      $options['conditions'] = array(
+          "Classe.ativo" => true
+      );
+
+      $options['order'] = array(
+        "Classe.ativo ASC"
+      );
+
       foreach ($this->Classe->find("all", $options) as $key => $classe) {   
 
           $classeName = null;

@@ -71,6 +71,7 @@ langs = {
         "VERSAO": "Version",
         "VERSAOFINAL": "Final version",
         "REGIAO": "Region",
+        "PAIS": "Country",
         "PROCESSIMAGE": "Processing",
         "AGUARDE": "Wait",
         "EXPORTPARAMS": "Export classification parameters",
@@ -205,7 +206,8 @@ langs = {
         "CLASSDTREEVALIDTITULO1": "Decision tree not approved yet.",
         "CLASSDTREEVALIDTITULO": "The choosen decision tree has not been approved yet.",
         "CLASSDTREEVALIDMSG": "You can't save parameters with this decision tree. Please, choose another.",
-        "CHACO": "Chaco"
+        "CHACO": "Chaco",
+        "AMOSTRACOLETA": "Sample collecting",
     },
     "pt": {
         "A": "a",
@@ -408,6 +410,7 @@ langs = {
         "DTREESELECIONENODE": "Por favor, clique em um nó de regra para editar o valor",
         "CLASSDTREEVALIDTITULO": "Árvore de decisão não aprovada",
         "CLASSDTREEVALIDMSG": "Você não pode salvar os parâmetros com esta árvore. Por favor, escolha outra.",
-        "CHACO": "Chaco"
+        "CHACO": "Chaco",        
+        "AMOSTRACOLETA": "Coleta de amostra"
     }
 };

@@ -79,34 +79,45 @@ class DownloadService {
         
         $file = new File('/data/arquivos/gcs-public-landsat.txt');
         $list = explode("/data",$file->read());
-
+        $file->close();
+        
+        // exit;
         $listurl = "";
-
+        
         foreach ($list as $key => $value) {
             if(strstr($value,$carta) != false && strstr($value,$ano) != false){
                 $listurl = $value;
                 break;
             }
         }       
-
+        // pr($carta);
+        // pr($ano);
+        
         if(empty($listurl)){
             $redirectData['status'] = 'error';
             $redirectData['msg']    = $this->msgs[3];
             return $redirectData;
         }
+        
+        
+        // $url = str_replace('/imagens/classificacao_v2/CLASSIFICACAO/BIOMA/',$this->landsatBaseUrl."/",$listurl);
+        $url = str_replace('gs://mapbiomas-public/COLECAO/LANDSAT/',$this->landsatBaseUrl."/", $listurl);
+        
+        $fileUrl = trim(str_replace('.tif','.tif',$url));
+        $urlArray = explode(".tif",$url);
 
-        $url = str_replace('/imagens/classificacao_v2/CLASSIFICACAO/BIOMA/',$this->landsatBaseUrl."/",$listurl);
+        $foundUrls = $this->findByYearAndChart($urlArray, $carta, $ano);
+        // pr($foundUrls);
 
-        $fileUrl = trim(str_replace('.tif','_rgb_0000000000-0000000000.tif',$url));        
-
-        if ($this->remoteFileExists($fileUrl)) {
-            $redirectData['url'] = $fileUrl;
+        if (sizeof($foundUrls) > 0) {
+            $redirectData['status'] = 'success';
+            $redirectData['url'] = $foundUrls;
         } else {
             $redirectData['status'] = 'error';
             $redirectData['msg']    = $this->msgs[3];
         }
         
-        $redirectData['url'] = $fileUrl;        
+        // $redirectData['url'] = $fileUrl;        
 
         return $redirectData;
     }
@@ -120,7 +131,7 @@ class DownloadService {
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_NOBODY, true);
         $result = curl_exec($curl);
-        $ret    = false;        
+        $ret = false; 
         if ($result !== false) {
             $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
             if ($statusCode == 200) {
@@ -129,6 +140,20 @@ class DownloadService {
         }
         curl_close($curl);
         return $ret;
+    }
+
+    /**
+     * Pesquisa dentro da lista de imagens, aquelas que possuem carta e ano correspondente
+     * @param Type function findByYearAndChart
+     */
+    private function findByYearAndChart($array, $chart, $year) {
+        $result = [];
+        foreach ($array as $key => $value) {
+            if(strpos($value, $chart) && strpos($value, $year)) {
+                array_push($result, $value.'.tif');
+            }
+        }
+        return $result;
     }
 
 }

@@ -15,12 +15,14 @@
                 <div class="row">
                     <div class="col-xs-6 col-md-2">
                         <div class="form-group">
-                            <input ng-model="formFilterConditions.carta_paramid" ng-change="formFilterChange()" type="text" placeholder="{{ 'CARTA' | translate }} or {{ 'PARAM' | translate }} ID" class="form-control"/>
+                            <input ng-model="formFilterConditions.carta_paramid" ng-change="formFilterChange()" type="text" placeholder="{{ 'CARTA' | translate }} or {{ 'PARAM' | translate }} ID"
+                                class="form-control" />
                         </div>
                     </div>
                     <div class="col-xs-6 col-md-2">
                         <div class="form-group">
-                            <input ng-model="formFilterConditions.year" ng-change="formFilterChange()" type="number" min="1985" max="2015" placeholder="{{ 'YEAR' | translate }}" class="form-control"/>
+                            <input ng-model="formFilterConditions.year" ng-change="formFilterChange()" type="number" min="1985" max="2015" placeholder="{{ 'YEAR' | translate }}"
+                                class="form-control" />
                         </div>
                     </div>
                     <div class="col-xs-6 col-md-1">
@@ -86,10 +88,10 @@
                             </th>
                             <th>
                                 DTV
-                            </th>                           
+                            </th>
                             <th>
                                 SENSOR
-                            </th>                            
+                            </th>
                             <th>
                                 {{ 'REGIAO' | translate }}
                             </th>
@@ -134,12 +136,12 @@
                             </td>
                             <td>
                                 {{ classificacao.Classificacao.dtv | dtreevstr }}
-                            </td>                            
+                            </td>
                             <td>
                                 {{ classificacao.Classificacao.sensor }}
-                            </td>                            
+                            </td>
                             <td>
-                                {{ classificacao.Classificacao.regiao }}
+                                {{classificacao.Classificacao.regiao_info.region}} ({{ classificacao.Classificacao.regiao_info.pais_iso }})
                             </td>
                             <td>
                                 {{ classificacao.Classificacao.identificador }}
@@ -151,7 +153,7 @@
                                 </span>
                             </td>
                             <td>
-                                <div classificacao-tarefa-status="classificacao.ClassificacaoTarefa"></div>  
+                                <div classificacao-tarefa-status="classificacao.ClassificacaoTarefa"></div>
                             </td>
                             <td>
                                 <div class="btn-group">
@@ -187,7 +189,7 @@
                                                 </i>
                                                 Consolidate task
                                             </a>
-                                        </li>                                        
+                                        </li>
                                         <!--<li class="divider"></li>
                                         <li>
                                             <a ng-click="removeTask(classificacao)" href="javascript:;">
@@ -195,7 +197,7 @@
                                                 </i>
                                                 Remove parameter
                                             </a>
-                                        </li>    -->                                    
+                                        </li>    -->
                                     </ul>
                                 </div>
                             </td>
@@ -203,7 +205,8 @@
                     </tbody>
                 </table>
             </div>
-            <div ng-show='paramsClassificacoes.length > 0' paginate-links paginate="paginate" total-pages="totalPages" page-size="pageSize" page="page" class="pull-left">
+            <div ng-show='paramsClassificacoes.length > 0' paginate-links paginate="paginate" total-pages="totalPages" page-size="pageSize"
+                page="page" class="pull-left">
             </div>
             <span class="pull-right" style="padding:5px">
                 {{ classificacoesTotal }} records found.

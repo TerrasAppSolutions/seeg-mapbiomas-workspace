@@ -82,6 +82,13 @@ class Classificacao extends AppModel {
             'fields' => '',
             'order' => ''
         ),
+        'CartaRegiaoInfo' => array(
+            'className' => 'CartaRegiaoInfo',
+            'foreignKey' => 'regiao_info_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
         'DecisionTree' => array(
             'className' => 'DecisionTree',
             'foreignKey' => 'decision_tree_id',
@@ -143,7 +150,8 @@ class Classificacao extends AppModel {
             'DecisionTree',                       
             'ClassificacaoTarefa',           
             'CartaRegiao',
-            'Colecao'
+            'Colecao',
+            'CartaRegiaoInfo'
         )
     );
     
@@ -157,7 +165,7 @@ class Classificacao extends AppModel {
             }
             if (isset($value['Colecao']['config'])) {
                 $value['Colecao']['config'] = json_decode($value['Colecao']['config'], true);                                
-            }            
+            }           
         }          
         return $results;
     }
@@ -176,6 +184,7 @@ class Classificacao extends AppModel {
         if(!empty($value['Bioma'])){
             $bioma = $value['Bioma']['nome'];
         }else{
+            $this->Bioma->recursive = -1;
             $bioma = $this->Bioma->read('nome',$value['Classificacao']['bioma_id'])['Bioma']['nome'];
         }
 
@@ -184,6 +193,7 @@ class Classificacao extends AppModel {
         if(!empty($value['Carta'])){
             $carta = $value['Carta']['codigo'];
         }else{
+            $this->Carta->recursive = -1;
             $carta = $this->Carta->read('codigo',$value['Classificacao']['carta_id'])['Carta']['codigo'];
         }
 
@@ -194,6 +204,7 @@ class Classificacao extends AppModel {
         if(!empty($value['CartaRegiao'])){
             $cartaRegiaoCodigo = $value['CartaRegiao']['regiao'];
         }else{
+            $this->CartaRegiao->recursive = -1;
             $cartaRegiao = $this->CartaRegiao->read('regiao',$value['Classificacao']['regiao_id']);
             $cartaRegiaoCodigo = $cartaRegiao['CartaRegiao']['regiao'] ? $cartaRegiao['CartaRegiao']['regiao'] : '0';
         }

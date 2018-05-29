@@ -22,7 +22,12 @@ class DownloadsController extends DashboardAppController {
             $redirectData = $this->DownloadService->landsat($carta, $ano);
 
             if ($redirectData['status'] == 'success') {
-                $this->redirect($redirectData['url']);
+                // pr($redirectData);
+                // exit;
+                // $this->redirect($redirectData['url']);
+                $this->layout = 'html';
+                $this->set("msg", $redirectData['url']);
+                $this->render("download_success");
             } else {
                 $this->layout = 'html';
                 $this->set("msg", $redirectData['msg']);

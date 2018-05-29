@@ -10,12 +10,12 @@
         "value": "2"
     },
     "3": {
-        "name": "Dense Forest",
+        "name": "Forest Formations",
         "ref": "1.1.1.",
         "value": "3"
     },
     "4": {
-        "name": "Open Forest",
+        "name": "Savanna Formations",
         "ref": "1.1.2.",
         "value": "4"
     },

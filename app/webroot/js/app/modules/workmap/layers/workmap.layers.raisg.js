@@ -1,12 +1,10 @@
-angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$filter',
-    function(AppConfig, $filter) {
+angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$filter', 'GEEProcessDataService',
+    function (AppConfig, $filter, GEEProcessDataService) {
         return {
-            imgsref: function(wgis) {
+            imgsref: function (wgis) {
 
                 var mapfilepath = AppConfig.MAPSERVER.mapfilepath;
                 var mapfilehost = AppConfig.MAPSERVER.mapfilehost;
-
-
 
                 var biomas = ['AMAZONIA'];
 
@@ -17,10 +15,6 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                     anos.push(i);
                 }
 
-
-
-
-
                 /**
                  * COLEÇÂO 1
                  */
@@ -29,12 +23,12 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                 wgis.addNodeLabel($filter('translate')('CLASSIFICACAONAOCONSOLIDADA') + " (Beta)", $filter('translate')('COLECAO') + " 1");
 
                 // Mosaico
-                angular.forEach(biomas, function(assetBioma, biomaIndex) {
-                    anos.forEach(function(assetAno, anoIndex) {
+                angular.forEach(biomas, function (assetBioma, biomaIndex) {
+                    anos.forEach(function (assetAno, anoIndex) {
                         if (anoIndex == 0) {
-                            wgis.addNodeLabel($filter('translate')(assetBioma), $filter('translate')('COLECAO') + " 1+>" + $filter('translate')('MOSAICOIMAGENS') + " (Beta)",'img/layergroup.png');
+                            wgis.addNodeLabel($filter('translate')(assetBioma), $filter('translate')('COLECAO') + " 1+>" + $filter('translate')('MOSAICOIMAGENS') + " (Beta)", 'img/layergroup.png');
                         }
-                        var geeMosaicLayer = new L.TileLayer.GeeScript(function(callback) {
+                        var geeMosaicLayer = new L.TileLayer.GeeScript(function (callback) {
 
                             var assetTileUrl = assetService
                                 .getMosaicByBiomaYear(assetBioma, assetAno);
@@ -46,14 +40,13 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                     });
                 });
 
-
                 // Classificação
-                angular.forEach(biomas, function(assetBioma, biomaIndex) {
-                    anos.forEach(function(assetAno, anoIndex) {
+                angular.forEach(biomas, function (assetBioma, biomaIndex) {
+                    anos.forEach(function (assetAno, anoIndex) {
                         if (anoIndex == 0) {
                             wgis.addNodeLabel($filter('translate')(assetBioma), $filter('translate')('COLECAO') + " 1+>" + $filter('translate')('CLASSIFICACAONAOCONSOLIDADA') + " (Beta)");
                         }
-                        var geeClassLayer = new L.TileLayer.GeeScript(function(callback) {
+                        var geeClassLayer = new L.TileLayer.GeeScript(function (callback) {
 
                             var assetTileUrl = assetService
                                 .getClassifByBiomaYear(assetBioma, assetAno);
@@ -65,102 +58,383 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                     });
                 });
 
-
-
                 /**
                  * REFERENCIAS
                  */
 
-
-
                 wgis.addNodeLabel($filter('translate')("MAPAREFERENCIA"));
 
-        
+                /**
+                 * Adição de nó para as funções de vetores
+                 * dessa forma, dentro de "collection 1", ele coloca a pasta amarela "Vectors"
+                 */
+                wgis.addNodeLabel('Vectors', $filter('translate')("MAPAREFERENCIA"));
+
+                /**
+                 * Divisão de Departamento adotada RAISG
+                 */
+                wgis.addLayerWMS({
+                        url: mapfilehost,
+                        params: {
+                            map: mapfilepath + "/raisg/raisg.map",
+                            color_id: 2,
+                            layers: 'divisaodepartamentoadotada',
+                            format: 'image/png',
+                            transparent: true
+                        }
+                    },
+                    "Divisao de Departamento", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
+
+                /**
+                 * Divisão de Muncípio adotada RAISG
+                 */
+                wgis.addLayerWMS({
+                        url: mapfilehost,
+                        params: {
+                            map: mapfilepath + "/raisg/raisg.map",
+                            layers: 'divisaomunicipioadotada',
+                            format: 'image/png',
+                            transparent: true
+                        }
+                    },
+                    "Divisao de Município", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
+
+                /**
+                 * Divisão de País adotada RAISG
+                 */
+                wgis.addLayerWMS({
+                        url: mapfilehost,
+                        params: {
+                            map: mapfilepath + "/raisg/raisg.map",
+                            layers: 'divisaopaisadotada',
+                            format: 'image/png',
+                            transparent: true
+                        }
+                    },
+                    "Divisao de País", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
+
+                /**
+                 * Limite Biogeografico RAISG
+                 */
+                wgis.addLayerWMS({
+                        url: mapfilehost,
+                        params: {
+                            map: mapfilepath + "/raisg/raisg.map",
+                            layers: 'limitebiogeografico',
+                            format: 'image/png',
+                            transparent: true
+                        }
+                    },
+                    "Limite Biogeografico", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
+
+                /**
+                 * Limite de Biomas Operativo RAISG
+                 */
+                // wgis.addLayerWMS({
+                //         url: mapfilehost,
+                //         params: {
+                //             map: mapfilepath + "/raisg/raisg.map",
+                //             layers: 'limitebiomasoperativo',
+                //             format: 'image/png',
+                //             transparent: true
+                //         }
+                //     },
+                //     "Limite de Biomas Operativo", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
+
+                /**
+                 * Legenda de Limite de Biomas Operativo RAISG
+                 * Mostra o conjunto de legendas operativas
+                 */
+
+                // var legOperativaSet = [{
+                //         name: "Amazonía Alta",
+                //         url: "img/legendas/raisg/legoperativa/amazonia-alta.png",
+                //         description: 'Amazonía Alta',
+                //         color: "#43a272"
+                //     },
+                //     {
+                //         name: "Amazonía Baja",
+                //         url: "img/legendas/raisg/legoperativa/amazonia-baja.png",
+                //         description: 'Amazonía Baja',
+                //         color: "#d0ff72"
+                //     },
+                //     {
+                //         name: "Andes",
+                //         url: "img/legendas/raisg/legoperativa/andes.png",
+                //         description: 'Andes',
+                //         color: "#72014d"
+                //     },
+                //     {
+                //         name: "Cerrado",
+                //         url: "img/legendas/raisg/legoperativa/cerrado.png",
+                //         description: 'Cerrado',
+                //         color: "#ffeaad"
+                //     },
+                //     {
+                //         name: "Cerrado-Sabana",
+                //         url: "img/legendas/raisg/legoperativa/cerrado-sabana.png",
+                //         description: 'Cerrado-Sabana',
+                //         color: "#e57400"
+                //     },
+                //     {
+                //         name: "Chaco-Chiquitano",
+                //         url: "img/legendas/raisg/legoperativa/chaco-chiquitano.png",
+                //         description: 'Chaco-Chiquitano',
+                //         color: "#004ea7"
+                //     },
+                //     {
+                //         name: "Macarena",
+                //         url: "img/legendas/raisg/legoperativa/macarena.png",
+                //         description: 'Macarena',
+                //         color: "#ff7c5c"
+                //     },
+                //     {
+                //         name: "Pantanal",
+                //         url: "img/legendas/raisg/legoperativa/pantanal.png",
+                //         description: 'Pantanal',
+                //         color: "#5c0000"
+                //     },
+                //     {
+                //         name: "Sabanas y Herbazales",
+                //         url: "img/legendas/raisg/legoperativa/sabanas-y-herbazales.png",
+                //         description: 'Sabanas y herbazales',
+                //         color: "#a8d35e"
+                //     },
+                //     {
+                //         name: "Tucumano-Boliviano",
+                //         url: "img/legendas/raisg/legoperativa/tucumano-boliviano.png",
+                //         description: 'Tucumano-Boliviano',
+                //         color: "#99ff72"
+                //     },
+                //     {
+                //         name: "Sin Dato",
+                //         url: "img/legendas/raisg/legoperativa/no-data.png",
+                //         description: 'No Data',
+                //         color: "#9b9b9b"
+                //     },
+                // ];
+
+                // for (var i = 0; i < legOperativaSet.length; i++) {
+                //     var element = legOperativaSet[i];
+                //     wgis.addNodeLabel(element.name, $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors' + "+>Limite de Biomas Operativo", element.url);
+                // }
+
+                /**
+                 * Limite de Biomas RAISG
+                 */
+                wgis.addLayerWMS({
+                        url: mapfilehost,
+                        params: {
+                            map: mapfilepath + "/raisg/raisg.map",
+                            layers: 'limitebiomas',
+                            format: 'image/png',
+                            transparent: true,
+                        }
+                    },
+                    "Limite de Biomas", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
+
+                /**
+                 * Legenda de Limite de Biomas RAISG
+                 * Mostra o conjunto de legendas operativas
+                 */
+
+                var legBiomaSet = [{
+                        name: "Amazonía",
+                        url: "img/legendas/raisg/legbioma/amazonia.png",
+                        description: 'Amazonía',
+                        color: "#43a272"
+                    },
+                    {
+                        name: "Andes",
+                        url: "img/legendas/raisg/legbioma/andes.png",
+                        description: 'Andes',
+                        color: "#72014d"
+                    },
+                    {
+                        name: "Cerrado",
+                        url: "img/legendas/raisg/legbioma/cerrado.png",
+                        description: 'Cerrado',
+                        color: "#ffeaad"
+                    },
+                    {
+                        name: "Cerrado-Sabana",
+                        url: "img/legendas/raisg/legbioma/cerrado-sabana.png",
+                        description: 'Cerrado-Sabana',
+                        color: "#e57400"
+                    },
+                    {
+                        name: "Chaco-Chiquitano",
+                        url: "img/legendas/raisg/legbioma/chaco-chiquitano.png",
+                        description: 'Chaco-Chiquitano',
+                        color: "#004ea7"
+                    },
+                    {
+                        name: "Pantanal",
+                        url: "img/legendas/raisg/legbioma/pantanal.png",
+                        description: 'Pantanal',
+                        color: "#5c0000"
+                    },
+                    {
+                        name: "Tucumano-Boliviano",
+                        url: "img/legendas/raisg/legbioma/tucumano-boliviano.png",
+                        description: 'Tucumano-Boliviano',
+                        color: "#99ff72"
+                    },
+                    {
+                        name: "Sin Dato",
+                        url: "img/legendas/raisg/legbioma/no-data.png",
+                        description: 'null',
+                        color: "#9b9b9b"
+                    },
+                ];
+
+                for (var i = 0; i < legBiomaSet.length; i++) {
+                    var element = legBiomaSet[i];
+                    wgis.addNodeLabel(element.name, $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors' + "+>Limite de Biomas", element.url);
+                }
+
+                /**
+                 * Limite RAISG
+                 */
+                wgis.addLayerWMS({
+                        url: mapfilehost,
+                        params: {
+                            map: mapfilepath + "/raisg/raisg.map",
+                            layers: 'limite',
+                            format: 'image/png',
+                            transparent: true
+                        }
+                    },
+                    "Limite RAISG", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
+
                 
+                /**
+                 * Região Bioma País
+                 */
+                wgis.addLayerWMS({
+                    url: mapfilehost,
+                    params: {
+                        map: mapfilepath + "/raisg/raisg.map",
+                        layers: 'paisbiomaregion',
+                        format: 'image/png',
+                        transparent: true
+                    }
+                },
+                "Regiones RAISG", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
+
+
+                /**
+                 * Legenda de Região Bioma País
+                 */
+
+                var legBiomaRegion = [{
+                    name: "Sín region",
+                    url: "img/legendas/raisg/legbiomaregion/0_sin_region.png",
+                    color: "#43a272"
+                },
+                {
+                    name: "Amazonía Alta",
+                    url: "img/legendas/raisg/legbiomaregion/1_amazonia_alta.png",
+                    color: "#95e5a3"
+                },
+                {
+                    name: "Amazonía Baja",
+                    url: "img/legendas/raisg/legbiomaregion/2_amazonia_baja.png",
+                    color: "#ffeaad"
+                },
+                {
+                    name: "Amazonía Baja Inundable",
+                    url: "img/legendas/raisg/legbiomaregion/3_amazonia_baja_inundable.png",
+                    color: "#e57400"
+                },
+                {
+                    name: "Amazonía Baja Pacales",
+                    url: "img/legendas/raisg/legbiomaregion/4_amazonia_baja_pacales.png",
+                    color: "#004ea7"
+                },
+                {
+                    name: "Amazonía Baja Tepuyes",
+                    url: "img/legendas/raisg/legbiomaregion/5_amazonia_baja_tepuyes.png",
+                    color: "#5c0000"
+                },
+                {
+                    name: "Andes",
+                    url: "img/legendas/raisg/legbiomaregion/6_andes.png",
+                    color: "#99ff72"
+                },
+                {
+                    name: "Andes Bosque Seco Interandino",
+                    url: "img/legendas/raisg/legbiomaregion/7_andes_bosque_seco_interandino.png",
+                    color: "#9b9b9b"
+                },
+                {
+                    name: "Cerrado",
+                    url: "img/legendas/raisg/legbiomaregion/8_cerrado.png",
+                    color: "#9b9b9b"
+                },
+                {
+                    name: "Cerrado-Sabana",
+                    url: "img/legendas/raisg/legbiomaregion/9_cerrado_sabana.png",
+                    color: "#9b9b9b"
+                },
+                {
+                    name: "Chaco-Chiquitano",
+                    url: "img/legendas/raisg/legbiomaregion/10_chaco_chiquitano.png",
+                    color: "#9b9b9b"
+                },
+                {
+                    name: "Pantanal",
+                    url: "img/legendas/raisg/legbiomaregion/11_pantanal.png",
+                    color: "#9b9b9b"
+                },
+                {
+                    name: "Tucumano-Boliviano",
+                    url: "img/legendas/raisg/legbiomaregion/12_tucumano_boliviano.png",
+                    color: "#9b9b9b"
+                },
+                {
+                    name: "Sabanas y Herbazales Tepuyes",
+                    url: "img/legendas/raisg/legbiomaregion/13_sabanas_y_herbazales_tepuyes.png",
+                    color: "#9b9b9b"
+                },
+                {
+                    name: "Sabanas y herbazales",
+                    url: "img/legendas/raisg/legbiomaregion/14_sabanas_y_herbazales.png",
+                    color: "#9b9b9b"
+                }
+            ];
+
+            for (var i = 0; i < legBiomaRegion.length; i++) {
+                var element = legBiomaRegion[i];
+                wgis.addNodeLabel(element.name, $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors' + "+>Regiones RAISG", element.url);
+            }
+
+
+            wgis.addLayerWMS({
+                url: mapfilehost,
+                params: {
+                    map: mapfilepath + "/raisg/raisg.map",
+                    layers: 'paisbiomaregionlimite',
+                    format: 'image/png',
+                    transparent: true
+                }
+            },
+            "Limite Regiones RAISG ", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
+
+
                 /**
                  * ALTITUDE
                  */
 
-                var geeAltitudeLayer = new L.TileLayer.GeeScript(function(callback) {
+                wgis.addLayer(GEEProcessDataService.geeAltitudeLayer, "Elevation", $filter('translate')("MAPAREFERENCIA"), false);
 
-                    var boundary = ee.FeatureCollection('ft:1-yEW8F5gVnjWwcKJ_-iWIFZoPaW0YXmxf4gScDVw');
+                // wgis._wgis
 
-
-
-                    var terrain = ee.call('Terrain', ee.Image('USGS/SRTMGL1_003').clip(boundary));
-
-                    var radians = function(img){
-                        var rad = img.toFloat()
-                                .multiply(3.1415927)
-                                .divide(180);
-                        return rad;
-                    };
-
-                    var HillShade = function(terrain, sunAzimuth, sunElevation){
-                        
-                        // sunElevation = 20 should be fixed to make Sun low in the horizon.
-                        var zenithElevation    = ee.Number(90.0).subtract(sunElevation); 
-                        var azimuth            = radians(ee.Image.constant(sunAzimuth));
-                        var zenithElevationRad = radians(ee.Image.constant(zenithElevation));
-                        
-                        // Terrain
-                        var slope     = radians(terrain.select(['slope'])); 
-                        var aspect    = radians(terrain.select(['aspect']));
-                        
-                        // Hillshade
-                        var hillShade = azimuth.subtract(aspect).cos()
-                                            .multiply(slope.sin())
-                                            .multiply(zenithElevationRad.sin())
-                                            .add(zenithElevationRad.cos().multiply(slope.cos()));
-                        
-                        return hillShade.max(0);
-                        };
-
-                        var elevation = terrain.select('elevation');
-
-                        var hillShade = HillShade(terrain, 90.0, 45.0);
-
-                        var visElevation = {
-                        'gain':0.005,
-                        'palette':'0000FF,00FFFF,00FF00,FFFF00,FF5555,FF0000',
-                        'opacity':0.75
-                        };
-
-                        var visHillShade = {
-                        'gain':200.0
-                        };
-
-                        var elevationRGB = terrain.select(['elevation']).visualize(visElevation);
-                        var hillShadeRGB = hillShade.visualize(visHillShade);
-
-                        var alpha = 0.7;
-                        var alphaComplement = 1.0 - alpha;
-
-
-                        var hillshadecolor = (elevationRGB.multiply(alpha)).add((hillShadeRGB.multiply(alphaComplement)))
-                                            .addBands(elevation);
-
-
-                        var mapid = hillshadecolor.getMap({});
-
-                        assetTileUrl = 'https://earthengine.googleapis.com/map/' +
-                            mapid.mapid +
-                            '/{z}/{x}/{y}?token=' + mapid.token;    
-
-                    callback(assetTileUrl);
-
-                });
-
-                wgis.addLayer(geeAltitudeLayer, "Elevation", $filter('translate')("MAPAREFERENCIA"), false);
-
-
-
-                
                 /**
                  * GLOBAL SURFACE WATER
                  */
 
-                var geeSurfaceWaterLayer = new L.TileLayer.GeeScript(function(callback) {
+                var geeSurfaceWaterLayer = new L.TileLayer.GeeScript(function (callback) {
 
                     var boundary = ee.FeatureCollection('ft:1-yEW8F5gVnjWwcKJ_-iWIFZoPaW0YXmxf4gScDVw');
 
@@ -168,65 +442,63 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                     var occurrence = gsw.select('occurrence');
 
                     var vis = {
-                        min:0,
-                        max:100,
+                        min: 0,
+                        max: 100,
                         palette: ['red', 'blue']
-                        };
-                    
+                    };
+
                     occurrence = occurrence.updateMask(occurrence.divide(100)).clip(boundary)
 
                     var mapid = occurrence.getMap(vis);
 
                     assetTileUrl = 'https://earthengine.googleapis.com/map/' +
                         mapid.mapid +
-                        '/{z}/{x}/{y}?token=' + mapid.token;    
+                        '/{z}/{x}/{y}?token=' + mapid.token;
 
-                callback(assetTileUrl);
+                    callback(assetTileUrl);
 
                 });
 
                 wgis.addLayer(geeSurfaceWaterLayer, "Global Surface Water", $filter('translate')("MAPAREFERENCIA"), false);
 
-
                 /**
                  * HANSEN
                  */
-                var geeHansenLayer = new L.TileLayer.GeeScript(function(callback) {
+                var geeHansenLayer = new L.TileLayer.GeeScript(function (callback) {
 
                     var boundary = ee.FeatureCollection('ft:1-yEW8F5gVnjWwcKJ_-iWIFZoPaW0YXmxf4gScDVw');
 
                     var tree_cover = ee.Image('UMD/hansen/global_forest_change_2015').select("treecover2000").clip(boundary);
-                    
+
                     tree_cover = tree_cover.mask(tree_cover.gte(40))
 
                     var mapid = tree_cover.getMap({
-                        "palette":"00ff00, #008000",
-                        "min":40,
-                        "max":80,
+                        "palette": "00ff00, #008000",
+                        "min": 40,
+                        "max": 80,
                         "format": "png"
                     });
 
                     assetTileUrl = 'https://earthengine.googleapis.com/map/' +
                         mapid.mapid +
-                        '/{z}/{x}/{y}?token=' + mapid.token;  
+                        '/{z}/{x}/{y}?token=' + mapid.token;
 
                     callback(assetTileUrl);
 
                 });
 
                 wgis.addLayer(geeHansenLayer, "Hansen - Forest Cover 2000", $filter('translate')("MAPAREFERENCIA"), false);
-                
-                
-            },          
 
-            cartasInfo: function(wgis) {
+            },
+
+            cartasInfo: function (wgis) {
                 L.geoJson(cartas, {
-                    style: function(feature) {
+                    style: function (feature) {
                         return {
                             color: feature.properties.color
                         };
                     },
-                    onEachFeature: function(feature, layer) {
+                    onEachFeature: function (feature, layer) {
                         layer.bindPopup(feature.properties.description);
                     }
                 }).addTo(wgis._wgis.lmap);

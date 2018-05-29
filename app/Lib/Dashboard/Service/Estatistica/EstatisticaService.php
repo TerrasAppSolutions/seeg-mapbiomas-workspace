@@ -16,6 +16,8 @@ class EstatisticaService {
     
     /*
      * API
+     * coverage rest
+     * ex: http://workspace.localhost/dashboard/services/statistics/coverage?classification_ids=24&territory_id=3550308&year=2015
     */
     
     public function coverage($query) {
@@ -33,9 +35,6 @@ class EstatisticaService {
         if (isset($query['classification_ids'])) {
             $classification_ids = explode(",", $query['classification_ids']);
             $conditions['EstatisticaNivel.classe'] = $classification_ids;
-            //$conditions['OR'] = [];
-            //$conditions['OR']['EstatisticaNivel.classe'] = $classification_ids;
-            //$conditions['OR']['EstatisticaNivel.classe_l1'] = $classification_ids;
         }
         
         $estatisticas = [];

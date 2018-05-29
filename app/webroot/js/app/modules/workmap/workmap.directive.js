@@ -4,8 +4,8 @@
 angular.module('MapBiomas.workmap', []);
 
 angular.module('MapBiomas.workmap')
-    .directive('workmap', ['$compile', 'WorkmapAPI', 'WorkspaceLayers', 'MapCartasAPI', 'WorkmapDraw',
-        function($compile, WorkmapAPI, WorkspaceLayers, MapCartasAPI, WorkmapDraw) {
+    .directive('workmap', ['$compile', 'WorkmapAPI', 'WorkspaceLayers', 'MapCartasAPI', 'WorkmapDraw', 'GEEProcessDataService', 'LeafletCustomService',
+        function ($compile, WorkmapAPI, WorkspaceLayers, MapCartasAPI, WorkmapDraw, GEEProcessDataService, LeafletCustomService) {
             return {
                 restrict: 'A',
                 scope: {
@@ -15,9 +15,15 @@ angular.module('MapBiomas.workmap')
                     saveClasseArea: "=saveClasseArea",
                     dialogClasseAreasListar: "=dialogClasseAreasListar"
                 },
-                link: function($scope, element, attrs) {
+                link: function ($scope, element, attrs) {
 
                     element.attr('id', 'workmap');
+
+                    // variável de controle de pop de elevação
+                    var controlPopElevation = false;
+
+                    // marcador no mapa ao ser clicado
+                    var markerMap;
 
                     /*
                      * Inicia Componentes
@@ -48,6 +54,27 @@ angular.module('MapBiomas.workmap')
                     // instancia do mapa 
                     var workmap = $wgisWorkmap._wgis.lmap;
 
+                    // injeta coponente legenda
+                    WorkmapAPI.setLegend(L.control({
+                        position: 'bottomleft'
+                    }));
+
+                    // injeta coponente legenda
+                    WorkmapAPI.setMouseButton(L.control({
+                        position: 'bottomleft'
+                    }));
+
+                    $wgisWorkmap._wgis.createElevationBarOnMap = function () {
+                        WorkmapAPI.setBarGradient();
+                        controlPopElevation = true;
+                    }
+
+                    // adiciona legenda ao mapa do workspace
+                    $wgisWorkmap._wgis.removeElevationBarOnMap = function () {
+                        WorkmapAPI.removeGradientBar();
+                        controlPopElevation = false;
+                    }
+
                     // injeta instancia do mapa no controle do componente
                     WorkmapAPI.setMap(workmap);
 
@@ -72,7 +99,7 @@ angular.module('MapBiomas.workmap')
                     // injeta camada de cartas
                     WorkmapAPI.setCartasLayer(cartasLayers);
 
-                    var cartasByCodigo = _.indexBy(cartas.features, function(f) {
+                    var cartasByCodigo = _.indexBy(cartas.features, function (f) {
                         return f.properties.name;
                     });
 
@@ -83,15 +110,62 @@ angular.module('MapBiomas.workmap')
                     /*
                      * Configura Eventos
                      */
+                    // evento de click na camada de cartas obter elevação
+                    cartasLayers.on('click', function (e) {
+                        if (controlPopElevation) {
+                            controlPopElevation = false;
+                            // remove ponto anterior caso seja marcado um novo ponto
+                            LeafletCustomService.removeCustomMarker('markerElevation', workmap);
+
+                            // remove a exibição elevação do ponto anterior
+                            LeafletCustomService.removeDomUtil('showElevation', workmap);
+
+                            // exibibe valor da altitude naquele ponto clicado
+                            LeafletCustomService.createDomUtil({
+                                name: "loadingElevation",
+                                position: "bottomright",
+                                className: "info",
+                                dom: '<span><i class="fa fa-spinner fa-spin"></i></span>',
+                                map: workmap,
+                            });
+
+                            LeafletCustomService.createCustomMarker({
+                                name: "markerElevation",
+                                className: "fa fa-plus icon-marker-on-map",
+                                latlng: e.latlng,
+                                map: workmap,
+                            });
+
+                            setTimeout(function () {
+                                // remove carregamento de elevação
+                                LeafletCustomService.removeDomUtil('loadingElevation', workmap);
+
+                                GEEProcessDataService.geeGetElevationValue(e.latlng.lat, e.latlng.lng, setElevation);
+                            }, 500);
+                        }
+                    });
+
+                    function setElevation(lat, lng, elevation) {
+                        // exibibe valor da altitude naquele ponto clicado
+                        LeafletCustomService.createDomUtil({
+                            name: "showElevation",
+                            position: "bottomright",
+                            className: "info elevation-value-on-map",
+                            dom: '<span><span style="font-weight:900;">Altitude = ' + elevation + ' m</span> (lat: ' + lat.toFixed(5) + ', lng: ' + lng.toFixed(5) + ')</span>',
+                            map: workmap,
+                        });
+                        controlPopElevation = true;
+                    }
+
                     // evento de dbclick na camada de cartas
-                    cartasLayers.on('dblclick', function(e) {
+                    cartasLayers.on('dblclick', function (e) {
                         var carta = e.layer.feature.properties.name;
                         WorkmapAPI.selectCarta(carta);
                     });
 
                     // configura açoes do evento de click no botão direito do mouse
                     // na camada de cartas
-                    cartasLayers.on('contextmenu', function(e) {
+                    cartasLayers.on('contextmenu', function (e) {
 
                         var carta = e.layer.feature.properties.name;
 
@@ -104,7 +178,7 @@ angular.module('MapBiomas.workmap')
                             popup: popup
                         };
 
-                        workmap.on('popupopen', function(e) {
+                        workmap.on('popupopen', function (e) {
                             WorkmapAPI.setPopupOpened(e.popup);
                             var $popupcontent = $(e.popup._contentNode);
                             $compile($popupcontent)($scope);
@@ -115,7 +189,7 @@ angular.module('MapBiomas.workmap')
                     });
 
                     // dispara ações após seleção de uma carta
-                    WorkmapAPI.onSelectedCarta = function(carta) {
+                    WorkmapAPI.onSelectedCarta = function (carta) {
                         // Workmap
                         WorkmapAPI.closePopups();
 
@@ -124,7 +198,6 @@ angular.module('MapBiomas.workmap')
 
                         // recupera parametros classificação atual para a carta selecionda
                         var classificationParams = WorkmapAPI.getCartaClassification(carta);
-
 
                         // Scope
                         $scope.classificacao(classificationParams);
@@ -137,7 +210,7 @@ angular.module('MapBiomas.workmap')
                     // Dispara ações quando novos parametros de classificação são inseridos
                     // no mapa via scope
                     $scope.$watch('imagensProcessadas',
-                        function(params) {
+                        function (params) {
                             if (params) {
                                 WorkmapAPI.buildWorkLayer(params);
                             }
@@ -147,7 +220,7 @@ angular.module('MapBiomas.workmap')
         }
     ])
     .directive('popupWorklayer', ['$injector',
-        function($injector) {
+        function ($injector) {
             var template = '<table class="table table-striped">' +
                 '<thead>' +
                 '<tr><th class="bg-light-blue text-center" colspan="4">{{params.carta}}</th></tr>' +
@@ -176,7 +249,7 @@ angular.module('MapBiomas.workmap')
                 scope: {
                     params: "=popupWorklayer"
                 },
-                controller: function($scope) {
+                controller: function ($scope) {
 
                     var WorkmapAPI = $injector.get('WorkmapAPI');
 
@@ -186,30 +259,30 @@ angular.module('MapBiomas.workmap')
 
                     var popup = $scope.params.popup;
 
-                    var init = function() {
+                    var init = function () {
                         if (worklayers[carta]) {
                             $scope.worklayer = worklayers[carta];
                             $scope.classification = worklayers[carta].getClassificationParams();
                         }
                     };
 
-                    $scope.removeFromMapWorklayer = function() {
+                    $scope.removeFromMapWorklayer = function () {
                         $scope.worklayer.removeFromMap();
                         delete worklayers[carta];
                         $scope.worklayer = null;
-                        setTimeout(function() {
+                        setTimeout(function () {
                             WorkmapAPI.getMap().closePopup(popup);
                         }, 3000);
                     };
 
                     init();
                 },
-                link: function($scope, element, attrs) {},
+                link: function ($scope, element, attrs) {},
             };
         }
     ])
     .directive('popupClasseAreaDraw', ['$filter', 'WorkmapAPI', 'DtreeClasses', 'CacheApp',
-        function($filter, WorkmapAPI, DtreeClasses, CacheApp) {
+        function ($filter, WorkmapAPI, DtreeClasses, CacheApp) {
             var template = '<table class="table table-striped">' +
                 '<thead>' +
                 '<tr><th class="bg-light-blue text-center">{{\'CLASSEAREA\' | translate }}</th></tr>' +
@@ -262,7 +335,7 @@ angular.module('MapBiomas.workmap')
                  * da directive workmap.
                  * @param  {Angular.scope} $scope com objeto params definido em WorkmapDraw
                  */
-                controller: function($scope) {
+                controller: function ($scope) {
 
                     var layer;
 
@@ -275,7 +348,7 @@ angular.module('MapBiomas.workmap')
                         "fillColor": "#ff6666"
                     };
 
-                    var init = function(params) {
+                    var init = function (params) {
 
                         layer = params.layer;
 
@@ -286,13 +359,12 @@ angular.module('MapBiomas.workmap')
                         $scope.selectAnos = [];
 
                         // valores iniciais dos anos
-                        for (var i = 1985; i < 2016; i++) {
+                        for (var i = 1985; i < 2018; i++) {
                             $scope.selectAnos.push(i.toString());
                         }
 
                         // classes
                         $scope.areaClasses = DtreeClasses.getClasses();
-
 
                         $scope.selectBiomas = [{
                             id: 1,
@@ -336,7 +408,7 @@ angular.module('MapBiomas.workmap')
 
                     };
 
-                    $scope.saveClasseAreaLayer = function() {
+                    $scope.saveClasseAreaLayer = function () {
 
                         var classificationParams = WorkmapAPI.getClassificationParams();
 
@@ -357,11 +429,11 @@ angular.module('MapBiomas.workmap')
                         CacheApp.put("popupClasseAreaDraw.areaClasses", $scope.areaClasses);
                     };
 
-                    $scope.cancelClasseAreaLayer = function() {
+                    $scope.cancelClasseAreaLayer = function () {
                         $scope.params.cancelClasseAreaLayer(layer);
                     };
 
-                    var setStyle = function(classeId) {
+                    var setStyle = function (classeId) {
                         style["fillColor"] = _.findWhere(WorkmapAreaClasses, {
                             id: classeId
                         }).color;
@@ -378,19 +450,19 @@ angular.module('MapBiomas.workmap')
 
                     };
 
-                    $scope.$watch('params', function(params) {
+                    $scope.$watch('params', function (params) {
                         if (params) {
                             init(params);
                         }
                     });
 
                 },
-                link: function($scope, element, attrs) {},
+                link: function ($scope, element, attrs) {},
             };
         }
     ])
     .directive('mapcartas', ['MapCartasAPI', 'WorkmapAPI', 'MapCartaAPI', 'AppConfig',
-        function(MapCartasAPI, WorkmapAPI, MapCartaAPI, AppConfig) {
+        function (MapCartasAPI, WorkmapAPI, MapCartaAPI, AppConfig) {
             return {
                 restrict: 'A',
                 scope: {
@@ -400,14 +472,14 @@ angular.module('MapBiomas.workmap')
                     cartaEventClick: "=cartaEventClick",
                     classificacao: "=classificacao"
                 },
-                link: function($scope, element, attrs) {
+                link: function ($scope, element, attrs) {
                     var mapcartas;
                     var cartasLayers;
                     var biomasLayer;
 
                     $scope.imageData = {};
 
-                    var init = function() {
+                    var init = function () {
 
                         // id do elemento
                         element.attr('id', 'map-cartas');
@@ -416,6 +488,7 @@ angular.module('MapBiomas.workmap')
                         mapcartas = L.map('map-cartas', {
                             center: [-14.264383087562635, -59.0625],
                         });
+
 
                         // injeta instancia do mapa no controle de mapcartas
                         MapCartasAPI.setMap(mapcartas);
@@ -442,6 +515,7 @@ angular.module('MapBiomas.workmap')
                         });
                         mapcartas.addLayer(biomasLayer);
 
+
                         // adiciona camada de cartas
                         cartasLayers = L.geoJson(cartas, {
                             style: {
@@ -457,15 +531,106 @@ angular.module('MapBiomas.workmap')
 
                         mapcartas.addLayer(cartasLayers);
 
-                        cartasLayers.on('click', function(e) {
-                            var carta = e.layer.feature.properties.name;
+                        // seleção de carta ao clicar
+                        var cartaSelecionada;
+                        cartasLayers.on('click', function (e) {
+                            cartaSelecionada = e;
+                            carta = e.layer.feature.properties.name;
                             WorkmapAPI.selectCarta(carta);
                         });
+
+                        /**
+                         * passar o mouse por cima da carta do mapa a direita e exibir o valor da carta
+                         */
+                        var showChart = L.control({
+                            position: 'bottomleft'
+                        });
+
+                        var showChartName;
+                        var showChartExist = false;
+                        var layerSelected;
+
+                        showChart.onAdd = function (map) {
+                            var div = L.DomUtil.create('div', 'button-map');
+                            // loop through our density intervals and generate a label with a colored square for each interval
+                            div.innerHTML = '<button type="button" class="btn btn-default shadow-box" style="font-size:10px; font-weight:700;">' + showChartName + '</button>';
+                            return div;
+                        };
+
+                        cartasLayers.on('mouseover', function (e) {
+                            // define layer como azul
+                            layerBlueStyle(e.layer);
+
+                            showChartName = e.layer.feature.properties.name;
+                            if (!showChartExist) {
+                                showChart.addTo(mapcartas);
+                                showChartExist = true;
+                            }
+                        });
+
+                        cartasLayers.on('mouseout', function (e) {
+                            // volta com o layer padrão
+                            layerDefaultStyle(e.layer);
+
+                            if (cartaSelecionada) {
+                                layerRedStyle(cartaSelecionada.layer);
+                            }
+
+                            if (showChartExist) {
+                                showChart.removeFrom(mapcartas);
+                                showChartExist = false;
+                            }
+                        });
+
+                        /**
+                         * ************************************************************************
+                         */
 
                         mapcartas.fitBounds(cartasLayers.getBounds());
                         mapcartas.setZoom(4);
 
                     };
+
+                    /**
+                     * Função que define carta com entorno azul
+                     * @param {layerBlueStyle} layer 
+                     */
+                    function layerBlueStyle(layer) {
+                        layer.setStyle({
+                            "color": "blue",
+                            "weight": 1.5,
+                            "opacity": 0.9,
+                            "fillOpacity": 0.2,
+                            "fillColor": "#ff6666"
+                        });
+                    }
+
+                    /**
+                     * @param {layerDefaultStyle}
+                     */
+                    function layerDefaultStyle(layer) {
+                        layer.setStyle({
+                            "color": "#666666",
+                            "weight": 0.4,
+                            "opacity": 0.8,
+                            "fillOpacity": 0.2,
+                            "fillColor": "#ff6666"
+                        });
+                    }
+
+                    /**
+                     * Exibe a carta com borda vermelha
+                     * @param {layerRedStyle} layer 
+                     */
+                    function layerRedStyle(layer) {
+                        layer.setStyle({
+                            "color": "red",
+                            "weight": 1,
+                            "opacity": 0.9,
+                            "fillOpacity": 0.2,
+                            "fillColor": "#ff6666"
+                        });
+                    }
 
                     init();
                 }
@@ -473,13 +638,13 @@ angular.module('MapBiomas.workmap')
         }
     ])
     .directive('mapcarta', ['MapCartaAPI', 'WorkmapAPI',
-        function(MapCartaAPI, WorkmapAPI) {
+        function (MapCartaAPI, WorkmapAPI) {
             return {
                 restrict: 'A',
                 scope: {
                     mapcartaCtrl: '=ctrl'
                 },
-                link: function($scope, element, attrs) {
+                link: function ($scope, element, attrs) {
 
                     element.attr('id', 'map-carta');
 
@@ -502,7 +667,7 @@ angular.module('MapBiomas.workmap')
 
                     MapCartaAPI.setMap(mapcarta);
 
-                    setTimeout(function() {
+                    setTimeout(function () {
                         var height = element.parent().height().toString() + "px";
                         element.css('height', height);
                         mapcarta.invalidateSize()
@@ -512,7 +677,7 @@ angular.module('MapBiomas.workmap')
         }
     ])
     .directive('mapcartaslist', ['$injector', '$compile',
-        function($injector, $compile) {
+        function ($injector, $compile) {
             return {
                 restrict: 'A',
                 scope: {
@@ -520,7 +685,7 @@ angular.module('MapBiomas.workmap')
                     buscarCarta: "=buscarCarta"
                 },
                 controller: ['$scope',
-                    function($scope) {
+                    function ($scope) {
 
                         var AppConfig = $injector.get('AppConfig');
 
@@ -539,7 +704,7 @@ angular.module('MapBiomas.workmap')
                         var geeMosaicLayer;
 
                         var geeClassifLayer;
-                        
+
                         var geeClassFtLayer;
 
                         $scope.cartasByCodigo;
@@ -570,7 +735,7 @@ angular.module('MapBiomas.workmap')
                             }
                         };
 
-                        $scope.init = function(element) {
+                        $scope.init = function (element) {
 
                             $wgismap = $(element).wgis({
                                 osm: false,
@@ -623,25 +788,25 @@ angular.module('MapBiomas.workmap')
 
                             // Camadas de Assets                           
 
-                            geeMosaicLayer = new L.TileLayer.GeeScript(function(callback) {
+                            geeMosaicLayer = new L.TileLayer.GeeScript(function (callback) {
                                 var assetTileUrl = assetService
                                     .getMosaicByParamsGroup($scope.mapcartaslist);
                                 callback(assetTileUrl);
                             });
 
-                            geeClassifLayer = new L.TileLayer.GeeScript(function(callback) {
+                            geeClassifLayer = new L.TileLayer.GeeScript(function (callback) {
                                 var assetTileUrl = assetService
                                     .getClassifByParamsGroup($scope.mapcartaslist);
                                 callback(assetTileUrl);
                             });
-                           
-                            geeClassFtLayer = new L.TileLayer.GeeScript(function(callback) {
+
+                            geeClassFtLayer = new L.TileLayer.GeeScript(function (callback) {
                                 var assetTileUrl = assetService
                                     .getClassFtLayerByParamsGroup($scope.mapcartaslist);
                                 callback(assetTileUrl);
                             });
-                            
-                            geeIntegrationLayer = new L.TileLayer.GeeScript(function(callback) {
+
+                            geeIntegrationLayer = new L.TileLayer.GeeScript(function (callback) {
                                 var assetTileUrl = assetService
                                     .getIntegrationLayerByParamsGroup($scope.mapcartaslist);
                                 callback(assetTileUrl);
@@ -655,8 +820,7 @@ angular.module('MapBiomas.workmap')
                                 "Integrarion": geeIntegrationLayer,
                             });
 
-
-                            cartasLayersToClick.on('click', function(e) {
+                            cartasLayersToClick.on('click', function (e) {
 
                                 var cartaCodigo = e.layer.feature.properties.name;
 
@@ -668,10 +832,12 @@ angular.module('MapBiomas.workmap')
 
                                     var $popupcontent = $(new CartaGroupMapTable(popupContentJson).getHtml());
                                     e.layer.bindPopup($popupcontent[0]);
-                                    
-                                }else{                                    
-                                    var $popupcontent = $(new CartaGroupMapTable({carta_codigo : cartaCodigo}).getHtml());
-                                    e.layer.bindPopup($popupcontent[0]);                                    
+
+                                } else {
+                                    var $popupcontent = $(new CartaGroupMapTable({
+                                        carta_codigo: cartaCodigo
+                                    }).getHtml());
+                                    e.layer.bindPopup($popupcontent[0]);
                                 }
 
                                 e.layer.openPopup();
@@ -686,9 +852,9 @@ angular.module('MapBiomas.workmap')
                             lmap.addControl(layersControl);
                         };
 
-                        var setCartasList = function(cartaslist) {
+                        var setCartasList = function (cartaslist) {
 
-                            var cartaslist = _.map(cartaslist, function(value) {
+                            var cartaslist = _.map(cartaslist, function (value) {
                                 return value.Classificacao;
                             });
 
@@ -696,8 +862,8 @@ angular.module('MapBiomas.workmap')
 
                             cartasLayers.setStyle($scope.styles.default);
 
-                            setTimeout(function() {
-                                cartasLayers.eachLayer(function(layer) {
+                            setTimeout(function () {
+                                cartasLayers.eachLayer(function (layer) {
                                     var cartaCodigo = layer.feature.properties.name;
                                     if ($scope.cartasByCodigo[cartaCodigo]) {
                                         layer.setStyle($scope.styles.exist);
@@ -706,7 +872,7 @@ angular.module('MapBiomas.workmap')
                             }, 1000);
                         };
 
-                        $scope.$watch('mapcartaslist', function(newValue) {
+                        $scope.$watch('mapcartaslist', function (newValue) {
                             if (newValue) {
                                 setCartasList(newValue);
                                 if (lmap.hasLayer(geeMosaicLayer)) {
@@ -715,11 +881,11 @@ angular.module('MapBiomas.workmap')
                                 if (lmap.hasLayer(geeClassifLayer)) {
                                     geeClassifLayer.reprocess();
                                 }
-                                
+
                                 if (lmap.hasLayer(geeClassFtLayer)) {
                                     geeClassFtLayer.reprocess();
                                 }
-                                
+
                                 if (lmap.hasLayer(geeIntegrationLayer)) {
                                     geeIntegrationLayer.reprocess();
                                 }
@@ -727,21 +893,21 @@ angular.module('MapBiomas.workmap')
                         });
                     }
                 ],
-                link: function($scope, element, attrs) {
+                link: function ($scope, element, attrs) {
                     $scope.init(element);
                 }
             };
         }
     ])
     .directive('mapcartasexportlist', ['$injector',
-        function($injector) {
+        function ($injector) {
             return {
                 restrict: 'A',
                 scope: {
                     mapcartasexportlist: "=mapcartasexportlist"
                 },
                 controller: ['$scope',
-                    function($scope) {
+                    function ($scope) {
 
                         $scope.cartasByCodigo;
 
@@ -762,15 +928,15 @@ angular.module('MapBiomas.workmap')
                             }
                         };
 
-                        $scope.$watch('mapcartasexportlist', function(newValue) {
+                        $scope.$watch('mapcartasexportlist', function (newValue) {
                             if (newValue) {
                                 setCartasList(newValue);
                             }
                         });
 
-                        var setCartasList = function(cartaslist) {
+                        var setCartasList = function (cartaslist) {
 
-                            var cartaslist = _.map(cartaslist, function(value) {
+                            var cartaslist = _.map(cartaslist, function (value) {
                                 return value.ClassificacaoTarefa;
                             });
 
@@ -778,7 +944,7 @@ angular.module('MapBiomas.workmap')
 
                             $scope.cartasLayers.setStyle($scope.styles.default);
 
-                            $scope.cartasLayers.eachLayer(function(layer) {
+                            $scope.cartasLayers.eachLayer(function (layer) {
                                 var cartaCodigo = layer.feature.properties.name;
                                 if ($scope.cartasByCodigo[cartaCodigo]) {
                                     layer.setStyle($scope.styles.exist);
@@ -788,7 +954,7 @@ angular.module('MapBiomas.workmap')
 
                     }
                 ],
-                link: function($scope, element, attrs) {
+                link: function ($scope, element, attrs) {
 
                     var AppConfig = $injector.get('AppConfig');
 
@@ -838,7 +1004,7 @@ angular.module('MapBiomas.workmap')
 
                     lmap.fitBounds(cartasLayers.getBounds());
 
-                    cartasLayers.on('click', function(e) {
+                    cartasLayers.on('click', function (e) {
                         var cartaCodigo = e.layer.feature.properties.name;
                         if ($scope.cartasByCodigo[cartaCodigo]) {
                             var popupContentJson = $scope.cartasByCodigo[cartaCodigo];
@@ -857,7 +1023,7 @@ angular.module('MapBiomas.workmap')
         }
     ])
     .directive('classificacaoTarefaStatus', ['$injector',
-        function($injector) {
+        function ($injector) {
 
             var template =
                 '<small ng-show="taskFase[0]" class="label" style="background-color:#C5C56D">' +
@@ -896,45 +1062,45 @@ angular.module('MapBiomas.workmap')
                     tarefas: "=classificacaoTarefaStatus"
                 },
                 controller: ['$scope',
-                    function($scope) {
+                    function ($scope) {
 
                         $scope.taskFase = {};
 
-                        $scope.$watch('tarefas', function(tarefas) {
+                        $scope.$watch('tarefas', function (tarefas) {
                             if (!tarefas) {
                                 return;
                             }
-                            tarefas.forEach(function(tarefa) {
+                            tarefas.forEach(function (tarefa) {
                                 $scope.taskFase[tarefa.fase] = tarefa;
                             });
                         });
                     }
                 ],
-                link: function($scope, element, attrs) {}
+                link: function ($scope, element, attrs) {}
             };
         }
     ])
     // refatorar para directive
     .factory('CartaGroupMapTable', [
 
-        function() {
-            var CartaGroupMapTable = function(json) {
-                var table = '<table class="table table-striped"><tbody>' ;                
-                table += json.carta_codigo ? '<tr><th class="bg-gray text-center" colspan="2">{{carta_codigo}}</th></tr>':'';
-                table += json.biomas ? '<tr><td><strong>Bioma</strong></td><td>{{biomas}}</td></tr>':'';
-                table += json.years ? '<tr><td><strong>Years</strong></td><td>{{years}}</td></tr>':'';
-                table += json.count ? '<tr><td><strong>Total</strong></td><td>{{count}}</td></tr>':'';
-                table += '<tr><td colspan="2" class="text-center"><a href="javascript:;" ng-click="buscarCarta(cartaSelecionada)">Find chart parameters</a></td></tr>' ;
+        function () {
+            var CartaGroupMapTable = function (json) {
+                var table = '<table class="table table-striped"><tbody>';
+                table += json.carta_codigo ? '<tr><th class="bg-gray text-center" colspan="2">{{carta_codigo}}</th></tr>' : '';
+                table += json.biomas ? '<tr><td><strong>Bioma</strong></td><td>{{biomas}}</td></tr>' : '';
+                table += json.years ? '<tr><td><strong>Years</strong></td><td>{{years}}</td></tr>' : '';
+                table += json.count ? '<tr><td><strong>Total</strong></td><td>{{count}}</td></tr>' : '';
+                table += '<tr><td colspan="2" class="text-center"><a href="javascript:;" ng-click="buscarCarta(cartaSelecionada)">Find chart parameters</a></td></tr>';
                 table += '</tbody></table>';
 
-                $.each(json, function(key, value) {
+                $.each(json, function (key, value) {
                     table = table.replace('{{' + key + '}}', value);
                 });
 
                 this.tableHtml = table;
             };
 
-            CartaGroupMapTable.prototype.getHtml = function() {
+            CartaGroupMapTable.prototype.getHtml = function () {
                 return this.tableHtml;
             };
 
@@ -944,22 +1110,22 @@ angular.module('MapBiomas.workmap')
     // refatorar para directive
     .factory('CartaTarefaGroupMapTable', [
 
-        function() {
-            var CartaGroupMapTable = function(json) {
+        function () {
+            var CartaGroupMapTable = function (json) {
                 var table = '<table class="table table-striped"><tbody>' +
                     '<tr><th class="bg-gray text-center" colspan="2">{{carta_codigo}}</th></tr>' +
                     '<tr><td><strong>Biomas</strong></td><td>{{biomas}}</td></tr>' +
                     '<tr><td><strong>Years</strong></td><td>{{years}}</td></tr>' +
                     '<tr><td><strong>Total</strong></td><td>{{count}}</td></tr>' +
                     '</tbody></table>';
-                $.each(json, function(key, value) {
+                $.each(json, function (key, value) {
                     table = table.replace('{{' + key + '}}', value);
                 });
 
                 this.tableHtml = table;
             };
 
-            CartaGroupMapTable.prototype.getHtml = function() {
+            CartaGroupMapTable.prototype.getHtml = function () {
                 return this.tableHtml;
             };
 
@@ -967,15 +1133,15 @@ angular.module('MapBiomas.workmap')
         }
     ])
     .directive('graficoCartaProcessado', ['$injector',
-        function($injector) {
+        function ($injector) {
             return {
                 restrict: 'A',
                 template: '<canvas width="400" height="400"></canvas>',
                 scope: {
                     paramsGroup: "=graficoCartaProcessado"
                 },
-                controller: ['$scope', function($scope) {}],
-                link: function($scope, element, attrs) {
+                controller: ['$scope', function ($scope) {}],
+                link: function ($scope, element, attrs) {
 
                     var ctx = element.find('canvas');
 
@@ -1068,6 +1234,162 @@ angular.module('MapBiomas.workmap')
                             }
                         }
                     });
+                }
+            };
+        }
+    ])
+    .directive('filter', ['WorkmapAPI', 'MapCartasAPI', 'MapTaskLeaflet', '$rootScope',
+        function (WorkmapAPI, MapCartasAPI, MapTaskLeaflet, $rootScope) {
+            return {
+                restrict: 'A',
+                scope: {
+                    filterNumber: '=filterNumber',
+                    rules: '=rules',
+                    biome: '=biome',
+                    processMap: '&'
+                },
+                link: function ($scope, element, attrs) {
+                    var cartasLayers;
+                    var buttonProcess;
+                    /**
+                     * Através desta diretiva é possível criar diversos mapas com um mesmo elemento
+                     * Utiliza o número dele para direfenciar cada um e assim não ocorrer erro
+                     */
+                    var nameMap = 'map' + $scope.filterNumber;
+
+                    element.attr('id', nameMap);
+
+                    // inicia o mapa                    
+                    var filterMap = L.map(nameMap, {
+                        center: [-14.264383087562635, -59.0625],
+                        zoom: 3,
+                    });
+
+                    MapTaskLeaflet.setMap(nameMap, filterMap);
+
+                    // adiciona camada google
+                    var googleTerrain = new L.Google('SATELLITE');
+
+                    MapTaskLeaflet.getMap(nameMap).addLayer(googleTerrain);
+
+                    // configura as cartas no mapa
+                    MapTaskLeaflet.setCartaLayer(nameMap);
+
+                    // adiciona cartas somente para o primeiro mapa
+                    if ($scope.filterNumber == 1) {
+                        // seleção de carta ao clicar
+                        var cartaSelecionada;
+                        MapTaskLeaflet.getCartaLayer(nameMap).on('click', function (e) {
+                            // função de processamento de carta
+                            // é criado apenas uma vez, por isso 'if'
+                            if (!MapTaskLeaflet.getButtonProcess(nameMap)) {
+                                console.log("$scope.biome", $scope.biome);
+                                
+                                //buttonProcess = MapTaskLeaflet.processButtom(nameMap, 'map2');
+                                MapTaskLeaflet.setButtonProcess('map1', L.easyButton('fa-cogs fa-lg', function () {
+                                    MapTaskLeaflet.processTemporalFilterGee($scope.rules, MapTaskLeaflet.getLastCartaSelected('map1').feature.properties.name, $scope.biome, 'map2');
+                                    // adicionar a função de processamento
+                                }));
+                               
+                                MapTaskLeaflet.getButtonProcess(nameMap).addTo(MapTaskLeaflet.getMap(nameMap));
+                            }
+                            if (MapTaskLeaflet.getLastCartaSelected(nameMap)) {
+                                MapTaskLeaflet.layerDefaultStyle(MapTaskLeaflet.getLastCartaSelected(nameMap));
+                            }
+                            // cartaSelecionada = e;
+                            MapTaskLeaflet.setLastCartaSelected(nameMap, e.layer)
+                            carta = e.layer.feature.properties.name;
+                            // zoom na carta clicada
+                            MapTaskLeaflet.fitBounds(nameMap, e.layer);
+                            
+                            // fit bound no segunda mapa
+                            MapTaskLeaflet.fitBounds('map2', e.layer);
+
+                            // adicionando o estilo a carta clicada no segundo mapa
+                            // faz relação através do find
+                            var cartaLayer = MapTaskLeaflet.findCartaLayer('map2', e.layer);
+                            MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.findCartaLayer('map2', e.layer));
+                        });
+
+                        /**
+                         * passar o mouse por cima da carta do mapa a direita e exibir o valor da carta
+                         */
+                        var showChart = L.control({
+                            position: 'bottomleft'
+                        });
+
+                        var showChartName;
+                        var showChartExist = false;
+                        var layerSelected;
+
+                        showChart.onAdd = function (map) {
+                            var div = L.DomUtil.create('div', 'button-map');
+                            // loop through our density intervals and generate a label with a colored square for each interval
+                            div.innerHTML = '<button type="button" class="btn btn-default shadow-box" style="font-size:10px; font-weight:700;">' + showChartName + '</button>';
+                            return div;
+                        };
+
+                        /**
+                         * Mouse sobre a carta
+                         */
+                        MapTaskLeaflet.getCartaLayer(nameMap).on('mouseover', function (e) {
+                            // define layer como azul
+                            MapTaskLeaflet.layerBlueStyle(e.layer);
+                            showChartName = e.layer.feature.properties.name;
+                            if (!showChartExist) {
+                                showChart.addTo(MapTaskLeaflet.getMap(nameMap));
+                                showChartExist = true;
+                            }
+                        });
+
+                        /**
+                         * Quando o mouse deixa a carta
+                         */
+                        MapTaskLeaflet.getCartaLayer(nameMap).on('mouseout', function (e) {
+                            // volta com o layer padrão
+                            MapTaskLeaflet.layerDefaultStyle(e.layer);
+
+                            if (MapTaskLeaflet.getLastCartaSelected(nameMap)) {
+                                // console.log('MapTaskLeaflet.getLastCartaSelected(nameMap)', MapTaskLeaflet.getLastCartaSelected(nameMap));
+                                
+                                MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.getLastCartaSelected(nameMap));
+                            }
+
+                            if (showChartExist) {
+                                showChart.removeFrom(MapTaskLeaflet.getMap(nameMap));
+                                showChartExist = false;
+                            }
+                        });
+                    } else {
+                        // adiciona procura por carta
+                        MapTaskLeaflet.searchMap('map1', nameMap);
+
+                        MapTaskLeaflet.getSearchControl('map1').on('search:locationfound', function (e) {
+
+                            // zoom na carta clicada
+                            MapTaskLeaflet.fitBounds('map1', e.layer);
+                            // fit bound no segunda mapa
+                            MapTaskLeaflet.fitBounds(nameMap, e.layer);
+
+                            // var cartaLayer = MapTaskLeaflet.findCartaLayer('map2', e.layer);
+                            MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.findCartaLayer('map1', e.layer));
+                            MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.findCartaLayer(nameMap, e.layer));
+                            
+                            if (!MapTaskLeaflet.getButtonProcess('map1')) {
+                                //buttonProcess = MapTaskLeaflet.processButtom(nameMap, 'map2');
+                                MapTaskLeaflet.setButtonProcess('map1', L.easyButton('fa-cogs fa-lg', function () {
+                                    MapTaskLeaflet.processTemporalFilterGee($scope.rules, MapTaskLeaflet.getLastCartaSelected('map1').feature.properties.name, $scope.biome, nameMap);
+                                    // adicionar a função de processamento
+                                }));
+
+                                MapTaskLeaflet.getButtonProcess('map1').addTo(MapTaskLeaflet.getMap('map1'));
+                            }
+                        });
+                    }
+
+                    // bound de mapa
+                    MapTaskLeaflet.getMap(nameMap).fitBounds(MapTaskLeaflet.getCartaLayer(nameMap).getBounds());
+                    MapTaskLeaflet.getMap(nameMap).setZoom(4);
                 }
             };
         }

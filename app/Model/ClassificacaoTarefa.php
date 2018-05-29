@@ -28,7 +28,40 @@ class ClassificacaoTarefa extends AppModel
         'default' => array(
             'Classificacao' => array(
                 'Bioma'       => array(
-                    'fields' => array('nome'),
+                    'fields' => array('nome','colecao'),
+                ),
+                'DecisionTree',
+                'Carta'       => array(
+                    'fields' => array('codigo'),
+                ),
+                'CartaRegiao' => array(
+                    'fields' => array('regiao'),
+                ),
+                'Colecao'
+            ),
+        ),
+        'tarefaProcess' => array(
+            'Classificacao' => array(
+                /* 'fields' => array(
+                    "id",
+                    "carta_id",
+                    "bioma_id",
+                    "year",
+                    "t0",
+                    "t1",
+                    "cloudcover",
+                    "dtv",
+                    "sensor",
+                    "dt",
+                    "region",
+                    "created",
+                    "modified",
+                    "identificador",
+                    "versao",
+                    "versao_final"                                        
+                ), */
+                'Bioma'       => array(
+                    'fields' => array('nome','colecao'),
                 ),
                 'DecisionTree',
                 'Carta'       => array(
@@ -48,8 +81,11 @@ class ClassificacaoTarefa extends AppModel
         $DecisionTreeParameter = new DecisionTreeParameter();
 
         foreach ($results as $key => &$val) {
-            if (isset($val['Classificacao']['DecisionTree'])) {
+            if (isset($val['ClassificacaoTarefa']['geetask'])) {
+                $val['ClassificacaoTarefa']['geetask'] = json_decode($val['ClassificacaoTarefa']['geetask'], true);
+            }
 
+            if (isset($val['Classificacao']['DecisionTree'])) {
                 $Classificacao = array(
                     "Classificacao" => $val['Classificacao'],
                 );
@@ -64,9 +100,21 @@ class ClassificacaoTarefa extends AppModel
             }
 
             if (isset($val['Classificacao']['Colecao']['config'])) {
-                $val['Classificacao']['Colecao']['config'] = json_decode($val['Classificacao']['Colecao']['config'], true);                                
-            }  
+                $val['Classificacao']['Colecao']['config'] = json_decode($val['Classificacao']['Colecao']['config'], true);
+            }
+            
+            if (empty($val['Classificacao']['CartaRegiao'])) {
+                $val['Classificacao']['CartaRegiao'] = ['regiao' => '0'];
+            }
         }
         return $results;
+    }
+
+    public function beforeSave($options = array())
+    {
+        if (isset($this->data['ClassificacaoTarefa']['geetask'])) {
+            $this->data['ClassificacaoTarefa']['geetask'] = json_encode($this->data['ClassificacaoTarefa']['geetask']);
+        }
+        return true;
     }
 }

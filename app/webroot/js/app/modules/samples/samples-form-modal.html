@@ -1,0 +1,78 @@
+<div class="modal-header bg-aqua-active">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="modalClose()">
+        <span aria-hidden="true">
+            &times;
+        </span>
+    </button>
+    <h4 class="modal-title">
+        {{ 'AMOSTRACOLETA' | translate }}
+    </h4>
+</div>
+<div class="modal-body" ng-controller="ClassificacoesListarController">
+    <div class="row">
+        <div class="col-md-12">
+            <form name="classificationForm" role="form">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                {{ 'BIOMA' | translate }}
+                            </label>
+                            <select ng-model="vm.sample.bioma_id" ng-options="bioma.id as bioma.nome for bioma in selectBiomas" class="form-control" required="true">
+                                <option value="">{{'BIOMA' | translate}}</option> 
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                {{ 'AREAOBJETIVO' | translate }}
+                            </label>
+                            <select ng-model="classeArea.type_id" ng-options="type.id as type.type for type in selectPolygonTypes" class="form-control" required="true">
+                                    <option value="">{{\'SELECIONEAREAOBJETIVO\' | translate}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label>
+                                    {{ 'DATAINICIAL' | translate }}
+                                </label>
+                            <input pikaday="date0" format="YYYY-MM-DD" ng-model="classifProcess.Classificacao.t0" type="text" placeholder="Enter ..."
+                                class="form-control" required/>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            <label>
+                                    {{ 'DATAFINAL' | translate }}
+                                </label>
+                            <input pikaday="date1" format="YYYY-MM-DD" ng-model="classifProcess.Classificacao.t1" type="text" placeholder="Enter ..."
+                                class="form-control" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>
+                                {{ 'CLASSE' | translate }}
+                            </label>
+                            <select class="form-control" ng-model="classeArea.classe_id" ng-options="classe.id as (classe.cod + classe.classe) for (id,classe) in areaClasses" required></select>
+                        </div>
+                    </div>                    
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button ng-click="modalClose()" type="button" class="btn btn-success" data-dismiss="modal">
+        {{ 'SAVE' | translate }}
+    </button>
+    <button ng-click="modalClose()" type="button" class="btn btn-default" data-dismiss="modal">
+        {{ 'CANCEL' | translate }}
+    </button>
+</div>

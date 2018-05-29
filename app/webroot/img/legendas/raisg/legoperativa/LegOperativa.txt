@@ -1,0 +1,11 @@
+value,BiomaOperativo
+2,Amazonía Alta / 43a272 / 67 162 114
+3,Amazonía Baja / d0ff72 / 208 255 114
+4,Andes / 72014d / 114 1 77
+5,Cerrado / ffeaad / 255 234 173
+6,Cerrado-Sabana / e57400 / 229 116 0
+7,Chaco-Chiquitano / 004ea7 / 0 78 167
+8,Macarena / ff7c5c / 255 124 92
+9,Pantanal / 5c0000 / 92 0 0
+10,Sabanas y herbazales a8d35e / 168 211 94
+11,Tucumano-Boliviano / 99ff72 / 153 255 114

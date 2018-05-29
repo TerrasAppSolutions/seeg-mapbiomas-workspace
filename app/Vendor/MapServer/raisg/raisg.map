@@ -1,0 +1,56 @@
+MAP 
+    NAME "Territorios"
+    #STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection =================================== #
+    #
+    INCLUDE '../raisg/metadata_wms_projection.map'
+
+    OUTPUTFORMAT
+        NAME "png24"
+        #DRIVER GD/PNG #AGG/PNG
+        DRIVER AGG/PNG
+        MIMETYPE "image/png"
+        IMAGEMODE RGBA
+        EXTENSION "png"
+        FORMATOPTION "GAMMA=0.75"
+        TRANSPARENT ON
+    END
+
+    #/var/www/dev/dev-rafael/app/Vendor/MapServer/territories
+    # Camadas 
+    #================================
+    
+    ## Divisão de Departamento Adotada
+    INCLUDE 'territorios/divisao_departamento_adotada.map'
+
+    ## Divisão de Municipio Adotada
+    INCLUDE 'territorios/divisao_municipio_adotada.map'
+    
+    ## Divisão de País Adotada
+    INCLUDE 'territorios/divisao_pais_adotada.map'
+    
+    ## limite Biogeográfico
+    INCLUDE 'territorios/limite_biogeografico.map'
+    
+    ## limite Biomas Operativo
+    INCLUDE 'territorios/limite_biomas_operativo.map'
+    
+    ## limite Biomas
+    INCLUDE 'territorios/limite_biomas.map'
+    
+    ## limite
+    INCLUDE 'territorios/limite.map'
+
+    ## territorios pais bioma region
+    INCLUDE 'territorios/pais_bioma_region.map'
+
+    ## territorios pais bioma region
+    INCLUDE 'territorios/pais_bioma_region_limite.map'
+    
+
+
+END

@@ -21,7 +21,7 @@ MAP
 
         VALIDATION
             "default_territory_id" "1"
-            "territory_id" "[0-9]+"
+            "territory_id" ".+" 
 
             "default_year" "0"
             "year" "[0-9]+"
@@ -30,7 +30,7 @@ MAP
             "classification_ids" ".+"            
         END
 
-        DATA '/data/collections/COLECAO2/VRT/INTEGRACAO_PAIS_BRASIL_%year%.vrt'
+        DATA '/mnt/disks/data/collections/COLECAO2/VRT/INTEGRACAO_PAIS_BRASIL_%year%.vrt'
 
         MASK "territory_mask"
 
@@ -44,7 +44,7 @@ MAP
 
         VALIDATION
             "default_territory_id" "1"
-            "territory_id" "[0-9]+"
+            "territory_id" ".+" 
         END
 
         INCLUDE '../includes/database.map'
@@ -54,7 +54,7 @@ MAP
             SELECT 
             id, the_geom
             FROM territorios
-            WHERE id = '%territory_id%'                                     
+            WHERE id = ANY(string_to_array('%territory_id%',',') :: int[])                                  
          ) 
          as territorio
          USING UNIQUE id USING SRID=4674"

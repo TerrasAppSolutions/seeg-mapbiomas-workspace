@@ -28,6 +28,9 @@ angular.module('MapBiomas.services', ['ngResource']);
 // MapBiomas controles
 angular.module('MapBiomas.controllers', []);
 
+// MapBiomas widgets
+angular.module('MapBiomas.widgets', []);
+
 /*
  * Modulo MapBiomas
  */
@@ -41,5 +44,8 @@ angular.module('MapBiomas', [
     'MapBiomas.workmap.draw',
     'MapBiomas.dtree',
     'MapBiomas.controllers',
-    'MapBiomas.services'
+    'MapBiomas.services',
+    'MapBiomas.widgets',
+    // Modules (refactoring to feature structure)
+    'MapBiomas.samples'
 ]);

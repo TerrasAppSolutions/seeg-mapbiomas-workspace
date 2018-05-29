@@ -1,0 +1,30 @@
+LAYER
+    NAME "divisaopaisadotada"
+    TYPE POLYGON
+    STATUS ON
+
+    VALIDATION        
+        "default_color_id" "1"
+        "color_id" "[0-9]+"
+    END       
+
+    INCLUDE '../raisg/database.map'
+
+    DATA "the_geom from 
+        (
+        SELECT 
+        id, the_geom
+        FROM territorios
+        WHERE  territorios.categoria='Divisao de Pais adotada RAISG'                                                
+        ) 
+        as divisaopaisadotada
+        USING UNIQUE id USING SRID=4326"
+
+            
+    CLASS
+        STYLE                 
+            OUTLINECOLOR 115 227 239
+            WIDTH 1                  
+        END
+    END
+END

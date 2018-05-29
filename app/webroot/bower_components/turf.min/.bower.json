@@ -7,7 +7,7 @@
   },
   "_release": "e-tag:41fb6fca2",
   "main": "index.js",
-  "_source": "https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js",
+  "_source": "https://npmcdn.com/@turf/turf@4.6.1/turf.min.js",
   "_target": "*",
-  "_originalSource": "https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"
+  "_originalSource": "https://npmcdn.com/@turf/turf@4.6.1/turf.min.js"
 }

@@ -1,0 +1,30 @@
+LAYER
+    NAME "limite"
+    TYPE POLYGON
+    STATUS ON
+
+    VALIDATION        
+        "default_color_id" "1"
+        "color_id" "[0-9]+"
+    END       
+
+    INCLUDE '../raisg/database.map'
+
+    DATA "the_geom from 
+        (
+        SELECT 
+        id, the_geom
+        FROM territorios
+        WHERE  territorios.categoria='Limite RAISG'                                                
+        ) 
+        as limite
+        USING UNIQUE id USING SRID=4326"
+
+            
+    CLASS
+        STYLE                 
+            OUTLINECOLOR 255 64 64
+            WIDTH 1                  
+        END
+    END
+END

@@ -1,1 +1,3 @@
-#/var/www/app/Console/cake export_assets_status_update
+echo "Cron process_tarefa started at $(date) \n"
+/var/www/app/Console/cake process_tarefa >> /var/www/app/tmp/logs/cron.log 2>&1
+

@@ -21,6 +21,8 @@
         <!-- Plugins -->
         <link rel="stylesheet" href="bower_components/jstree/dist/themes/default/style.min.css"/>
         <link rel="stylesheet" href="bower_components/pikaday/css/pikaday.css"/>
+        <link rel="stylesheet" href="bower_components/Leaflet.EasyButton/src/easy-button.css"/>
+        <link rel="stylesheet" href="bower_components/leaflet-search/src/leaflet-search.css"/>
         <link rel="stylesheet" href="lib/wgis/wgis.css" />
         <link rel="stylesheet" href="lib/wgis/wgis.css" />
         <link rel="stylesheet" href="css/control.layers.minimap.css" />
@@ -64,7 +66,7 @@
         </script>
         <script src="bower_components/leaflet-dist/leaflet.js">
         </script>
-        <script src="bower_components/turf/turf.min.js">
+        <script src="bower_components/turf.min/index.js">
         </script>
         <script src="bower_components/pouchdb/dist/pouchdb.min.js">
         </script>
@@ -72,9 +74,11 @@
         </script>
         <script src="bower_components/select2/select2.min.js">
         </script>
-        <!--<script src="bower_components/chart.js/dist/Chart.bundle.min.js">
-        </script>        -->
+        <!-- <script src="bower_components/admin-lte/plugins/chartjs/Chart.min.js">
+        </script> -->  
         <script src="http://maps.google.com/maps/api/js?v=3&amp;sensor=true">
+        </script>
+        <script src="bower_components/chartjs/Chart.min.js">
         </script>
         <!-- Plugins -->
         <script src="bower_components/leaflet-plugins/layer/tile/Google.js">
@@ -146,6 +150,10 @@
         </script>
         <script src="bower_components/angular-ui-select2/src/select2.js">
         </script>
+        <script src="bower_components/Leaflet.EasyButton/src/easy-button.js">
+        </script>
+        <script src="bower_components/leaflet-search/src/leaflet-search.js">
+        </script>
         <!-- Angularjs App modules -->
         <script src="js/app/app.modules.js">
         </script>
@@ -170,7 +178,7 @@
 
         <!-- Angularjs App -->
         <script src="js/app/app.js">
-        </script>
+        </script>        
         <!-- Angularjs App controllers -->
         <script src="js/app/controllers/mapbiomas.js">
         </script>
@@ -182,7 +190,11 @@
         </script>
         <script src="js/app/controllers/dtree.js">
         </script>
+        <script src="js/app/controllers/temporalFilter.js">
+        </script>
         <!-- Angularjs App services -->
+        <script src="js/app/services/amostra.js">
+        </script>
         <script src="js/app/services/classificacao.js">
         </script>
         <script src="js/app/services/classearea.js">
@@ -197,6 +209,22 @@
         </script>
         <script src="js/app/services/geeimages.js">
         </script>
+        <script src="js/app/services/geeProcessData.service.js">
+        </script>
+        <script src="js/app/services/leaflet-custom.service.js">
+        </script>
+        <script src="js/app/services/amostra.js">
+        </script>
+        <script src="js/app/services/cartaRegiaoInfo.js">
+        </script>
+        <script src="js/app/services/temporalFilter.js">
+        </script>
+        <script src="js/app/services/temporalFilterProject.js">
+        </script>
+        <script src="js/app/services/classes.js">
+        </script>
+        <script src="js/app/services/mapTaskLeaflet.js">
+        </script>
         <!-- Angularjs App directives -->
         <script src="js/app/directives.js">
         </script>
@@ -206,6 +234,34 @@
         <!-- Angularjs App utils -->
         <script src="js/app/utils.js">
         </script>
+        <!-- Angularjs App widgets -->
+        <script src="js/app/widgets/widget.altitude.gradient.js">
+        </script>
+
+
+        <!-- Angularjs App Modules (refactoring to feature structure) -->
+
+        <!-- Sample Module -->
+        <script src="js/app/modules/samples/samples.module.js">
+        </script>
+        <script src="js/app/modules/samples/samples.route.js">
+        </script>
+        <script src="js/app/modules/samples/samples-index.controller.js">
+        </script>
+        <script src="js/app/modules/samples/samples-map.directive.js">
+        </script>
+        <script src="js/app/modules/samples/samples-chart.directive.js">
+        </script>
+        <script src="js/app/modules/samples/samples-map.controller.js">
+        </script>
+        <script src="js/app/modules/samples/samples-map-layers.js">
+        </script>
+        <script src="js/app/modules/samples/samples-map-drawctrl.js">
+        </script>
+        <script src="js/app/modules/samples/samples-map-util.js">
+        </script>
+
+
         <!-- Storage -->
         <script type="text/javascript" src="js/assets/charts/<?php echo $appConfig['CHARTS']['file_geojson'];?>">
         </script>

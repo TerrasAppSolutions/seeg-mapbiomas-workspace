@@ -4,44 +4,7 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
             imgsref: function(wgis) {
 
                 var mapfilepath = AppConfig.MAPSERVER.mapfilepath;
-                var mapfilehost = AppConfig.MAPSERVER.mapfilehost;
-
-                //console.log(mapfilehost);
-                //console.log(mapfilepath + "/classification/coverage.map");
-
-                var covarage = L.tileLayer.wms("http://seeg-mapbiomas.terras.agr.br/wms", {
-                    layers: 'coverage',
-                    map: "wms/classification/coverage.map",
-                    year: 2005,
-                    territory_id: 10,
-                    classification_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 28, 21, 22, 23, 25, 24, 26, 27],                    
-                    format: 'image/png',
-                    transparent: true,
-                    attribution: "MapBiomas Workspace"
-                });
-
-                //wgis._wgis.lmap.addLayer(covarage);
-
-                var transition = L.tileLayer.wms("http://35.185.77.205:5000", {
-                    layers: 'transitions',
-                    map: "/wms/classification/transitions_group.map",
-                    territory_id: 10,
-                    year_t0: "2000",
-                    year_t1: "2016",
-                    transitions_group:[1,2,3],                    
-                    format: 'image/png',
-                    transparent: true
-                });
-
-                //wgis._wgis.lmap.addLayer(transition);                
-
-                //setTimeout(function(){
-                //    wgis._wgis.lmap.setView([
-                //        -23.0086,
-                //        -51.1626 
-                //        ]);
-                //    wgis._wgis.lmap.setZoom(12);                    
-                //},1000)
+                var mapfilehost = AppConfig.MAPSERVER.mapfilehost;                
 
                 var biomas = ['AMAZONIA', 'CAATINGA', 'CERRADO', 'PAMPA', 'PANTANAL', 'MATAATLANTICA'];
 
@@ -104,7 +67,7 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                 angular.forEach(biomasAnos, function(bioma, biomaName) {
                     if (bioma.anos.length > 0) {
                         wgis.addNodeLabel(biomaName, $filter('translate')('COLECAO') + " 1+>" + $filter('translate')('CLASSIFICACAONAOCONSOLIDADA'));
-
+                        console.log(biomaName, $filter('translate')('COLECAO') + " 1+>" + $filter('translate')('CLASSIFICACAONAOCONSOLIDADA'));
                     }
 
                     if (biomaName === $filter('translate')('ZONACOSTEIRA')) {
@@ -990,6 +953,42 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                         }
                     },
                     $filter('translate')('AREASPROTEGIDAS'), $filter('translate')('MAPAREFERENCIA') + "+>Vectors", false);
+
+
+
+                
+                /**
+                 * GLOBAL SURFACE WATER
+                 */
+
+                var geeSurfaceWaterLayer = new L.TileLayer.GeeScript(function(callback) {
+
+                    // var boundary = ee.FeatureCollection('ft:1-yEW8F5gVnjWwcKJ_-iWIFZoPaW0YXmxf4gScDVw');
+
+                    var gsw = ee.Image('JRC/GSW1_0/GlobalSurfaceWater');
+                    var occurrence = gsw.select('occurrence');
+
+                    var vis = {
+                        min:0,
+                        max:100,
+                        palette: ['red', 'blue']
+                        };
+                    
+                    // occurrence = occurrence.updateMask(occurrence.divide(100)).clip(boundary)
+
+                    var mapid = occurrence.getMap(vis);
+
+                    assetTileUrl = 'https://earthengine.googleapis.com/map/' +
+                        mapid.mapid +
+                        '/{z}/{x}/{y}?token=' + mapid.token;    
+
+                callback(assetTileUrl);
+
+                });
+
+                wgis.addLayer(geeSurfaceWaterLayer, "Global Surface Water", $filter('translate')("MAPAREFERENCIA"), false);
+
+
 
                 // Amazônia > TerraClass
                 wgis.addNodeLabel($filter('translate')('AMAZONIA'), $filter('translate')('MAPAREFERENCIA'));

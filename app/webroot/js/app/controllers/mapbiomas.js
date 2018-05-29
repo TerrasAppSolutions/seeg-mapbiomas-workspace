@@ -1,7 +1,7 @@
 'use strict';
 angular.module('MapBiomas.controllers')
     .controller('MapBiomasController', ['$rootScope', '$scope', '$routeParams', '$location', '$http', '$filter', '$injector',
-        function($rootScope, $scope, $routeParams, $location, $http, $filter, $injector) {
+        function ($rootScope, $scope, $routeParams, $location, $http, $filter, $injector) {
 
             var AppAuth = $injector.get('AppAuth');
             var Mload = $injector.get('Mload');
@@ -14,7 +14,7 @@ angular.module('MapBiomas.controllers')
             var CartaResultadoService = $injector.get('CartaResultadoService');
             var GEEImageService = $injector.get('GEEImageService');
             var GeeImageService = $injector.get('GeeImageService');
-            var CartaResultadoService = $injector.get('CartaResultadoService');
+            var CartaRegiaoInfoService = $injector.get('CartaRegiaoInfoService');
 
             var authUser = AppAuth.user;
 
@@ -23,11 +23,10 @@ angular.module('MapBiomas.controllers')
             var originatorEv;
             var cartaSelecionda;
 
-
             /**
              * Inicia controller
              */
-            $scope.init = function() {
+            $scope.init = function () {
                 // inicia variaveis iniciais                
                 $scope.processar_on = false;
                 $scope.forest = true;
@@ -48,7 +47,8 @@ angular.module('MapBiomas.controllers')
                 $scope.loadResultados = false;
 
                 // valores iniciais dos anos
-                for (var i = 2016; i >= 1985; i--) {
+                // para os territórios da raisg, anos irão até 2017
+                for (var i = 2018; i >= 1985; i--) {
                     $scope.selectAnos.push(i.toString());
                 }
 
@@ -59,7 +59,7 @@ angular.module('MapBiomas.controllers')
                 $scope.classificacaoResultados = [];
 
                 // lista as coleções disponíveis
-                ClassificacaoService.getColecoes({}, function(colecoes) {
+                ClassificacaoService.getColecoes({}, function (colecoes) {
                     $scope.colecoes = colecoes;
                 });
 
@@ -73,12 +73,11 @@ angular.module('MapBiomas.controllers')
                 decisionTreeList(true);
             };
 
-
             /**
              * Salva os parametros de classificação
              * @param {Object} classificacao objeto modelo de dados de classificacao
              */
-            $scope.salvarClassificacao = function(classificacao) {
+            $scope.salvarClassificacao = function (classificacao) {
 
                 // valida parametros de classificacao
                 if (!classificacaoValiacao(classificacao)) {
@@ -101,8 +100,7 @@ angular.module('MapBiomas.controllers')
                 classificacao.Classificacao.decision_tree_id = $scope.dtreeSelected.DecisionTree.id;
 
                 // salva a classificação
-                ClassificacaoService.save(classificacao, function(classificacaoResp) {
-
+                ClassificacaoService.save(classificacao, function (classificacaoResp) {
                     // atribui o id salvo                    
                     $scope.setClassificacao(classificacaoResp);
 
@@ -117,32 +115,29 @@ angular.module('MapBiomas.controllers')
                             order: "Classificacao.id DESC",
                             limit: 6
                         }
-                    }, function(respData) {
+                    }, function (respData) {
                         $scope.classificacaoResultados = respData;
-                    }, function() {});
-                },function(){
+                    }, function () {});
+                }, function () {
                     Notify.warning($filter('translate')('SALVAPARAMS-AVISO'));
                 });
             };
-
 
             /**
              * Salva novos parametros de classificação a partir de um existente
              * @param {Object} classificacao objeto modelo de dados de classificacao
              */
-            $scope.salvarNovoClassificacao = function(classificacao) {
+            $scope.salvarNovoClassificacao = function (classificacao) {
                 var newClassificacao = angular.copy(classificacao);
                 delete newClassificacao.Classificacao.id;
                 $scope.salvarClassificacao(newClassificacao);
             };
 
-
             /**
              * Processa imagem usando serviço gee python
              * @param {Object} classificacao objeto modelo de dados de classificacao
              */
-            $scope.geeImagemProcessar = function(classificacao) {
-
+            $scope.geeImagemProcessar = function (classificacao) {
                 var classificacaoProcesss = {
                     Classificacao: angular.copy(classificacao.Classificacao),
                     DecisionTree: {
@@ -154,7 +149,7 @@ angular.module('MapBiomas.controllers')
 
                 GeeImageService.getResultados(
                     classificacaoProcesss,
-                    function(respData) {
+                    function (respData) {
                         var data = respData.data;
                         data.classificationParams = classificacao;
                         data.classificationParams.DecisionTree = classificacaoProcesss.DecisionTree;
@@ -162,31 +157,30 @@ angular.module('MapBiomas.controllers')
                         $scope.$apply();
                         Mload.hide();
                     },
-                    function(err) {
-                        Mload.hide(function() {
+                    function (err) {
+                        Mload.hide(function () {
                             Mload.load("Google Earth Engine process error", err, "modal-warning");
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 Mload.hide();
                             }, 10000);
                         });
                     },
-                    function() {
+                    function () {
                         Mload.hide();
                         Mload.load("Google Earth Engine Authentication", "You must to give permission access to process images on Workspace.");
-                        setTimeout(function() {
+                        setTimeout(function () {
                             Mload.hide();
                         }, 5000);
                     }
                 );
             };
 
-
             /**
              * carrega dados de classificação ao selecionar uma carta
              * @param {String} carta codigo da carta selecionada
              * @param {Object} classificacao objeto modelo de dados de classificacao
              */
-            $scope.cartaEventClick = function(carta, classifProcess) {
+            $scope.cartaEventClick = function (carta, classifProcess) {
                 $scope.loadResultados = true;
                 ClassificacaoService.query({
                     options: {
@@ -196,7 +190,7 @@ angular.module('MapBiomas.controllers')
                         order: "Classificacao.id DESC",
                         limit: 6
                     }
-                }, function(respData) {
+                }, function (respData) {
                     $scope.classificacaoResultados = respData;
                     $scope.loadResultados = false;
                 });
@@ -216,18 +210,18 @@ angular.module('MapBiomas.controllers')
              * processa dados classificação e aplica os valores no formularios de classificação
              * @param {Object} classificacao objeto modelo de dados de classificacao
              */
-            $scope.processarResultado = function(classificacao) {
+            $scope.processarResultado = function (classificacao) {
                 $scope.setClassificacao(angular.copy(classificacao));
                 $('[href="#tab-classificacoes"]').tab('show');
                 $scope.geeImagemProcessar($scope.classifProcess);
             };
-            
+
             /**
              * Aplica os valores no formularios de classificação
              * @param {Object} classificacao objeto modelo de dados de classificacao
              */
-            $scope.setFormResultado = function(classificacao) {
-                $scope.setClassificacao(angular.copy(classificacao));                
+            $scope.setFormResultado = function (classificacao) {
+                $scope.setClassificacao(angular.copy(classificacao));
                 $('[href="#tab-classificacoes"]').tab('show');
             };
 
@@ -235,7 +229,7 @@ angular.module('MapBiomas.controllers')
              * Função que executa quando o componente 
              * grafico decisiontree é modificado
              */
-            $scope.dtreeRender = function(dtree) {
+            $scope.dtreeRender = function (dtree) {
 
                 $scope.dtreeSelected.DecisionTree.dtree = dtree;
 
@@ -257,16 +251,15 @@ angular.module('MapBiomas.controllers')
 
             };
 
-
             /**
              * aplica os valores no formularios de classificação
              * @param {Object} classificacao objeto modelo de dados de classificacao
              */
-            $scope.setClassificacao = function(classificacao) {
+            $scope.setClassificacao = function (classificacao) {
                 if (classificacao.Classificacao.decision_tree_id) {
 
                     var dtreeSelected;
-                    $scope.decisiontrees.forEach(function(value, index) {
+                    $scope.decisiontrees.forEach(function (value, index) {
                         if (value.DecisionTree.id == classificacao.Classificacao.decision_tree_id) {
                             dtreeSelected = angular.copy($scope.decisiontrees[index]);
                         }
@@ -280,17 +273,18 @@ angular.module('MapBiomas.controllers')
                 }
 
                 $scope.classifProcess = classificacao;
+
                 $scope.classifProcess.Classificacao.versao = parseInt($scope.classifProcess.Classificacao.versao);
             };
 
             /**
              * Função que executa quando dtree selecionada é alterada             
              */
-            $scope.dtreeSelectedChange = function(dtreeSelectedId) {
+            $scope.dtreeSelectedChange = function (dtreeSelectedId) {
 
                 var dtreeSelected;
 
-                $scope.decisiontrees.forEach(function(value, index) {
+                $scope.decisiontrees.forEach(function (value, index) {
                     if (value.DecisionTree.id == dtreeSelectedId) {
                         dtreeSelected = angular.copy($scope.decisiontrees[index]);
                         if ($scope.classifProcess.Classificacao.dtv) {
@@ -298,7 +292,6 @@ angular.module('MapBiomas.controllers')
                         }
                     }
                 });
-
 
                 if (!dtreeSelected) {
                     return;
@@ -327,7 +320,7 @@ angular.module('MapBiomas.controllers')
              * referente ao ano é modificado
              * @param {String} ano ano do parametro selecionado
              */
-            $scope.selectAnoChange = function(ano) {
+            $scope.selectAnoChange = function (ano) {
                 var resultadoAno = null;
                 if ($scope.classifProcess.Classificacao &&
                     $scope.classifProcess.Classificacao.t0 &&
@@ -351,15 +344,14 @@ angular.module('MapBiomas.controllers')
             /**
              * exibi as classes no mapa
              */
-            $scope.showClasses = function(class_, enable) {
+            $scope.showClasses = function (class_, enable) {
                 WorkmapAPI.showClasses(class_, enable);
             };
-
 
             /**
              * Exibe Modal de listagem de classificações
              */
-            $scope.dialogClassificacoesListar = function() {
+            $scope.dialogClassificacoesListar = function () {
                 var scopeCtrl = $scope;
 
                 var modalInstance = $uibModal.open({
@@ -369,7 +361,7 @@ angular.module('MapBiomas.controllers')
                     size: 'lg',
                     windowClass: 'classification-list',
                     resolve: {
-                        params: function() {
+                        params: function () {
                             return {
                                 processarResultado: scopeCtrl.processarResultado,
                                 cartaSelecionda: cartaSelecionda
@@ -382,7 +374,7 @@ angular.module('MapBiomas.controllers')
             /**
              * Exibe Modal de listagem de area de classe
              */
-            $scope.dialogClasseAreasListar = function() {
+            $scope.dialogClasseAreasListar = function () {
                 var scopeCtrl = $scope;
 
                 var modalInstance = $uibModal.open({
@@ -392,7 +384,7 @@ angular.module('MapBiomas.controllers')
                     size: 'lg',
                     windowClass: 'classification-list',
                     resolve: {
-                        params: function() {
+                        params: function () {
                             return {
                                 cartaSelecionda: cartaSelecionda
                             };
@@ -401,7 +393,7 @@ angular.module('MapBiomas.controllers')
                 });
             };
 
-            $scope.clearParams = function(classifProcess) {
+            $scope.clearParams = function (classifProcess) {
 
                 var classifProcessCopy = angular.copy(classifProcess);
 
@@ -412,20 +404,32 @@ angular.module('MapBiomas.controllers')
                 };
             };
 
-
-            $scope.$watch('classifProcess.Classificacao.carta', function(value) {
+            $scope.$watch('classifProcess.Classificacao.carta', function (value) {
                 if (value) {
                     ClassificacaoService.getCartaRegioes({
                         carta: value,
                         bioma: authUser.UsuarioBioma.Bioma.nome
-                    }, function(respData) {
+                    }, function (respData) {
                         $scope.cartaRegioes = respData;
                         $scope.loadResultados = false;
+                    });
+
+                    /**
+                     * Ao obter carta, ele obtém as regiões relacionadas com esta carta
+                     */
+                    CartaRegiaoInfoService.query({
+                        options: {
+                            conditions: {
+                                "name": value
+                            }
+                        }
+                    }, function (respData) {
+                        $scope.cartaRegiaoInfo = respData;
                     });
                 }
             });
 
-            $scope.$watch('elevation_on', function(newValue, oldValue) {
+            $scope.$watch('elevation_on', function (newValue, oldValue) {
                 if (newValue && $scope.classifProcess) {
                     $scope.classifProcess.Classificacao.elevation_on = 1;
                 } else {
@@ -433,12 +437,16 @@ angular.module('MapBiomas.controllers')
                 }
             });
 
-            var classificacaoValiacao = function(classificacao) {
+            $scope.getCartaRegiaoInfo = function () {
+                return $scope.cartaRegiaoInfo;
+            }
+
+            var classificacaoValiacao = function (classificacao) {
 
                 var valido = true;
 
                 // valida coleção
-                var colecaoSelected = _.find($scope.colecoes, function(c) {
+                var colecaoSelected = _.find($scope.colecoes, function (c) {
                     return c.Colecao.id == classificacao.Classificacao.colecao_id;
                 });
 
@@ -456,7 +464,7 @@ angular.module('MapBiomas.controllers')
                 return valido;
             };
 
-            var getDecisionTreeParams = function(dtree) {
+            var getDecisionTreeParams = function (dtree) {
 
                 var dtv = {};
 
@@ -466,7 +474,7 @@ angular.module('MapBiomas.controllers')
                     dtv.dtv3 = dtree['5-3'].rule.thresh;
                     dtv.dtv4 = dtree['2-1'].rule.thresh;
                 } else {
-                    angular.forEach(dtree, function(node, key) {
+                    angular.forEach(dtree, function (node, key) {
                         if (node.kind == 'decision') {
                             dtv[key] = node.rule.thresh;
                         }
@@ -476,7 +484,7 @@ angular.module('MapBiomas.controllers')
                 return dtv;
             };
 
-            var setDecisionTreeParams = function(decisionTree, dtv) {
+            var setDecisionTreeParams = function (decisionTree, dtv) {
                 var decisionTreeParams = decisionTree;
                 if (decisionTree.DecisionTree.id == 1 && dtv.dtv1) {
                     decisionTreeParams.DecisionTree.dtree['3-1'].rule.thresh = parseInt(dtv.dtv1)
@@ -484,7 +492,7 @@ angular.module('MapBiomas.controllers')
                     decisionTreeParams.DecisionTree.dtree['5-3'].rule.thresh = parseInt(dtv.dtv3);
                     decisionTreeParams.DecisionTree.dtree['2-1'].rule.thresh = parseInt(dtv.dtv4);
                 } else {
-                    angular.forEach(decisionTreeParams.DecisionTree.dtree, function(node, key) {
+                    angular.forEach(decisionTreeParams.DecisionTree.dtree, function (node, key) {
                         if (node.kind == 'decision' && dtv[key]) {
                             node.rule.thresh = dtv[key];
                         }
@@ -494,8 +502,7 @@ angular.module('MapBiomas.controllers')
                 return decisionTreeParams;
             };
 
-
-            var decisionTreeList = function(selectFirst, callback) {                
+            var decisionTreeList = function (selectFirst, callback) {
 
                 var conditions = {
                     "OR": [{
@@ -507,7 +514,7 @@ angular.module('MapBiomas.controllers')
                 };
 
                 if (authUser.Usuario.perfil_id == 1 || authUser.Usuario.perfil_id == 10) {
-                    conditions = {};                    
+                    conditions = {};
                 }
 
                 DecisionTreeService.query({
@@ -515,9 +522,9 @@ angular.module('MapBiomas.controllers')
                         conditions: conditions,
                         order: ["DecisionTree.bioma_id DESC", "DecisionTree.id ASC"]
                     }
-                }, function(respData) {
+                }, function (respData) {
 
-                    $scope.decisiontrees = _.map(respData, function(value) {
+                    $scope.decisiontrees = _.map(respData, function (value) {
 
                         var label = "ID: " + value.DecisionTree.id;
 
@@ -553,7 +560,7 @@ angular.module('MapBiomas.controllers')
                 });
             };
 
-            var validateDtreeLayers = function(paramsLayers, dtree) {
+            var validateDtreeLayers = function (paramsLayers, dtree) {
 
                 if (!dtree) {
                     return {};
@@ -565,7 +572,7 @@ angular.module('MapBiomas.controllers')
 
                 var dtreeKeys = Object.keys(dtree);
 
-                dtreeKeys.forEach(function(dtreeKey) {
+                dtreeKeys.forEach(function (dtreeKey) {
                     var dtreeNode = dtree[dtreeKey];
                     if (dtreeNode.kind == 'decision') {
                         if (paramsLayers[dtreeNode.rule.variable]) {

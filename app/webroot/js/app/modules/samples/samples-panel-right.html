@@ -1,0 +1,132 @@
+<div ng-controller="SamplesIndexController as vm" class="box box-solid flex-column fill" style="margin-bottom: 0px">
+    <div class="box-header with-border">
+        <i class="fa fa-map-marker">
+                </i>
+        <h3 class="box-title">
+            Samples
+        </h3>
+    </div>
+    <div class="box-body flex-1 scrolly">
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">
+                    <i class="fa fa-map-o">
+                    </i> Workspace
+                </a>
+            </li>
+            <li class="active">
+                Samples collecting
+            </li>
+        </ol>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form name="formFilter">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <div class="form-group">
+                                                <input ng-model="formFilterConditions.carta_paramid" ng-change="formFilterChange()" type="text" placeholder="{{'CARTA'| translate}} or {{'PARAM'| translate}} ID"
+                                                    class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div ng-hide="selectBiomasDisabled" class="col-xs-3">
+                                            <div class="form-group">
+                                                <select ng-model="formFilterConditions.bioma_id" ng-options="bioma.Bioma.id as bioma.Bioma.colecao | translate for bioma in biomas"
+                                                    ng-change="formFilterChange()" class="form-control" placeholder="Bioma">
+                                            <option value="">
+                                                {{ 'BIOMATODOS' | translate }}
+                                            </option>
+                                        </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div class="form-group">
+                                                <select ng-model="formFilterConditions.year" ng-options="ano as ano for ano in selectAnos" ng-change="formFilterChange()"
+                                                    class="form-control" placeholder="{{'YEAR'| translate}}">
+                                            <option value="">
+                                                {{'ANOTODOS'| translate}}
+                                            </option>
+                                        </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Bioma</th>
+                                    <th>Date</th>
+                                    <th>Classes</th>
+                                    <th>Reference</th>
+                                    <th>Area</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="amostra in vm.amostras">
+                                    <td>{{amostra.Amostra.id}}</td>
+                                    <td>{{amostra.Bioma.nome}}</td>
+                                    <td>
+                                        {{amostra.Amostra.data_inicial}} - {{amostra.Amostra.data_final}}
+                                    </td>
+                                    <td>
+                                        {{amostra.Amostra.id}}
+                                    </td>
+                                    <td>
+                                        {{amostra.Amostra.id}}
+                                    </td>
+                                    <td>
+                                        {{amostra.Amostra.id}}
+                                    </td>
+                                    <td>
+                                        <button ng-click="vm.viewSample(amostra)" class="btn btn-xs btn-default" type="button" data-toggle="tooltip" data-placement="left"
+                                            title="View">
+                                            <i class="fa fa-eye"></i>
+                                        </button>
+                                        <button ng-click="vm.editSample(amostra)" class="btn btn-xs btn-info" type="button" data-toggle="tooltip" data-placement="left"
+                                            title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button ng-click="vm.editSample(amostra)" class="btn btn-xs btn-warning" type="button" data-toggle="tooltip" data-placement="left"
+                                            title="Edit">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-show='vm.amostras.length > 0' paginate-links paginate="vm.paginate.paginate" total-pages="vm.paginate.total" page-size="vm.paginate.limit"
+                            page="vm.paginate.page" class="pull-left">
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <uib-tabset active="activeJustified" justified="true">
+                            <uib-tab index="0" heading="Classes">
+                                <div samples-chart-classes></div>                                 
+                            </uib-tab>
+                            <uib-tab index="1" heading="Variância">
+                                <div samples-chart-classes></div>                                 
+                            </uib-tab>
+                            <uib-tab index="2" heading="Correlação">
+                                <div samples-chart-classes></div>                                 
+                            </uib-tab>                            
+                        </uib-tabset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

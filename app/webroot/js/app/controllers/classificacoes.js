@@ -1,12 +1,15 @@
 'use strict';
 angular.module('MapBiomas.controllers')
     .controller('ClassificacoesListarController', ['$rootScope', '$scope', '$stateParams', '$location', '$http', '$injector', '$filter', '$window',
-        function($rootScope, $scope, $stateParams, $location, $http, $injector, $filter, $window) {
+        function ($rootScope, $scope, $stateParams, $location, $http, $injector, $filter, $window) {
+
+            var vm = this;
 
             // dependências 
             var Notify = $injector.get('Notify');
             var ClassificacaoService = $injector.get('ClassificacaoService');
             var ExportacaoTarefaService = $injector.get('ExportacaoTarefaService');
+            var CartaRegiaoInfoService = $injector.get('CartaRegiaoInfoService');
             var authUser = $injector.get('AppAuth').user;
 
             // paginação 
@@ -19,7 +22,7 @@ angular.module('MapBiomas.controllers')
             $scope.classificacoesTotal;
 
             // modo de listar: 'table' ou 'map'
-            $scope.viewMode = "table";
+            $scope.viewMode = "map";
 
             $scope.selectAnos = [];
 
@@ -29,7 +32,7 @@ angular.module('MapBiomas.controllers')
             $scope.exportCSVloading = false;
 
             // inicia controller
-            var init = function() {
+            var init = function () {
 
                 // somente administrador pode selecionar bioma
                 if (authUser.Usuario.perfil_id != 1) {
@@ -44,15 +47,15 @@ angular.module('MapBiomas.controllers')
                 }
 
                 // anos disponiveis para pesquisa
-                for (var i = 2016; i >= 1985; i--) {
+                for (var i = 2018; i >= 1985; i--) {
                     $scope.selectAnos.push(i.toString());
                 }
 
                 var actions = {
-                    table: function() {
+                    table: function () {
                         $scope.paginate($scope.page, $scope.pageSize);
                     },
-                    map: function() {
+                    map: function () {
                         $scope.loadMapCartasList();
                         $scope.paginate($scope.page, $scope.pageSize);
                     }
@@ -60,18 +63,18 @@ angular.module('MapBiomas.controllers')
                 actions[$scope.viewMode]();
 
                 // lista as coleções disponíveis
-                ClassificacaoService.getColecoes({}, function(colecoes) {
+                ClassificacaoService.getColecoes({}, function (colecoes) {
                     $scope.colecoes = colecoes;
                 });
 
                 // lista os biomas disponíveis
-                ClassificacaoService.getBiomas({}, function(biomas) {
+                ClassificacaoService.getBiomas({}, function (biomas) {
                     $scope.biomas = biomas;
                 });
             };
 
             // paginação de listagem de parametros de classificação
-            $scope.paginate = function(page, limit) {
+            $scope.paginate = function (page, limit) {
 
                 var paginateConditions = factoryListConditions($scope.formFilterConditions);
 
@@ -86,12 +89,12 @@ angular.module('MapBiomas.controllers')
                         conditions: paginateConditions,
                         order: "Classificacao.id DESC",
                     }
-                }, function(result) {
+                }, function (result) {
                     $scope.paramsClassificacoes = result.data;
                     $scope.page = result.page;
                     $scope.totalPages = result.totalPages;
                     $scope.classificacoesTotal = result.total;
-                }, function(err) {
+                }, function (err) {
 
                 });
             };
@@ -100,7 +103,7 @@ angular.module('MapBiomas.controllers')
              * Edita os parametros de classificação
              * @param {Object} classificacao objeto modelo de dados de classificacao
              */
-            $scope.editarClassificacao = function(classificacao) {
+            $scope.editarClassificacao = function (classificacao) {
                 if ($scope.modalClose) {
                     $scope.modalClose();
                 }
@@ -109,7 +112,7 @@ angular.module('MapBiomas.controllers')
             };
 
             // gera uma nova tarefa de exportação
-            $scope.mosaicTaskCreate = function(classificacao) {
+            $scope.mosaicTaskCreate = function (classificacao) {
                 var classificacaoExport = {
                     ClassificacaoTarefa: {
                         'classificacao_id': classificacao.Classificacao.id,
@@ -118,14 +121,14 @@ angular.module('MapBiomas.controllers')
                     }
                 };
 
-                ExportacaoTarefaService.save(classificacaoExport, function(classificacaoExportResp) {
+                ExportacaoTarefaService.save(classificacaoExport, function (classificacaoExportResp) {
                     Notify.info($filter('translate')('EXPORTTASKSALVO'));
                     $scope.paginate($scope.page, $scope.pageSize);
                 });
             };
 
             // gera uma nova tarefa de exportação
-            $scope.consolidateTaskCreate = function(classificacao) {
+            $scope.consolidateTaskCreate = function (classificacao) {
                 var classificacaoExport = {
                     ClassificacaoTarefa: {
                         'classificacao_id': classificacao.Classificacao.id,
@@ -134,14 +137,14 @@ angular.module('MapBiomas.controllers')
                     }
                 };
 
-                ExportacaoTarefaService.save(classificacaoExport, function(classificacaoExportResp) {
+                ExportacaoTarefaService.save(classificacaoExport, function (classificacaoExportResp) {
                     Notify.info($filter('translate')('EXPORTTASKSALVO'));
                     $scope.paginate($scope.page, $scope.pageSize);
                 });
             };
 
             // gera uma nova tarefa de exportação
-            $scope.removeTask = function(classificacao) {
+            $scope.removeTask = function (classificacao) {
                 console.log(classificacao);
                 return;
                 var classificacaoExport = {
@@ -152,27 +155,27 @@ angular.module('MapBiomas.controllers')
                     }
                 };
 
-                ExportacaoTarefaService.save(classificacaoExport, function(classificacaoExportResp) {
+                ExportacaoTarefaService.save(classificacaoExport, function (classificacaoExportResp) {
                     Notify.info($filter('translate')('EXPORTTASKSALVO'));
                     $scope.paginate($scope.page, $scope.pageSize);
                 });
             };
 
             // processar imagem no terras engine
-            $scope.processarResultado = function(classificacao) {
+            $scope.processarResultado = function (classificacao) {
                 if ($scope.modalProcessarResultado) {
                     $scope.modalProcessarResultado(classificacao);
                 }
             };
 
             // form filter funções
-            $scope.formFilterChange = function() {
+            $scope.formFilterChange = function () {
                 var actions = {
-                    table: function() {
+                    table: function () {
                         $scope.page = 1;
                         $scope.paginate($scope.page, $scope.pageSize);
                     },
-                    map: function() {
+                    map: function () {
                         $scope.page = 1;
                         $scope.paginate($scope.page, $scope.pageSize);
                         $scope.loadMapCartasList();
@@ -181,15 +184,15 @@ angular.module('MapBiomas.controllers')
                 actions[$scope.viewMode]();
             };
 
-            $scope.formFilterClear = function() {
+            $scope.formFilterClear = function () {
                 $scope.formFilterConditions = {};
                 $('#formFilter-data_inicial').val("");
                 $('#formFilter-data_final').val("");
                 var actions = {
-                    table: function() {
+                    table: function () {
                         $scope.paginate($scope.page, $scope.pageSize);
                     },
-                    map: function() {
+                    map: function () {
                         $scope.loadMapCartasList();
                     }
                 };
@@ -197,7 +200,7 @@ angular.module('MapBiomas.controllers')
             };
 
             // listar dados para map view
-            $scope.loadMapCartasList = function() {
+            $scope.loadMapCartasList = function () {
 
                 var conditions = factoryListConditions($scope.formFilterConditions);
 
@@ -209,38 +212,38 @@ angular.module('MapBiomas.controllers')
                     options: {
                         conditions: conditions
                     }
-                }, function(result) {
+                }, function (result) {
 
-                    var total = _.reduce(result, function(memo, value) {
+                    var total = _.reduce(result, function (memo, value) {
                         return memo + value.Classificacao.count;
                     }, 0);
 
                     $scope.mapcartaslist = result;
                     //Notify.info(total + ' records found');
 
-                }, function(err) {});
+                }, function (err) {});
 
             };
 
-            $scope.viewModeChange = function() {
+            $scope.viewModeChange = function () {
                 var actions = {
-                    table: function() {
+                    table: function () {
                         $scope.paginate($scope.page, $scope.pageSize);
                     },
-                    map: function() {
+                    map: function () {
                         $scope.loadMapCartasList();
                     }
                 };
                 actions[$scope.viewMode]();
             };
 
-            $scope.buscarCartaMap = function(cartaCodigo) {
+            $scope.buscarCartaMap = function (cartaCodigo) {
                 $scope.formFilterConditions.carta_paramid = cartaCodigo;
                 $scope.formFilterChange();
             };
 
             // exporta registros para formato csv
-            $scope.exportToCSV = function() {
+            $scope.exportToCSV = function () {
 
                 var paginateConditions = factoryListConditions($scope.formFilterConditions);
 
@@ -256,14 +259,14 @@ angular.module('MapBiomas.controllers')
                     options: {
                         conditions: paginateConditions
                     }
-                }, function(result) {
+                }, function (result) {
                     $scope.exportCSVloading = false;
                     downloadWin.location = result;
                 });
             };
 
             // construtor de condições de pesquisa
-            var factoryListConditions = function(formFilterConditions) {
+            var factoryListConditions = function (formFilterConditions) {
                 var conditions = {};
 
                 var data_inicial, data_final;
@@ -346,7 +349,7 @@ angular.module('MapBiomas.controllers')
         }
     ])
     .controller('ClassificacoesListarModalController',
-        function($scope, $uibModalInstance, params) {
+        function ($scope, $uibModalInstance, params) {
 
             /**
              * Controller do modal de listagem de classificações
@@ -357,29 +360,33 @@ angular.module('MapBiomas.controllers')
 
             $scope.cartaSelecionda = params.cartaSelecionda;
 
-            $scope.modalProcessarResultado = function(classificacao) {
+            $scope.modalProcessarResultado = function (classificacao) {
                 params.processarResultado(classificacao);
                 $scope.modalClose();
             };
 
-            $scope.processarResultado = function(classificacao) {
+            $scope.processarResultado = function (classificacao) {
                 console.log("processarResultado modal");
             };
 
-            $scope.modalClose = function() {
+            $scope.modalClose = function () {
                 $uibModalInstance.close();
             };
 
         }
     )
     .controller('ClassificacoesEditarController', ['$scope', '$injector', '$stateParams', '$filter', '$location',
-        function($scope, $injector, $stateParams, $filter, $location) {
+        function ($scope, $injector, $stateParams, $filter, $location) {
+
+            var vm = this;
 
             // dependências
             var AppAuth = $injector.get('AppAuth');
             var Mload = $injector.get('Mload');
+            var Notify = $injector.get('Notify');
             var ClassificacaoService = $injector.get('ClassificacaoService');
             var DecisionTreeService = $injector.get('DecisionTreeService');
+            var CartaRegiaoInfoService = $injector.get('CartaRegiaoInfoService');
 
             // id do parametro da classificação
             var classificacaoId;
@@ -389,7 +396,13 @@ angular.module('MapBiomas.controllers')
 
             var authUser = AppAuth.user;
 
-            var init = function() {
+            /* definindo variáveis vm */
+            vm.cartaRegiaoInfo;
+
+            /* funções vm */
+            vm.getCartaRegiaoInfo = getCartaRegiaoInfo;
+
+            var init = function () {
                 // id do parametro de classificação 
                 if ($stateParams.classificacaoId) {
 
@@ -397,27 +410,45 @@ angular.module('MapBiomas.controllers')
 
                     ClassificacaoService.get({
                         id: classificacaoId
-                    }, function(respData) {
+                    }, function (respData) {
+
+                        /**
+                         * Ao obter carta, ele obtém as regiões relacionadas com esta carta
+                         */
+                        CartaRegiaoInfoService.query({
+                            options: {
+                                conditions: {
+                                    "name": respData.Classificacao.carta
+                                }
+                            }
+                        }, function (result) {
+                            vm.cartaRegiaoInfo = result;
+                        });
 
                         // lista arvores de decisao
-                        decisionTreeList(true, function() {
+                        decisionTreeList(true, function () {
                             setClassificacao(respData);
                         });
 
                         $classificacaoFormModal.modal('show');
 
-                    }, function() {});
+                    }, function () {});
                 }
 
             };
 
             /**
+             * Função de obtenção das cartas
+             */
+            function getCartaRegiaoInfo() {
+                return vm.cartaRegiaoInfo;
+            }
+
+            /**
              * Salva os parametros de classificação
              * @param {Object} classificacao objeto modelo de dados de classificacao
              */
-
-            $scope.salvarClassificacao = function(classificacao) {
-
+            $scope.salvarClassificacao = function (classificacao) {
                 // valida parametros de classificacao
                 if (!classificacaoValiacao(classificacao)) {
                     return;
@@ -439,20 +470,36 @@ angular.module('MapBiomas.controllers')
                 classificacao.Classificacao.decision_tree_id = $scope.dtreeSelected.DecisionTree.id;
 
                 // salva a classificação
-                ClassificacaoService.save(classificacao, function() {
+                ClassificacaoService.save(classificacao, function () {
                     $scope.paginate($scope.page, $scope.pageSize);
                     $classificacaoFormModal.modal('hide');
+                    // ajustar url
+                    $location.path('/classifications/parameters/');
+                    // notificação de parâmetros salvos
+                    Notify.success($filter('translate')('SALVAPARAMS-SUCESSO'));
                 });
             };
 
             /**
+             * salvar como uma nova classificação
+             */
+            vm.salvarClassificacaoComo = function (e, classificacao) {
+                e.preventDefault();
+                // deleção do id para criação de nova classificação
+                delete classificacao.Classificacao.id;
+                // alteração do nome para salvamento como cópia
+                classificacao.Classificacao.identificador = classificacao.Classificacao.identificador + ' copy';
+                $scope.salvarClassificacao(classificacao);
+            }
+
+            /**
              * Função que executa quando dtree selecionada é alterada             
              */
-            $scope.dtreeSelectedChange = function(dtreeSelectedId) {
+            $scope.dtreeSelectedChange = function (dtreeSelectedId) {
 
                 var dtreeSelected;
 
-                $scope.decisiontrees.forEach(function(value, index) {
+                $scope.decisiontrees.forEach(function (value, index) {
                     if (value.DecisionTree.id == dtreeSelectedId) {
                         dtreeSelected = angular.copy($scope.decisiontrees[index]);
                         if ($scope.classificacao.Classificacao.dtv) {
@@ -472,7 +519,7 @@ angular.module('MapBiomas.controllers')
              * Função que executa quando o componente 
              * grafico decisiontree é modificado
              */
-            $scope.dtreeRender = function(dtree) {
+            $scope.dtreeRender = function (dtree) {
                 $scope.dtreeSelected.DecisionTree.dtree = dtree;
             };
 
@@ -480,11 +527,11 @@ angular.module('MapBiomas.controllers')
              * aplica os valores no formularios de classificação
              * @param {Object} classificacao objeto modelo de dados de classificacao
              */
-            var setClassificacao = function(classificacao) {
+            var setClassificacao = function (classificacao) {
                 if (classificacao.Classificacao.decision_tree_id) {
 
                     var dtreeSelected;
-                    $scope.decisiontrees.forEach(function(value, index) {
+                    $scope.decisiontrees.forEach(function (value, index) {
                         if (value.DecisionTree.id == classificacao.Classificacao.decision_tree_id) {
                             dtreeSelected = $scope.decisiontrees[index];
                         }
@@ -501,7 +548,7 @@ angular.module('MapBiomas.controllers')
                 //$scope.classificacao.Classificacao.versao = parseInt($scope.classificacao.Classificacao.versao);
             };
 
-            var decisionTreeList = function(selectFirst, callback) {
+            var decisionTreeList = function (selectFirst, callback) {
 
                 var conditions = {
                     "OR": [{
@@ -521,9 +568,9 @@ angular.module('MapBiomas.controllers')
                         conditions: conditions,
                         order: ["DecisionTree.bioma_id DESC", "DecisionTree.id ASC"]
                     }
-                }, function(respData) {
+                }, function (respData) {
 
-                    $scope.decisiontrees = _.map(respData, function(value) {
+                    $scope.decisiontrees = _.map(respData, function (value) {
 
                         var label = "ID: " + value.DecisionTree.id;
 
@@ -552,12 +599,12 @@ angular.module('MapBiomas.controllers')
                 });
             };
 
-            var classificacaoValiacao = function(classificacao) {
+            var classificacaoValiacao = function (classificacao) {
 
                 var valido = true;
 
                 // valida coleção
-                var colecaoSelected = _.find($scope.colecoes, function(c) {
+                var colecaoSelected = _.find($scope.colecoes, function (c) {
                     return c.Colecao.id == classificacao.Classificacao.colecao_id;
                 });
 
@@ -575,7 +622,7 @@ angular.module('MapBiomas.controllers')
                 return valido;
             };
 
-            var getDecisionTreeParams = function(dtree) {
+            var getDecisionTreeParams = function (dtree) {
 
                 var dtv = {};
 
@@ -585,7 +632,7 @@ angular.module('MapBiomas.controllers')
                     dtv.dtv3 = dtree['5-3'].rule.thresh;
                     dtv.dtv4 = dtree['2-1'].rule.thresh;
                 } else {
-                    angular.forEach(dtree, function(node, key) {
+                    angular.forEach(dtree, function (node, key) {
                         if (node.kind == 'decision') {
                             dtv[key] = node.rule.thresh;
                         }
@@ -595,7 +642,7 @@ angular.module('MapBiomas.controllers')
                 return dtv;
             };
 
-            var setDecisionTreeParams = function(decisionTree, dtv) {
+            var setDecisionTreeParams = function (decisionTree, dtv) {
                 var decisionTreeParams = decisionTree;
                 if (decisionTree.DecisionTree.id == 1 && dtv.dtv1) {
                     decisionTreeParams.DecisionTree.dtree['3-1'].rule.thresh = parseInt(dtv.dtv1)
@@ -603,7 +650,7 @@ angular.module('MapBiomas.controllers')
                     decisionTreeParams.DecisionTree.dtree['5-3'].rule.thresh = parseInt(dtv.dtv3);
                     decisionTreeParams.DecisionTree.dtree['2-1'].rule.thresh = parseInt(dtv.dtv4);
                 } else {
-                    angular.forEach(decisionTreeParams.DecisionTree.dtree, function(node, key) {
+                    angular.forEach(decisionTreeParams.DecisionTree.dtree, function (node, key) {
                         if (node.kind == 'decision' && dtv[key]) {
                             node.rule.thresh = dtv[key];
                         }

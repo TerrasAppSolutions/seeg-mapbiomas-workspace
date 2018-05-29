@@ -18,7 +18,7 @@
         </li>
     </ol>
 </section>
-<section class="content" ng-controller="ClassificacoesListarController">
+<section class="content" ng-controller="ClassificacoesListarController as vm">
     <div class="row">
         <div class="col-xs-12">
             <div class="box box-primary">
@@ -28,11 +28,11 @@
                     </h3>
                     <div class="pull-right">
                         <select ng-model="viewMode" ng-change="viewModeChange()" class="form-control">
-                            <option value="table">
-                                {{ 'VIEWTABLE' | translate }}
-                            </option>
                             <option value="map">
                                 {{ 'VIEWMAP' | translate }}
+                            </option>
+                            <option value="table">
+                                {{ 'VIEWTABLE' | translate }}
                             </option>
                         </select>
                     </div>
@@ -58,6 +58,15 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <!-- <div  class="col-xs-6 col-md-2">
+                                                <div class="form-group">
+                                                    <select class="form-control" placeholder="Select region">
+                                                        <option value="">
+                                                            Select a region
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div> -->
                                             <div class="col-xs-6 col-sm-6 col-md-2">
                                                 <div class="form-group">
                                                     <select ng-model="formFilterConditions.year" ng-options="ano as ano for ano in selectAnos" ng-change="formFilterChange()" class="form-control" placeholder="{{'YEAR'| translate}}">
@@ -293,7 +302,7 @@
                                                 {{classificacao.Classificacao.elevation_max}}
                                             </td>
                                             <td>
-                                                {{classificacao.Classificacao.regiao}}
+                                                <span ng-if="classificacao.Classificacao.regiao_info">{{ classificacao.Classificacao.regiao_info.region + ' (' + classificacao.Classificacao.regiao_info.pais_iso + ')' }}</span>
                                             </td>
                                             <td>
                                                 {{classificacao.Classificacao.identificador}}

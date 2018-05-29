@@ -23,7 +23,7 @@ angular.module('MapBiomas.controllers')
             $scope.init = function() {
 
                 // anos disponiveis para pesquisa
-                for (var i = 2016; i >= 1985; i--) {
+                for (var i = 2018; i >= 1985; i--) {
                     $scope.selectAnos.push(i.toString());
                 }
 

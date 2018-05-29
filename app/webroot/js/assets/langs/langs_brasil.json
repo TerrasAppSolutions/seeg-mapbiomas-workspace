@@ -72,6 +72,7 @@ langs = {
         "VERSAO": "Version",
         "VERSAOFINAL": "Final version",
         "REGIAO": "Region",
+        "PAIS": "Country",
         "PROCESSIMAGE": "Processing",
         "AGUARDE": "Wait",
         "EXPORTPARAMS": "Export classification parameters",
@@ -151,8 +152,8 @@ langs = {
         "AREANAOOBSERVADA": "Not Observed Area",
         "FORMACOESFLORESTAIS": "Forest Formations",
         "FORMACOESFLORESTAISNATURAIS": "Natural Forest Formations",
-        "FLORESTADENSA": "Dense Forest",
-        "FLORESTAABERTA": "Open Forest",
+        "FLORESTADENSA": "Forest Formations",
+        "FLORESTAABERTA": "Savanna Formations",
         "FLORESTARASA": "Shallow Forest / Savannah and Wooded Steppe",
         "MANGUE": "Mangrove",
         "FLORESTAALAGADA": "Flooded Forest", 
@@ -194,7 +195,8 @@ langs = {
         "DTREESELECIONENODE": "Enable the edit mode by clicking in the node rule below",
         "CLASSDTREEVALIDTITULO1": "Decision tree not approved yet.",
         "CLASSDTREEVALIDTITULO": "The choosen decision tree has not been approved yet.",
-        "CLASSDTREEVALIDMSG": "You can't save parameters with this decision tree. Please, choose another."
+        "CLASSDTREEVALIDMSG": "You can't save parameters with this decision tree. Please, choose another.",
+        "AMOSTRACOLETA": "Sample collecting"
     },
     "pt": {
         "A": "a",
@@ -258,7 +260,7 @@ langs = {
         "ERROFORMCLASSIF": "Erro. Verifique os parâmetros de classificação",
         "CARTAINFO": "Please. Type the chart info",
         "PARAMSIDENTIFICADOR": "Label",
-        "PARAMSCLASSIF": "Parametros de classificação",
+        "PARAMSCLASSIF": "Parametros de classificação",        
         "PARAMSLISTAR": "Listar parâmetros",
         "PARAM": "Parametro",
         "CARTADESC": "Descrição",
@@ -386,6 +388,7 @@ langs = {
         "DTREECLASSEEDIT": "Edit class",
         "DTREESELECIONENODE": "Por favor, clique em um nó de regra para editar o valor",
         "CLASSDTREEVALIDTITULO": "Árvore de decisão não aprovada",
-        "CLASSDTREEVALIDMSG": "Você não pode salvar os parâmetros com esta árvore. Por favor, escolha outra."
+        "CLASSDTREEVALIDMSG": "Você não pode salvar os parâmetros com esta árvore. Por favor, escolha outra.",
+        "AMOSTRACOLETA": "Coleta de amostra"
     }
 };

@@ -1,9 +1,18 @@
 angular.module('MapBiomas.workmap')
-    .factory('WorkmapAPI', ['$filter', 'WorkLayer',
-        function($filter, WorkLayer) {
+    .factory('WorkmapAPI', ['$filter', 'WorkLayer', 'LeafletCustomService',
+        function ($filter, WorkLayer, LeafletCustomService) {
 
             // leaflet work map
             var workmap;
+
+            // var legend
+            var legend;
+
+            // botão de click do mouse
+            var mouseButton;
+
+            // exibir carta no mapa principal
+            var showChart;
 
             // camada de cartas do workmap
             var cartasLayer;
@@ -42,6 +51,82 @@ angular.module('MapBiomas.workmap')
                 },
                 getMap: function() {
                     return workmap;
+                },
+                setLegend: function (leg) {
+                    legend = leg;
+                },
+                getLegend: function() {
+                    return legend;
+                },
+                setMouseButton: function (mouse) {
+                    mouseButton = mouse;
+                },
+                setShowChart: function (chart) {
+                    showChart = chart;
+                },
+                getMouseButton: function() {
+                    return MouseButton;
+                },
+                setBarGradient: function () {
+                    /**
+                     * Escala de gradiente de altitude
+                     * Função de criação da barra de gradientes para camada de elevação mapa
+                     * Ex: http://leafletjs.com/examples/choropleth/
+                     */
+                    // função de geração de barra de gradiente
+                    function getColor(d) {
+                        var color = {
+                            '4000': 'linear-gradient(#FF0000, #FF5454)',
+                            '3000': 'linear-gradient(#FF5454, #FFAC2D)',
+                            '2000': 'linear-gradient(#FFAC2D, #FFFB00)',
+                            '1000': 'linear-gradient(#FFFB00, #17FF58)',
+                            '0': 'linear-gradient(#17FF58, #0014FF)'
+                        }
+
+                        return color[String(d)];
+                    }
+
+                    // adiciona barra de gradiente
+                    legend.onAdd = function (map) {
+
+                        var div = L.DomUtil.create('div', 'info legend'),
+                            grades = [0, 1000, 2000, 3000, 4000].reverse(),
+                            labels = [];
+
+                        // nome da legenda
+                        div.innerHTML = "<span>Elevation (meters)<br></span>"
+
+                        // loop through our density intervals and generate a label with a colored square for each interval
+                        for (var i = 0; i < grades.length; i++) {
+                            div.innerHTML += '<span style="font-weight:900;"><i style="background:' + getColor(grades[i]) + '"></i>' +
+                                grades[i] + ' m</span><br>';
+                        }
+
+                        return div;
+                    };
+                    // adiciona legenda ao mapa do workspace
+                    legend.addTo(WorkmapAPI.getMap());
+
+                    // adiciona botão de referência para mapa clicável                    
+                    mouseButton.onAdd = function (map) {
+                        var div = L.DomUtil.create('div', 'button-map');
+                        // loop through our density intervals and generate a label with a colored square for each interval
+                        div.innerHTML = '<button type="button btn-default" class="btn"><i class="fa fa-crosshairs"></i></button>';
+                        return div;
+                    };
+
+                    /**
+                     * Botão de exibição de possibilidade de click
+                     * url: https://github.com/CliffCloud/Leaflet.EasyButton
+                     */
+                    // adiciona botão para melhorar a experiência do usuário
+                    mouseButton.addTo(WorkmapAPI.getMap());
+                },
+                removeGradientBar: function () {
+                    legend.removeFrom(WorkmapAPI.getMap());
+                    mouseButton.removeFrom(WorkmapAPI.getMap());
+                    LeafletCustomService.removeDomUtil('showElevation', WorkmapAPI.getMap());
+                    LeafletCustomService.removeCustomMarker('markerElevation', WorkmapAPI.getMap());
                 },
                 buildWorkLayer: function(params) {
 
@@ -160,6 +245,27 @@ angular.module('MapBiomas.workmap')
                             delete worklayerList[key];
                         }
                     });
+
+                    /**
+                     * Exibe o valor da carta no mapa
+                     */
+                    if(showChart) {
+                        showChart.removeFrom(workmap);
+                    }
+
+                    this.setShowChart(L.control({
+                        position: 'bottomleft'
+                    }));
+
+                    // adiciona botão de referência para mapa clicável                    
+                    showChart.onAdd = function (map) {
+                        var div = L.DomUtil.create('div', 'button-map');
+                        // loop through our density intervals and generate a label with a colored square for each interval
+                        div.innerHTML = '<button type="button" class="btn btn-default shadow-box" style="font-size:14px; font-weight:700;">' + carta + '</button>';
+                        return div;
+                    };
+
+                    showChart.addTo(workmap);
 
                     // dispara evento de carta selecionada
                     this.onSelectedCarta(carta);

@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 
 class ExportAppController extends AppController {
     
-    public $components = array(
+    /* public $components = array(
        'Session',
        'Auth' => array(
            'authenticate' => array(
@@ -16,5 +16,5 @@ class ExportAppController extends AppController {
                )
            )
        ) 
-    );
+    ); */
 }

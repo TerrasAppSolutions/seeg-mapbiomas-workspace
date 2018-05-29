@@ -1,5 +1,5 @@
 /app/Config/CONFIG.ini
-/app/Config/CONFIG__*.ini
+/app/Config/CONFIG_*.ini
 /**/database.map
 /app/sftp-config.json
 /nbproject/

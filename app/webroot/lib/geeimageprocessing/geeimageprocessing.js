@@ -2,52 +2,32 @@
  * [Collection description]
  * @param {[type]} params [description]
  */
-var Collection = function(params) {
+var Collection = function (params) {
 
     this.options = {
         'L5': {
             'sr': {
-                'id': 'LT5_L1T_SR',
-                'bandNames': ['B1', 'B2', 'B3', 'B4', 'B5', 'B7'],
-                'newNames': ['blue', 'green', 'red', 'nir', 'swir1', 'swir2'],
+                'id': 'LANDSAT/LT05/C01/T1_SR',
+                'bandNames': ['B1', 'B2', 'B3', 'B4', 'B5', 'B7', 'B6', 'pixel_qa'],
+                'newNames': ['blue', 'green', 'red', 'nir', 'swir1', 'swir2', 'thermal', 'pixel_qa'],
                 'coefficient': 1
             },
-            'toa': {
-                'id': 'LANDSAT/LT5_L1T_TOA_FMASK',
-                'bandNames': ['B6', 'fmask'],
-                'newNames': ['thermal', 'fmask'],
-                'coefficient': 1
-            }
         },
         'L7': {
             'sr': {
-                'id': 'LE7_L1T_SR',
-                'bandNames': ['B1', 'B2', 'B3', 'B4', 'B5', 'B7'],
-                'newNames': ['blue', 'green', 'red', 'nir', 'swir1', 'swir2'],
+                'id': 'LANDSAT/LE07/C01/T1_SR',
+                'bandNames': ['B1', 'B2', 'B3', 'B4', 'B5', 'B7', 'B6', 'pixel_qa'],
+                'newNames': ['blue', 'green', 'red', 'nir', 'swir1', 'swir2', 'thermal', 'pixel_qa'],
                 'coefficient': 1
             },
-            'toa': {
-                'id': 'LANDSAT/LE7_L1T_TOA_FMASK',
-                'bandNames': ['B6_VCID_1', 'fmask'],
-                'newNames': ['thermal', 'fmask'],
-                'coefficient': 1
-            }
         },
         'L8': {
             'sr': {
-                'id': 'LC8_SR',
-                'bandNames': ['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B10'],
-                'newNames': ['blue', 'green', 'red', 'nir', 'swir1', 'swir2', 'thermal'],
+                'id': 'LANDSAT/LC08/C01/T1_SR',
+                'bandNames': ['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B10', 'pixel_qa'],
+                'newNames': ['blue', 'green', 'red', 'nir', 'swir1', 'swir2', 'thermal', 'pixel_qa'],
                 'coefficient': 1
             },
-            'toa': {
-                'id': 'LANDSAT/LC8_L1T_TOA_FMASK',
-                'bandNames': ['B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B10', 'fmask'],
-                'newNames': ['blue', 'green', 'red', 'nir', 'swir1', 'swir2', 'thermal',
-                    'fmask'
-                ],
-                'coefficient': 10000
-            }
         },
     };
 
@@ -56,7 +36,7 @@ var Collection = function(params) {
      * @param  {[type]} params [description]
      * @return {[type]}        [description]
      */
-    this.init = function(params) {
+    this.init = function (params) {
 
         this.params = params;
         this.filterParams();
@@ -64,50 +44,11 @@ var Collection = function(params) {
     };
 
     /**
-     * [joined2imgCol description]
-     * @param  {[type]} feature [description]
-     * @return {[type]}         [description]
-     */
-    this.joined2imgCol = function(feature) {
-
-        var primary = feature.get('primary');
-        var secondary = feature.get('secondary');
-        var image = ee.Image.cat(primary, secondary);
-
-        return ee.Image(image);
-    };
-
-    /**
-     * [joinCollections description]
-     * @param  {[type]} collection1 [description]
-     * @param  {[type]} collection2 [description]
-     * @return {[type]}             [description]
-     */
-    this.joinCollections = function(collection1, collection2) {
-
-        // Faz o join entre as duas coleções
-        var filterTimeEq = ee.Filter.equals({
-            "leftField": 'system:index',
-            "rightField": 'system:index'
-        });
-
-        // Aplica o join e retorna uma FeatureCollection.
-        var joinedCollection = ee.Join.inner().apply(
-            collection1, collection2, filterTimeEq);
-
-        // Converte joinedCollection para imageCollection
-        var imageCollection = ee.ImageCollection(
-            joinedCollection.map(this.joined2imgCol));
-        
-        return imageCollection;
-    };
-
-    /**
      * [imageCollection description]
      * @param  {[type]} collectionID [description]
      * @return {[type]}              [description]
      */
-    this.imageCollection = function(collectionID) {
+    this.imageCollection = function (collectionID) {
 
         var cc = "CLOUD_COVER";
 
@@ -115,7 +56,7 @@ var Collection = function(params) {
             .filterMetadata(cc, "less_than", this.params.cloudcover)
             .filterDate(this.params.t0, this.params.t1)
             .filterBounds(this.params.geometry);
-        
+
         return collection;
     };
 
@@ -123,54 +64,47 @@ var Collection = function(params) {
      * [filterBySensor description]
      * @return {[type]} [description]
      */
-    this.filterBySensor = function() {
+    this.filterBySensor = function () {
 
         var collection = null;
 
         switch (this.params.sensor) {
             case "L5":
-                collection = this.joinCollections(
-                    this.imageCollection(this.options.L5.sr.id).select(
-                        this.options.L5.sr.bandNames,
-                        this.options.L5.sr.newNames),
-                    this.imageCollection(this.options.L5.toa.id).select(
-                        this.options.L5.toa.bandNames,
-                        this.options.L5.toa.newNames)
-                );
+                collection = this.imageCollection(this.options.L5.sr.id)
+                    .select(
+                    this.options.L5.sr.bandNames,
+                    this.options.L5.sr.newNames
+                    );
                 break;
             case "L7":
-                collection = this.joinCollections(
-                    this.imageCollection(this.options.L7.sr.id).select(
-                        this.options.L7.sr.bandNames,
-                        this.options.L7.sr.newNames),
-                    this.imageCollection(this.options.L7.toa.id).select(
-                        this.options.L7.toa.bandNames,
-                        this.options.L7.toa.newNames)
-                );
+                collection = this.imageCollection(this.options.L7.sr.id)
+                    .select(
+                    this.options.L7.sr.bandNames,
+                    this.options.L7.sr.newNames
+                    );
                 break;
             case "LX":
-                var L5 = this.joinCollections(
-                    this.imageCollection(this.options.L5.sr.id).select(
-                        this.options.L5.sr.bandNames,
-                        this.options.L5.sr.newNames),
-                    this.imageCollection(this.options.L5.toa.id).select(
-                        this.options.L5.toa.bandNames,
-                        this.options.L5.toa.newNames));
+                var L5 = this.imageCollection(this.options.L5.sr.id)
+                    .select(
+                    this.options.L5.sr.bandNames,
+                    this.options.L5.sr.newNames
+                    );
 
-                var L7 = this.joinCollections(
-                    this.imageCollection(this.options.L7.sr.id).select(
-                        this.options.L7.sr.bandNames,
-                        this.options.L7.sr.newNames),
-                    this.imageCollection(this.options.L7.toa.id).select(
-                        this.options.L7.toa.bandNames,
-                        this.options.L7.toa.newNames));
+                var L7 = this.imageCollection(this.options.L7.sr.id)
+                    .select(
+                    this.options.L7.sr.bandNames,
+                    this.options.L7.sr.newNames
+                    );
 
                 collection = ee.ImageCollection(L5.merge(L7)).sort('DATE_ACQUIRED');
                 break;
+
             case "L8":
-                collection = this.imageCollection(this.options.L8.toa.id).select(
-                    this.options.L8.toa.bandNames,
-                    this.options.L8.toa.newNames);
+                collection = this.imageCollection(this.options.L8.sr.id)
+                    .select(
+                    this.options.L8.sr.bandNames,
+                    this.options.L8.sr.newNames
+                    );
         }
 
         return collection;
@@ -181,53 +115,35 @@ var Collection = function(params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.edgeRemoval = function(image) {
+    this.edgeRemoval = function (image) {
 
         var edgeSize = -5500.0;
 
         image = image.clip(
             image.geometry()
-            .buffer(edgeSize)
-            .simplify(1)
+                .buffer(edgeSize)
+                .simplify(1)
         );
 
         return image;
     };
 
-    this.applyCoef = function(image) {
-
-        var bands = ['blue', 'green', 'red', 'nir', 'swir1', 'swir2'];
-
-        for (var i = 0; i < bands.length; i++) {
-            image = image.addBands({
-                "srcImg": image.select([bands[i]]).multiply(10000),
-                "names": [bands[i]],
-                "overwrite": true
-            });
-        }
-
-        return image;
-    };
     /**
      * [filterParams description]
      * @return {[type]} [description]
      */
-    this.filterParams = function() {
-        
+    this.filterParams = function () {
+
         this.collection = this.filterBySensor()
             .map(this.edgeRemoval);
 
-        if (this.params.sensor === "L8") {
-            this.collection = this.collection.map(this.applyCoef);
-
-        }
     };
 
     /**
      * [getCollection description]
      * @return {[type]} [description]
      */
-    this.getCollection = function() {
+    this.getCollection = function () {
 
         return this.collection;
     };
@@ -238,13 +154,12 @@ var Collection = function(params) {
 /**
  * [SMA description]
  */
-var SMA = function(collection, params) {
+var SMA = function (collection, params) {
 
     this.bandNames = ['blue', 'green', 'red', 'nir', 'swir1', 'swir2'];
     this.outBandNames = ['gv', 'npv', 'soil', 'cloud'];
 
     this.spectralLib = {
-        // atmospher 805.6, 458.1, 286.8, 168.3, 46.8, 26.6
         'LX': [
             [119.0, 475.0, 169.0, 6250.0, 2399.0, 675.0], /*gv*/
             [1514.0, 1597.0, 1421.0, 3053.0, 7707.0, 1975.0], /*npv*/
@@ -256,10 +171,6 @@ var SMA = function(collection, params) {
             [1514.0, 1597.0, 1421.0, 3053.0, 7707.0, 1975.0], /*npv*/
             [1799.0, 2479.0, 3158.0, 5437.0, 7707.0, 6646.0], /*soil*/
             [4031.0, 8714.0, 7900.0, 8989.0, 7002.0, 6607.0] /*cloud*/
-            // [924.6, 933.1, 455.8, 6418.3, 2445.8, 701.6], /*gv*/
-            // [2319.6, 2055.1, 1707.8, 3221.3, 7753.8, 2001.6], /*npv*/
-            // [2604.6, 2937.1, 3444.8, 5605.3, 7753.8, 6672.6], /*soil*/
-            // [4836.6, 9172.1, 8186.8, 9157.3, 7048.8, 6633.6] /*cloud*/
         ]
     };
 
@@ -268,7 +179,7 @@ var SMA = function(collection, params) {
      * @param  {[type]} col [description]
      * @return {[type]}     [description]
      */
-    this.init = function(collection, params) {
+    this.init = function (collection, params) {
 
         this.collection = collection;
         this.params = params;
@@ -279,7 +190,7 @@ var SMA = function(collection, params) {
     /**
      * [setSpectralLib description]
      */
-    this.setSpectralLib = function() {
+    this.setSpectralLib = function () {
 
         if (this.params.sensor === "L8") {
             this.endmembers = this.spectralLib.L8;
@@ -295,12 +206,7 @@ var SMA = function(collection, params) {
      * @return {[type]}       [description]
      */
     var _this = this;
-    this.calcFractions = function(image) {
-
-        // var coef = 1;
-        // if (_this.col.params.sensor === "L8") {
-        //     coef = 10000;
-        // }
+    this.calcFractions = function (image) {
 
         // Uminxing data
         var fractions = ee.Image(image)
@@ -311,7 +217,7 @@ var SMA = function(collection, params) {
             .multiply(100)
             .byte();
 
-        fractions = fractions.select([0, 1, 2, 3], _this.outBandNames);
+        fractions = fractions.rename(_this.outBandNames);
 
         return image.addBands(fractions);
 
@@ -322,7 +228,7 @@ var SMA = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.calcGVS = function(image) {
+    this.calcGVS = function (image) {
 
         var summed = image.select(['gv', 'npv', 'soil']) //, 'cloud'])
             .reduce(ee.Reducer.sum());
@@ -344,19 +250,19 @@ var SMA = function(collection, params) {
      * [calculate description]
      * @return {[type]} [description]
      */
-    this.calculate = function() {
+    this.calculate = function () {
 
         this.setSpectralLib();
 
         this.collection = this.collection.map(this.calcFractions)
-                                         .map(this.calcGVS);
+            .map(this.calcGVS);
     };
 
     /**
      * [getCollection description]
      * @return {[type]} [description]
      */
-    this.getCollection = function() {
+    this.getCollection = function () {
 
         return this.collection;
     };
@@ -368,7 +274,7 @@ var SMA = function(collection, params) {
  * [NDFI description]
  * @param {[type]} col [description]
  */
-var NDFI = function(collection, params) {
+var NDFI = function (collection, params) {
 
     this.palette =
         "FFFFFF,FFFCFF,FFF9FF,FFF7FF,FFF4FF,FFF2FF,FFEFFF,FFECFF,FFEAFF,FFE7FF," +
@@ -397,7 +303,7 @@ var NDFI = function(collection, params) {
      * @param  {[type]} col [description]
      * @return {[type]}     [description]
      */
-    this.init = function(collection, params) {
+    this.init = function (collection, params) {
 
         this.collection = collection;
         this.params = params;
@@ -410,13 +316,13 @@ var NDFI = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.calcNDFI = function(image) {
+    this.calcNDFI = function (image) {
 
         var gvs = image.select("gvs");
 
         var npvSoil = image.select("npv")
             .add(image.select("soil"));
-            // .add(image.select("cloud"));
+        // .add(image.select("cloud"));
 
         var ndfi = ee.Image.cat(gvs, npvSoil).normalizedDifference();
 
@@ -431,8 +337,8 @@ var NDFI = function(collection, params) {
      * [calculate description]
      * @return {[type]} [description]
      */
-    this.calculate = function() {
-
+    this.calculate = function () {
+        console.log(ee.Image(this.collection.first()).bandNames().getInfo())
         this.collection = this.collection.map(this.calcNDFI);
 
     };
@@ -441,7 +347,7 @@ var NDFI = function(collection, params) {
      * [getCollection description]
      * @return {[type]} [description]
      */
-    this.getCollection = function() {
+    this.getCollection = function () {
 
         return this.collection;
     };
@@ -454,9 +360,20 @@ var NDFI = function(collection, params) {
  * [Mask description]
  * @param {[type]} col [description]
  */
-var Mask = function(collection, params) {
+var Mask = function (collection, params) {
 
     this.options = {
+        /**
+         * pixel QA bit values
+         */
+        'bitValue': {
+            /*bit 0*/ "fill": 1,
+            /*bit 1*/ "clear": 2,
+            /*bit 2*/ "water": 4,
+            /*bit 3*/ "cloudShadow": 8,
+            /*bit 4*/ "snow": 16,
+            /*bit 5*/ "cloud": 32
+        },
         "shade": {
             "cloudAltitude": 1000,
             "bufferSize": 5,
@@ -479,7 +396,7 @@ var Mask = function(collection, params) {
                 "gv": 10,
                 "soil": 5
             }
-        }
+        },
     };
 
     /**
@@ -487,10 +404,10 @@ var Mask = function(collection, params) {
      * @param  {[type]} col [description]
      * @return {[type]}     [description]
      */
-    this.init = function(collection, params) {
-        
+    this.init = function (collection, params) {
+
         this.terrain = ee.call('Terrain', ee.Image('USGS/SRTMGL1_003'));
-        
+
         this.collection = collection;
         this.params = params;
         this._make();
@@ -504,7 +421,7 @@ var Mask = function(collection, params) {
      * @param  {[type]} sunElevation [description]
      * @return {[type]}              [description]
      */
-    this._hillShadow = function(terrain, sunAzimuth, sunElevation) {
+    this._hillShadow = function (terrain, sunAzimuth, sunElevation) {
 
         var zenithElevation = ee.Number(90.0).subtract(sunElevation);
 
@@ -525,10 +442,10 @@ var Mask = function(collection, params) {
      * @return {[type]}       [description]
      */
     var _this = this;
-    this.hillShadeMask = function(image) {
+    this.hillShadeMask = function (image) {
 
-        var sunAzimuth = image.get('SUN_AZIMUTH');
-        var sunElevation = image.get('SUN_ELEVATION');
+        var sunAzimuth = image.get('SOLAR_AZIMUTH_ANGLE');
+        var sunElevation = ee.Number(90).subtract(image.get('SOLAR_ZENITH_ANGLE'));
 
         var hillshadow = _this._hillShadow(_this.terrain, sunAzimuth, sunElevation);
 
@@ -541,7 +458,7 @@ var Mask = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.cloudMask = function(image) {
+    this.cloudMask = function (image) {
 
         var cloud = image.select(['cloud']);
         var thermal = image.select(['thermal']).subtract(273.15);
@@ -556,8 +473,8 @@ var Mask = function(collection, params) {
         buffered = (buffered.add(cloudMask)).gt(0);
 
         cloudMask = buffered.eq(1).and(
-                cloud.gte(_this.options.cloud.thresh.c2)
-            ).multiply(255)
+            cloud.gte(_this.options.cloud.thresh.c2)
+        ).multiply(255)
             .byte();
 
         return image.addBands(cloudMask.select([0], ['cloud_mask']));
@@ -569,10 +486,10 @@ var Mask = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.shadeMask = function(image) {
+    this.shadeMask = function (image) {
 
-        var sunAzimuth = image.get('SUN_AZIMUTH');
-        var sunElevation = image.get('SUN_ELEVATION');
+        var sunAzimuth = image.get('SOLAR_AZIMUTH_ANGLE');
+        var sunElevation = ee.Number(90).subtract(image.get('SOLAR_ZENITH_ANGLE'));
         var cloudMask = image.select('cloud_mask');
 
         var simulTerrain = cloudMask.multiply(_this.options.shade.cloudAltitude)
@@ -600,7 +517,7 @@ var Mask = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.waterMask = function(image) {
+    this.waterMask = function (image) {
 
         var shade = image.select('shade');
         var gv = image.select('gv');
@@ -623,26 +540,30 @@ var Mask = function(collection, params) {
 
     };
 
-    this.fmask = function(image) {
+    var _this = this;
+    this.cfmask = function (image) {
 
-        var fmask = image.select(['fmask']);
-        var cloudMask = fmask.eq(4);
-        var shadeMask = fmask.eq(2);
-        var waterMask = fmask.eq(1);
+        var pixelQA = image.select(['pixel_qa']);
+        var srCloudQA = image.select(['sr_cloud_qa']);
 
-        return image.addBands(cloudMask.select([0], ['cloud_mask']))
-            .addBands(shadeMask.select([0], ['shade_mask']))
-            .addBands(waterMask.select([0], ['water_mask']));
+        var cloudMask = pixelQA.bitwiseAnd(_this.options.bitValue.cloud).neq(0);
+        var waterMask = pixelQA.bitwiseAnd(_this.options.bitValue.water).neq(0);
+        var shadeMask = pixelQA.bitwiseAnd(_this.options.bitValue.cloudShadow).neq(0);
+
+        return image
+            .addBands(cloudMask.rename(['cloud_mask']))
+            .addBands(shadeMask.rename(['shade_mask']))
+            .addBands(waterMask.rename(['water_mask']));
     };
 
     /**
      * [_make description]
      * @return {[type]} [description]
      */
-    this._make = function() {
+    this._make = function () {
 
         this.collection = this.collection.map(this.hillShadeMask)
-            .map(this.fmask);
+            .map(this.cfmask);
         // .map(this.cloudMask)
         // .map(this.shadeMask)
         // .map(this.hillShadeMask)
@@ -654,7 +575,7 @@ var Mask = function(collection, params) {
      * [getCollection description]
      * @return {[type]} [description]
      */
-    this.getCollection = function() {
+    this.getCollection = function () {
 
         return this.collection;
     };
@@ -667,7 +588,7 @@ var Mask = function(collection, params) {
  * [Composite description]
  * @param {[type]} collection [description]
  */
-var Composite = function(collection) {
+var Composite = function (collection) {
 
     this.composite = null;
 
@@ -676,7 +597,7 @@ var Composite = function(collection) {
      * @param  {[type]} collection [description]
      * @return {[type]}            [description]
      */
-    this.init = function(collection) {
+    this.init = function (collection) {
 
         if (collection !== null) {
 
@@ -691,7 +612,7 @@ var Composite = function(collection) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.cloudFree = function(image) {
+    this.cloudFree = function (image) {
 
         var cloudMask = image.select(['cloud_mask']);
         var shadeMask = image.select(['shade_mask']);
@@ -706,7 +627,7 @@ var Composite = function(collection) {
      * [median description]
      * @return {[type]} [description]
      */
-    this.Median = function() {
+    this.Median = function () {
 
         this.composite = this.collection.median()
             .addBands(this.waterAdjust(), ['water_mask'], true);
@@ -719,7 +640,7 @@ var Composite = function(collection) {
      * [waterAdjust description]
      * @return {[type]} [description]
      */
-    this.waterAdjust = function() {
+    this.waterAdjust = function () {
 
         return this.collection.select(['water_mask'])
             .median()
@@ -735,14 +656,14 @@ var Composite = function(collection) {
 /**
  * [Indexes description]
  */
-var Indexes = function(collection, params) {
+var Indexes = function (collection, params) {
 
     /**
      * [init description]
      * @param  {[type]} col [description]
      * @return {[type]}     [description]
      */
-    this.init = function(collection, params) {
+    this.init = function (collection, params) {
 
         this.collection = collection;
         this.params = params;
@@ -755,7 +676,7 @@ var Indexes = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.ndvi = function(image) {
+    this.ndvi = function (image) {
 
         var ndvi = image.expression('float(nir - red)/(nir + red)', {
             'nir': image.select('nir'),
@@ -771,7 +692,7 @@ var Indexes = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.ndwi = function(image) {
+    this.ndwi = function (image) {
 
         var ndwi = image.expression('float(nir - swir1)/(nir + swir1)', {
             'nir': image.select('nir'),
@@ -787,7 +708,7 @@ var Indexes = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.savi = function(image) {
+    this.savi = function (image) {
 
         var savi = image.expression('(1 + L) * float(nir - red)/(nir + red + L)', {
             'nir': image.select('nir'),
@@ -804,7 +725,7 @@ var Indexes = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.evi2 = function(image) {
+    this.evi2 = function (image) {
 
         var evi2 = image.expression('(2.5 * float(nir - red)/(nir + 2.4 * red + 1))', {
             'nir': image.select('nir'),
@@ -822,7 +743,7 @@ var Indexes = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.fci = function(image) {
+    this.fci = function (image) {
 
         var fci = image.expression('(float(gv - shade)/(gv + shade))', {
             'gv': image.select('gv'),
@@ -838,7 +759,7 @@ var Indexes = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.npvsoil = function(image) {
+    this.npvsoil = function (image) {
 
         var npvsoil = image.expression('npv + soil', {
             'npv': image.select('npv'),
@@ -854,7 +775,7 @@ var Indexes = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.gvnpvs = function(image) {
+    this.gvnpvs = function (image) {
 
         var gvnpvs = image.expression('100 * float(gv + npv) / float(100 - shade)', {
             'gv': image.select('gv'),
@@ -872,7 +793,7 @@ var Indexes = function(collection, params) {
      * @return {[type]}       [description]
      */
     var _this = this;
-    this.ndfi3 = function(image) {
+    this.ndfi3 = function (image) {
 
         var gvnpvs = _this.gvnpvs(image).select('gvnpvs');
         var soilcloud = image.expression('soil + cloud', {
@@ -891,7 +812,7 @@ var Indexes = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.ndfi4 = function(image) {
+    this.ndfi4 = function (image) {
 
         var gvnpv = image.expression('gv + npv', {
             'gv': image.select('gv'),
@@ -910,25 +831,25 @@ var Indexes = function(collection, params) {
 
     };
 
-    this.wvi = function(image) {
-        
+    this.wvi = function (image) {
+
         var ndvi = image.expression(
-          '((nir - red)**2/ (nir + red)**2)**(1/2)', {
-            'nir': image.select('nir'),
-            'red': image.select('red'),
-        });
+            '((nir - red)**2/ (nir + red)**2)**(1/2)', {
+                'nir': image.select('nir'),
+                'red': image.select('red'),
+            });
 
         var ndwi = image.expression(
-          '(( swir1 - green)**2 / (swir1 + green)**2)**(1/2)', {
-            'swir1': image.select('swir1'),
-            'green': image.select('green'),
-        });
+            '(( swir1 - green)**2 / (swir1 + green)**2)**(1/2)', {
+                'swir1': image.select('swir1'),
+                'green': image.select('green'),
+            });
 
         var wvi = image.expression(
-          '((NDWI) - (NDVI))/((NDVI)+(NDWI))', {
-            'NDVI': ndvi,
-            'NDWI': ndwi
-        }).multiply(100).add(100).byte();
+            '((NDWI) - (NDVI))/((NDVI)+(NDWI))', {
+                'NDVI': ndvi,
+                'NDWI': ndwi
+            }).multiply(100).add(100).byte();
 
         return image.addBands(wvi.select([0], ['wvi']));
     };
@@ -937,7 +858,7 @@ var Indexes = function(collection, params) {
      * [getCollection description]
      * @return {[type]} [description]
      */
-    this.getCollection = function() {
+    this.getCollection = function () {
 
         return this.collection;
     };
@@ -946,7 +867,7 @@ var Indexes = function(collection, params) {
      * [calculate description]
      * @return {[type]} [description]
      */
-    this.calculate = function() {
+    this.calculate = function () {
 
         this.collection = this.collection
             .map(this.ndvi)
@@ -971,14 +892,14 @@ var Indexes = function(collection, params) {
  * @param {[type]} collection [description]
  * @param {[type]} params     [description]
  */
-var Amplitude = function(collection, params) {
-    
+var Amplitude = function (collection, params) {
+
     /**
      * [init description]
      * @param  {[type]} col [description]
      * @return {[type]}     [description]
      */
-    this.init = function(collection, params) {
+    this.init = function (collection, params) {
 
         this.collection = collection;
         this.params = params;
@@ -992,16 +913,16 @@ var Amplitude = function(collection, params) {
      * @param  {[type]} image [description]
      * @return {[type]}       [description]
      */
-    this.ndfiAmplitude = function(collection) {
+    this.ndfiAmplitude = function (collection) {
 
         var coef = 500;
-        if (this.params.sensor === 'L8'){
+        if (this.params.sensor === 'L8') {
             coef = 1500;
         }
 
         var image = ee.Image(0).clip(this.params.geometry);
 
-        collection = collection.map(function(image) {
+        collection = collection.map(function (image) {
             var msk = image.select('blue').lte(coef);
             return image.updateMask(msk);
         });
@@ -1013,7 +934,7 @@ var Amplitude = function(collection, params) {
 
         var amplitude = ndfiMax.subtract(ndfiMin).abs();
         amplitude = image.where(amplitude.gte(0), amplitude).byte();
-        
+
         return amplitude.select([0], ["ndfi_amplitude"]);
 
     };
@@ -1022,14 +943,14 @@ var Amplitude = function(collection, params) {
      * [calculate description]
      * @return {[type]} [description]
      */
-    this.calculate = function() {
+    this.calculate = function () {
 
         this.amplitude = this.ndfiAmplitude(this.collection);
 
     };
 
-    this. getData = function() {
-        
+    this.getData = function () {
+
         return this.amplitude;
     };
 
@@ -1041,14 +962,14 @@ var Amplitude = function(collection, params) {
  * @param  {[type]} gridName [description]
  * @return {[type]}          [description]
  */
-var GetGrid = function(json) {
+var GetGrid = function (json) {
 
     /**
      * [init description]
      * @param  {[type]} gridName [description]
      * @return {[type]}          [description]
      */
-    this.init = function(json) {
+    this.init = function (json) {
 
         this.json = json;
 
@@ -1059,7 +980,7 @@ var GetGrid = function(json) {
      * @param  {[type]} gridName [description]
      * @return {[type]}          [description]
      */
-    this.getByName = function(gridName) {
+    this.getByName = function (gridName) {
 
         var feature;
 
@@ -1087,9 +1008,9 @@ var GetGrid = function(json) {
  * @param {[type]} dtree [description]
  */
 
-var DecisionTree = function(image, dtree) {
+var DecisionTree = function (image, dtree) {
 
-    this.init = function(image, dtree) {
+    this.init = function (image, dtree) {
 
         this.image = image;
         this.dtree = dtree;
@@ -1102,7 +1023,7 @@ var DecisionTree = function(image, dtree) {
      * [_setVariables description]
      */
 
-    this._setVariables = function() {
+    this._setVariables = function () {
 
         if (this.image !== null) {
             this.variables = {
@@ -1145,7 +1066,7 @@ var DecisionTree = function(image, dtree) {
      * @return {[type]}      [description]
      */
 
-    this._applyRule = function(rule) {
+    this._applyRule = function (rule) {
 
         var variable = this.variables[rule.variable];
         var result;
@@ -1183,7 +1104,7 @@ var DecisionTree = function(image, dtree) {
      * @return {[type]}                [description]
      */
 
-    this._recursion = function(node, mask, classification) {
+    this._recursion = function (node, mask, classification) {
 
         var result;
 
@@ -1220,7 +1141,7 @@ var DecisionTree = function(image, dtree) {
      * @return {[type]} [description]
      */
 
-    this._classify = function() {
+    this._classify = function () {
 
         this.classification = this._recursion("1-1", ee.Image(1), ee.Image(0))
             .select([0], ["classification"]);
@@ -1231,7 +1152,7 @@ var DecisionTree = function(image, dtree) {
      * [getData description]
      * @return {[type]} [description]
      */
-    this.getData = function() {
+    this.getData = function () {
 
         return this.classification;
     };

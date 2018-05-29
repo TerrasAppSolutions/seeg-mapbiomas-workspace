@@ -11,6 +11,9 @@
                             {{ 'CARTA' | translate }}
                         </th>
                         <th>
+                            {{ 'PAIS' | translate }}
+                        </th>
+                        <th>
                             {{ 'BIOMA' | translate }}
                         </th>
                         <th>
@@ -36,6 +39,9 @@
                         </td>
                         <td>
                             {{ classificacao.Classificacao.bioma }}
+                        </td>
+                        <td>
+                            <span ng-if="classificacao.Classificacao.regiao_info">{{ classificacao.Classificacao.regiao_info.region + ' (' + classificacao.Classificacao.regiao_info.pais_iso + ')' }}</span>
                         </td>
                         <td>
                             {{ classificacao.Classificacao.year }}
@@ -89,9 +95,7 @@
                 </tbody>
             </table>
         </div>
-        <div ng-show='paramsClassificacoes.length>
-            0' paginate-links paginate="paginate" total-pages="totalPages" page-size="pageSize" page="page"
-            class="pull-left">
+        <div ng-show='paramsClassificacoes.length > 0' paginate-links paginate="paginate" total-pages="totalPages" page-size="pageSize" page="page" class="pull-left">
         </div>
         <span class="pull-right" style="padding:5px">
             {{ classificacoesTotal }} records found.

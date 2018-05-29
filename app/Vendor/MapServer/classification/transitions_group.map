@@ -34,7 +34,7 @@ MAP
                    
         END
 
-        DATA '/data/collections/COLECAO2/VRT/TRANSICAO_PAIS_BRASIL_%year_t0%_%year_t1%.vrt'
+        DATA '/mnt/disks/data/collections/COLECAO2/VRT/TRANSICAO_PAIS_BRASIL_%year_t0%_%year_t1%.vrt'
 
         MASK "territory_mask"
 
@@ -61,7 +61,7 @@ MAP
             SELECT 
             id, the_geom
             FROM territorios
-            WHERE id = '%territory_id%'                                     
+            WHERE id = ANY(string_to_array('%territory_id%',',') :: int[])                                     
          ) 
          as territorio
          USING UNIQUE id USING SRID=4674"

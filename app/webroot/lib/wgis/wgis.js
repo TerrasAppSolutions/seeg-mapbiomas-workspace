@@ -315,7 +315,6 @@
                 var wmsParams = wmsLayer.params;
                 var wmsLayer = L.tileLayer.wms(wmsUrl, wmsParams);
 
-
                 if (visibility) {
                     _wgis.lmap.addLayer(wmsLayer);
                 }
@@ -615,6 +614,14 @@
 
                     var nodes = _wgis.SwitchLayer.Jstree.getNodesByIds(selectedNodeIds);
                     _wgis.SwitchLayer.Jstree.selectNodeLayers(nodes, true);
+
+                    /**
+                     * Será somente criado quando elevation text
+                     */
+                    if(selected.node.text === 'Elevation') {
+                        // Criação da barra de gradiente no mapa
+                        _wgis.createElevationBarOnMap();
+                    }
                 },
                 deselectNode: function(node, selected, event) {
                     var selectedNodeIds = selected.node.children
@@ -624,6 +631,14 @@
                     var nodes = _wgis.SwitchLayer.Jstree.getNodesByIds(selectedNodeIds);
 
                     _wgis.SwitchLayer.Jstree.selectNodeLayers(nodes, false);
+
+                    /**
+                     * Será somente removido quando elevation text
+                     */
+                    if (selected.node.text === 'Elevation') {
+                        // Criação da barra de gradiente no mapa
+                        _wgis.removeElevationBarOnMap();
+                    }
                 },
                 timeoutRefresh: null,
                 addedLayer: function() {
@@ -1247,7 +1262,6 @@
                 }
             }
         };
-
 
         /*
          * Componente de analise espacial

@@ -27,7 +27,7 @@ angular.module('MapBiomas.controllers')
                 $scope.loadResultados = false;
 
                 // valores iniciais dos anos
-                for (var i = 1985; i <= 2016; i++) {
+                for (var i = 1985; i <= 2018; i++) {
                     $scope.selectAnos.push(i.toString());
                 }
 
@@ -74,7 +74,6 @@ angular.module('MapBiomas.controllers')
                 $scope.saveDtree(dtreeNew);
             };
 
-
             /**
              * Remove Decision tree
              * @param {Object} objeto DecisionTree
@@ -92,7 +91,6 @@ angular.module('MapBiomas.controllers')
                     decisionTreeList(true);
                 });
             };
-
 
             /**
              * Processa imagem usando serviço gee python
@@ -135,7 +133,6 @@ angular.module('MapBiomas.controllers')
                 );
             };
 
-
             /**
              * carrega dados de classificação ao selecionar uma carta
              * @param {String} carta codigo da carta selecionada
@@ -149,7 +146,6 @@ angular.module('MapBiomas.controllers')
 
                 $scope.$apply();
             };
-
 
             /**
              * Função que executa quando o componente g
@@ -203,7 +199,6 @@ angular.module('MapBiomas.controllers')
                 }
             };
 
-
             /**
              * dispara quando o valor do componente select 
              * referente ao ano é modificado
@@ -229,7 +224,6 @@ angular.module('MapBiomas.controllers')
                     $scope.classifProcess.Classificacao.t1 = ano + "-12-30"
                 }
             };
-
 
             var decisionTreeList = function(selectFirst, callback) {                
 
@@ -269,7 +263,6 @@ angular.module('MapBiomas.controllers')
                         if (value.DecisionTree.label) {
                             label += " | LABEL: " + value.DecisionTree.label;
                         }
-
 
                         value.DecisionTree.selectLabel = label;
 

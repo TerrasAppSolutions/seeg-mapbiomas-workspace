@@ -1,0 +1,90 @@
+LAYER
+    NAME "limitebiomas"
+    TYPE POLYGON
+    STATUS ON
+
+    VALIDATION
+        "default_description" "0"
+        "description" ".+"  
+
+        "default_color" "1"
+        "color" ".+"      
+    END       
+
+    INCLUDE '../raisg/database.map'
+
+    DATA "the_geom from 
+        (
+        SELECT 
+        id, the_geom, descricao as d
+        FROM territorios
+        WHERE  territorios.categoria='Limite de Biomas RAISG'
+        ) 
+        as limitebiomas
+        USING UNIQUE id USING SRID=4326"
+
+    cLASS
+        # Amazonía
+        EXPRESSION ("[d]" = "Amazonía")
+        STYLE                 
+            COLOR '#43a272'                 
+        END
+    END
+
+    CLASS
+        # Andes
+        EXPRESSION ("[d]" = "Andes")
+        STYLE                 
+            COLOR '#72014d'                 
+        END
+    END
+
+    CLASS
+        # Cerrado
+        EXPRESSION ("[d]" = "Cerrado")
+        STYLE                 
+            COLOR '#ffeaad'                 
+        END
+    END
+
+    CLASS
+        # Cerrado-Sabana
+        EXPRESSION ("[d]" = "Cerrado-Sabana")
+        STYLE                 
+            COLOR '#e57400'                 
+        END
+    END
+
+    CLASS
+        # Chaco-Chiquitano
+        EXPRESSION ("[d]" = "Chaco-Chiquitano")
+        STYLE                 
+            COLOR '#004ea7'                 
+        END
+    END
+
+    CLASS
+        # Pantanal
+        EXPRESSION ("[d]" = "Pantanal")
+        STYLE                 
+            COLOR '#5c0000'                 
+        END
+    END
+
+    CLASS
+        # Tucumano-Boliviano
+        EXPRESSION ("[d]" = "Tucumano-Boliviano")
+        STYLE                 
+            COLOR '#99ff72'                 
+        END
+    END
+
+    CLASS        
+        # No Data
+        EXPRESSION ("[d]" = "No Data")
+        STYLE                 
+            COLOR '#9b9b9b'                 
+        END
+    END
+    
+END

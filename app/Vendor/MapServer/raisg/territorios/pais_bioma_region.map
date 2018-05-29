@@ -1,0 +1,161 @@
+LAYER
+    NAME "paisbiomaregion"
+    TYPE POLYGON
+    STATUS ON
+
+    VALIDATION
+        "default_description" "0"
+        "description" ".+"  
+
+        "default_color" "1"
+        "color" ".+"      
+    END       
+
+    INCLUDE '../raisg/database.map'
+
+    DATA "the_geom from 
+        (
+        SELECT 
+        gid, the_geom, region as d
+        FROM pais_bioma_region
+        ) 
+        as paisbiomaregion
+        USING UNIQUE gid USING SRID=4326"
+
+    CLASS
+        EXPRESSION ("[d]" = "Sin Región")
+        STYLE                 
+            COLOR '#eeeeee'                            
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                        
+        END
+    END
+
+    CLASS
+        EXPRESSION ("[d]" = "Amazonía Alta")
+        STYLE                 
+            COLOR '#95e5a3'                            
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6               
+        END
+    END
+
+    CLASS
+        EXPRESSION ("[d]" = "Amazonía Baja")
+        STYLE                 
+            COLOR '#006612'                             
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                         
+        END
+    END
+
+    CLASS
+        EXPRESSION ("[d]" = "Amazonía Baja Inundable")
+        STYLE                 
+            COLOR '#00f42a'                                  
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                    
+        END
+    END
+
+    CLASS
+        EXPRESSION ("[d]" = "Amazonía Baja Pacales")
+        STYLE                 
+            COLOR '#96ffc2'                                   
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                   
+        END
+    END
+
+    CLASS
+        EXPRESSION ("[d]" = "Amazonía Baja Tepuyes")
+        STYLE                 
+            COLOR '#79c699'                                 
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                     
+        END
+    END
+
+    CLASS
+        EXPRESSION ("[d]" = "Andes")
+        STYLE                 
+            COLOR '#ffeb96'                                   
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                   
+        END
+    END
+
+    CLASS        
+        EXPRESSION ("[d]" = "Andes Bosque Seco Interandino")
+        STYLE                 
+            COLOR '#fccc00'                                 
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                     
+        END
+    END    
+
+    CLASS        
+        EXPRESSION ("[d]" = "Cerrado")
+        STYLE                 
+            COLOR '#ffc69b'                                   
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                   
+        END
+    END
+
+    CLASS        
+        EXPRESSION ("[d]" = "Cerrado-Sabana")
+        STYLE                 
+            COLOR '#d8a884'                                    
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                  
+        END
+    END
+    
+    CLASS 
+        EXPRESSION ("[d]" = "Chaco-Chiquitano")
+        STYLE                 
+            COLOR '#87c9db'                                    
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                  
+        END
+    END
+    
+    CLASS       
+        EXPRESSION ("[d]" = "Pantanal")
+        STYLE                 
+            COLOR '#2c99b2'                                 
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                     
+        END
+    END
+    
+    CLASS        
+
+        EXPRESSION ("[d]" = "Tucumano-Boliviano")
+        STYLE                 
+            COLOR '#5f9aaa'                                   
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                   
+        END
+    END
+    
+    CLASS        
+        EXPRESSION ("[d]" = "Sabanas y Herbazales Tepuyes")
+        STYLE                 
+            COLOR '#f2598f'                                 
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                     
+        END
+    END
+    
+    CLASS       
+        EXPRESSION ("[d]" = "Sabanas y herbazales")
+        STYLE                 
+            COLOR '#b23e67'                                 
+            OUTLINECOLOR '#212121'
+            WIDTH 0.6                     
+        END
+    END
+
+END
