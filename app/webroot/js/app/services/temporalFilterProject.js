@@ -20,6 +20,11 @@ angular.module('MapBiomas.services')
                         url: "mapbiomas/services/temporal_filter_project/clone/",
                         isArray: false,
                         method: 'POST'
+                    },
+                    activate: {
+                        url: "mapbiomas/services/temporal_filter_project/activate/",
+                        isArray: true,
+                        method: 'POST'
                     }
                 });
 

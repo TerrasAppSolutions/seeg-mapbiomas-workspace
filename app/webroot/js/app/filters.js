@@ -32,6 +32,20 @@ angular.module('MapBiomas.filters')
             return dtreevstr.replace(/[\"\{\}]/g,'').replace(/\,/g,' / ');
         };
     }])
+    .filter('renderSymbol', [function () {
+        return function (val) {
+            // código para separação de string
+            var name_arr = val.split("%%%***$$$####");
+            if (name_arr[0] == "true") {
+                val = "&#10003; " + name_arr[1];
+            } else {
+                val = name_arr[1];
+            }
+            var symbol = document.createElement('div');
+            symbol.innerHTML = val;
+            return symbol.childNodes[0].nodeValue;
+        }
+    }])
     .filter('areaclassecolor', ['DtreeClasses', function(DtreeClasses) {
         return function(value) {            
             var color = "#000000";

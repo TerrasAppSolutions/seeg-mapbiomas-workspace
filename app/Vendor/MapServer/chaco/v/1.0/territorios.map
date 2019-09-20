@@ -1,0 +1,35 @@
+MAP 
+    NAME "Territorios"
+    #STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection =================================== #
+    #
+    INCLUDE 'includes/metadata_wms_projection.map'
+
+    OUTPUTFORMAT
+        NAME "png24"
+        #DRIVER GD/PNG #AGG/PNG
+        DRIVER AGG/PNG
+        MIMETYPE "image/png"
+        IMAGEMODE RGBA
+        EXTENSION "png"
+        FORMATOPTION "GAMMA=0.75"
+        TRANSPARENT ON
+    END
+
+    #/var/www/dev/dev-rafael/app/Vendor/MapServer/territories
+    # Camadas 
+    #================================
+    
+
+    INCLUDE 'territorios/chaco_pais.map'
+
+    INCLUDE 'territorios/chaco_estado.map'
+
+    INCLUDE 'territorios/chaco_municipio.map'
+
+
+END

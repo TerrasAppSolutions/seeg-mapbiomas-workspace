@@ -1,0 +1,30 @@
+LAYER
+    NAME "tis"
+    TYPE POLYGON
+    STATUS ON
+
+    VALIDATION        
+        "default_color_id" "1"
+        "color_id" "[0-9]+"
+    END       
+
+    INCLUDE 'includes/database.map'
+
+    DATA "the_geom from 
+        (
+        SELECT 
+        id, the_geom
+        FROM territorios_dashboard
+        WHERE  territorios_dashboard.categoria='TIS'                                                
+        ) 
+        as limite
+        USING UNIQUE id USING SRID=4326"
+
+            
+    CLASS
+        STYLE                 
+            OUTLINECOLOR 148 0 178
+            WIDTH 1                  
+        END
+    END
+END

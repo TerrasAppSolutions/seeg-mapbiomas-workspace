@@ -201,6 +201,8 @@ class Classificacao extends AppModel {
 
         $cartaRegiaoCodigo = null;
 
+        // pr($value);
+
         if(!empty($value['CartaRegiao'])){
             $cartaRegiaoCodigo = $value['CartaRegiao']['regiao'];
         }else{
@@ -209,7 +211,15 @@ class Classificacao extends AppModel {
             $cartaRegiaoCodigo = $cartaRegiao['CartaRegiao']['regiao'] ? $cartaRegiao['CartaRegiao']['regiao'] : '0';
         }
 
-        $fileName = $bioma."_".$carta."_". $ano."_".$cartaRegiaoCodigo;
+        if(!empty($value['CartaRegiaoInfo'])){
+            $cartaRegiaoInfoCodigo = $value['CartaRegiaoInfo']['region'];
+        }else{
+            $this->CartaRegiaoInfo->recursive = -1;
+            $cartaRegiaoInfo = $this->CartaRegiaoInfo->read('id',$value['Classificacao']['regiao_info_id']);
+            $cartaRegiaoInfoCodigo = $cartaRegiaoInfo['CartaRegiaoInfo']['id'] ? $cartaRegiaoInfo['CartaRegiaoInfo']['id'] : '0';
+        }
+
+        $fileName = $bioma."_".$carta."_". $ano."_".$cartaRegiaoInfoCodigo;
     
         return $fileName;
     }

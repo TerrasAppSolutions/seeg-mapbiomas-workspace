@@ -61,4 +61,35 @@ class TemporalFilterProjectController extends MapbiomasAppController {
             echo $exc->getMessage();
         }
     }
+
+    public function service_activate()
+    {
+        try {
+            $postData = json_decode($this->request->input(), true);
+
+            $responseData = $this->TemporalFilterProjectService->activateProject($postData);
+
+            $this->response->body(json_encode($responseData));
+            return $this->response;
+
+        } catch (Exception $exc) {
+            $this->response->statusCode("403");
+            echo $exc->getMessage();
+        }
+    }
+
+    public function service_delete($id)
+    {
+        try {
+
+            $responseData = $this->TemporalFilterProjectService->delete($id);
+
+            $this->response->body(json_encode($responseData));
+            return $this->response;
+
+        } catch (Exception $exc) {
+            $this->response->statusCode("403");
+            echo $exc->getMessage();
+        }
+    }
 }

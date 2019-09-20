@@ -1,0 +1,308 @@
+# Symbol for drawing fat lines
+#1
+SYMBOLSET
+SYMBOL
+     NAME "BigLine"
+     TYPE ELLIPSE
+     POINTS
+     1 1
+     END
+END
+
+##################################### 
+# Symbol for drawing dashed lines
+#2
+SYMBOL
+     NAME "DashedLine"
+     TYPE ELLIPSE
+     POINTS
+     1 1 
+     END
+#     STYLE
+ #    10 10 
+  #   END   
+END
+
+##################################### 
+# Symbol for drawing spots
+#3
+SYMBOL
+     NAME "Circle"
+     FILLED true
+     TYPE ellipse
+     POINTS
+     1 1 
+     END
+END
+###############################################
+#4
+Symbol
+Name 'star'
+Type VECTOR
+Filled TRUE
+Points
+0 .375
+.35 .375
+.5 0
+.65 .375
+1 .375
+.75 .625
+.875 1
+.5 .75
+.125 1
+.25 .625
+END
+END 
+
+
+
+###############################################
+#5
+Symbol
+Name 'tent'
+Type VECTOR
+Filled TRUE
+Points
+0 1
+.5 0
+1 1
+.75 1
+.5 .5
+.25 1
+0 1
+END
+END 
+#############################################
+#6
+SYMBOL
+  NAME "punkt"
+  TYPE ELLIPSE
+  POINTS
+    1 1
+  END
+  FILLED TRUE
+END
+##########################################
+#7
+SYMBOL
+  NAME "linie-gestr4"
+  TYPE ELLIPSE
+  POINTS
+    1 1
+  END
+ # STYLE
+ #   10 10 10 10
+ # END
+END
+
+##############################################
+#8
+SYMBOL
+  NAME "linie-horizontal"
+  TYPE vector
+  POINTS
+    0 0.5
+    1 0.5
+  END
+END
+################################################
+#9
+SYMBOL
+  NAME "linie-vertikal"
+  TYPE vector
+  POINTS
+    0.5 0
+    0.5 1
+  END
+END
+################################################
+SYMBOL
+  NAME "diagonal-auf"
+  TYPE vector
+  POINTS
+    0 1
+    1 0
+  END
+END
+##############################################
+#TYPE PIXMAP
+SYMBOL
+  NAME "im_stern"
+  TYPE PIXMAP
+  IMAGE "stern.png"
+  TRANSPARENT 8
+END
+###############################################
+SYMBOL
+  NAME "im_punkte1"
+  TYPE PIXMAP
+  IMAGE "flaeche1_1.png"
+  TRANSPARENT 13
+END
+##############################################
+SYMBOL
+  NAME "im_punkte"
+  TYPE PIXMAP
+  IMAGE "flaeche1.png"
+  TRANSPARENT 0
+END
+
+###########################################
+SYMBOL
+  NAME "im_punkte2"
+  TYPE PIXMAP
+  IMAGE "flaeche2_1.png"
+  TRANSPARENT 8
+END
+###########################################
+SYMBOL
+  NAME "im_punkte3"
+  TYPE PIXMAP
+  IMAGE "flaeche3.png"
+  TRANSPARENT 2
+END
+############################################
+SYMBOL
+  NAME "im_schraffur"
+  TYPE PIXMAP
+  IMAGE "schraffur.png"
+  TRANSPARENT 2
+END
+############################################
+SYMBOL
+  NAME "teste6"
+  TYPE PIXMAP
+  IMAGE "teste6.png"
+  TRANSPARENT 8
+END
+#############################################
+SYMBOL
+  NAME "teste7"
+  TYPE PIXMAP
+  IMAGE "teste7.png"
+  TRANSPARENT 8
+END
+#############################################
+SYMBOL
+  NAME "teste8"
+  TYPE PIXMAP
+  IMAGE "teste8.png"
+  TRANSPARENT 8
+END
+############################################
+SYMBOL
+  NAME "teste9"
+  TYPE PIXMAP
+  IMAGE "teste9.png"
+  TRANSPARENT 8
+END
+###########################################
+SYMBOL
+  NAME "teste10"
+  TYPE PIXMAP
+  IMAGE "teste10.png"
+  TRANSPARENT 8
+END
+##########################################
+SYMBOL
+  NAME "teste11"
+  TYPE PIXMAP
+  IMAGE "teste11.png"
+  TRANSPARENT 8
+END
+###########################################
+SYMBOL
+  NAME "teste12"
+  TYPE PIXMAP
+  IMAGE "teste122.png"
+  TRANSPARENT 8
+END
+###########################################
+SYMBOL
+  NAME "teste15"
+  TYPE PIXMAP
+  IMAGE "teste15.png"
+  TRANSPARENT 8
+END
+###########################################
+SYMBOL
+  NAME "teste14"
+  TYPE PIXMAP
+  IMAGE "teste14.png"
+  TRANSPARENT 8
+END
+SYMBOL # triangulo
+  NAME "triangulo"
+  TYPE VECTOR
+  POINTS
+    0 1
+    0.5 0
+    1 1
+    0 1
+  END
+  FILLED TRUE
+ # STYLE
+ #   1 25 1 25
+ # END
+END
+###########################################
+SYMBOL # Andreaskreuz
+  NAME "kreuz2"
+  TYPE VECTOR
+  POINTS
+    0 0
+    1 1
+    -99 -99
+    0 1
+    1 0
+  END
+ # STYLE
+ #   1 15 1 15
+ # END
+
+END
+#########################################################################
+SYMBOL
+  NAME "point" 
+  TYPE ELLIPSE
+  POINTS
+    1 1
+  END
+  FILLED TRUE
+END
+######################################################
+SYMBOL # abwechselnd ein Linienst�ck und ein Punkt
+  NAME "grenze1"
+  TYPE ELLIPSE
+  POINTS
+    1 1
+  END
+ # STYLE
+ #   10 5 1 5
+ # END
+  FILLED TRUE
+END
+###############################################
+SYMBOL
+  NAME "marcadorSad"
+  TYPE PIXMAP
+  IMAGE "marcadorSad.png"
+  #TRANSPARENT 0
+END
+
+
+
+#################### terras credito mapa ###########################
+SYMBOL
+  NAME "ponto_agronegocio"
+  TYPE SVG
+  IMAGE "ponto_agronegocio.svg"
+  #TRANSPARENT 0
+END
+
+SYMBOL
+  NAME "ponto_pronaf"
+  TYPE SVG
+  IMAGE "ponto_pronaf.svg"
+  #TRANSPARENT 0
+END

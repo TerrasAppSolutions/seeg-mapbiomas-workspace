@@ -8,7 +8,7 @@ angular.module('MapBiomas.plugins', [
     'ui.bootstrap',    
     'ui.router',
     'ui.slider',        
-    'ui.select2',        
+    'ui.select2',       
     'pascalprecht.translate',
     'pikaday'
 ]);

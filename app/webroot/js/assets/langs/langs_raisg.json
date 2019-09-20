@@ -160,6 +160,7 @@ langs = {
         "FLORESTASECUNDARIA": "Secondary Forest",
         "SILVICULTURA": "Forest Plantations",
         "FORMACOESNATURAISNAOFLORESTAIS": "Non-Forest Natural Formations",
+        "SECONDARYVEGETATION": "Secondary Vegetation",
         "FORMACOESNAOFLORESTAISEMAREASUMIDAS": "Non-Forest Formations in Wetlands",
         "DUNASVEGETADAS": "Vegetated Dunes",
         "VEGETACAOCAMPESTRE": "Grassland",

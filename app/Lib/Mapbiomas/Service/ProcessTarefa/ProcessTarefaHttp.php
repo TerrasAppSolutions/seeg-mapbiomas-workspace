@@ -25,7 +25,7 @@ class ProcessTarefaHttp
     public function __construct()
     {
         //$this->baseUrl= Configure::read('CONFIG')['IMGSERVER']['host'] . '/api/mapbiomas';
-        $this->baseUrl= 'http://172.21.0.1:8000/api/mapbiomas/mosaic';
+        $this->baseUrl= 'http://172.21.0.1:8000/api/mapbiomas';
         $this->HttpSocket = new HttpSocket();
     }
    

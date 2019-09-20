@@ -90,12 +90,12 @@
         "value": "18"
     },
     "19": {
-        "name": "Annual crops",
+        "name": "Annual and Perennial Crop",
         "ref": "3.2.1.",
         "value": "19"
     },
     "20": {
-        "name": "Semi-Perennial Crops (Sugar cane)",
+        "name": "Semi-Perennial Crop",
         "ref": "3.2.2.",
         "value": "20"
     },
@@ -119,6 +119,16 @@
         "ref": "4.2.",
         "value": "24"
     },
+    "30": {
+        "name": "Mining",
+        "ref": "4.4.",
+        "value": "30"
+    },
+    "29": {
+        "name": "Rocky outcrop",
+        "ref": "4.5.",
+        "value": "29"
+    },
     "25": {
         "name": "Other Non-Vegetated Areas",
         "ref": "4.3.",
@@ -128,6 +138,16 @@
         "name": "Water Bodies",
         "ref": "5.",
         "value": "26"
+    },
+    "33": {
+        "name": "River, Lake and Ocean",
+        "ref": "5.1.",
+        "value": "33"
+    },
+    "31": {
+        "name": "Aquaculture",
+        "ref": "5.2.",
+        "value": "31"
     },
     "27": {
         "name": "Not Observed",

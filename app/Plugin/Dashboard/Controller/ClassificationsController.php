@@ -17,20 +17,20 @@ class ClassificationsController extends DashboardAppController {
     */
 
     public function service_get() {
-      try {
-          $responseData = null;
+        try {
+            $responseData = null;
 
-          $responseData = $this->ClasseService->findAll($this->request->query);
+            $responseData = $this->ClasseService->findAll($this->request->query);
 
-          $this->response->body(json_encode($responseData));
-          return $this->response;
-            
-      }
-      catch(Exception $exc) {
-          $this->response->statusCode("403");
-          
-      }
-       
-    } 
+            $this->response->body(json_encode($responseData));
+            return $this->response;
+
+        }
+        catch(Exception $exc) {
+            $this->response->statusCode("403");
+
+        }
+
+    }
 
 }

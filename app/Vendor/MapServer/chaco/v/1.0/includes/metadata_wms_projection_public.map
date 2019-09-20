@@ -1,0 +1,13 @@
+WEB        
+    METADATA
+        "wms_title" "Mapbiomas-Maps"  ##required
+        "wms_srs" "EPSG:3857"
+        "wms_enable_request" "*"   ##necessary
+        "ows_enable_request" "*"
+        "wms_descriptionurl_format" "text/html"
+    END
+END
+
+PROJECTION
+    "init=epsg:4326"   ##required
+END      

@@ -7,6 +7,7 @@ class CartaRegiaoInfoController extends MapbiomasAppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
+        $this->Auth->allow('service_get');
         $this->CartaRegiaoInfoService = new CartaRegiaoInfoService();
     }
 

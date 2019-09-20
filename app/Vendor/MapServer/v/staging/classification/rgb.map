@@ -1,0 +1,61 @@
+MAP 
+    NAME "RGB"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection =================================== #
+    #
+    INCLUDE '../includes/metadata_wms_projection.map'
+
+    #
+    # Camadas ====================================================== #
+    #    
+
+    LAYER
+        NAME 'rgb'
+        TYPE RASTER
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_year" "0"
+            "year" "[0-9]+"                     
+        END
+
+        DATA '/mnt/disks/data/data2/collections/COLECAO3/VRT/RGB/RGB_PAIS_BRASIL_%year%.vrt'                                                       
+
+        MASK "territory_mask"
+        
+    END
+
+    LAYER
+        NAME "territory_mask"
+        TYPE POLYGON
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_territory_id" "10"
+            "territory_id" ".+" 
+        END
+
+        INCLUDE '../includes/database.map'
+
+        DATA "the_geom from 
+         (
+            SELECT 
+            id, the_geom
+            FROM territorios
+            WHERE id = ANY(string_to_array('%territory_id%',',') :: int[])                                  
+         ) 
+         as territorio
+         USING UNIQUE id USING SRID=4674"
+
+        CLASS
+            STYLE
+                OPACITY 1         
+                COLOR 0 0 0
+            END
+        END
+    END
+END

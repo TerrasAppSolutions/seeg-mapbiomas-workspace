@@ -1,0 +1,116 @@
+CLASS
+  EXPRESSION ([pixel] = 1 AND "1" IN '%classification_ids%')
+  STYLE 
+    COLOR "#129912"
+  END
+END
+
+CLASS
+  EXPRESSION ([pixel] = 2 AND "2" IN '%classification_ids%')
+  STYLE 
+    COLOR "#1F4423"
+  END
+END
+
+    ##########################
+    ##    CLASSE 3 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 3 AND "3" IN '%classification_ids%')
+  STYLE 
+    COLOR "#006400"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 4 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 4 AND "4" IN '%classification_ids%')
+  STYLE 
+    COLOR "#32CD32"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 5 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 5 AND "5" IN '%classification_ids%')
+  STYLE 
+    COLOR "#687537"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 6 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 6 AND "6" IN '%classification_ids%')
+  STYLE 
+    COLOR "#76A5AF"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 7 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 7 AND "7" IN '%classification_ids%')
+  STYLE 
+    COLOR "#29EEE4"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 8 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 8 AND "8" IN '%classification_ids%')
+  STYLE 
+    COLOR "#77A605"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 9 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 9 AND "9" IN '%classification_ids%')
+  STYLE 
+    COLOR "#935132"
+  END
+END
+
+
+    ##########################
+    ##    CLASSE 10 ##########
+    ##########################
+    
+
+CLASS
+  EXPRESSION ([pixel] = 10 AND "10" IN '%classification_ids%')
+  STYLE 
+    COLOR "#BBFCAC"
+  END
+END

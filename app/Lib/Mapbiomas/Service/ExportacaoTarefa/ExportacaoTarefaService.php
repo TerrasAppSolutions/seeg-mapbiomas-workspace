@@ -34,7 +34,6 @@ class ExportacaoTarefaService
 
     public function query($options = null, $paginate = null)
     {
-
         $options['contain'] = $this->ClassificacaoTarefa->contains['default'];
 
         $optionsConditions = isset($options['conditions']) ? $options['conditions'] : array();

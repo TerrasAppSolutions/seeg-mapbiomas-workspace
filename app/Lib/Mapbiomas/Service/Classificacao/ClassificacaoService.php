@@ -382,7 +382,7 @@ class ClassificacaoService {
         if ($data) {            
              // colunas do csv   
 
-             $exportDataCSV .= "ID;CHART;BIOMA;YEAR;T0;T1;CLOUD_COVER;DTV;DTID;SENSOR;TAG_ON;NDFI;SMA;REF;DT;SAVE;COLOR;ELEVATION_ON;ELEVATION_MIN;ELEVATION_MAX;REGION;VERSION;VERSION_FINAL;LABEL;COLLECTION \n";
+             $exportDataCSV .= "ID;CHART;BIOMA;YEAR;T0;T1;CLOUD_COVER;DTV;DTID;SENSOR;TAG_ON;NDFI;SMA;REF;DT;SAVE;COLOR;ELEVATION_ON;ELEVATION_MIN;ELEVATION_MAX;REGION;CODE_REGION;VERSION;VERSION_FINAL;LABEL;COLLECTION \n";
 
              foreach ($data as $key => $classificacao) {
 
@@ -417,8 +417,10 @@ class ClassificacaoService {
                  $linha .= $classificacao['Classificacao']['color'].";";                 
                  $linha .= $classificacao['Classificacao']['elevation_on'].";";                 
                  $linha .= $classificacao['Classificacao']['elevation_min'].";";                 
-                 $linha .= $classificacao['Classificacao']['elevation_max'].";";                 
-                 $linha .= ($classificacao['CartaRegiao']['regiao'] ? $classificacao['CartaRegiao']['regiao']:"") .";";                 
+                 $linha .= $classificacao['Classificacao']['elevation_max'].";";     
+                 // region            
+                 $linha .= ($classificacao['CartaRegiaoInfo']['region'] ? $classificacao['CartaRegiaoInfo']['region']:"") .";";                 
+                 $linha .= ($classificacao['CartaRegiaoInfo']['codigo'] ? $classificacao['CartaRegiaoInfo']['codigo']:"") .";";                 
                  $linha .= $classificacao['Classificacao']['versao'].";";                 
                  $linha .= ($classificacao['Classificacao']['versao_final'] ? "1":"0") .";";
                  $linha .= $classificacao['Classificacao']['identificador'].";";                 
@@ -460,6 +462,5 @@ class ClassificacaoService {
             }
         }
         return $data;
-    }
-      
+    }      
 }

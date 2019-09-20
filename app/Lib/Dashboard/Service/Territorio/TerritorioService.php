@@ -16,9 +16,10 @@ class TerritorioService {
      * API
     */
     public function findAll($query) {
+
         $result = [];
         
-        $limit = 50;
+        $limit = null;
         if (isset($query['limit'])) {
             $limit = $query['limit'];
         }
@@ -41,50 +42,119 @@ class TerritorioService {
         );
 
         $options['conditions'] = [];
-
+        
         if (isset($query['name'])) {
             $options['conditions']["Territorio.descricao iLike"] = $query['name']."%";
         }
-
+        
         if (isset($query['category'])) {
             $options['conditions']["Territorio.categoria"] = ucwords($query['category']);
         }
 
         $lang = [];
+        
         if (isset($query['language']) && $query['language'] == 'en') {
             $lang = [
                 'País' => 'Country',
                 'Estado' => 'State',
                 'Municipio' => 'City',
                 'Bioma' => 'Biome',
+                'Bacias Nivel 1' => 'macro watersheds',
+                'Bacias Nivel 2' => 'watersheds level 2',
+                'Terra Indígena' => 'indigenous lands',
+                'UC' => 'conservation units',
             ];
         }
         
         $resultBrasil1 = [];
+        $estado = null;
+        $pais = null;
+        
+        $options['fields'] = array('id', 'descricao', 'categoria', 'area','xmin', 'ymin', 'xmax', 'ymax', 'bounds');
         
         foreach ($this->Territorio->find("all", $options) as $key => $territorio) {
+            
             $bounds = json_decode($territorio['Territorio']['bounds'], true) ['coordinates'][0];
             
             $municipio = null;
 
-            if($territorio['Territorio']['categoria'] == 'Municipio'){
-                $municipio = $this->Municipio->find('first',array(
+            if($territorio['Territorio']['categoria'] == 'Cuencas-Departamento'){
+                $territorio_explode  = str_split($territorio['Territorio']['id']);
+                $pais_id = $territorio_explode[5];
+                
+                $pais = $this->Territorio->find('first',array(
                     'conditions' => array(
-                        'Municipio.id' => $territorio['Territorio']['id']
+                        'Territorio.id' => $pais_id
                     ),
-                    'fields' => array('id'),
-                    'contain' => array(
-                        'Estado' => array(
-                            'fields' => array('sigla')
-                        )
-                    )
-                ));                
+                    'fields' => array('descricao'),
+                ));
+            }
+
+            
+            if($territorio['Territorio']['categoria'] == 'Nacionales'){
+                $territorio_explode  = str_split($territorio['Territorio']['id']);
+                $pais_id = $territorio_explode[6];
+                $pais = $this->Territorio->find('first',array(
+                    'conditions' => array(
+                        'Territorio.id' => $pais_id
+                    ),
+                    'fields' => array('descricao'),
+                ));
+            }
+            // if($territorio['Territorio']['categoria'] == 'Municipio'){
+            if($territorio['Territorio']['categoria'] == 'City'){
+                $territorio_explode  = str_split($territorio['Territorio']['id']);
+                $pais_id = $territorio_explode[0];
+                $estado_id = $territorio_explode[0].$territorio_explode[1].$territorio_explode[2].$territorio_explode[3];
+                // $municipio = $this->Municipio->find('first',array(
+                //     'conditions' => array(
+                //         'Municipio.id' => $territorio['Territorio']['id']
+                //     ),
+                //     'fields' => array('id'),
+                //     'contain' => array(
+                //         'Estado' => array(
+                //             'fields' => array('sigla')
+                //         )
+                //     )
+                // ));
+                
+                // pr($pais_id);
+                // pr($estado_id);
+
+                $pais = $this->Territorio->find('first',array(
+                    'conditions' => array(
+                        'Territorio.id' => $pais_id
+                    ),
+                    'fields' => array('descricao'),
+                ));
+
+                // pr($pais);
+
+                $estado = $this->Territorio->find('first',array(
+                    'conditions' => array(
+                        'Territorio.id' => $estado_id
+                    ),
+                    'fields' => array('id', 'descricao', 'categoria'),
+                ));
+
+                // pr($estado);
+            } else if($territorio['Territorio']['categoria'] == 'Departamento') {
+                $territorio_explode  = str_split($territorio['Territorio']['id']);
+                $pais_id = $territorio_explode[0];
+                
+                $pais = $this->Territorio->find('first',array(
+                    'conditions' => array(
+                        'Territorio.id' => $pais_id
+                    ),
+                    'fields' => array('descricao'),
+                ));
             }
 
             $r = array(
                 "id" => $territorio['Territorio']['id'],
                 "name" => $territorio['Territorio']['descricao'],
-                "state" => $municipio ? $municipio['Estado']['sigla'] : "",
+                "state" => $estado ? $estado['descricao'] : "",
+                "country" => isset($pais['descricao']) ? $pais['descricao'] : "",
                 "category" =>  !empty($lang[$territorio['Territorio']['categoria']]) ? $lang[$territorio['Territorio']['categoria']] : $territorio['Territorio']['categoria'],
                 "area" => floatval($territorio['Territorio']['area']) ,
                 "bounds" => [[$bounds[0][1],
@@ -93,14 +163,14 @@ class TerritorioService {
                 $bounds[2][0]]]
             );
 
-
             if ($r['id'] == '10') {
                 $resultBrasil1[] = $r;
             } 
             else {
                 $result[] = $r;
             }
-        }        
+
+        }      
         
         foreach ($result as $key => $value) {
             $resultBrasil1[] = $value;
@@ -115,8 +185,6 @@ class TerritorioService {
                 'totalPages' => ceil($this->Territorio->find('count') / $limit)
             );
         }
-
-
         
         return $result;
     }

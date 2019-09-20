@@ -1,0 +1,112 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()">
+        <span aria-hidden="true">
+            &times;
+        </span>
+    </button>
+    <h3>Create a project</h3>
+</div>
+<div class="modal-body">
+    <form name="classificationForm" role="form" class="box-header with-border">
+        <fieldset disabled>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>
+                        Charts
+                    </label>
+                    <select ui-select2 id="select-charts" class="form-control" ng-model="mosaico.chart" ng-options="carta.properties.name as carta.properties.name for carta in cartas"
+                        ng-disabled="true">
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>
+                            {{ 'VERSAO' | translate }}
+                        </label>
+                        <input type="number" placeholder="Enter ..." ng-model="mosaico.version" ng-disabled="true"
+                            class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>
+                            {{ 'SENSOR' | translate }}
+                        </label>
+                        <select ng-model="mosaico.sensor" class="form-control" required>
+                            <option value="L5">
+                                Landsat5
+                            </option>
+                            <option value="LX">
+                                Landsat5/7
+                            </option>
+                            <option value="L7">
+                                Landsat7
+                            </option>
+                            <option value="L8">
+                                Landsat8
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>
+                            {{ 'COBERTURANUVEM' | translate }}
+                        </label>
+                        <div class="row">
+                            <!-- <div class="col-md-8">
+                                <div class="form-group">
+                                    <div ui-slider="slider.options" min="0" max="100" ng-model="mosaico.cloudcover">
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="number" min="0" max="100" ng-model="mosaico.cloudcover" placeholder=""
+                                        class="form-control" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" ng-model="mosaico.elevation_on" /> {{
+                            'HABILITARELECACAO' | translate }}
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-8" ng-show="mosaico.elevation_on">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="maximo1">
+                                {{ 'MAXIMA' | translate }} (m)
+                            </label>
+                            <input class="form-control" type="number" ng-model="mosaico.elevation_max" ng-pattern="/^[0-9]{0,10000}$/" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="minimo1">
+                                {{ 'MINIMA' | translate }} (m)
+                            </label>
+                            <input class="form-control" type="number" ng-model="mosaico.elevation_min" ng-pattern="/^[0-9]{0,10000}$/" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" id="element-jstree">
+                    <div id="edit-tree">
+                    </div>
+                </div>
+            </div>
+    </form>
+    </fieldset>
+</div>
+<div class="modal-footer">
+    <!-- <button class="btn btn-primary" ng-click="ok(mosaico)">Save</button> -->
+</div>

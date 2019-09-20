@@ -1,0 +1,316 @@
+<section class="content-header">
+    <h1>
+        Mosaic Constructor
+        <small>
+            Mosaic
+        </small>
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <i class="fa fa-dashboard">
+                </i>
+                Workspace
+            </a>
+        </li>
+        <li class="active">
+            Mosaic
+        </li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="col-xs-6 col-md-4 fill nopadding-left">
+        <div class="box box-default">
+            <form name="classificationForm" role="form" class="box-header with-border">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>
+                                Project name
+                            </label>
+                            <input type="text" placeholder="Enter ..." class="form-control" ng-model="vm.mosaicProject.project_name" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                Collection
+                            </label>
+                            <input type="number" placeholder="Enter ..." ng-model="vm.collection" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                {{ 'VERSAO' | translate }}
+                            </label>
+                            <input type="number" placeholder="Enter ..." ng-model="vm.mosaicProject.version" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>
+                                {{ 'SENSOR' | translate }}
+                            </label>
+                            <select ng-model="vm.mosaicProject.sensor" class="form-control" required>
+                                <option value="L5">
+                                    Landsat5
+                                </option>
+                                <option value="LX">
+                                    Landsat5/7
+                                </option>
+                                <option value="L7">
+                                    Landsat7
+                                </option>
+                                <option value="L8">
+                                    Landsat8
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label>
+                                {{ 'COBERTURANUVEM' | translate }}
+                            </label>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <div ui-slider="slider.options" min="0" max="100" ng-model="vm.mosaicProject.cloudcover">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input type="number" min="0" max="100" ng-model="vm.mosaicProject.cloudcover"
+                                            placeholder="" class="form-control" required />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <fieldset class="fieldset-datepicker">
+                            <legend>Primary Period</legend>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="text" id="datepicker1" class="period-date-id form-control"
+                                        data-language='en' data-min-view="months" data-view="months" data-date-format="MM yyyy"
+                                        placeholder="select month and year" data-period="initial-primary" />
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control" ng-model="vm.period.primary.initialDay" ng-options="day for day in vm.days">
+                                        <option value="" disabled>day</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 0.5rem;">
+                                <div class="col-md-8">
+                                    <input type="text" id="datepicker2" class="period-date-id form-control"
+                                        data-language='en' data-min-view="months" data-view="months" data-date-format="MM yyyy"
+                                        placeholder="select month and year" data-period="final-primary" />
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control" ng-model="vm.period.primary.finalDay" ng-options="day for day in vm.days">
+                                        <option value="" disabled>day</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <fieldset class="fieldset-datepicker">
+                            <legend>Secondary Period</legend>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="text" id="datepicker3" class="period-date-id form-control"
+                                        data-language='en' data-min-view="months" data-view="months" data-date-format="MM yyyy"
+                                        placeholder="select month and year" data-period="initial-secondary" />
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control" ng-model="vm.period.secondary.initialDay" ng-options="day for day in vm.days">
+                                        <option value="" disabled>day</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 0.5rem;">
+                                <div class="col-md-8">
+                                    <input type="text" id="datepicker4" class="period-date-id form-control"
+                                        data-language='en' data-min-view="months" data-view="months" data-date-format="MM yyyy"
+                                        placeholder="select month and year" data-period="final-secondary" />
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control" ng-model="vm.period.secondary.finalDay" ng-options="day for day in vm.days">
+                                        <option value="" disabled>day</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" id="append-jstreetable">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-warning button-create-project" ng-click="vm.cancelEditProject()" ng-if="vm.mosaicProject.id">
+                            cancel
+                        </button>
+                        <button class="btn btn-primary pull-right button-create-project" ng-click="vm.createProject(vm.mosaicProject)">
+                            <span ng-if="!vm.mosaicProject.id">create project</span>
+                            <span ng-if="vm.mosaicProject.id">save project</span>
+                        </button>
+                    </div>
+                </div>
+                <br />
+                <br />
+            </form>
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-8 fill nopadding-right">
+        <div class="box box-info">
+            <div class="box-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="box-title">Choose a project</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <select ng-model="vm.mosaicChoosed" ng-options="option.MosaicCartaProject as option.MosaicCartaProject.project_name + ' - ' + option.MosaicCartaProject.sensor + ' - ' + option.MosaicCartaProject.version + ' (' + option.MosaicCartaProject.parameters.period.primary.initialYear + ' - ' + option.MosaicCartaProject.parameters.period.primary.finalYear + ')' for option in vm.mosaicProjects"
+                            class="form-control" ng-change="vm.chooseMosaicProject(vm.mosaicChoosed)">
+                            <option value="" selected disabled>Select a project</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap" ng-show="vm.mosaicChoosed">
+                    <div class="col-md-6">
+                        <div class="box-footer no-padding">
+                            <ul class="nav nav-stacked">
+                                <li><a href>Project <span class="pull-right badge bg-blue">{{vm.mosaicChoosed.project_name}}</span></a></li>
+                                <li><a href>Version <span class="pull-right badge bg-blue">{{vm.mosaicChoosed.version}}</span></a></li>
+                                <li><a href>Collection <span class="pull-right badge bg-blue">{{vm.mosaicChoosed.parameters.collection}}</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="box-footer no-padding">
+                            <ul class="nav nav-stacked">
+                                <li><a href>Sensor <span class="pull-right badge bg-blue">{{vm.mosaicChoosed.sensor}}</span></a></li>
+                                <li><a href>Cloud cover <span class="pull-right badge bg-blue">{{vm.mosaicChoosed.cloudcover}}</span></a></li>
+                                <li><a href>Primary period <span class="pull-right badge bg-blue">{{vm.mosaicChoosed.parameters.period.primary.initialMonth}}/{{vm.mosaicChoosed.parameters.period.primary.initialDay}}/{{vm.mosaicChoosed.parameters.period.primary.initialYear}}
+                                            -
+                                            {{vm.mosaicChoosed.parameters.period.primary.finalMonth}}/{{vm.mosaicChoosed.parameters.period.primary.finalDay}}/{{vm.mosaicChoosed.parameters.period.primary.finalYear}}</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <br>
+                            <label>
+                                <input type="checkbox" ng-model="vm.applyForAllCharts" /> Apply to all
+                                charts
+                            </label>
+                            <!-- <select class="chart-multiple" multiple="multiple" ng-options="carta as carta.properties.name for carta in vm.cartas.features"> -->
+                            <!-- <select id="chart-multiple" multiple="multiple" class="select-chart">
+                            </select> -->
+                            <div class="div-multiple-chart" ng-hide="vm.applyForAllCharts">
+                                <input type="hidden" id="chart-multiple" placeholder="choose charts">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <br>
+                            <a class="btn btn-primary" ng-click="vm.createTasks(vm.mosaicChoosed)">
+                                <i class="fa fa-play"></i> Run
+                            </a>
+                            <a class="btn btn-danger pull-right" ng-click="vm.deleteProject(vm.mosaicChoosed)">
+                                <i class="fa fa-trash"></i> Delete
+                            </a>
+                            <a class="btn btn-default pull-right" ng-click="vm.cloneProject(vm.mosaicChoosed)" style="margin-right: 1rem;">
+                                <i class="fa fa-clone"></i> clone
+                            </a>
+                            <a class="btn btn-default pull-right" ng-click="vm.editProject(vm.mosaicChoosed)" style="margin-right: 1rem;">
+                                <i class="fa fa-edit"></i> edit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-8 fill nopadding-right">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">Mosaic Tasks / Project</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                                aria-describedby="example2_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                            colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Id</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                            aria-label="Browser: activate to sort column ascending">Chart</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                            aria-label="Browser: activate to sort column ascending">Year</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending">Version</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                            aria-label="Engine version: activate to sort column ascending">Sensor</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                            aria-label="CSS grade: activate to sort column ascending">Cloud Cover</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                            aria-label="CSS grade: activate to sort column ascending">Project</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                            aria-label="CSS grade: activate to sort column ascending"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr role="row" class="odd" ng-repeat="task in vm.mosaicTasks track by $index">
+                                        <!-- <tr role="row" class="odd" ng-repeat="mosaic in vm.mosaicsData | filter : vm.filters.chart | filter : vm.filters.year"> -->
+                                        <td>{{task.MosaicCarta.id}}</td>
+                                        <td>{{task.MosaicCarta.carta}}</td>
+                                        <td>{{task.MosaicCarta.year}}</td>
+                                        <td>{{task.MosaicCartaProject.version}}</td>
+                                        <td>{{task.MosaicCartaProject.sensor}}</td>
+                                        <td>{{task.MosaicCartaProject.cloudcover}}</td>
+                                        <td>{{task.MosaicCartaProject.project_name}}</td>
+                                        <td>
+                                            <div class="material-switch">
+                                                <input name="project-active" ng-model="task.MosaicCarta.active" type="checkbox" />
+                                                <label for="project-active" class="label-primary" ng-click="vm.changeStatusTask(task)"></label>
+                                            </div>
+                                            <div class="icon-trash">
+                                                <i class="fa fa-trash" ng-click="vm.deleteTask(task.MosaicCarta)"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div ng-show='vm.mosaicTasks.length > 0' paginate-links paginate="paginate" total-pages="totalPages"
+                                page-size="pageSize" page="page" class="pull-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+</section>

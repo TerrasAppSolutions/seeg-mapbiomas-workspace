@@ -5,6 +5,7 @@ App::uses('AppModel', 'Model');
  *
  */
 class Territorio extends AppModel {
+	public $useTable = 'territorios';
 
 	public $virtualFields = array(
 		'area' => "ST_Area(the_geom)",

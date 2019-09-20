@@ -1,0 +1,203 @@
+MAP 
+    NAME "Pastagem"
+    STATUS ON
+    UNITS METERS        
+    SIZE 350 300
+
+    # 
+    # map web metadata projection ============================================ #
+    #
+    WEB        
+        METADATA
+            "wms_title" "Pastagem"  ##required
+            "wms_onlineresource" "http://http://192.168.56.101/cgi-bin/mapserv?"   ##required
+            "wms_srs"   "EPSG:4674 EPSG:3857 EPSG:42101 EPSG:4269 EPSG:4326 EPSG:900913"  ##recommended
+            "wms_enable_request" "*"   ##necessary
+        END
+    END
+
+    PROJECTION
+        "init=epsg:4674"   ##required
+    END      
+
+    #
+    # Camadas ====================================================== #
+    #
+
+    #
+    # Crop ========================================================= #
+    #
+    LAYER
+        NAME 'crop-0709'          
+        TYPE RASTER
+        STATUS ON
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_0708.tif'
+        CLASSITEM "[pixel]"   
+        # crop class     
+        CLASS
+          EXPRESSION ([pixel] = 1)
+          STYLE
+            COLOR 255 0 0
+          END
+        END        
+    END
+    LAYER
+        NAME 'crop-0809'          
+        TYPE RASTER
+        STATUS ON
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_0809.tif'
+        CLASSITEM "[pixel]"   
+        # crop class     
+        CLASS
+          EXPRESSION ([pixel] = 1)
+          STYLE
+            COLOR 255 0 0
+          END
+        END        
+    END
+    LAYER
+        NAME 'crop-0910'          
+        TYPE RASTER
+        STATUS ON
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_0910.tif'
+        CLASSITEM "[pixel]"   
+        # crop class     
+        CLASS
+          EXPRESSION ([pixel] = 1)
+          STYLE
+            COLOR 255 0 0
+          END
+        END        
+    END
+    LAYER
+        NAME 'crop-1011'          
+        TYPE RASTER
+        STATUS ON
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_1011.tif'
+        CLASSITEM "[pixel]"   
+        # crop class     
+        CLASS
+          EXPRESSION ([pixel] = 1)
+          STYLE
+            COLOR 255 0 0
+          END
+        END        
+    END
+    LAYER
+        NAME 'crop-111213'          
+        TYPE RASTER
+        STATUS ON
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_111213.tif'
+        CLASSITEM "[pixel]"   
+        # crop class     
+        CLASS
+          EXPRESSION ([pixel] = 1)
+          STYLE
+            COLOR 255 0 0
+          END
+        END        
+    END
+    LAYER
+        NAME 'crop-1314'          
+        TYPE RASTER
+        STATUS ON
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_1314.tif'
+        CLASSITEM "[pixel]"   
+        # crop class     
+        CLASS
+          EXPRESSION ([pixel] = 1)
+          STYLE
+            COLOR 255 0 0
+          END
+        END        
+    END
+
+    #
+    # Pasture ========================================================= #
+    #
+    LAYER
+        NAME 'pasture-0709'          
+        TYPE RASTER
+        STATUS ON
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_0708.tif'
+        CLASSITEM "[pixel]"   
+        # pasture class     
+        CLASS
+          EXPRESSION ([pixel] = 2)
+          STYLE
+            COLOR 255 0 0
+          END
+        END        
+    END
+    LAYER
+        NAME 'pasture-0809'          
+        TYPE RASTER
+        STATUS ON
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_0809.tif'
+        CLASSITEM "[pixel]"   
+        # pasture class     
+        CLASS
+          EXPRESSION ([pixel] = 2)
+          STYLE
+            COLOR 255 0 0
+          END
+        END        
+    END
+    LAYER
+        NAME 'pasture-0910'          
+        TYPE RASTER
+        STATUS ON
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_0910.tif'
+        CLASSITEM "[pixel]"   
+        # pasture class     
+        CLASS
+          EXPRESSION ([pixel] = 2)
+          STYLE
+            COLOR 255 0 0
+          END
+        END        
+    END
+    LAYER
+        NAME 'pasture-1011'          
+        TYPE RASTER
+        STATUS ON
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_1011.tif'
+        CLASSITEM "[pixel]"   
+        # pasture class     
+        CLASS
+          EXPRESSION ([pixel] = 2)
+          STYLE
+            COLOR 255 0 0
+          END
+        END        
+    END
+    LAYER
+        NAME 'pasture-111213'          
+        TYPE RASTER
+        STATUS ON
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_111213.tif'
+        CLASSITEM "[pixel]"   
+        # pasture class     
+        CLASS
+          EXPRESSION ([pixel] = 2)
+          STYLE
+            COLOR 255 0 0
+          END
+        END        
+    END
+    LAYER
+        NAME 'pasture-1314'          
+        TYPE RASTER
+        STATUS ON
+        DATA '/mnt/disks/data/collections/referencia/pastagem/crop_pasture_1314.tif'
+        CLASSITEM "[pixel]"   
+        # pasture class     
+        CLASS
+          EXPRESSION ([pixel] = 2)
+          STYLE
+            COLOR 255 0 0
+          END
+        END        
+    END
+
+END

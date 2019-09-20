@@ -1,0 +1,56 @@
+MAP
+    NAME "Pantanal"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection ============================================ #
+    #
+    WEB
+        METADATA
+            "wms_title" "Pantanal"  ##required
+            "wms_onlineresource" "http://192.168.56.101/cgi-bin/mapserv?"   ##required
+            "wms_srs"   "EPSG:4674 EPSG:3857 EPSG:42101 EPSG:4269 EPSG:4326 EPSG:900913"  ##recommended
+            "wms_enable_request" "*"   ##necessary
+        END
+    END
+
+    PROJECTION
+        "init=epsg:4674"   ##required
+    END
+
+    #
+    # Camadas ====================================================== #
+    #
+
+    LAYER
+        NAME 'pantanal'
+        TYPE RASTER
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_floresta" "1"
+            "floresta" "[0-1]"
+            "default_naofloresta" "1"
+            "naofloresta" "[0-1]"
+        END
+
+        DATA '/mnt/disks/data/collections/classificacao/REFERENCIA/PANTANAL/PANTANAL_IMAGE.tif'        
+
+        # classes
+        CLASSITEM "[pixel]"
+        CLASS
+          EXPRESSION ([pixel] = 1 AND '%floresta%' = "1")
+          STYLE
+            COLOR 112 168 0
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 2 AND '%naofloresta%' = "1")
+          STYLE
+            COLOR 246 225 120
+          END
+        END
+    END
+END

@@ -1,0 +1,71 @@
+MAP 
+    NAME "UCs"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection =================================== #
+    #
+    INCLUDE '../includes/metadata_wms_projection.map'
+
+
+    FONTSET '../fonts/fonts.list'
+    # Camadas ====================================================== #
+    #    
+
+    LAYER
+        NAME "ucs"
+        TYPE POLYGON
+        STATUS DEFAULT
+
+        VALIDATION        
+            "default_color_id" "1"
+            "color_id" "[0-9]+"
+        END       
+
+        INCLUDE '../includes/database.map'
+
+        DATA "the_geom from 
+            (
+            SELECT 
+            id, the_geom, descricao	
+            FROM territorios
+            WHERE  territorios.categoria='Conservation Units'                                                
+            ) 
+            as ucs
+            USING UNIQUE id USING SRID=4326"
+
+        LABELITEM "descricao"
+
+        LABELMAXSCALEDENOM 1500000
+
+        PROCESSING "LABEL_NO_CLIP=True"
+
+        PROCESSING "CLOSE_CONNECTION=DEFER"
+
+        LABELCACHE ON
+
+        CLASS
+            STYLE                 
+                OUTLINECOLOR "#FF6600"
+                WIDTH 1                  
+            END
+            LABEL
+                TYPE TRUETYPE                
+                FONT arial-bold 
+                COLOR 0 0 0
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 1
+                SIZE 10
+                ANTIALIAS TRUE
+                POSITION CC
+                PARTIALS TRUE
+                MINDISTANCE 10
+                BUFFER 4
+            END
+        END
+
+
+    END
+END

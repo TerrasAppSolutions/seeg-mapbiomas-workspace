@@ -1,0 +1,1 @@
+*/30 * * * * sh /var/www/app/Console/Scripts/app_cronjobs.sh >/dev/null 2>&1

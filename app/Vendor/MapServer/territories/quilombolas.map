@@ -1,0 +1,47 @@
+MAP 
+    NAME "Quilombolas"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection =================================== #
+    #
+    INCLUDE '../includes/metadata_wms_projection.map'
+
+
+    #/var/www/dev/dev-rafael/app/Vendor/MapServer/territories
+    # Camadas ====================================================== #
+    #    
+
+    LAYER
+        NAME "quilombolas"
+        TYPE POLYGON
+        STATUS DEFAULT
+
+        VALIDATION        
+            "default_color_id" "1"
+            "color_id" "[0-9]+"
+        END       
+
+        INCLUDE '../includes/database.map'
+
+        DATA "the_geom from 
+            (
+            SELECT 
+            id, the_geom
+            FROM territorios
+            WHERE  territorios.categoria='Quilombolas'                                                
+            ) 
+            as quilombolas
+            USING UNIQUE id USING SRID=4326"
+
+        CLASS
+            #EXPRESSION ('%color_id%' = '1')
+            STYLE                 
+                OUTLINECOLOR 255 255 255
+                WIDTH 2
+            END
+        END
+    END
+END

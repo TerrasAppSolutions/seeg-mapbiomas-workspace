@@ -1,0 +1,14 @@
+WEB        
+    METADATA
+        "wms_title" "Carta"  ##required
+        "wms_extent" "-73.9909438636055 -33.751583004979 -28.835629322577 5.27215639335258"
+        "wms_srs" "EPSG:3857"
+        "wms_enable_request" "*"   ##necessary
+        "ows_enable_request" "*"
+        "wms_descriptionurl_format" "text/html"
+    END
+END
+
+PROJECTION
+    "init=epsg:4326"   ##required
+END      

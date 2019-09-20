@@ -29,6 +29,9 @@ class TemporalFilterProjectService {
         $usuarioAuth = $this->TemporalFilterProject->authUser;
                 
         $optionsConditions = isset($options['conditions']) ? $options['conditions'] : array();
+
+        // recupera dados por bioma
+        $options['conditions']['biome_id'] = $usuarioAuth['UsuarioBioma']['Bioma']['id'];
         
         // recupera dados
         $data = $this->TemporalFilterProject->find('all', $options);
@@ -100,8 +103,40 @@ class TemporalFilterProjectService {
         return $newProject;
     }
 
+    /**
+     * Deletar projeto
+     * @param {id} id
+     */
     public function delete($id)
     {
         return $this->TemporalFilterProject->delete($id);
+    }
+
+    /**
+     * Ativa projeto para processamento
+     */
+    public function activateProject($data)
+    {
+        // recupera os projetos relacionados com biome id
+        $projects = $this->TemporalFilterProject->find('all', array(
+            'conditions' => array(
+                'biome_id' => $data['biome_id']
+            ),
+            'order' => 'TemporalFilterProject.created DESC'
+        ));
+
+        // redefine o campo activate para falso
+        // apenas o escolhido que permanece com o valor selecionado
+        foreach($projects as $key => $value) {
+            $projects[$key]['TemporalFilterProject']['active'] = false;
+
+            if($projects[$key]['TemporalFilterProject']['id'] == $data['id']) {
+                $projects[$key]['TemporalFilterProject']['active'] = $data['active'];
+            }
+        }
+
+        $projectsSaved = $this->TemporalFilterProject->saveMany($projects);
+
+        return $projects;
     }
 }

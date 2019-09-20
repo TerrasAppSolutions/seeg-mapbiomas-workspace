@@ -62,8 +62,6 @@ class ProcessTarefa
                 // se envio de para processamento ocorreu com erro
                 // remove tarefa da lista de tarefas enviadas
                 unset($tarefas[$key]);
-                $tarefaId = $tarefa['ClassificacaoTarefa']['id'];
-                echo "tarefa $tarefaId nao enviada. \n";
             }
 
             sleep(1);

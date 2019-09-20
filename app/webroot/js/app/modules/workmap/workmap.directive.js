@@ -1238,7 +1238,7 @@ angular.module('MapBiomas.workmap')
             };
         }
     ])
-    .directive('filter', ['WorkmapAPI', 'MapCartasAPI', 'MapTaskLeaflet', '$rootScope',
+    .directive('temporalFilter', ['WorkmapAPI', 'MapCartasAPI', 'MapTaskLeaflet', '$rootScope',
         function (WorkmapAPI, MapCartasAPI, MapTaskLeaflet, $rootScope) {
             return {
                 restrict: 'A',
@@ -1275,122 +1275,263 @@ angular.module('MapBiomas.workmap')
                     // configura as cartas no mapa
                     MapTaskLeaflet.setCartaLayer(nameMap);
 
-                    // adiciona cartas somente para o primeiro mapa
-                    if ($scope.filterNumber == 1) {
-                        // seleção de carta ao clicar
-                        var cartaSelecionada;
-                        MapTaskLeaflet.getCartaLayer(nameMap).on('click', function (e) {
-                            // função de processamento de carta
-                            // é criado apenas uma vez, por isso 'if'
-                            if (!MapTaskLeaflet.getButtonProcess(nameMap)) {
-                                console.log("$scope.biome", $scope.biome);
-                                
-                                //buttonProcess = MapTaskLeaflet.processButtom(nameMap, 'map2');
-                                MapTaskLeaflet.setButtonProcess('map1', L.easyButton('fa-cogs fa-lg', function () {
-                                    MapTaskLeaflet.processTemporalFilterGee($scope.rules, MapTaskLeaflet.getLastCartaSelected('map1').feature.properties.name, $scope.biome, 'map2');
-                                    // adicionar a função de processamento
-                                }));
-                               
-                                MapTaskLeaflet.getButtonProcess(nameMap).addTo(MapTaskLeaflet.getMap(nameMap));
-                            }
-                            if (MapTaskLeaflet.getLastCartaSelected(nameMap)) {
-                                MapTaskLeaflet.layerDefaultStyle(MapTaskLeaflet.getLastCartaSelected(nameMap));
-                            }
-                            // cartaSelecionada = e;
-                            MapTaskLeaflet.setLastCartaSelected(nameMap, e.layer)
-                            carta = e.layer.feature.properties.name;
-                            // zoom na carta clicada
-                            MapTaskLeaflet.fitBounds(nameMap, e.layer);
-                            
-                            // fit bound no segunda mapa
-                            MapTaskLeaflet.fitBounds('map2', e.layer);
+                    // seleção de carta ao clicar
+                    MapTaskLeaflet.getCartaLayer(nameMap).on('click', function (e) {
+                        // função de processamento de carta
+                        // é criado apenas uma vez, por isso 'if'
+                        if (!MapTaskLeaflet.getButtonProcess(nameMap)) {
+                            console.log("$scope.biome", $scope.biome);
 
-                            // adicionando o estilo a carta clicada no segundo mapa
-                            // faz relação através do find
-                            var cartaLayer = MapTaskLeaflet.findCartaLayer('map2', e.layer);
-                            MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.findCartaLayer('map2', e.layer));
-                        });
+                            //buttonProcess = MapTaskLeaflet.processButtom(nameMap, 'map2');
+                            MapTaskLeaflet.setButtonProcess(nameMap, L.easyButton('fa-cogs fa-lg', function () {
+                                MapTaskLeaflet.processTemporalFilterGee($scope.rules, MapTaskLeaflet.getLastCartaSelected(nameMap).feature.properties.name, $scope.biome, nameMap);
+                                // adicionar a função de processamento
+                            }));
 
-                        /**
-                         * passar o mouse por cima da carta do mapa a direita e exibir o valor da carta
-                         */
-                        var showChart = L.control({
-                            position: 'bottomleft'
-                        });
+                            MapTaskLeaflet.getButtonProcess(nameMap).addTo(MapTaskLeaflet.getMap(nameMap));
+                        }
+                        if (MapTaskLeaflet.getLastCartaSelected(nameMap)) {
+                            MapTaskLeaflet.layerDefaultStyle(MapTaskLeaflet.getLastCartaSelected(nameMap));
+                        }
+                        // cartaSelecionada = e;
+                        MapTaskLeaflet.setLastCartaSelected(nameMap, e.layer)
+                        carta = e.layer.feature.properties.name;
+                        // zoom na carta clicada
+                        MapTaskLeaflet.fitBounds(nameMap, e.layer);
 
-                        var showChartName;
-                        var showChartExist = false;
-                        var layerSelected;
+                        // fit bound no segunda mapa
+                        // MapTaskLeaflet.fitBounds(nameMap, e.layer);
 
-                        showChart.onAdd = function (map) {
-                            var div = L.DomUtil.create('div', 'button-map');
-                            // loop through our density intervals and generate a label with a colored square for each interval
-                            div.innerHTML = '<button type="button" class="btn btn-default shadow-box" style="font-size:10px; font-weight:700;">' + showChartName + '</button>';
-                            return div;
-                        };
+                        // adicionando o estilo a carta clicada no segundo mapa
+                        // faz relação através do find
+                        var cartaLayer = MapTaskLeaflet.findCartaLayer(nameMap, e.layer);
+                        MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.findCartaLayer(nameMap, e.layer));
+                    });
 
-                        /**
-                         * Mouse sobre a carta
-                         */
-                        MapTaskLeaflet.getCartaLayer(nameMap).on('mouseover', function (e) {
-                            // define layer como azul
-                            MapTaskLeaflet.layerBlueStyle(e.layer);
-                            showChartName = e.layer.feature.properties.name;
-                            if (!showChartExist) {
-                                showChart.addTo(MapTaskLeaflet.getMap(nameMap));
-                                showChartExist = true;
-                            }
-                        });
+                    /**
+                     * passar o mouse por cima da carta do mapa a direita e exibir o valor da carta
+                     */
+                    var showChart = L.control({
+                        position: 'bottomleft'
+                    });
 
-                        /**
-                         * Quando o mouse deixa a carta
-                         */
-                        MapTaskLeaflet.getCartaLayer(nameMap).on('mouseout', function (e) {
-                            // volta com o layer padrão
-                            MapTaskLeaflet.layerDefaultStyle(e.layer);
+                    var showChartName;
+                    var showChartExist = false;
+                    var layerSelected;
 
-                            if (MapTaskLeaflet.getLastCartaSelected(nameMap)) {
-                                // console.log('MapTaskLeaflet.getLastCartaSelected(nameMap)', MapTaskLeaflet.getLastCartaSelected(nameMap));
-                                
-                                MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.getLastCartaSelected(nameMap));
-                            }
+                    showChart.onAdd = function (map) {
+                        var div = L.DomUtil.create('div', 'button-map');
+                        // loop through our density intervals and generate a label with a colored square for each interval
+                        div.innerHTML = '<button type="button" class="btn btn-default shadow-box" style="font-size:10px; font-weight:700;">' + showChartName + '</button>';
+                        return div;
+                    };
 
-                            if (showChartExist) {
-                                showChart.removeFrom(MapTaskLeaflet.getMap(nameMap));
-                                showChartExist = false;
-                            }
-                        });
-                    } else {
-                        // adiciona procura por carta
-                        MapTaskLeaflet.searchMap('map1', nameMap);
+                    /**
+                     * Mouse sobre a carta
+                     */
+                    MapTaskLeaflet.getCartaLayer(nameMap).on('mouseover', function (e) {
+                        // define layer como azul
+                        MapTaskLeaflet.layerBlueStyle(e.layer);
+                        showChartName = e.layer.feature.properties.name;
+                        if (!showChartExist) {
+                            showChart.addTo(MapTaskLeaflet.getMap(nameMap));
+                            showChartExist = true;
+                        }
+                    });
 
-                        MapTaskLeaflet.getSearchControl('map1').on('search:locationfound', function (e) {
+                    /**
+                     * Quando o mouse deixa a carta
+                     */
+                    MapTaskLeaflet.getCartaLayer(nameMap).on('mouseout', function (e) {
+                        // volta com o layer padrão
+                        MapTaskLeaflet.layerDefaultStyle(e.layer);
 
-                            // zoom na carta clicada
-                            MapTaskLeaflet.fitBounds('map1', e.layer);
-                            // fit bound no segunda mapa
-                            MapTaskLeaflet.fitBounds(nameMap, e.layer);
+                        if (MapTaskLeaflet.getLastCartaSelected(nameMap)) {
+                            MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.getLastCartaSelected(nameMap));
+                        }
 
-                            // var cartaLayer = MapTaskLeaflet.findCartaLayer('map2', e.layer);
-                            MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.findCartaLayer('map1', e.layer));
-                            MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.findCartaLayer(nameMap, e.layer));
-                            
-                            if (!MapTaskLeaflet.getButtonProcess('map1')) {
-                                //buttonProcess = MapTaskLeaflet.processButtom(nameMap, 'map2');
-                                MapTaskLeaflet.setButtonProcess('map1', L.easyButton('fa-cogs fa-lg', function () {
-                                    MapTaskLeaflet.processTemporalFilterGee($scope.rules, MapTaskLeaflet.getLastCartaSelected('map1').feature.properties.name, $scope.biome, nameMap);
-                                    // adicionar a função de processamento
-                                }));
+                        if (showChartExist) {
+                            showChart.removeFrom(MapTaskLeaflet.getMap(nameMap));
+                            showChartExist = false;
+                        }
+                    });
 
-                                MapTaskLeaflet.getButtonProcess('map1').addTo(MapTaskLeaflet.getMap('map1'));
-                            }
-                        });
-                    }
+                    // adiciona procura por carta
+                    MapTaskLeaflet.searchMap(nameMap, nameMap);
+
+                    MapTaskLeaflet.getSearchControl(nameMap).on('search:locationfound', function (e) {
+
+                        // zoom na carta clicada
+                        MapTaskLeaflet.fitBounds(nameMap, e.layer);
+                        // fit bound no segunda mapa
+                        MapTaskLeaflet.fitBounds(nameMap, e.layer);
+
+                        MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.findCartaLayer(nameMap, e.layer));
+
+                        if (!MapTaskLeaflet.getButtonProcess(nameMap)) {
+                            //buttonProcess = MapTaskLeaflet.processButtom(nameMap, 'map2');
+                            MapTaskLeaflet.setButtonProcess(nameMap, L.easyButton('fa-cogs fa-lg', function () {
+                                MapTaskLeaflet.processTemporalFilterGee($scope.rules, MapTaskLeaflet.getLastCartaSelected(nameMap).feature.properties.name, $scope.biome, nameMap);
+                                // adicionar a função de processamento
+                            }));
+
+                            MapTaskLeaflet.getButtonProcess(nameMap).addTo(MapTaskLeaflet.getMap(nameMap));
+                        }
+                    });
 
                     // bound de mapa
                     MapTaskLeaflet.getMap(nameMap).fitBounds(MapTaskLeaflet.getCartaLayer(nameMap).getBounds());
                     MapTaskLeaflet.getMap(nameMap).setZoom(4);
                 }
             };
+        }
+    ])
+    .directive('integration', ['WorkmapAPI', 'MapCartasAPI', 'MapTaskLeaflet', '$rootScope',
+        function (WorkmapAPI, MapCartasAPI, MapTaskLeaflet, $rootScope) {
+            return {
+                restrict: 'A',
+                scope: {
+                    filterNumber: '=filterNumber',
+                    rules: '=rules',
+                },
+                link: function ($scope, element, attrs) {
+                    /**
+                     * Através desta diretiva é possível criar diversos mapas com um mesmo elemento
+                     * Utiliza o número dele para direfenciar cada um e assim não ocorrer erro
+                     */
+                    var nameMap = 'map' + $scope.filterNumber;
+
+                    element.attr('id', nameMap);
+
+                    // inicia o mapa                    
+                    var filterMap = L.map(nameMap, {
+                        center: [-14.264383087562635, -59.0625],
+                        zoom: 3,
+                    });
+
+                    MapTaskLeaflet.setMap(nameMap, filterMap);
+
+                    // adiciona camada google
+                    var googleTerrain = new L.Google('SATELLITE');
+
+                    MapTaskLeaflet.getMap(nameMap).addLayer(googleTerrain);
+
+                    // configura as cartas no mapa
+                    MapTaskLeaflet.setCartaLayer(nameMap);
+
+                    MapTaskLeaflet.setButtonProcess(nameMap, L.easyButton('fa-cogs fa-lg', function () {
+                        MapTaskLeaflet.processIntegrationFilterGee($scope.rules, nameMap);
+                        // adicionar a função de processamento
+                    }));
+
+                    MapTaskLeaflet.getButtonProcess(nameMap).addTo(MapTaskLeaflet.getMap(nameMap));
+
+                    // seleção de carta ao clicar
+                    /* MapTaskLeaflet.getCartaLayer(nameMap).on('click', function (e) {
+                        // função de processamento de carta
+                        // é criado apenas uma vez, por isso 'if'
+                        if (!MapTaskLeaflet.getButtonProcess(nameMap)) {
+                            //buttonProcess = MapTaskLeaflet.processButtom(nameMap, 'map2');
+                            MapTaskLeaflet.setButtonProcess(nameMap, L.easyButton('fa-cogs fa-lg', function () {
+                                MapTaskLeaflet.processIntegrationFilterGee($scope.rules, nameMap);
+                                // adicionar a função de processamento
+                            }));
+
+                            MapTaskLeaflet.getButtonProcess(nameMap).addTo(MapTaskLeaflet.getMap(nameMap));
+                        }
+                        if (MapTaskLeaflet.getLastCartaSelected(nameMap)) {
+                            MapTaskLeaflet.layerDefaultStyle(MapTaskLeaflet.getLastCartaSelected(nameMap));
+                        }
+                        // cartaSelecionada = e;
+                        MapTaskLeaflet.setLastCartaSelected(nameMap, e.layer)
+                        carta = e.layer.feature.properties.name;
+                        // zoom na carta clicada
+                        MapTaskLeaflet.fitBounds(nameMap, e.layer);
+
+                        // fit bound no segunda mapa
+                        // MapTaskLeaflet.fitBounds(nameMap, e.layer);
+
+                        // adicionando o estilo a carta clicada no segundo mapa
+                        // faz relação através do find
+                        var cartaLayer = MapTaskLeaflet.findCartaLayer(nameMap, e.layer);
+                        MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.findCartaLayer(nameMap, e.layer));
+                    }); */
+
+                    /**
+                     * passar o mouse por cima da carta do mapa a direita e exibir o valor da carta
+                     */
+                    /* var showChart = L.control({
+                        position: 'bottomleft'
+                    });
+
+                    var showChartName;
+                    var showChartExist = false;
+                    var layerSelected; */
+
+                    /* showChart.onAdd = function (map) {
+                        var div = L.DomUtil.create('div', 'button-map');
+                        // loop through our density intervals and generate a label with a colored square for each interval
+                        div.innerHTML = '<button type="button" class="btn btn-default shadow-box" style="font-size:10px; font-weight:700;">' + showChartName + '</button>';
+                        return div;
+                    }; */
+
+                    /**
+                     * Mouse sobre a carta
+                     */
+                    /* MapTaskLeaflet.getCartaLayer(nameMap).on('mouseover', function (e) {
+                        // define layer como azul
+                        MapTaskLeaflet.layerBlueStyle(e.layer);
+                        showChartName = e.layer.feature.properties.name;
+                        if (!showChartExist) {
+                            showChart.addTo(MapTaskLeaflet.getMap(nameMap));
+                            showChartExist = true;
+                        }
+                    }); */
+
+                    /**
+                     * Quando o mouse deixa a carta
+                     */
+                    /* MapTaskLeaflet.getCartaLayer(nameMap).on('mouseout', function (e) {
+                        // volta com o layer padrão
+                        MapTaskLeaflet.layerDefaultStyle(e.layer);
+
+                        if (MapTaskLeaflet.getLastCartaSelected(nameMap)) {
+                            MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.getLastCartaSelected(nameMap));
+                        }
+
+                        if (showChartExist) {
+                            showChart.removeFrom(MapTaskLeaflet.getMap(nameMap));
+                            showChartExist = false;
+                        }
+                    }); */
+
+                    // adiciona procura por carta
+                    //MapTaskLeaflet.searchMap(nameMap, nameMap);
+
+                    /* MapTaskLeaflet.getSearchControl(nameMap).on('search:locationfound', function (e) {
+
+                        // zoom na carta clicada
+                        MapTaskLeaflet.fitBounds(nameMap, e.layer);
+                        // fit bound no segunda mapa
+                        MapTaskLeaflet.fitBounds(nameMap, e.layer);
+
+                        MapTaskLeaflet.layerYellowStyle(MapTaskLeaflet.findCartaLayer(nameMap, e.layer));
+
+                        if (!MapTaskLeaflet.getButtonProcess(nameMap)) {
+                            //buttonProcess = MapTaskLeaflet.processButtom(nameMap, 'map2');
+                            MapTaskLeaflet.setButtonProcess(nameMap, L.easyButton('fa-cogs fa-lg', function () {
+                                MapTaskLeaflet.processIntegrationFilterGee($scope.rules, nameMap);
+                                // adicionar a função de processamento
+                            }));
+
+                            MapTaskLeaflet.getButtonProcess(nameMap).addTo(MapTaskLeaflet.getMap(nameMap));
+                        }
+                    }); */
+
+                    // bound de mapa
+                    MapTaskLeaflet.getMap(nameMap).fitBounds(MapTaskLeaflet.getCartaLayer(nameMap).getBounds());
+                    MapTaskLeaflet.getMap(nameMap).setZoom(4);
+                }
+            }
         }
     ]);

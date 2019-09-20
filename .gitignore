@@ -1,6 +1,7 @@
 /app/Config/CONFIG.ini
-/app/Config/CONFIG_*.ini
+/app/Config/CONFIG__*.ini
 /**/database.map
+/**/databasecol*.map
 /app/sftp-config.json
 /nbproject/
 /app/nbproject/
@@ -21,3 +22,4 @@ sftp-config.json
 /lib/Cake/Console/Templates/skel/tmp/**
 /app/Vendor/MapServer/MapServer
 .vscode/**
+documentation/node_modules

@@ -1,0 +1,300 @@
+<section class="content-header">
+    <h1>
+        Classification
+        <small>
+            Random Forest
+        </small>
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <i class="fa fa-dashboard">
+                </i>
+                Workspace
+            </a>
+        </li>
+        <li class="active">
+            Random Forest
+        </li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="col-xs-6 col-md-4 fill nopadding-left">
+        <div class="box box-default">
+            <form name="classificationForm" role="form" class="box-header with-border">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label>
+                                Project name
+                            </label>
+                            <input type="text" placeholder="Enter ..." class="form-control" ng-model="vm.randomForestProject.project_name" />
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>
+                                Collection
+                            </label>
+                            <input type="number" placeholder="Enter ..." class="form-control" ng-model="vm.collection" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label>
+                                Random forest version
+                            </label>
+                            <input type="number" placeholder="Enter ..." class="form-control" ng-model="vm.randomForestProject.version_output" />
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>
+                                Mosaic version
+                            </label>
+                            <input type="number" placeholder="Enter ..." class="form-control" ng-model="vm.randomForestProject.version_input" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label>
+                                Sample asset
+                            </label>
+                            <select ng-model="vm.randomForestProject.asset_sample_id" ng-options="asset.AssetSample.id as asset.AssetSample.asset for asset in vm.assets"
+                                class="form-control">
+                                <option value="" disabled>-- choose an asset --</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label>
+                                Version sample
+                            </label>
+                            <input type="number" placeholder="Enter ..." class="form-control" ng-model="vm.randomForestProject.version_sample" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>
+                                Classes
+                            </label>
+                            <div class="row" style="max-height:250px; overflow-y: scroll; width: 100%;">
+                                <div class="col-md-12" ng-repeat="classe in vm.classes track by $index">
+                                    <div><input type="checkbox" value="{{classe}}" ng-checked="vm.selectedClasses.indexOf(classe) > -1"
+                                            ng-click="vm.toggleClasseSelection(classe)">
+                                        {{classe.Classe.valor}} -
+                                        {{classe.Classe.classe}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" id="append-jstreetable">
+                    </div>
+                    <div class="col-md-12">
+                        <a href ng-click="vm.resetFeatureSpace()">reset</a>
+                    </div>
+                    <!-- <div class="col-md-12" style="margin-top: 1rem;">
+                        <button>get from projects</button>
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="margin-top: 2rem;">
+                        <label for="">Features based on projects</label>
+                        <div class="list-group" ng-repeat="project in vm.mosaicProjects track by $index">
+                            <a href class="list-group-item" ng-click="vm.createTableOfProject(project)">
+                                <h4 class="list-group-item-heading">{{project.MosaicCartaProject.project_name}}</h4>
+                                <p class="list-group-item-text">
+                                    <strong>Sensor: </strong> {{project.MosaicCartaProject.sensor}} <br>
+                                    <strong>Cloud cover: </strong> {{project.MosaicCartaProject.cloudcover}} <br>
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                Number of trees
+                            </label>
+                            <input type="number" placeholder="Enter ..." class="form-control" ng-model="vm.randomForestProject.number_trees" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                Variables per Split
+                            </label>
+                            <input type="number" placeholder="Enter ..." class="form-control" ng-model="vm.randomForestProject.variables_split" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                Percentile min
+                            </label>
+                            <input type="number" placeholder="Enter ..." class="form-control" ng-model="vm.randomForestProject.percentile_min" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                Percentile max
+                            </label>
+                            <input type="number" placeholder="Enter ..." class="form-control" ng-model="vm.randomForestProject.percentile_max" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-warning button-create-project" ng-click="vm.cancelEditProject()" ng-if="vm.randomForestProject.id">
+                            cancel
+                        </button>
+                        <button class="btn btn-primary pull-right button-create-project" ng-click="vm.createProject(vm.randomForestProject)">
+                            <span ng-if="!vm.randomForestProject.id">create project</span>
+                            <span ng-if="vm.randomForestProject.id">save project</span>
+                        </button>
+                    </div>
+                </div>
+                <br />
+                <br />
+            </form>
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-8 fill nopadding-right">
+        <div class="box box-info">
+            <div class="box-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="box-title">Choose a project</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <select ng-model="vm.projectChoosed" ng-options="option as option.ClassificationProject.project_name for option in vm.randomForestProjects"
+                            class="form-control" ng-change="vm.chooseProject(vm.projectChoosed)">
+                            <option value="" selected disabled>Select a project</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap" ng-show="vm.projectChoosed">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="box-footer no-padding">
+                                <ul class="nav nav-stacked">
+                                    <li><a href>Project <span class="pull-right badge bg-blue">{{vm.projectChoosed.ClassificationProject.project_name}}</span></a></li>
+                                    <li><a href>Collection <span class="pull-right badge bg-blue">{{vm.projectChoosed.ClassificationProject.parameters.collection}}</span></a></li>
+                                    <li><a href>Random forest version <span class="pull-right badge bg-blue">{{vm.projectChoosed.ClassificationProject.version_output}}</span></a></li>
+                                    <li><a href>Mosaic version <span class="pull-right badge bg-blue">{{vm.projectChoosed.ClassificationProject.version_input}}</span></a></li>
+                                    <li><a href>Sample Asset <span class="pull-right badge bg-blue">{{vm.projectChoosed.AssetSample.asset}}</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box-footer no-padding">
+                                <ul class="nav nav-stacked">
+                                    <li><a href>Number of trees <span class="pull-right badge bg-blue">{{vm.projectChoosed.ClassificationProject.number_trees}}</span></a></li>
+                                    <li><a href>Variables per split <span class="pull-right badge bg-blue">{{vm.projectChoosed.ClassificationProject.variables_split}}</span></a></li>
+                                    <li><a href>Percentile min <span class="pull-right badge bg-blue">{{vm.projectChoosed.ClassificationProject.percentile_min}}</span></a></li>
+                                    <li><a href>Percentile max <span class="pull-right badge bg-blue">{{vm.projectChoosed.ClassificationProject.percentile_max}}</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <br>
+                            <label>
+                                <input type="checkbox" class="minimal" ng-model="vm.applyForAllCharts" /> Apply to all
+                                charts
+                            </label>
+                            <!-- <select class="chart-multiple" multiple="multiple" ng-options="carta as carta.properties.name for carta in vm.cartas.features"> -->
+                            <!-- <select id="chart-multiple" multiple="multiple" class="select-chart">
+                            </select> -->
+                            <div class="div-multiple-chart" ng-hide="vm.applyForAllCharts">
+                                <input type="hidden" id="chart-multiple" placeholder="choose charts">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <br>
+                            <a class="btn btn-primary" ng-click="vm.createTasks(vm.projectChoosed)">
+                                <i class="fa fa-play"></i> Run
+                            </a>
+                            <a class="btn btn-danger pull-right" ng-click="vm.deleteProject(vm.projectChoosed)">
+                                <i class="fa fa-trash"></i> Delete
+                            </a>
+                            <a class="btn btn-default pull-right" ng-click="vm.cloneProject(vm.projectChoosed)" style="margin-right: 1rem;">
+                                <i class="fa fa-clone"></i> clone
+                            </a>
+                            <a class="btn btn-default pull-right" ng-click="vm.editProject(vm.projectChoosed)" style="margin-right: 1rem;">
+                                <i class="fa fa-edit"></i> edit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-8 fill nopadding-right">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">Random Forest Tasks / Project</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                                aria-describedby="example2_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1"
+                                            colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending"
+                                            style="width: 10px;">Id</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                            aria-label="Browser: activate to sort column ascending">Chart</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                            aria-label="Browser: activate to sort column ascending" style="width: 100px;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr role="row" class="odd" ng-repeat="task in vm.randomForestTasks track by $index">
+                                        <!-- <tr role="row" class="odd" ng-repeat="mosaic in vm.mosaicsData | filter : vm.filters.chart | filter : vm.filters.year"> -->
+                                        <td>{{task.Classification.id}}</td>
+                                        <td>{{task.Classification.carta}}</td>
+                                        <td>
+                                            <div class="material-switch">
+                                                <input name="project-active" ng-model="task.Classification.active" type="checkbox" />
+                                                <label for="project-active" class="label-primary" ng-click="vm.changeStatusTask(task)"></label>
+                                            </div>
+                                            <div class="icon-trash">
+                                                <i class="fa fa-trash" ng-click="vm.deleteTask(task.Classification)"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div ng-show='vm.randomForestTasks.length > 0' paginate-links paginate="paginate"
+                                total-pages="totalPages" page-size="pageSize" page="page" class="pull-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+</section>

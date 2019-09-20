@@ -68,6 +68,11 @@ angular.module('MapBiomas.dtree')
                 classe: $filter('translate')('OUTRASFORMACOESNAOFLORESTAIS'),
                 color: "#F1C232",
             }, {
+                id: 28,
+                cod: "2.4.",
+                classe: $filter('translate')('SECONDARYVEGETATION'),
+                color: "#968b1b"
+            }, {
                 id: 14,
                 cod: "3.",
                 classe: $filter('translate')('USOAGROPECUARIO'),

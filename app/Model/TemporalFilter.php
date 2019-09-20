@@ -5,5 +5,5 @@ App::uses('AppModel', 'Model');
  *
  */
 class TemporalFilter extends AppModel {
-	
+	public $useTable = 'temporal_filters';
 }

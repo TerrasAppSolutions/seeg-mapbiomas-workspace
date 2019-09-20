@@ -264,3 +264,5 @@ CakePlugin::load('Mapbiomas');
 CakePlugin::load('Export');
 CakePlugin::load('Dashboard');
 CakePlugin::load('Statistics');
+
+//ini_set('memory_limit', '-1'); 

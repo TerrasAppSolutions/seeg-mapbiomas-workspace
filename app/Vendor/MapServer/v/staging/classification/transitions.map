@@ -1,0 +1,75 @@
+MAP 
+    NAME "Transitions"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection =================================== #
+    #
+    INCLUDE '../includes/metadata_wms_projection.map'
+
+
+    #
+    # Camadas ======================================================= #
+    #    
+
+    LAYER
+        NAME 'transtions'
+        TYPE RASTER
+        STATUS ON
+
+        VALIDATION
+            "default_territory_id" "1"
+            "territory_id" "[0-9]+"
+
+            "default_year_t0" "2000"
+            "year_t0" ".+"            
+
+            "default_year_t1" "2001"
+            "year_t1" ".+"                        
+
+            "default_transition_c0" "0"
+            "transition_c0" ".+" 
+
+            "default_transition_c1" "0"
+            "transition_c1" ".+"            
+        END
+        
+        DATA '/mnt/disks/data/data2/collections/COLECAO3_1/VRT/TRANSICAO/TRANSICAO_BRASIL_%year_t0%_%year_t1%.vrt'
+
+        MASK "territory_mask"
+
+        INCLUDE '../includes/style_bioma_transition.map'
+    END
+
+    LAYER
+        NAME "territory_mask"
+        TYPE POLYGON
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_territory_id" "1"
+            "territory_id" "[0-9]+"
+        END
+
+        INCLUDE '../includes/database.map'
+
+        DATA "the_geom from 
+         (
+            SELECT 
+            id, the_geom
+            FROM territorios
+            WHERE id = ANY(string_to_array('%territory_id%',',') :: int[])                                     
+         ) 
+         as territorio
+         USING UNIQUE id USING SRID=4674"
+
+        CLASS
+            STYLE
+                OPACITY 1         
+                COLOR 0 0 0
+            END
+        END
+    END
+END

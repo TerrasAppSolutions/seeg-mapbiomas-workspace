@@ -37,6 +37,9 @@ class ClassificacaoTarefa extends AppModel
                 'CartaRegiao' => array(
                     'fields' => array('regiao'),
                 ),
+                'CartaRegiaoInfo'=> array(
+                    'fields' => array('id', 'region', 'codigo'),
+                ),
                 'Colecao'
             ),
         ),
@@ -103,8 +106,10 @@ class ClassificacaoTarefa extends AppModel
                 $val['Classificacao']['Colecao']['config'] = json_decode($val['Classificacao']['Colecao']['config'], true);
             }
             
-            if (empty($val['Classificacao']['CartaRegiao'])) {
+            if (empty($val['Classificacao']['CartaRegiao']) && !isset($val['Classificacao']['CartaRegiaoInfo']['codigo'])) {
                 $val['Classificacao']['CartaRegiao'] = ['regiao' => '0'];
+            } else {
+                $val['Classificacao']['CartaRegiao'] = ['regiao' => $val['Classificacao']['CartaRegiaoInfo']['codigo']];
             }
         }
         return $results;

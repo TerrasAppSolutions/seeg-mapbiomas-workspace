@@ -1,0 +1,212 @@
+MAP
+    NAME "Pampa"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection ============================================ #
+    #
+    WEB
+        METADATA
+            "wms_title" "Pampa"  ##required
+            "wms_onlineresource" "http://http://192.168.56.101/cgi-bin/mapserv?"   ##required
+            "wms_srs"   "EPSG:4674 EPSG:3857 EPSG:42101 EPSG:4269 EPSG:4326 EPSG:900913 EPSG:4618"  ##recommended
+            "wms_enable_request" "*"   ##necessary
+        END
+    END
+
+    PROJECTION
+        "init=epsg:4674"   ##required
+    END
+
+    #
+    # Camadas ====================================================== #
+    #
+
+    LAYER
+        NAME 'pampa'
+        TYPE RASTER
+        STATUS DEFAULT
+
+        VALIDATION
+
+            "default_territory_id" "1"
+            "territory_id" "[0-9]+"
+
+            "default_year" "0"
+            "year" "[0-9]+"
+
+            "default_classes_ids" "0"
+            "classes_ids" ".+" 
+
+        END
+
+        DATA '/mnt/disks/data/collections/classificacao/REFERENCIA/PAMPA/FONTE2/RS_referencia_%year%.tif'
+
+        # classes
+        CLASSITEM "[pixel]"
+        CLASS
+            EXPRESSION ([pixel] = 1 AND "1" IN '%classes_ids%')
+            STYLE
+                COLOR 18 153 18
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 2 AND "2" IN '%classes_ids%')
+            STYLE
+                COLOR 31 68 35
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 3 AND "3" IN '%classes_ids%')
+            STYLE
+                COLOR 0 100 0
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 4 AND "4" IN '%classes_ids%')
+            STYLE
+                COLOR 0 255 0
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 5 AND "5" IN '%classes_ids%')
+            STYLE
+                COLOR 104 117 55
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 6 AND "6" IN '%classes_ids%')
+            STYLE
+                COLOR 118 165 175
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 7 AND "7" IN '%classes_ids%')
+            STYLE
+                COLOR 41 238 228
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 8 AND "8" IN '%classes_ids%')
+            STYLE
+                COLOR 119 166 5
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 9 AND "9" IN '%classes_ids%')
+            STYLE
+                COLOR 147 81 50
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 10 AND "10" IN '%classes_ids%')
+            STYLE
+                COLOR 255 153 102
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 11 AND "11" IN '%classes_ids%')
+            STYLE
+                COLOR 69 194 165
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 12 AND "12" IN '%classes_ids%')
+            STYLE
+                COLOR 184 175 79
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 13 AND "13" IN '%classes_ids%')
+            STYLE
+                COLOR 241 194 50
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 14 AND "14" IN '%classes_ids%')
+            STYLE
+                COLOR 255 255 178
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 15 AND "15" IN '%classes_ids%')
+            STYLE
+                COLOR 255 217 102
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 16 AND "16" IN '%classes_ids%')
+            STYLE
+                COLOR 246 178 107
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 17 AND "17" IN '%classes_ids%')
+            STYLE
+                COLOR 160 208 222
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 18 AND "18" IN '%classes_ids%')
+            STYLE
+                COLOR 233 116 237
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 19 AND "19" IN '%classes_ids%')
+            STYLE
+                COLOR 213 166 189
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 20 AND "20" IN '%classes_ids%')
+            STYLE
+                COLOR 194 123 160
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 21 AND "21" IN '%classes_ids%')
+            STYLE
+                COLOR 166 77 121
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 22 AND "22" IN '%classes_ids%')
+            STYLE
+                COLOR 234 153 153
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 23 AND "23" IN '%classes_ids%')
+            STYLE
+                COLOR 221 126 107
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 24 AND "24" IN '%classes_ids%')
+            STYLE
+                COLOR 183 183 183
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 25 AND "25" IN '%classes_ids%')
+            STYLE
+                COLOR 255 153 255
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 26 AND "26" IN '%classes_ids%')
+            STYLE
+                COLOR 0 0 255
+            END
+        END
+        CLASS
+            EXPRESSION ([pixel] = 27 AND "27" IN '%classes_ids%')
+            STYLE
+                COLOR 213 213 229
+            END
+        END
+    END
+END

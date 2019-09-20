@@ -1,0 +1,2 @@
+CONNECTIONTYPE postgis
+CONNECTION "host=dbhost port=5432 user=postgres password=postgres dbname=mapbiomas"

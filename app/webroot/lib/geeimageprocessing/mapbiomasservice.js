@@ -520,9 +520,12 @@ var MapbiomasAssetService = function(opts) {
                 "umido": 62
             },
             "ZONACOSTEIRA": {
-            "0": 70
+                "0": 70
+            },
+            "BOLIVIA": {
+                "0": 206
+            }
         }
-    }
 
     }
 
@@ -660,9 +663,12 @@ var MapbiomasAssetService = function(opts) {
             return assetTileUrl;
         }
 
-        var regions = Object.keys(paramsCode['regionsCode'][assetBioma]);
+        // var regions = Object.keys(paramsCode['regionsCode'][assetBioma]);
 
-        var regionsMosaic = ee.Image(options['assets']['regioes']);
+        // console.log("regions", regions);
+        
+
+        // var regionsMosaic = ee.Image(options['assets']['regioes']);
 
 
         var regionsCollectionList = [],
@@ -679,7 +685,7 @@ var MapbiomasAssetService = function(opts) {
 
 
 
-        for (var j = 0; j < regions.length; j++) {
+        /* for (var j = 0; j < regions.length; j++) {
             subcollection = colClass
                 .filterMetadata('region', 'equals', regions[j]);
 
@@ -690,9 +696,9 @@ var MapbiomasAssetService = function(opts) {
             
         }
 
-        var classif = ee.ImageCollection.fromImages(regionsCollectionList);
+        var classif = ee.ImageCollection.fromImages(regionsCollectionList); */
 
-        var mapid = classif.getMap({
+        var mapid = colClass.getMap({
             // "bands": 'classification',
             "min": 0,
             "max": 27,

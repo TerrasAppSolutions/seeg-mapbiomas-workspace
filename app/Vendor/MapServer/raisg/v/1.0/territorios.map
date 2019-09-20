@@ -1,0 +1,59 @@
+MAP 
+    NAME "Territorios"
+    #STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection =================================== #
+    #
+    INCLUDE 'includes/metadata_wms_projection.map'
+
+    OUTPUTFORMAT
+        NAME "png24"
+        #DRIVER GD/PNG #AGG/PNG
+        DRIVER AGG/PNG
+        MIMETYPE "image/png"
+        IMAGEMODE RGBA
+        EXTENSION "png"
+        FORMATOPTION "GAMMA=0.75"
+        TRANSPARENT ON
+    END
+
+    #/var/www/dev/dev-rafael/app/Vendor/MapServer/territories
+    # Camadas 
+    #================================
+    
+    # tabela: territorios_dashboard
+    # Categoria: Bioma
+    INCLUDE 'territorios/raisg_bioma.map'
+    
+    # tabela: territorios_dashboard
+    # Categoria: País
+    INCLUDE 'territorios/raisg_pais.map'
+    
+    # tabela: territorios_dashboard
+    # Categoria: Municipio
+    INCLUDE 'territorios/raisg_municipio.map'
+
+    # tabela: territorios_dashboard
+    # Categoria: Departamentos
+    INCLUDE 'territorios/raisg_departamento.map'
+
+    # tabela: territorios_dashboard
+    # Categoria: TIS
+    INCLUDE 'territorios/raisg_tis.map'
+    
+    # tabela: territorios_dashboard
+    # Categoria: cuencas
+    INCLUDE 'territorios/raisg_cuencas.map'
+    
+    # tabela: territorios_dashboard
+    # Categoria: deptales
+    INCLUDE 'territorios/raisg_deptales.map'
+    
+    # tabela: territorios_dashboard
+    # Categoria: nacionales
+    INCLUDE 'territorios/raisg_nacionales.map'
+
+END

@@ -5,9 +5,8 @@
 
 'use strict';
 
-angular.module('MapBiomas.services').factory('MapTaskLeaflet', ['$http', 'AppConfig', 'GEEProcessDataService', '$injector',
-    function ($http, AppConfig, GEEProcessDataService, $injector) {
-
+angular.module('MapBiomas.services').factory('MapTaskLeaflet', ['$http', 'AppConfig', 'GEEProcessDataService', '$rootScope',
+            '$injector', function ($http, AppConfig, GEEProcessDataService, $rootScope, $injector) {
         // dependências 
         var Notify = $injector.get('Notify');
 
@@ -29,9 +28,12 @@ angular.module('MapBiomas.services').factory('MapTaskLeaflet', ['$http', 'AppCon
 
         // layer control
         var layerControl = {};
+        var panelLayer = {};
 
         var geeTemporalClassificationLayer;
         var geeTemporalFilteredLayer;
+        var geeIntegrationLayer;
+        var geeClassificationLayer;
 
         var mapTaskLeaflet = {
             setMap: function (name, map) {
@@ -46,8 +48,17 @@ angular.module('MapBiomas.services').factory('MapTaskLeaflet', ['$http', 'AppCon
             getLayerControl: function (name) {
                 return layerControl[name];
             },
+            setPanelLayer: function (name, control) {
+                panelLayer[name] = control;
+            },
+            getPanelLayer: function (name) {
+                return panelLayer[name];
+            },
             removeLayerControl: function (name) {
                 this.getLayerControl(name).removeFrom(this.getMap(name));
+            },
+            removePanelLayer: function (name) {
+                this.getPanelLayer(name).removeFrom(this.getMap(name));
             },
             setLastCartaSelected: function (name, map) {
                 lastCartaSelected[name] = map;
@@ -90,58 +101,64 @@ angular.module('MapBiomas.services').factory('MapTaskLeaflet', ['$http', 'AppCon
             },
             /**
              * Encontra a carta layer
+             * * define a carta selecionada como última carta selecionada
+             * * volta o estilo para default
+             * @param {name} name nome do mapa padrão
+             * @param {layer} layer layer para ser adicionado
              */
-            findCartaLayer: function (nameMap, layer) {
+            findCartaLayer: function (name, layer) {
 
-                var clayers = this.getCartaLayer(nameMap).getLayers();
+                var clayers = this.getCartaLayer(name).getLayers();
                 var cartaLayer = _.find(clayers, function (l) {
                     return l.feature.properties.name == layer.feature.properties.name;
                 });
-                // define a carta selecionada como última carta selecionada
-                // volta o estilo para default
-                // console.log(nameMap, cartaLayer);
 
-                if (this.getLastCartaSelected(nameMap)) {
-                    this.layerDefaultStyle(this.getLastCartaSelected(nameMap));
+                if (this.getLastCartaSelected(name)) {
+                    this.layerDefaultStyle(this.getLastCartaSelected(name));
                 }
-                this.setLastCartaSelected(nameMap, cartaLayer);
+                this.setLastCartaSelected(name, cartaLayer);
                 return cartaLayer;
             },
             /**
              * fit bound na carta com zoom menos para melhor visualização
+             * * define o zoom do mapa ao selecionar carta
+             * * timeout devido a problemas ocorridos ao fazer fitbound e zoom
+             * @param {name} name nome do mapa
+             * @param {layer} layer layer para ser adicionado
              */
-            fitBounds: function (nameMap, layer) {
-                this.getMap(nameMap).fitBounds(layer);
-
-                // define o zoom do mapa ao selecionar carta
-                // timeout devido a problemas ocorridos ao fazer fitbound e zoom
+            fitBounds: function (name, layer) {
+                this.getMap(name).fitBounds(layer);
                 setTimeout(function () {
-                    mapTaskLeaflet.getMap(nameMap).setZoom(8);
+                    mapTaskLeaflet.getMap(name).setZoom(9);
                 }, 400);
             },
-            processButtom: function (mapButton, mapResult) {
+            /**
+             * botão para processar ndvi
+             * @param {buttonMap} buttonMap onde botão será adicionado
+             * @param {resultMap} resultMap onde resultado será aplicado
+             */
+            processButtom: function (buttonMap, resultMap) {
                 return L.easyButton('fa-cogs fa-lg', function () {
 
-                    GEEProcessDataService.geeGetNdvi(this.getLastCartaSelected(mapResult), function (url) {
-                        /*
-                         * ProgressBar
-                         */
+                    GEEProcessDataService.geeGetNdvi(this.getLastCartaSelected(resultMap), function (url) {
+                        // progress bar
                         var progressbarControl = new L.Control.LayerProgressBar({
                             layers: [{
                                 label: "Processing...",
                                 layer: url,
                             }]
                         });
-                        console.log("URL", url);
-                        mapTaskLeaflet.getMap(mapResult).addControl(progressbarControl);
+
+                        mapTaskLeaflet.getMap(resultMap).addControl(progressbarControl);
+
                         // remove layer caso já tenha sido processado
                         if (lastUrl) {
-                            mapTaskLeaflet.getMap(mapResult).removeLayer(lastUrl);
+                            mapTaskLeaflet.getMap(resultMap).removeLayer(lastUrl);
                         }
                         lastUrl = url;
-                        mapTaskLeaflet.getMap(mapResult).addLayer(url);
+                        mapTaskLeaflet.getMap(resultMap).addLayer(url);
                     });
-                }).addTo(this.getMap(mapButton));
+                }).addTo(this.getMap(buttonMap));
             },
             /**
              * Filtro temporal GEE
@@ -149,31 +166,29 @@ angular.module('MapBiomas.services').factory('MapTaskLeaflet', ['$http', 'AppCon
              * @param {rules} rules
              */
             processTemporalFilterGee: function (rules, chart, biome, mapResult) {
-                console.log("biome", biome);
+                var progressbarControl1;
+                var progressbarControl2;
 
-                // console.log("REGRAS", rules);
                 // formata as regras, retirando aquelas que não estão ativas
                 if (rules.length) {
                     var formatedRules = this.formatRules(rules, 'TemporalFilter');
 
-                    /* geeTemporalClassificationLayer = new L.TileLayer.GeeScript(
-                        function (callback) {
-                            var assetTileUrl = GEEProcessDataService
-                                .geeTemporalFilter(formatedRules, chart, biome, 'classification');
-                            callback(assetTileUrl);
-                        }
-                    );
-
-                    geeTemporalFilteredLayer = new L.TileLayer.GeeScript(
-                        function (callback) {
-                            var assetTileUrl = GEEProcessDataService
-                                .geeTemporalFilter(formatedRules, chart, biome, 'filtered');
-                            callback(assetTileUrl);
-                        }
-                    ); */
-
                     GEEProcessDataService
-                        .geeTemporalFilter(formatedRules, chart, biome, 'filtered', function (url) {
+                        .geeTemporalFilter(formatedRules, chart, biome, 'filtered', function (url) {                            
+                            /* if (progressbarControl1) {
+                                mapTaskLeaflet.getMap(mapResult).removeControl(progressbarControl1);
+                            } */
+
+                            // progress bar
+                            progressbarControl1 = new L.Control.LayerProgressBar({
+                                layers: [{
+                                    label: "Filtered data...",
+                                    layer: url,
+                                }]
+                            });
+
+                            mapTaskLeaflet.getMap(mapResult).addControl(progressbarControl1);
+
                             if (geeTemporalFilteredLayer) {
                                 mapTaskLeaflet.getMap(mapResult).removeLayer(geeTemporalFilteredLayer);
                             }
@@ -183,39 +198,251 @@ angular.module('MapBiomas.services').factory('MapTaskLeaflet', ['$http', 'AppCon
 
                     GEEProcessDataService
                         .geeTemporalFilter(formatedRules, chart, biome, 'classification', function (url) {
+                            /* if (progressbarControl2) {
+                                mapTaskLeaflet.getMap(mapResult).removeControl(progressbarControl2);
+                            } */
+
+                            // progress bar
+                            progressbarControl2 = new L.Control.LayerProgressBar({
+                                layers: [{
+                                    label: "Classified data...",
+                                    layer: url,
+                                }]
+                            });
+
+                            mapTaskLeaflet.getMap(mapResult).addControl(progressbarControl2);
+
                             if (geeTemporalClassificationLayer) {
                                 mapTaskLeaflet.getMap(mapResult).removeLayer(geeTemporalClassificationLayer);
                             }
 
-                            if (mapTaskLeaflet.getLayerControl(mapResult)) {
-                                mapTaskLeaflet.removeLayerControl(mapResult);
+                            if (mapTaskLeaflet.getPanelLayer(mapResult)) {
+                                mapTaskLeaflet.removePanelLayer(mapResult);
                             }
                             geeTemporalClassificationLayer = url;
+
                             mapTaskLeaflet.getMap(mapResult).addLayer(geeTemporalClassificationLayer);
                         });
+                        
+                    $rootScope.$on('errorTemporalMap', function (ev, error) {                        
+                        Notify.error(error);
+                        mapTaskLeaflet.getMap(mapResult).removeControl(progressbarControl1);
+                        mapTaskLeaflet.getMap(mapResult).removeControl(progressbarControl2);
+                    });
 
-                    this.setLayerControl(mapResult, L.control.layers({}, {
+                    // console.log("geeTemporalFilteredLayer", geeTemporalFilteredLayer);
+                    // console.log("geeTemporalClassificationLayer", geeTemporalClassificationLayer);
+
+                    /* this.setLayerControl(mapResult, L.control.layers({}, {
                         "Classification": geeTemporalClassificationLayer,
                         "Filtered": geeTemporalFilteredLayer,
                     }));
 
+                    this.getLayerControl(mapResult).addTo(mapTaskLeaflet.getMap(mapResult)); */
 
+                    this.setPanelLayer(mapResult, L.control.panelLayers(null, [{
+                        group: "Layers",
+                        layers: [{
+                                active: true,
+                                name: "Classification",
+                                layer: geeTemporalClassificationLayer
+                            },
+                            {
+                                active: true,
+                                name: "Filtered",
+                                layer: geeTemporalFilteredLayer
+                            }
+                        ]
+                    }], {
+                        position: 'topright',
+                        buildItem: function (item) {
 
-                    this.getLayerControl(mapResult).addTo(mapTaskLeaflet.getMap(mapResult));
+                            var $slider = $('<div class="layer-slider">');
 
-                    /* setTimeout(function() {
-                       // remove layer control e carta processada
-                       if (mapTaskLeaflet.getLayerControl(mapResult)) {
-                           console.log("geeTemporalClassificationLayer", geeTemporalClassificationLayer);
+                            var $input = $('<input type="text" value="' + item.layer.options.opacity + '" />');
 
-                           mapTaskLeaflet.removeLayerControl(mapResult);
-                           mapTaskLeaflet.getMap(mapResult).removeLayer(geeTemporalClassificationLayer);
-                           mapTaskLeaflet.getMap(mapResult).removeLayer(geeTemporalFilteredLayer);
-                       }
-                    }, 10000); */
+                            $slider.append($input);
+
+                            $input.ionRangeSlider({
+                                min: 0,
+                                max: 1,
+                                step: 0.01,
+                                hide_min_max: true,
+                                hide_from_to: true,
+                                from: item.layer.options.opacity,
+                                onChange: function (o) {
+                                    item.layer.setOpacity(o.from);
+                                }
+                            });
+
+                            return $slider[0];
+                        }
+                    }));
+
+                    this.getPanelLayer(mapResult).addTo(mapTaskLeaflet.getMap(mapResult));
                 } else {
                     Notify.error('No project selected.');
                 }
+            },
+            /**
+             * Filtro integration GEE
+             * Receberá um conjunto de regras para processamento earth engine
+             * @param {rules} rules
+             */
+            processIntegrationFilterGee: function (rules, mapResult) {
+                // formata as regras, retirando aquelas que não estão ativas
+                /* if (rules) {} else {
+                    Notify.error('No project selected.');
+                } */
+                //rules = this.formatIntegrationClasses(rules);
+                
+                /* GEEProcessDataService
+                    .geeIntegrationFilter(rules, function (url) {
+                        mapTaskLeaflet.getMap(mapResult).addLayer(url);
+                    }); */
+
+                // GEEProcessDataService
+                //     .geeGetClassifications(rules, function (url) {
+                //         mapTaskLeaflet.getMap(mapResult).addLayer(url);
+                //     });
+
+                var progressbarControl1;
+                var progressbarControl2;
+
+                // formata as regras, retirando aquelas que não estão ativas
+                if (rules.length) {
+                    GEEProcessDataService
+                        .geeIntegrationFilter(rules, function (url) {
+
+                            // progress bar
+                            progressbarControl1 = new L.Control.LayerProgressBar({
+                                layers: [{
+                                    label: "Integrating data...",
+                                    layer: url,
+                                }]
+                            });
+
+                            mapTaskLeaflet.getMap(mapResult).addControl(progressbarControl1);
+
+                            if (geeIntegrationLayer) {
+                                mapTaskLeaflet.getMap(mapResult).removeLayer(geeIntegrationLayer);
+                            }
+                            geeIntegrationLayer = url;
+                            mapTaskLeaflet.getMap(mapResult).addLayer(geeIntegrationLayer);
+                        });
+
+                    GEEProcessDataService
+                        .geeGetClassifications(rules, function (url) {
+
+                            // progress bar
+                            progressbarControl2 = new L.Control.LayerProgressBar({
+                                layers: [{
+                                    label: "Classificating data...",
+                                    layer: url,
+                                }]
+                            });
+
+                            mapTaskLeaflet.getMap(mapResult).addControl(progressbarControl2);
+
+                            if (geeClassificationLayer) {
+                                mapTaskLeaflet.getMap(mapResult).removeLayer(geeClassificationLayer);
+                            }
+
+                            if (mapTaskLeaflet.getPanelLayer(mapResult)) {
+                                mapTaskLeaflet.removePanelLayer(mapResult);
+                            }
+                            geeClassificationLayer = url;
+
+                            mapTaskLeaflet.getMap(mapResult).addLayer(geeClassificationLayer);
+                        });
+
+                    $rootScope.$on('errorTemporalMap', function (ev, error) {
+                        Notify.error(error);
+                        mapTaskLeaflet.getMap(mapResult).removeControl(progressbarControl1);
+                        mapTaskLeaflet.getMap(mapResult).removeControl(progressbarControl2);
+                    });
+
+                    this.setPanelLayer(mapResult, L.control.panelLayers(null, [{
+                        group: "Layers",
+                        layers: [{
+                                active: true,
+                                name: "Classification data",
+                                layer: geeClassificationLayer
+                            },
+                            {
+                                active: true,
+                                name: "Integration data",
+                                layer: geeIntegrationLayer
+                            }
+                        ]
+                    }], {
+                        position: 'topright',
+                        buildItem: function (item) {
+
+                            var $slider = $('<div class="layer-slider">');
+
+                            var $input = $('<input type="text" value="' + item.layer.options.opacity + '" />');
+
+                            $slider.append($input);
+
+                            $input.ionRangeSlider({
+                                min: 0,
+                                max: 1,
+                                step: 0.01,
+                                hide_min_max: true,
+                                hide_from_to: true,
+                                from: item.layer.options.opacity,
+                                onChange: function (o) {
+                                    item.layer.setOpacity(o.from);
+                                }
+                            });
+
+                            return $slider[0];
+                        }
+                    }));
+
+                    this.getPanelLayer(mapResult).addTo(mapTaskLeaflet.getMap(mapResult));
+                } else {
+                    Notify.error('No project selected.');
+                }
+            },
+            formatIntegrationClasses: function (rules) {
+                console.log("RULES", rules);
+
+                var prevalenceList = [];
+
+                for (var i = 0; i < rules.length; i++) {
+                    var el = rules[i];
+                    
+                    if (el.Asset.asset) {
+                        prevalenceList.push({
+                            'prevalence_id': el.IntegrationFilter.prevalence_id + 1,
+                            'label': el.Classe.classe,
+                            'rule': {
+                                'class_input': el.Classe.id,
+                                'class_output': el.Classe.id,
+                                'source': el.Asset.asset + '/' + '1985'
+                            },
+                            'exception': null
+                        });
+                    } else {
+                        prevalenceList.push({
+                            'prevalence_id': el.IntegrationFilter.prevalence_id + 1,
+                            'label': el.Classe.classe,
+                            'rule': {
+                                'class_input': el.Classe.id,
+                                'class_output': el.Classe.id,
+                                'source': null
+                            },
+                            'exception': null
+                        });
+                    }
+                }
+
+                console.log("prevalenceList", prevalenceList);
+                
+
+                return prevalenceList;
             },
             /**
              * Função que define carta com entorno azul
@@ -226,8 +453,6 @@ angular.module('MapBiomas.services').factory('MapTaskLeaflet', ['$http', 'AppCon
                     "color": "blue",
                     "weight": 1.5,
                     "opacity": 0.9,
-                    // "fillOpacity": 0.2,
-                    // "fillColor": "#ff6666"
                 });
             },
             /**
@@ -239,7 +464,6 @@ angular.module('MapBiomas.services').factory('MapTaskLeaflet', ['$http', 'AppCon
                     "weight": 0.5,
                     "opacity": 0.1,
                     "fillOpacity": 0,
-                    // "fillColor": "#ff6666"
                 });
             },
             /**
@@ -251,8 +475,6 @@ angular.module('MapBiomas.services').factory('MapTaskLeaflet', ['$http', 'AppCon
                     "color": "red",
                     "weight": 1,
                     "opacity": 0.9,
-                    // "fillOpacity": 0.2,
-                    // "fillColor": "#ff6666"
                 });
             },
             /**
@@ -291,8 +513,6 @@ angular.module('MapBiomas.services').factory('MapTaskLeaflet', ['$http', 'AppCon
             searchMap: function (nameMap, mapResult) {
                 var map1 = this.getMap(nameMap);
                 var map2 = this.getMap(mapResult);
-                console.log(mapResult);
-
 
                 var markersLayer = new L.LayerGroup(); //layer contain searched elements
 

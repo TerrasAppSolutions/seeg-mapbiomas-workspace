@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    build: .
+    container_name: mapbiomas-documentation
+    command: node server.js
+    volumes:
+      - .:/home/app/
+      - /home/app/node_modules
+    ports:
+      - "82:3000"

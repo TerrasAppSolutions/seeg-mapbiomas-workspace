@@ -1,0 +1,6 @@
+# classes
+CLASSITEM "[pixel]"   
+
+INCLUDE '../includes/style_bioma_transition_combinations.map'
+
+

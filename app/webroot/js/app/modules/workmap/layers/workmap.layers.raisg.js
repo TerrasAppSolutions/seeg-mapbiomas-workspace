@@ -6,18 +6,31 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                 var mapfilepath = AppConfig.MAPSERVER.mapfilepath;
                 var mapfilehost = AppConfig.MAPSERVER.mapfilehost;
 
-                var biomas = ['AMAZONIA'];
+                var biomas = ['BOLIVIA', 'COLOMBIA', 'ECUADOR', 'GUYANA', 'GUYANAFRANCESA', 'PERU', 'SURINAM', 'VENEZUELA'];
 
                 var anos = [];
 
                 // valores iniciais dos anos
-                for (var i = 2000; i <= 2016; i++) {
+                for (var i = 2000; i <= 2017; i++) {
                     anos.push(i);
                 }
 
                 /**
                  * COLEÇÂO 1
                  */
+                var assetService = new MapbiomasAssetService({
+                    'assets': {
+                        'regioes': 'projects/mapbiomas-workspace/AUXILIAR/regioes',
+                        'mosaico': 'projects/mapbiomas-raisg/MOSAICOS/workspace-c1',
+                        'classificacao': 'projects/mapbiomas-raisg/COLECCION1/clasificacion',
+                        'classificacaoft': 'projects/mapbiomas-workspace/COLECAO2/classificacao-ft',
+                    },
+                    "palette": "#129912,#1f4423,#006400,#00ff00,#65c24b,#687537," +
+                        "#76a5af,#29eee4,#77a605,#935132,#ffe599,#45c2a5,#f1c232,#b8af4f,#ffffb2," +
+                        "#ffd966,#ffe599,#f6b26b,#e974ed,#d5a6bd,#c27ba0,#a64d79,#ea9999,#cc4125," +
+                        "#dd7e6b,#e6b8af,#980000,#999999,#b7b7b7,#434343,#d9d9d9,#0000ff,#d5d5e5"
+                });
+
                 wgis.addNodeLabel($filter('translate')('COLECAO') + " 1");
                 wgis.addNodeLabel($filter('translate')('MOSAICOIMAGENS') + " (Beta)", $filter('translate')('COLECAO') + " 1");
                 wgis.addNodeLabel($filter('translate')('CLASSIFICACAONAOCONSOLIDADA') + " (Beta)", $filter('translate')('COLECAO') + " 1");
@@ -76,7 +89,7 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                 wgis.addLayerWMS({
                         url: mapfilehost,
                         params: {
-                            map: mapfilepath + "/raisg/raisg.map",
+                            map: mapfilepath + "/raisg.map",
                             color_id: 2,
                             layers: 'divisaodepartamentoadotada',
                             format: 'image/png',
@@ -91,7 +104,7 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                 wgis.addLayerWMS({
                         url: mapfilehost,
                         params: {
-                            map: mapfilepath + "/raisg/raisg.map",
+                            map: mapfilepath + "/raisg.map",
                             layers: 'divisaomunicipioadotada',
                             format: 'image/png',
                             transparent: true
@@ -105,7 +118,7 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                 wgis.addLayerWMS({
                         url: mapfilehost,
                         params: {
-                            map: mapfilepath + "/raisg/raisg.map",
+                            map: mapfilepath + "/raisg.map",
                             layers: 'divisaopaisadotada',
                             format: 'image/png',
                             transparent: true
@@ -119,105 +132,13 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                 wgis.addLayerWMS({
                         url: mapfilehost,
                         params: {
-                            map: mapfilepath + "/raisg/raisg.map",
+                            map: mapfilepath + "/raisg.map",
                             layers: 'limitebiogeografico',
                             format: 'image/png',
                             transparent: true
                         }
                     },
                     "Limite Biogeografico", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
-
-                /**
-                 * Limite de Biomas Operativo RAISG
-                 */
-                // wgis.addLayerWMS({
-                //         url: mapfilehost,
-                //         params: {
-                //             map: mapfilepath + "/raisg/raisg.map",
-                //             layers: 'limitebiomasoperativo',
-                //             format: 'image/png',
-                //             transparent: true
-                //         }
-                //     },
-                //     "Limite de Biomas Operativo", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
-
-                /**
-                 * Legenda de Limite de Biomas Operativo RAISG
-                 * Mostra o conjunto de legendas operativas
-                 */
-
-                // var legOperativaSet = [{
-                //         name: "Amazonía Alta",
-                //         url: "img/legendas/raisg/legoperativa/amazonia-alta.png",
-                //         description: 'Amazonía Alta',
-                //         color: "#43a272"
-                //     },
-                //     {
-                //         name: "Amazonía Baja",
-                //         url: "img/legendas/raisg/legoperativa/amazonia-baja.png",
-                //         description: 'Amazonía Baja',
-                //         color: "#d0ff72"
-                //     },
-                //     {
-                //         name: "Andes",
-                //         url: "img/legendas/raisg/legoperativa/andes.png",
-                //         description: 'Andes',
-                //         color: "#72014d"
-                //     },
-                //     {
-                //         name: "Cerrado",
-                //         url: "img/legendas/raisg/legoperativa/cerrado.png",
-                //         description: 'Cerrado',
-                //         color: "#ffeaad"
-                //     },
-                //     {
-                //         name: "Cerrado-Sabana",
-                //         url: "img/legendas/raisg/legoperativa/cerrado-sabana.png",
-                //         description: 'Cerrado-Sabana',
-                //         color: "#e57400"
-                //     },
-                //     {
-                //         name: "Chaco-Chiquitano",
-                //         url: "img/legendas/raisg/legoperativa/chaco-chiquitano.png",
-                //         description: 'Chaco-Chiquitano',
-                //         color: "#004ea7"
-                //     },
-                //     {
-                //         name: "Macarena",
-                //         url: "img/legendas/raisg/legoperativa/macarena.png",
-                //         description: 'Macarena',
-                //         color: "#ff7c5c"
-                //     },
-                //     {
-                //         name: "Pantanal",
-                //         url: "img/legendas/raisg/legoperativa/pantanal.png",
-                //         description: 'Pantanal',
-                //         color: "#5c0000"
-                //     },
-                //     {
-                //         name: "Sabanas y Herbazales",
-                //         url: "img/legendas/raisg/legoperativa/sabanas-y-herbazales.png",
-                //         description: 'Sabanas y herbazales',
-                //         color: "#a8d35e"
-                //     },
-                //     {
-                //         name: "Tucumano-Boliviano",
-                //         url: "img/legendas/raisg/legoperativa/tucumano-boliviano.png",
-                //         description: 'Tucumano-Boliviano',
-                //         color: "#99ff72"
-                //     },
-                //     {
-                //         name: "Sin Dato",
-                //         url: "img/legendas/raisg/legoperativa/no-data.png",
-                //         description: 'No Data',
-                //         color: "#9b9b9b"
-                //     },
-                // ];
-
-                // for (var i = 0; i < legOperativaSet.length; i++) {
-                //     var element = legOperativaSet[i];
-                //     wgis.addNodeLabel(element.name, $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors' + "+>Limite de Biomas Operativo", element.url);
-                // }
 
                 /**
                  * Limite de Biomas RAISG
@@ -307,20 +228,20 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                     },
                     "Limite RAISG", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
 
-                
+
                 /**
                  * Região Bioma País
                  */
                 wgis.addLayerWMS({
-                    url: mapfilehost,
-                    params: {
-                        map: mapfilepath + "/raisg/raisg.map",
-                        layers: 'paisbiomaregion',
-                        format: 'image/png',
-                        transparent: true
-                    }
-                },
-                "Regiones RAISG", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
+                        url: mapfilehost,
+                        params: {
+                            map: mapfilepath + "/raisg/raisg.map",
+                            layers: 'paisbiomaregion',
+                            format: 'image/png',
+                            transparent: true
+                        }
+                    },
+                    "Regiones RAISG", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
 
 
                 /**
@@ -328,98 +249,98 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                  */
 
                 var legBiomaRegion = [{
-                    name: "Sín region",
-                    url: "img/legendas/raisg/legbiomaregion/0_sin_region.png",
-                    color: "#43a272"
-                },
-                {
-                    name: "Amazonía Alta",
-                    url: "img/legendas/raisg/legbiomaregion/1_amazonia_alta.png",
-                    color: "#95e5a3"
-                },
-                {
-                    name: "Amazonía Baja",
-                    url: "img/legendas/raisg/legbiomaregion/2_amazonia_baja.png",
-                    color: "#ffeaad"
-                },
-                {
-                    name: "Amazonía Baja Inundable",
-                    url: "img/legendas/raisg/legbiomaregion/3_amazonia_baja_inundable.png",
-                    color: "#e57400"
-                },
-                {
-                    name: "Amazonía Baja Pacales",
-                    url: "img/legendas/raisg/legbiomaregion/4_amazonia_baja_pacales.png",
-                    color: "#004ea7"
-                },
-                {
-                    name: "Amazonía Baja Tepuyes",
-                    url: "img/legendas/raisg/legbiomaregion/5_amazonia_baja_tepuyes.png",
-                    color: "#5c0000"
-                },
-                {
-                    name: "Andes",
-                    url: "img/legendas/raisg/legbiomaregion/6_andes.png",
-                    color: "#99ff72"
-                },
-                {
-                    name: "Andes Bosque Seco Interandino",
-                    url: "img/legendas/raisg/legbiomaregion/7_andes_bosque_seco_interandino.png",
-                    color: "#9b9b9b"
-                },
-                {
-                    name: "Cerrado",
-                    url: "img/legendas/raisg/legbiomaregion/8_cerrado.png",
-                    color: "#9b9b9b"
-                },
-                {
-                    name: "Cerrado-Sabana",
-                    url: "img/legendas/raisg/legbiomaregion/9_cerrado_sabana.png",
-                    color: "#9b9b9b"
-                },
-                {
-                    name: "Chaco-Chiquitano",
-                    url: "img/legendas/raisg/legbiomaregion/10_chaco_chiquitano.png",
-                    color: "#9b9b9b"
-                },
-                {
-                    name: "Pantanal",
-                    url: "img/legendas/raisg/legbiomaregion/11_pantanal.png",
-                    color: "#9b9b9b"
-                },
-                {
-                    name: "Tucumano-Boliviano",
-                    url: "img/legendas/raisg/legbiomaregion/12_tucumano_boliviano.png",
-                    color: "#9b9b9b"
-                },
-                {
-                    name: "Sabanas y Herbazales Tepuyes",
-                    url: "img/legendas/raisg/legbiomaregion/13_sabanas_y_herbazales_tepuyes.png",
-                    color: "#9b9b9b"
-                },
-                {
-                    name: "Sabanas y herbazales",
-                    url: "img/legendas/raisg/legbiomaregion/14_sabanas_y_herbazales.png",
-                    color: "#9b9b9b"
+                        name: "Sín region",
+                        url: "img/legendas/raisg/legbiomaregion/0_sin_region.png",
+                        color: "#43a272"
+                    },
+                    {
+                        name: "Amazonía Alta",
+                        url: "img/legendas/raisg/legbiomaregion/1_amazonia_alta.png",
+                        color: "#95e5a3"
+                    },
+                    {
+                        name: "Amazonía Baja",
+                        url: "img/legendas/raisg/legbiomaregion/2_amazonia_baja.png",
+                        color: "#ffeaad"
+                    },
+                    {
+                        name: "Amazonía Baja Inundable",
+                        url: "img/legendas/raisg/legbiomaregion/3_amazonia_baja_inundable.png",
+                        color: "#e57400"
+                    },
+                    {
+                        name: "Amazonía Baja Pacales",
+                        url: "img/legendas/raisg/legbiomaregion/4_amazonia_baja_pacales.png",
+                        color: "#004ea7"
+                    },
+                    {
+                        name: "Amazonía Baja Tepuyes",
+                        url: "img/legendas/raisg/legbiomaregion/5_amazonia_baja_tepuyes.png",
+                        color: "#5c0000"
+                    },
+                    {
+                        name: "Andes",
+                        url: "img/legendas/raisg/legbiomaregion/6_andes.png",
+                        color: "#99ff72"
+                    },
+                    {
+                        name: "Andes Bosque Seco Interandino",
+                        url: "img/legendas/raisg/legbiomaregion/7_andes_bosque_seco_interandino.png",
+                        color: "#9b9b9b"
+                    },
+                    {
+                        name: "Cerrado",
+                        url: "img/legendas/raisg/legbiomaregion/8_cerrado.png",
+                        color: "#9b9b9b"
+                    },
+                    {
+                        name: "Cerrado-Sabana",
+                        url: "img/legendas/raisg/legbiomaregion/9_cerrado_sabana.png",
+                        color: "#9b9b9b"
+                    },
+                    {
+                        name: "Chaco-Chiquitano",
+                        url: "img/legendas/raisg/legbiomaregion/10_chaco_chiquitano.png",
+                        color: "#9b9b9b"
+                    },
+                    {
+                        name: "Pantanal",
+                        url: "img/legendas/raisg/legbiomaregion/11_pantanal.png",
+                        color: "#9b9b9b"
+                    },
+                    {
+                        name: "Tucumano-Boliviano",
+                        url: "img/legendas/raisg/legbiomaregion/12_tucumano_boliviano.png",
+                        color: "#9b9b9b"
+                    },
+                    {
+                        name: "Sabanas y Herbazales Tepuyes",
+                        url: "img/legendas/raisg/legbiomaregion/13_sabanas_y_herbazales_tepuyes.png",
+                        color: "#9b9b9b"
+                    },
+                    {
+                        name: "Sabanas y herbazales",
+                        url: "img/legendas/raisg/legbiomaregion/14_sabanas_y_herbazales.png",
+                        color: "#9b9b9b"
+                    }
+                ];
+
+                for (var i = 0; i < legBiomaRegion.length; i++) {
+                    var element = legBiomaRegion[i];
+                    wgis.addNodeLabel(element.name, $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors' + "+>Regiones RAISG", element.url);
                 }
-            ];
-
-            for (var i = 0; i < legBiomaRegion.length; i++) {
-                var element = legBiomaRegion[i];
-                wgis.addNodeLabel(element.name, $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors' + "+>Regiones RAISG", element.url);
-            }
 
 
-            wgis.addLayerWMS({
-                url: mapfilehost,
-                params: {
-                    map: mapfilepath + "/raisg/raisg.map",
-                    layers: 'paisbiomaregionlimite',
-                    format: 'image/png',
-                    transparent: true
-                }
-            },
-            "Limite Regiones RAISG ", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
+                wgis.addLayerWMS({
+                        url: mapfilehost,
+                        params: {
+                            map: mapfilepath + "/raisg/raisg.map",
+                            layers: 'paisbiomaregionlimite',
+                            format: 'image/png',
+                            transparent: true
+                        }
+                    },
+                    "Limite Regiones RAISG ", $filter('translate')("MAPAREFERENCIA") + '+>' + 'Vectors', false);
 
 
                 /**

@@ -896,8 +896,8 @@ angular.module('MapBiomas.workmap').factory('WorkspaceLayers', ['AppConfig', '$f
                 wgis.addLayerTile({
                     url: "https://tile-{s}.urthecast.com/v1/rgb/{z}/{x}/{y}?api_key={api_key}&api_secret={api_secret}&sensor_platform={sensor_platform}&cloud_coverage_lte={cloud_coverage_lte}&acquired_gte={acquired_gte}&acquired_lte={acquired_lte}",
                     params: {
-                        api_key: "FA3EBE5D298B4C458162",
-                        api_secret: "D6CC54389EF4420EAEFC5D374EE9744D",
+                        api_key: "<INSERT API_KEY HERE>",
+                        api_secret: "<INSERT API_SECRET HERE>",
                         sensor_platform: "theia",
                         cloud_coverage_lte: "50",
                         acquired_gte: "2015-01-01T03:00:00.000Z",

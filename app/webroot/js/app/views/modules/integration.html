@@ -1,0 +1,159 @@
+<section class="content-header">
+    <h1>
+        Integration
+        <!-- <small>
+            Filters
+        </small> -->
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#">
+                <i class="fa fa-dashboard">
+                </i>
+                Workspace
+            </a>
+        </li>
+        <li class="active">
+            Integration
+        </li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="filter-map">
+                        <!-- Criação de mapas on the fly -->
+                        <div integration class="map-full" filter-number="i" ng-repeat="i in [1]" rules='vm.selectedClasses'>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 2rem;">
+                        <div class="col-sm-6">
+                            <div class="material-switch" style="line-height: 5.3rem; padding-left: 2rem;" ng-if="vm.choosedProject">
+                                <input id="project-active" name="project-active" ng-model="vm.choosedProject.active"
+                                    type="checkbox" ng-change="vm.defineAsMainProject(vm.choosedProject)" />
+                                <label for="project-active" class="label-primary"></label>
+                                <strong style="padding-left: 5px;">Define as main project</strong>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group margin">
+                                <div class="input-group-btn" style="width: auto;">
+                                    <button class="btn btn-primary" ng-click="vm.createProjectModal()">
+                                        <i class="fa fa-plus"></i> project</button>
+                                </div>
+                                <!-- /btn-group -->
+                                <!-- <select ng-model="vm.choosedProject" ng-options="options.IntegrationProject as options.IntegrationProject.name for options in vm.integrationProjectOptions"
+                                    class="form-control" ng-change="vm.projectChoices(vm.choosedProject)">
+                                    <option value="" selected disabled>Select a project</option>
+                                </select> -->
+                                <div class="input-group-btn" style="width: 100%;">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                        style="background: white; text-align: center; width:100%; text-transform: none;">Choose
+                                        a project
+                                        <span class="fa fa-caret-down" style="float:right;"></span></button>
+                                    <div class="dropdown-backdrop"></div>
+                                    <ul class="dropdown-menu" style="width:100%;">
+                                        <li ng-repeat="option in vm.integrationProjectOptions track by $index"><a href
+                                                ng-click="vm.projectChoices(option.IntegrationProject)">{{option.IntegrationProject.project_name}}
+                                                <i class="fa fa-check" style="float: right;" ng-if="option.IntegrationProject.active"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- <div class="box box-solid">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Folders</h3>
+
+                                    <div class="box-tools">
+                                        <button type="button" class="btn btn-box-tool" data-toggle="collapse"
+                                            data-target="#collapseExample"><i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="box-body no-padding collapse" id="collapseExample" style="">
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li class="active"><a href="#"><i class="fa fa-inbox"></i> Inbox
+                                                <span class="label label-primary pull-right">12</span></a></li>
+                                        <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
+                                        <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
+                                        <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>
+                                        </li>
+                                        <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="alert without-data-area" ng-show="!vm.choosedProject">
+                        <h4>
+                            <strong>Hey!</strong> Choose a project or create a new one.
+                        </h4>
+                    </div>
+                    <div ng-show="vm.choosedProject">
+                        <fieldset class="fieldset-temporal-rule fieldset-integration-rule">
+                            <legend class="legend-title">
+                                <strong>{{vm.choosedProject.project_name}}</strong>
+                                <small>({{vm.choosedProject.biome_name}})</small>
+                                <br>
+                                <small><strong>Input version:</strong> {{vm.choosedProject.version_input}}</small>
+                                <br>
+                                <small><strong>Output version:</strong> {{vm.choosedProject.version_output}}</small>
+                                <br>
+                                <small class="light-grey">{{vm.choosedProject.description || 'No description here'}}</small>
+                            </legend>
+                            <div class="button-functions">
+                                <button type="button" class="btn btn-success pull-right" ng-click="vm.saveIntegrationRules(vm.selectedClasses)">
+                                    <i class="fa fa-floppy-o" aria-hidden="true"></i> save
+                                </button>
+                                <a href class="btn btn-default pull-right" ng-click="vm.editProject(vm.choosedProject)">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> edit
+                                </a>
+                                <a class="btn btn-danger pull-right" ng-click="vm.deleteProject(vm.choosedProject)">
+                                    <i class="fa fa-trash"></i> Delete
+                                </a>
+                            </div>
+                            <div class="row" style="margin-top: 2rem;">
+                                <div class="col-xs-12">
+                                    <div widget-sortable style="text-align: center;" add-element="vm.addElement(info)"
+                                        remove-element="vm.removeElement(index)" change-position="vm.changePosition(info)"
+                                        start-sortable="vm.startSortable">
+                                        <div style="width: 49%; margin-right: 1rem; display: inline-block; vertical-align: top;">
+                                            <div class="block__list-title">ALL CLASSES</div>
+                                            <div id="list1" class="list-group tile__list">
+                                                <h4>TRANSVERSAL</h4>
+                                                <div class="list-group-item" ng-repeat="availableClasse in vm.availableClasses track by $index"
+                                                    data-id="{{$index}}" ng-if="availableClasse.ClasseAsset.type_asset == 'transversal'">
+                                                    <div ng-style="{'background-color':availableClasse.Classe.cor}"
+                                                        class="block-color-classe"></div>
+                                                    <span>{{availableClasse.Classe.valor}} -
+                                                        {{availableClasse.Classe.classe}}</span>
+                                                    <i class="js-remove">✖</i>
+                                                </div>
+                                                <h4>CLASSIFICATION</h4>
+                                                <div class="list-group-item" ng-repeat="availableClasse in vm.availableClasses track by $index"
+                                                    data-id="{{$index}}" ng-if="availableClasse.ClasseAsset.type_asset == 'classification'">
+                                                    <div ng-style="{'background-color':availableClasse.Classe.cor}"
+                                                        class="block-color-classe"></div>
+                                                    <span>{{availableClasse.Classe.valor}} -
+                                                        {{availableClasse.Classe.classe}}</span>
+                                                    <i class="js-remove">✖</i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="width: 49%; display: inline-block; vertical-align: top;" class="selected-items">
+                                            <div class="block__list-title">SELECTED CLASSES</div>
+                                            <div id="list2" class="list-group tile__list">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

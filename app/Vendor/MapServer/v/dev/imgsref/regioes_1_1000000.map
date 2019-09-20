@@ -1,0 +1,47 @@
+MAP 
+    NAME "regioes_1_1000000"
+    STATUS ON
+    UNITS METERS        
+    SIZE 350 300
+
+    # 
+    # map web metadata projection ============================================ #
+    #
+    WEB        
+        METADATA
+            "wms_title" "regioes_1_1000000"  ##required
+            "wms_onlineresource" "http://http://192.168.56.101/cgi-bin/mapserv?"   ##required
+            "wms_srs"   "EPSG:4674 EPSG:3857 EPSG:42101 EPSG:4269 EPSG:4326 EPSG:900913 EPSG:4618"  ##recommended
+            "wms_enable_request" "*"   ##necessary
+        END
+    END
+
+    PROJECTION
+        "init=epsg:4326"   ##required
+    END      
+
+    #
+    # Camadas ====================================================== #
+    #
+    
+
+    LAYER
+        NAME 'regioes_1_1000000'
+        TYPE POLYGON
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_bioma_collection" "AMAZONIA"
+            "bioma_collection" "^[a-zA-Z\-]+$"
+        END
+
+        DATA '/mnt/disks/data/collections/REFERENCIA/LIMITE_BIOMAS/regioes_1_1000000.shp'
+
+        CLASS
+            STYLE      
+                OUTLINECOLOR 0 237 255
+                WIDTH 1
+            END
+        END
+    END
+END

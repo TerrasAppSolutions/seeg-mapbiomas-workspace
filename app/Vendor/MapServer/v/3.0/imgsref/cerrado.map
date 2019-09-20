@@ -1,0 +1,161 @@
+MAP
+    NAME "Cerrado"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection ============================================ #
+    #
+    WEB
+        METADATA
+            "wms_title" "Cerrado"  ##required
+            "wms_onlineresource" "http://http://192.168.56.101/cgi-bin/mapserv?"   ##required
+            "wms_srs"   "EPSG:4674 EPSG:3857 EPSG:42101 EPSG:4269 EPSG:4326 EPSG:900913 EPSG:4618"  ##recommended
+            "wms_enable_request" "*"   ##necessary
+        END
+    END
+
+    PROJECTION
+        "init=epsg:4674"   ##required
+    END
+
+    #
+    # Camadas ====================================================== #
+    #
+
+    LAYER
+        NAME 'cerrado'
+        TYPE RASTER
+        STATUS DEFAULT
+
+        VALIDATION
+
+            "default_year" "0"
+            "year" "[0-9]+"
+
+            "default_florestadensa" "true"
+            "florestadensa" "^[a-zA-Z\-]+$"
+
+            "default_florestaaberta" "true"
+            "florestaaberta" "^[a-zA-Z\-]+$"
+
+            "default_corposdagua" "true"
+            "corposdagua" "^[a-zA-Z\-]+$"
+
+            "default_naturalnaoflorestal" "true"
+            "naturalnaoflorestal" "^[a-zA-Z\-]+$"
+
+            "default_naturalnaovegetado" "true"
+            "naturalnaovegetado" "^[a-zA-Z\-]+$"
+
+            "default_silvicultura" "true"
+            "silvicultura" "^[a-zA-Z\-]+$"
+
+            "default_agricultura" "true"
+            "agricultura" "^[a-zA-Z\-]+$"
+
+            "default_pastagem" "true"
+            "pastagem" "^[a-zA-Z\-]+$"
+
+            "default_mosaicoocupacoes" "true"
+            "mosaicoocupacoes" "^[a-zA-Z\-]+$"
+
+            "default_areanaovegetada" "true"
+            "areanaovegetada" "^[a-zA-Z\-]+$"
+
+            "default_areaurbana" "true"
+            "areaurbana" "^[a-zA-Z\-]+$"
+
+            "default_outros" "true"
+            "outros" "^[a-zA-Z\-]+$"
+
+            "default_naoobservado" "true"
+            "naoobservado" "^[a-zA-Z\-]+$"
+
+        END
+
+        DATA '/mnt/disks/data/collections/classificacao/REFERENCIA/CERRADO/TCCERRADO_IMAGE_%year%.tif'        
+
+        # classes
+        CLASSITEM "[pixel]"
+        CLASS
+          EXPRESSION ([pixel] = 1 AND '%florestadensa%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR  0 100 0 
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 2 AND '%florestaaberta%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR 0 255 0
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 3 AND '%corposdagua%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR 0 0 255
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 4 AND '%naturalnaoflorestal%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR 255 153 102
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 5 AND '%naturalnaovegetado%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR 204 65 37
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 6 AND '%silvicultura%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR 147 81 50
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 7 AND '%agricultura%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR 233 116 237
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 8 AND '%pastagem%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR 255 217 102
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 9 AND '%mosaicoocupacoes%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR 115 86 0
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 10 AND '%areanaovegetada%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR 234 153 153
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 11 AND '%areaurbana%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR 183 183 183
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 12 AND '%outros%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR 255 204 255
+          END
+        END
+        CLASS
+          EXPRESSION ([pixel] = 13 AND '%naoobservado%' = "true" AND '%year%' = "2013")
+          STYLE
+            COLOR 213 213 229
+          END
+        END
+    END
+END

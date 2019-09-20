@@ -23,18 +23,22 @@
         <link rel="stylesheet" href="bower_components/pikaday/css/pikaday.css"/>
         <link rel="stylesheet" href="bower_components/Leaflet.EasyButton/src/easy-button.css"/>
         <link rel="stylesheet" href="bower_components/leaflet-search/src/leaflet-search.css"/>
+        <link rel="stylesheet" href="bower_components/leaflet-panel-layers/dist/leaflet-panel-layers.src.css"/>
+        <link rel="stylesheet" href="bower_components/ion.rangeSlider1/css/ion.rangeSlider.min.css" />
+        <!-- <link rel="stylesheet" href="https://unpkg.com/ion-rangeslider@2.2.0/css/ion.rangeSlider.skinNice.css" /> -->
         <link rel="stylesheet" href="lib/wgis/wgis.css" />
-        <link rel="stylesheet" href="lib/wgis/wgis.css" />
+        <!-- <link rel="stylesheet" href="lib/wgis/wgis.css" /> -->
         <link rel="stylesheet" href="css/control.layers.minimap.css" />
         <link rel="stylesheet" href="css/iconLayers.css" />
         <!-- adminlte -->
-        <link rel="stylesheet" href="bower_components/admin-lte/dist/css/AdminLTE.min.css"/>        
+        <link rel="stylesheet" href="bower_components/admin-lte/dist/css/AdminLTE.min.css"/>
         <link rel="stylesheet" href="bower_components/admin-lte/dist/css/skins/_all-skins.min.css"/>
+        <link rel="stylesheet" href="bower_components/air-datepicker/dist/css/datepicker.min.css"/>
         <!-- import to bower -->
         <link rel="stylesheet" href="css/Control.Opacity.css" />
-        <!-- app -->        
+        <!-- app -->
         <link rel="stylesheet" href="css/style.css"/>
-    </head>   
+    </head>
     <body ng-app="MapBiomasApp" class="hold-transition skin-black-light sidebar-mini fill">
         <div class="wrapper">
             <header class="main-header navbar-fixed-top">
@@ -76,10 +80,11 @@
         </script>
         <!-- <script src="bower_components/admin-lte/plugins/chartjs/Chart.min.js">
         </script> -->  
-        <script src="http://maps.google.com/maps/api/js?v=3&amp;sensor=true">
-        </script>
         <script src="bower_components/chartjs/Chart.min.js">
         </script>
+        <!-- air datepicker -->
+        <script src="bower_components/air-datepicker/dist/js/datepicker.min.js"></script>
+        <script src="bower_components/air-datepicker/dist/js/i18n/datepicker.en.js"></script>
         <!-- Plugins -->
         <script src="bower_components/leaflet-plugins/layer/tile/Google.js">
         </script>
@@ -87,6 +92,8 @@
         </script>
         <script src="bower_components/jstree/dist/jstree.min.js">
         </script>
+        <!-- JStree table -->
+        <script src="bower_components/jstree-table/jstreetable.js"></script>
         <script src="bower_components/bootbox.js/bootbox.js">
         </script>
         <script src="bower_components/notifyjs/dist/notify.js">
@@ -111,16 +118,16 @@
         </script>
         <script src="lib/utils/L.Control.Layers.InspectPixel.js">
         </script>
-        <script src="lib/leaflet.shapefile/catiline.js">             
+        <script src="lib/leaflet.shapefile/catiline.js">
         </script>
-        <script src="lib/leaflet.shapefile/leaflet.shpfile.js">            
+        <script src="lib/leaflet.shapefile/leaflet.shpfile.js">
         </script>
         <!-- google ee api -->
-        <script src="lib/ee/ee_api_js.js">            
+        <script src="lib/ee/ee_api_js.js">
         </script>
-        <script src="lib/geeimageprocessing/geeimageprocessing.js">            
+        <script src="lib/geeimageprocessing/geeimageprocessing.js">
         </script>
-        <script src="lib/geeimageprocessing/mapbiomasservice.js">            
+        <script src="lib/geeimageprocessing/mapbiomasservice.js">
         </script>
         <!-- Angularjs -->
         <script src="bower_components/angular/angular.min.js">
@@ -154,6 +161,11 @@
         </script>
         <script src="bower_components/leaflet-search/src/leaflet-search.js">
         </script>
+        <script src="bower_components/ion.rangeSlider1/js/ion.rangeSlider.min.js"></script>
+        <script src="bower_components/leaflet-panel-layers/dist/leaflet-panel-layers.src.js">
+        </script>
+        <script src="bower_components/Sortable/Sortable.min.js">
+        </script>
         <!-- Angularjs App modules -->
         <script src="js/app/app.modules.js">
         </script>
@@ -166,7 +178,7 @@
         <script src="js/app/modules/workmap/layers/<?php echo $appConfig['REFERENCELAYER']['modulejs'];?>">
         </script>
         <script src="js/app/modules/workmap/workmap.draw.js">
-        </script>         
+        </script>
         <script src="js/app/modules/dtree/dtree.directive.js">
         </script>
         <script src="js/app/modules/dtree/dtree.decisiontree.js">
@@ -178,7 +190,7 @@
 
         <!-- Angularjs App -->
         <script src="js/app/app.js">
-        </script>        
+        </script>
         <!-- Angularjs App controllers -->
         <script src="js/app/controllers/mapbiomas.js">
         </script>
@@ -191,6 +203,12 @@
         <script src="js/app/controllers/dtree.js">
         </script>
         <script src="js/app/controllers/temporalFilter.js">
+        </script>
+        <script src="js/app/controllers/integration.js">
+        </script>
+        <script src="js/app/controllers/mosaic.js">
+        </script>
+        <script src="js/app/controllers/parameterization.js">
         </script>
         <!-- Angularjs App services -->
         <script src="js/app/services/amostra.js">
@@ -221,9 +239,31 @@
         </script>
         <script src="js/app/services/temporalFilterProject.js">
         </script>
+        <script src="js/app/services/integration.service.js">
+        </script>
+        <script src="js/app/services/integrationProject.service.js">
+        </script>
         <script src="js/app/services/classes.js">
         </script>
+        <script src="js/app/services/classeasset.service.js">
+        </script>
+        <script src="js/app/services/assetSample.service.js">
+        </script>
+        <script src="js/app/services/cartaBioma.service.js">
+        </script>
+        <script src="js/app/services/mosaic_carta_project.service.js">
+        </script>
+        <script src="js/app/services/mosaic_carta.service.js">
+        </script>
+        <script src="js/app/services/classification_project.service.js">
+        </script>
+        <script src="js/app/services/classification.service.js">
+        </script>
         <script src="js/app/services/mapTaskLeaflet.js">
+        </script>
+        <script src="js/app/services/band.service.js">
+        </script>
+        <script src="js/app/services/feature_space.service.js">
         </script>
         <!-- Angularjs App directives -->
         <script src="js/app/directives.js">
@@ -235,9 +275,8 @@
         <script src="js/app/utils.js">
         </script>
         <!-- Angularjs App widgets -->
-        <script src="js/app/widgets/widget.altitude.gradient.js">
+        <script src="js/app/widgets/widget.sortable.js">
         </script>
-
 
         <!-- Angularjs App Modules (refactoring to feature structure) -->
 
@@ -278,5 +317,6 @@
             ga('create', '<?php echo $appConfig['GOOGLEANALYTICS']['code'];?>', 'auto');
             ga('send', 'pageview');
         </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<INSERT KEY HERE>" type="text/javascript"></script>
     </body>
 </html>

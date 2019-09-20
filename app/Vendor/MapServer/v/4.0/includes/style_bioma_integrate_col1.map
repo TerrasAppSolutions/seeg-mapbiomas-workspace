@@ -1,0 +1,82 @@
+# classes
+CLASSITEM "[pixel]"  
+
+# nodata
+CLASS
+  EXPRESSION ([pixel] = 0 AND "0" IN '%classification_ids%')  
+  STYLE
+    COLOR 122 122 122
+  END
+END
+
+# forest
+CLASS
+  EXPRESSION ([pixel] = 1 AND "1" IN '%classification_ids%')
+  STYLE
+    COLOR 11 98 56
+  END
+END        
+
+# nonforest
+CLASS
+  EXPRESSION ([pixel] = 2 AND "2" IN '%classification_ids%')
+  STYLE
+    COLOR 255 252 242
+  END
+END
+
+#forest
+CLASS
+  EXPRESSION ([pixel] = 4 AND "2" IN '%classification_ids%')
+  STYLE
+    COLOR 255 252 242
+  END
+END
+
+# water
+CLASS
+  EXPRESSION ([pixel] = 3 AND "3" IN '%classification_ids%')
+  STYLE
+    COLOR 0 0 255
+  END
+END        
+
+# vegetação não florestal
+CLASS
+  EXPRESSION ([pixel] = 4 AND "4" IN '%classification_ids%')
+  STYLE
+    COLOR 146 208 80
+  END
+END        
+
+# pastagem
+CLASS
+  EXPRESSION ([pixel] = 5 AND "5" IN '%classification_ids%')
+  STYLE
+    COLOR 193 167 59
+  END
+END        
+
+# agricultura
+CLASS
+  EXPRESSION ([pixel] = 6 AND "6" IN '%classification_ids%')
+  STYLE
+    COLOR 255 134 178
+  END
+END        
+
+# floresta plantada
+CLASS
+  EXPRESSION ([pixel] = 7 AND "7" IN '%classification_ids%')
+  STYLE
+    COLOR 111 255 132
+  END
+END        
+
+# floresta da zona costeira
+CLASS
+  EXPRESSION ([pixel] = 8 AND "8" IN '%classification_ids%')
+  STYLE
+    COLOR 49 133 155
+  END
+END        

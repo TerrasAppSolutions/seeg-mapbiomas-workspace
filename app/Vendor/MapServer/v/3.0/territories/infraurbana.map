@@ -1,0 +1,62 @@
+MAP 
+    NAME "InfraestruturaUrbana"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection =================================== #
+    #
+    INCLUDE '../includes/metadata_wms_projection.map'
+
+    # CONFIG "MS_ERRORFILE" "/tmp/ms_error.txt"
+
+    # DEBUG 5
+
+    SYMBOLSET '../symbols/terrassymbols.sym'
+
+    # Camadas ====================================================== #
+    #    
+
+    LAYER
+        NAME "infra"
+        TYPE POINT
+        STATUS ON
+
+
+
+        VALIDATION        
+            "default_color_id" "1"
+            "color_id" "[0-9]+"
+        END       
+
+        INCLUDE '../includes/databasecol3.map'
+
+        DATA "the_geom from 
+         (
+            SELECT 
+            id, the_geom
+            FROM territorios_infra
+            WHERE  territorios_infra.infra_level = 42  
+                                                      
+         ) 
+         as infra
+         USING UNIQUE id USING SRID=4674"
+
+        PROCESSING "CLOSE_CONNECTION=DEFER"
+
+        CLASS
+            STYLE 
+                SYMBOL "point"               
+                COLOR 255 0 0  
+                OUTLINECOLOR 0 0 0
+                SIZE 10
+        
+            END
+            LABEL
+                ANTIALIAS True
+                PARTIALS FALSE
+            END
+        END
+    END
+END

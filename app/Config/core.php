@@ -175,8 +175,13 @@ define('LOG_ERROR', LOG_ERR);
  */
 Configure::write('Session', array(
     'defaults' => 'php',
-    'timeout' => 14400 // 1 day,
+    'timeout' => 4320, // 3 day,
+    'autoRegenerate' => true
 ));
+/* Configure::write('Session', array(
+    'defaults' => 'php',
+    'timeout' => 14400 // 1 day,
+)); */
 
 //Configure::write('Session', array(
 //    'defaults' => 'cake',

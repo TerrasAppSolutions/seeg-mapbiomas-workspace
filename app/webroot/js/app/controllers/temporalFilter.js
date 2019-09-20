@@ -54,6 +54,12 @@ angular.module('MapBiomas.controllers')
             vm.chooseTFProject = chooseTFProject;
             // habilitar seleção de select
             vm.enableSelect = enableSelect;
+            // definir como projeto principal
+            vm.defineAsMainProject = defineAsMainProject;
+            // deleção de projeto
+            vm.deleteProject = deleteProject;
+            // edição de projeto
+            vm.editProject = editProject;
 
             /**
              * Scope variables
@@ -128,11 +134,6 @@ angular.module('MapBiomas.controllers')
              * @param {chooseTFProject} id 
              */
             function chooseTFProject(project) {
-                console.log("bioma: ", project);
-
-                // configura nome bioma
-                vm.biomeName = project.biome_name;
-                
                 // reiniciando paginação
                 $scope.pageSize = 5;
                 $scope.page = 1;
@@ -160,6 +161,7 @@ angular.module('MapBiomas.controllers')
                         };
                         // redefine a paginação ao deletar elemento
                         $scope.paginate($scope.page, $scope.pageSize);
+                        vm.selectToEnable = '';
                         Notify.success("Rule saved!");
                     }
                 });
@@ -256,22 +258,29 @@ angular.module('MapBiomas.controllers')
 
             /**
              * Modal de criação de projeto
+             * @param {project} project se definido será uma edição
              */
-            function createProjectModal() {
+            function createProjectModal(project) {
                 var modalInstance = $uibModal.open({
                     animation: true,
-                    templateUrl: 'js/app/views/filtros/create-project-modal.html',
+                    templateUrl: 'js/app/views/modules/temporal-project.modal.html',
                     size: 'sm',
-                    controller: function ($scope, $uibModalInstance) {
+                    controller: function (Project, $scope, $uibModalInstance) {
+                        // verifica se há projeto pré-definido
+                        if(Project) {
+                            $scope.temporalFilterProject = angular.copy(Project);
+                        }
                         // open modal
                         $scope.ok = function (temporalFilterProject) {
                             TemporalFilterProjectService.save(temporalFilterProject, function (result) {
                                 // adiciona a lista de opções de projeto
-                                vm.temporalFilterProjectOptions.unshift(result);
+                                // caso não seja edição
+                                if (!Project) {
+                                    vm.temporalFilterProjectOptions.unshift(result);
+                                }
                                 // após criado ele será selecionado
                                 vm.tfProjectChoosed = result.TemporalFilterProject;
                                 // redefine a paginação ao deletar elemento
-                                //
                                 $uibModalInstance.close(true);
                             })
                         };
@@ -280,7 +289,11 @@ angular.module('MapBiomas.controllers')
                             $uibModalInstance.close(false);
                         };
                     },
-                    resolve: {}
+                    resolve: {
+                        Project: function () {
+                            return project;
+                        },
+                    }
                 });
 
                 modalInstance.result.then(function (result) {
@@ -300,7 +313,7 @@ angular.module('MapBiomas.controllers')
             function cloneProjectModal() {
                 var modalInstance = $uibModal.open({
                     animation: true,
-                    templateUrl: 'js/app/views/filtros/create-project-modal.html',
+                    templateUrl: 'js/app/views/modules/create-project-modal.html',
                     size: 'sm',
                     controller: function (choosedProject, $scope, $uibModalInstance) {
                         console.log("Choosed", choosedProject);
@@ -309,14 +322,13 @@ angular.module('MapBiomas.controllers')
                         delete $scope.temporalFilterProject.biome_name;
                         delete $scope.temporalFilterProject.modified;
                         delete $scope.temporalFilterProject.created;
-                        $scope.temporalFilterProject.name = $scope.temporalFilterProject.name + ' - Copy';
+                        $scope.temporalFilterProject.project_name = $scope.temporalFilterProject.project_name + ' - Copy';
+                        $scope.temporalFilterProject.active = false;
 
                         
                         // open modal
                         $scope.ok = function (temporalFilterProject) {
-                            TemporalFilterProjectService.clone(temporalFilterProject, function (result) {
-                                console.log("RESULT", result);
-                                
+                            TemporalFilterProjectService.clone(temporalFilterProject, function (result) {                                
                                 // adiciona a lista de opções de projeto
                                 vm.temporalFilterProjectOptions.unshift(result);
                                 // após criado ele será selecionado
@@ -348,6 +360,60 @@ angular.module('MapBiomas.controllers')
                         chooseTFProject(result.TemporalFilterProject);
                     }
                 })
+            }
+
+            /**
+             * Define o projeto como principal
+             * @param {project} project projeto para salvamento
+             */
+            function defineAsMainProject(project) {
+                console.log("project", project);
+                TemporalFilterProjectService.activate(project, function (result) {
+                    // necessário pois ocorre erro caso faça a relação direta (vm.temporalFilterProjectOptions = result)
+                    for (var i = 0; i < result.length; i++) {
+                        var element = result[i];
+                        vm.temporalFilterProjectOptions[i].TemporalFilterProject.active = element.TemporalFilterProject.active;
+                    }
+                })
+            }
+
+            /**
+             * deleção de projeto de filtro temporal
+             * @param {project} project projeto a ser deletado
+             */
+            function deleteProject(project) {
+                console.log("DELETE prosject", project);
+                var r = confirm("Are you sure?");
+
+                if (r) {
+                    console.log("DELETED");
+
+                    TemporalFilterProjectService.delete({
+                        id: project.id
+                    }, function (result) {
+                        console.log("RESULTADO", result);
+
+                        // remove elemento da lista de projetos
+                        var index = _.findIndex(vm.temporalFilterProjectOptions, {
+                            'TemporalFilterProject': project
+                        });
+
+                        // remove dados de projeto
+                        delete vm.tfProjectChoosed;
+
+
+                        vm.temporalFilterProjectOptions.splice(index, 1);
+                    });
+                }
+            }
+
+            /**
+             * edição de projeto de filtro temporal
+             * @param {project} project projeto para edição
+             */
+            function editProject(project) {
+                console.log("Edit project", project);
+                createProjectModal(project);
             }
 
             init();

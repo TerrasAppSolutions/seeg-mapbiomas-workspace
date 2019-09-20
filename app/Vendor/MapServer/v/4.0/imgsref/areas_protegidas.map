@@ -1,0 +1,48 @@
+MAP 
+    NAME "AreasProtegidas"
+    STATUS ON
+    UNITS METERS        
+    SIZE 350 300
+
+    # 
+    # map web metadata projection ============================================ #
+    #
+    WEB        
+        METADATA
+            "wms_title" "AreasProtegidas"  ##required
+            "wms_onlineresource" "http://http://192.168.56.101/cgi-bin/mapserv?"   ##required
+            "wms_srs"   "EPSG:4674 EPSG:3857 EPSG:42101 EPSG:4269 EPSG:4326 EPSG:900913 EPSG:4618"  ##recommended
+            "wms_enable_request" "*"   ##necessary
+        END
+    END
+
+    PROJECTION
+        "init=epsg:4674"   ##required
+    END      
+
+    #
+    # Camadas ====================================================== #
+    #
+    
+
+    LAYER
+        NAME 'areasprotegidas'
+        TYPE POLYGON
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_bioma_collection" "AMAZONIA"
+            "bioma_collection" "^[a-zA-Z\-]+$"
+        END
+
+        DATA '/mnt/disks/data/collections/classificacao/REFERENCIA/AREASPROTEGIDAS/AP_brasil_union.shp'
+
+        CLASS
+            STYLE
+                COLOR 0 255 255
+                OUTLINECOLOR 38 38 38
+                WIDTH 0.5
+            END
+        END
+    END
+END

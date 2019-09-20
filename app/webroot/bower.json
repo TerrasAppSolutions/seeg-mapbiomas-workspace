@@ -51,6 +51,9 @@
     "turf": "2.*",
     "underscore": "*",
     "Leaflet.EasyButton": "^2.3.0",
-    "leaflet-search": "^2.8.0"
+    "leaflet-search": "^2.8.0",
+    "Sortable": "sortablejs#^1.6.0",
+    "leaflet-panel-layers": "^1.1.0",
+    "air-datepicker": "^2.2.3"
   }
 }

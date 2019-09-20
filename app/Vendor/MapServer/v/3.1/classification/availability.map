@@ -1,0 +1,70 @@
+MAP 
+    NAME "AVAILABILITY"
+    STATUS ON
+    UNITS METERS
+    SIZE 350 300
+
+    #
+    # map web metadata projection =================================== #
+    #
+    INCLUDE '../includes/metadata_wms_projection.map'
+
+    #
+    # Camadas ====================================================== #
+    #    
+
+    LAYER
+        NAME 'availability'
+        TYPE RASTER
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_year" "0"
+            "year" "[0-9]+"                     
+        END
+
+        DATA '/mnt/disks/data/data2/collections/COLECAO3/VRT/AVAILABILITY/AVAILABILITY_BRASIL_%year%.vrt'                                                       
+
+        MASK "territory_mask"
+
+        #CLASS
+        #    STYLE
+        #        COLORRANGE 215 25 28  255 255 192
+        #        DATARANGE 1.0 0.0
+        #        RANGEITEM "[pixel]"
+        #    END
+        #END
+        INCLUDE '../includes/style_availability.map'
+        
+    END
+
+    LAYER
+        NAME "territory_mask"
+        TYPE POLYGON
+        STATUS DEFAULT
+
+        VALIDATION
+            "default_territory_id" "10"
+            "territory_id" ".+" 
+        END
+
+        INCLUDE '../includes/database.map'
+
+        DATA "the_geom from 
+         (
+            SELECT 
+            id, the_geom
+            FROM territorios
+            WHERE id = ANY(string_to_array('%territory_id%',',') :: int[])                                  
+         ) 
+         as territorio
+         USING UNIQUE id USING SRID=4674"
+
+        CLASS
+            STYLE
+                OPACITY 1         
+                COLOR 0 0 0
+            END
+        END
+    END
+END

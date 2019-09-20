@@ -1,0 +1,34 @@
+
+MAP
+    NAME "rasterdata"
+    STATUS ON
+    UNITS METERS
+    SIZE 800 600
+
+    WEB        
+        METADATA
+            "wms_srs"   "EPSG:4674 EPSG:3857 EPSG:42101 EPSG:4269 EPSG:4326 EPSG:900913 EPSG:4618"  ##recommended
+            "wms_enable_request" "*"   ##necessary
+        END
+    END
+
+    PROJECTION
+        "init=epsg:4326"   ##required
+    END      
+
+    LAYER
+        NAME integracao
+        TYPE RASTER
+        # TRANSPARENT ON
+        DATA "/data/collections/COLECAO1/VRT/INTEGRATION/INTEGRACAO_RAISG_2006.vrt"
+        STATUS ON
+        CLASSITEM "[pixel]"
+        CLASS
+            EXPRESSION ([pixel] >= 1 AND [pixel] < 28)
+            STYLE
+                COLORRANGE 250 180 0 0 0 255
+                DATARANGE 1 28
+            END
+        END
+    END
+END

@@ -1,0 +1,12 @@
+WEB        
+    METADATA
+        "wms_title" "Carta"  ##required
+        "wms_onlineresource" "http://http://192.168.56.101/cgi-bin/mapserv?"   ##required
+        "wms_srs"   "EPSG:4674 EPSG:3857 EPSG:42101 EPSG:4269 EPSG:4326 EPSG:900913 EPSG:4618"  ##recommended
+        "wms_enable_request" "*"   ##necessary
+    END
+END
+
+PROJECTION
+    "init=epsg:4326"   ##required
+END      

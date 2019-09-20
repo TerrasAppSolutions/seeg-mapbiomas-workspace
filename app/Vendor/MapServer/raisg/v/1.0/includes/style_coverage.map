@@ -1,0 +1,607 @@
+
+    
+    
+##########################
+##    CLASSE 1 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 1 AND "1" IN '%classification_ids%')
+  STYLE 
+    COLOR 18 153 18
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 2 AND !("2" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  STYLE 
+    COLOR 18 153 18
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 3 AND !("3" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  STYLE 
+    COLOR 18 153 18
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 4 AND !("4" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  STYLE 
+    COLOR 18 153 18
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 5 AND !("5" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  STYLE 
+    COLOR 18 153 18
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 6 AND !("6" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  STYLE 
+    COLOR 18 153 18
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 7 AND !("7" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  STYLE 
+    COLOR 18 153 18
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 8 AND !("8" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  STYLE 
+    COLOR 18 153 18
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 9 AND !("9" IN '%classification_ids%') AND ("1" IN '%classification_ids%'))
+  STYLE 
+    COLOR 18 153 18
+  END
+END
+    
+    
+##########################
+##    CLASSE 2 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 2 AND "2" IN '%classification_ids%')
+  STYLE 
+    COLOR 31 68 35
+  END
+END
+    
+    
+##########################
+##    CLASSE 3 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 3 AND "3" IN '%classification_ids%')
+  STYLE 
+    COLOR 0 100 0
+  END
+END
+    
+    
+##########################
+##    CLASSE 4 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 4 AND "4" IN '%classification_ids%')
+  STYLE 
+    COLOR 0 255 0
+  END
+END
+    
+    
+##########################
+##    CLASSE 5 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 5 AND "5" IN '%classification_ids%')
+  STYLE 
+    COLOR 104 117 55
+  END
+END
+    
+    
+##########################
+##    CLASSE 6 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 6 AND "6" IN '%classification_ids%')
+  STYLE 
+    COLOR 118 165 175
+  END
+END
+    
+    
+##########################
+##    CLASSE 7 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 7 AND "7" IN '%classification_ids%')
+  STYLE 
+    COLOR 41 238 228
+  END
+END
+    
+    
+##########################
+##    CLASSE 8 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 8 AND "8" IN '%classification_ids%')
+  STYLE 
+    COLOR 119 166 5
+  END
+END
+    
+    
+##########################
+##    CLASSE 9 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 9 AND "9" IN '%classification_ids%')
+  STYLE 
+    COLOR 147 81 50
+  END
+END
+    
+    
+##########################
+##    CLASSE 10 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 10 AND "10" IN '%classification_ids%')
+  STYLE 
+    COLOR 255 153 102
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 11 AND !("11" IN '%classification_ids%') AND ("10" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 153 102
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 12 AND !("12" IN '%classification_ids%') AND ("10" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 153 102
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 32 AND !("32" IN '%classification_ids%') AND ("10" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 153 102
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 13 AND !("13" IN '%classification_ids%') AND ("10" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 153 102
+  END
+END
+    
+    
+##########################
+##    CLASSE 11 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 11 AND "11" IN '%classification_ids%')
+  STYLE 
+    COLOR 69 194 165
+  END
+END
+    
+    
+##########################
+##    CLASSE 12 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 12 AND "12" IN '%classification_ids%')
+  STYLE 
+    COLOR 184 175 79
+  END
+END
+    
+    
+##########################
+##    CLASSE 13 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 13 AND "13" IN '%classification_ids%')
+  STYLE 
+    COLOR 241 194 50
+  END
+END
+    
+    
+##########################
+##    CLASSE 14 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 14 AND "14" IN '%classification_ids%')
+  STYLE 
+    COLOR 255 255 178
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 15 AND !("15" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 255 178
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 18 AND !("18" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 255 178
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 21 AND !("21" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 255 178
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 16 AND !("15" IN '%classification_ids%') AND !("16" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 255 178
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 17 AND !("15" IN '%classification_ids%') AND !("17" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 255 178
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 19 AND !("18" IN '%classification_ids%') AND !("19" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 255 178
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 20 AND !("18" IN '%classification_ids%') AND !("20" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 255 178
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 28 AND !("18" IN '%classification_ids%') AND !("28" IN '%classification_ids%') AND ("14" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 255 178
+  END
+END
+    
+    
+##########################
+##    CLASSE 15 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 15 AND "15" IN '%classification_ids%')
+  STYLE 
+    COLOR 255 217 102
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 16 AND !("16" IN '%classification_ids%') AND ("15" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 217 102
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 17 AND !("17" IN '%classification_ids%') AND ("15" IN '%classification_ids%'))
+  STYLE 
+    COLOR 255 217 102
+  END
+END
+    
+    
+##########################
+##    CLASSE 16 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 16 AND "16" IN '%classification_ids%')
+  STYLE 
+    COLOR 246 178 107
+  END
+END
+    
+    
+##########################
+##    CLASSE 17 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 17 AND "17" IN '%classification_ids%')
+  STYLE 
+    COLOR 160 208 222
+  END
+END
+    
+    
+##########################
+##    CLASSE 18 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 18 AND "18" IN '%classification_ids%')
+  STYLE 
+    COLOR 233 116 237
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 19 AND !("19" IN '%classification_ids%') AND ("18" IN '%classification_ids%'))
+  STYLE 
+    COLOR 233 116 237
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 20 AND !("20" IN '%classification_ids%') AND ("18" IN '%classification_ids%'))
+  STYLE 
+    COLOR 233 116 237
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 28 AND !("28" IN '%classification_ids%') AND ("18" IN '%classification_ids%'))
+  STYLE 
+    COLOR 233 116 237
+  END
+END
+    
+    
+##########################
+##    CLASSE 19 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 19 AND "19" IN '%classification_ids%')
+  STYLE 
+    COLOR 213 166 189
+  END
+END
+    
+    
+##########################
+##    CLASSE 20 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 20 AND "20" IN '%classification_ids%')
+  STYLE 
+    COLOR 194 123 160
+  END
+END
+    
+    
+##########################
+##    CLASSE 21 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 21 AND "21" IN '%classification_ids%')
+  STYLE 
+    COLOR 255 239 195
+  END
+END
+    
+    
+##########################
+##    CLASSE 22 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 22 AND "22" IN '%classification_ids%')
+  STYLE 
+    COLOR 234 153 153
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 23 AND !("23" IN '%classification_ids%') AND ("22" IN '%classification_ids%'))
+  STYLE 
+    COLOR 234 153 153
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 24 AND !("24" IN '%classification_ids%') AND ("22" IN '%classification_ids%'))
+  STYLE 
+    COLOR 234 153 153
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 25 AND !("25" IN '%classification_ids%') AND ("22" IN '%classification_ids%'))
+  STYLE 
+    COLOR 234 153 153
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 29 AND !("29" IN '%classification_ids%') AND ("22" IN '%classification_ids%'))
+  STYLE 
+    COLOR 234 153 153
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 30 AND !("30" IN '%classification_ids%') AND ("22" IN '%classification_ids%'))
+  STYLE 
+    COLOR 234 153 153
+  END
+END
+    
+    
+##########################
+##    CLASSE 23 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 23 AND "23" IN '%classification_ids%')
+  STYLE 
+    COLOR 221 126 107
+  END
+END
+    
+    
+##########################
+##    CLASSE 24 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 24 AND "24" IN '%classification_ids%')
+  STYLE 
+    COLOR 183 183 183
+  END
+END
+    
+    
+##########################
+##    CLASSE 25 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 25 AND "25" IN '%classification_ids%')
+  STYLE 
+    COLOR 255 153 255
+  END
+END
+    
+    
+##########################
+##    CLASSE 26 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 26 AND "26" IN '%classification_ids%')
+  STYLE 
+    COLOR 0 34 246
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 33 AND !("33" IN '%classification_ids%') AND ("26" IN '%classification_ids%'))
+  STYLE 
+    COLOR 0 34 246
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 31 AND !("31" IN '%classification_ids%') AND ("26" IN '%classification_ids%'))
+  STYLE 
+    COLOR 0 34 246
+  END
+END
+CLASS
+  EXPRESSION ([pixel] = 34 AND !("34" IN '%classification_ids%') AND ("26" IN '%classification_ids%'))
+  STYLE 
+    COLOR 0 34 246
+  END
+END
+    
+    
+##########################
+##    CLASSE 27 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 27 AND "27" IN '%classification_ids%')
+  STYLE 
+    COLOR 213 213 229
+  END
+END
+    
+    
+##########################
+##    CLASSE 28 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 28 AND "28" IN '%classification_ids%')
+  STYLE 
+    COLOR 206 61 61
+  END
+END
+    
+    
+##########################
+##    CLASSE 29 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 29 AND "29" IN '%classification_ids%')
+  STYLE 
+    COLOR 255 140 0
+  END
+END
+    
+    
+##########################
+##    CLASSE 30 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 30 AND "30" IN '%classification_ids%')
+  STYLE 
+    COLOR 138 43 226
+  END
+END
+    
+    
+##########################
+##    CLASSE 31 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 31 AND "31" IN '%classification_ids%')
+  STYLE 
+    COLOR 41 238 228
+  END
+END
+    
+    
+##########################
+##    CLASSE 32 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 32 AND "32" IN '%classification_ids%')
+  STYLE 
+    COLOR 250 114 35
+  END
+END
+    
+    
+##########################
+##    CLASSE 33 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 33 AND "33" IN '%classification_ids%')
+  STYLE 
+    COLOR 0 0 255
+  END
+END
+    
+    
+##########################
+##    CLASSE 34 ##########
+##########################
+
+CLASS
+  EXPRESSION ([pixel] = 34 AND "34" IN '%classification_ids%')
+  STYLE 
+    COLOR 255 255 255
+  END
+END

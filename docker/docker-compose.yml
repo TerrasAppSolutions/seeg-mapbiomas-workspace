@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  # WEB
+  mapbiomas-server-web:
+    build: ./server-web/
+    image: mapbiomas-server-web
+    container_name: mapbiomas-server-web
+    hostname: mapbiomas-server-web       
+    depends_on:
+      - mapbiomas-server-db
+    volumes:
+      - ../:/var/www
+    links:
+      - mapbiomas-server-db:dbhost  
+    ports:
+      - 80:80
+    networks:
+      - network-mapbiomas    
+    
+  # Database
+  mapbiomas-server-db:    
+    image: mdillon/postgis:11
+    container_name: mapbiomas-server-db
+    hostname: mapbiomas-server-db
+    ports:
+      - 5433:5432
+    volumes:
+      - ~/Docker/volumes/mapbiomas-db-lib:/var/lib/postgresql/data
+      - ~/Docker/volumes/mapbiomas-data:/mnt/disks/data
+    environment: 
+      - POSTGRES_USER=terras
+      - POSTGRES_DB=mapbiomas
+      - POSTGRES_PASSWORD=terrasbioma
+    networks:
+      - network-mapbiomas  
+  
+  Wms
+  mapbiomas-server-wms:
+    build: ./server-wms/
+    container_name: mapbiomas-server-wms
+    hostname: mapbiomas-server-wms   
+    ports:
+      - 5000:5000
+    networks:
+      - network-mapbiomas  
+
+networks:
+  network-mapbiomas:
+    driver: bridge
+  

@@ -13,6 +13,7 @@ class ClasseService {
     /*
      * API
     */
+    // http://workspace.localhost/dashboard/services/classifications
     public function findAll($query) {
 
       $translateClasses = null;

@@ -1,4 +1,4 @@
-<div class="fill-60">
+<div class="fill-60" ng-show="!newVersion">
     <div class="nav-tabs-custom fill">
         <ul class="nav nav-tabs" bootstrap-tabs>
             <li class="active">
@@ -19,11 +19,17 @@
                     </span>
                 </a>
             </li>
+            <li>
+                <a href ng-click="newVersion = !newVersion">
+                    <span ng-bind="'Workspace 2.O'">
+                    </span>
+                </a>
+            </li>
         </ul>
         <div class="tab-content fill-90 scrolly">
             <div class="tab-pane fill active" id="tab-cartas">
-                <div class="fill" ng-init="onloadCartas()" mapcartas carta-event-click="cartaEventClick" options="mapCartaOptions" image-data="imageData"
-                    classificacao="setClassificacao">
+                <div class="fill" ng-init="onloadCartas()" mapcartas carta-event-click="cartaEventClick" options="mapCartaOptions"
+                    image-data="imageData" classificacao="setClassificacao">
                 </div>
             </div>
             <div class="tab-pane" id="tab-classificacoes">
@@ -34,8 +40,8 @@
                                 <label>
                                     {{ 'CARTA' | translate }}
                                 </label>
-                                <input ng-model="classifProcess.Classificacao.carta" required disabled type="text" placeholder="{{ 'CARTA' | translate }}"
-                                    class="form-control" required/>
+                                <input ng-model="classifProcess.Classificacao.carta" required disabled type="text"
+                                    placeholder="{{ 'CARTA' | translate }}" class="form-control" required />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -43,7 +49,8 @@
                                 <label>
                                     {{ 'COLECAO' | translate }}
                                 </label>
-                                <select id="classificacao-colecaoid" ng-model="classifProcess.Classificacao.colecao_id" ng-options="colecao.Colecao.id as colecao.Colecao.colecao for colecao in colecoes"
+                                <select id="classificacao-colecaoid" ng-model="classifProcess.Classificacao.colecao_id"
+                                    ng-options="colecao.Colecao.id as colecao.Colecao.colecao for colecao in colecoes"
                                     class="form-control" required>
                                 </select>
                             </div>
@@ -55,7 +62,8 @@
                                 <label>
                                     {{ 'VERSAO' | translate }}
                                 </label>
-                                <input ng-model="classifProcess.Classificacao.versao" type="number" placeholder="Enter ..." class="form-control" />
+                                <input ng-model="classifProcess.Classificacao.versao" type="number" placeholder="Enter ..."
+                                    class="form-control" />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -63,26 +71,28 @@
                                 <label>
                                     {{ 'PARAMSIDENTIFICADOR' | translate }}
                                 </label>
-                                <input ng-model="classifProcess.Classificacao.identificador" type="text" placeholder="Enter ..." class="form-control" />
+                                <input ng-model="classifProcess.Classificacao.identificador" type="text" placeholder="Enter ..."
+                                    class="form-control" />
                             </div>
                         </div>
                     </div>
                     <!-- FUNCIONALIDADE DE REGIÃO -->
-                    <!-- <div class="row">
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>
                                     {{ 'REGIAO' | translate }}
                                 </label>
-                                <select ng-model="classifProcess.Classificacao.regiao_info_id" ng-options="regiaoInfo.CartaRegiaoInfo.id as regiaoInfo.CartaRegiaoInfo.region + ' (' + regiaoInfo.CartaRegiaoInfo.pais_iso + ')' for regiaoInfo in getCartaRegiaoInfo()" placeholder="Select region" class="form-control"></select>
+                                <select ng-model="classifProcess.Classificacao.regiao_info_id" ng-options="regiaoInfo.CartaRegiaoInfo.id as regiaoInfo.CartaRegiaoInfo.region + ' (' + regiaoInfo.CartaRegiaoInfo.pais_iso + ')' for regiaoInfo in getCartaRegiaoInfo()" placeholder="Select region" class="form-control" required></select>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>
-                                    <input ng-model="classifProcess.Classificacao.versao_final" type="checkbox" /> {{ 'VERSAOFINAL' | translate }}
+                                    <input ng-model="classifProcess.Classificacao.versao_final" type="checkbox" /> {{
+                                    'VERSAOFINAL' | translate }}
                                 </label>
                             </div>
                         </div>
@@ -116,8 +126,8 @@
                                 <label>
                                     {{ 'DATAINICIAL' | translate }}
                                 </label>
-                                <input pikaday="date0" format="YYYY-MM-DD" ng-model="classifProcess.Classificacao.t0" type="text" placeholder="Enter ..."
-                                    class="form-control" required/>
+                                <input pikaday="date0" format="YYYY-MM-DD" ng-model="classifProcess.Classificacao.t0"
+                                    type="text" placeholder="Enter ..." class="form-control" required />
                             </div>
                         </div>
                         <div class="col-xs-4">
@@ -125,8 +135,8 @@
                                 <label>
                                     {{ 'DATAFINAL' | translate }}
                                 </label>
-                                <input pikaday="date1" format="YYYY-MM-DD" ng-model="classifProcess.Classificacao.t1" type="text" placeholder="Enter ..."
-                                    class="form-control" required/>
+                                <input pikaday="date1" format="YYYY-MM-DD" ng-model="classifProcess.Classificacao.t1"
+                                    type="text" placeholder="Enter ..." class="form-control" required />
                             </div>
                         </div>
                     </div>
@@ -166,8 +176,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <input type="number" min="0" max="100" ng-model="classifProcess.Classificacao.cloudcover" placeholder="" class="form-control"
-                                                required/>
+                                            <input type="number" min="0" max="100" ng-model="classifProcess.Classificacao.cloudcover"
+                                                placeholder="" class="form-control" required />
                                         </div>
                                     </div>
                                 </div>
@@ -178,7 +188,8 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>
-                                    <input type="checkbox" ng-model="classifProcess.Classificacao.elevation_on" /> {{ 'HABILITARELECACAO' | translate }}
+                                    <input type="checkbox" ng-model="classifProcess.Classificacao.elevation_on" /> {{
+                                    'HABILITARELECACAO' | translate }}
                                 </label>
                             </div>
                         </div>
@@ -188,15 +199,15 @@
                                     <label for="maximo1">
                                         {{ 'MAXIMA' | translate }} (m)
                                     </label>
-                                    <input class="form-control" type="number" ng-model="classifProcess.Classificacao.elevation_max" ng-pattern="/^[0-9]{0,10000}$/"
-                                    />
+                                    <input class="form-control" type="number" ng-model="classifProcess.Classificacao.elevation_max"
+                                        ng-pattern="/^[0-9]{0,10000}$/" />
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="minimo1">
                                         {{ 'MINIMA' | translate }} (m)
                                     </label>
-                                    <input class="form-control" type="number" ng-model="classifProcess.Classificacao.elevation_min" ng-pattern="/^[0-9]{0,10000}$/"
-                                    />
+                                    <input class="form-control" type="number" ng-model="classifProcess.Classificacao.elevation_min"
+                                        ng-pattern="/^[0-9]{0,10000}$/" />
                                 </div>
                             </div>
                         </div>
@@ -222,24 +233,25 @@
                             <div decision-tree="dtreeSelected" dtree-render="dtreeRender" edit="false">
                             </div>
                             <a href="#/dtree" class="btn btn-xs btn-info pull-right">Decision tree builder</a>
-                            <br/>
+                            <br />
                         </div>
                     </div>
                     <div class="row" ng-show="classifProcess.Classificacao">
                         <div class="col-xs-9">
                             <div class="form-group">
                                 <label>
-                                    <input type="checkbox" ng-model="classifProcess.Classificacao.keeponmap" /> {{ 'CAMADAMANTERMAP' | translate }}
+                                    <input type="checkbox" ng-model="classifProcess.Classificacao.keeponmap" /> {{
+                                    'CAMADAMANTERMAP' | translate }}
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <hr/>
+                    <hr />
                     <div class="row">
                         <div class="col-xs-4">
                             <div class="form-group" id="form-save-group">
-                                <button ng-click="salvarClassificacao(classifProcess)" ng-disabled="classificationForm.$invalid" ng-show="!classifProcess.Classificacao.id"
-                                    class="btn btn-block btn-success" type="submit">
+                                <button ng-click="salvarClassificacao(classifProcess)" ng-disabled="classificationForm.$invalid"
+                                    ng-show="!classifProcess.Classificacao.id" class="btn btn-block btn-success" type="submit">
                                     <i class="fa fa-save">
                                     </i>
                                     {{ 'SALVAR' | translate }}
@@ -275,8 +287,8 @@
                         </div>
                         <div class="col-xs-4">
                             <div class="form-group">
-                                <button ng-disabled="classificationForm.$invalid" ng-click="geeImagemProcessar(classifProcess)" class="btn btn-block btn-info"
-                                    type="submit">
+                                <button ng-disabled="classificationForm.$invalid" ng-click="geeImagemProcessar(classifProcess)"
+                                    class="btn btn-block btn-info" type="submit">
                                     <i class="fa fa-gears">
                                     </i>
                                     {{ 'PROCESSAR' | translate }}
@@ -285,8 +297,8 @@
                         </div>
                         <div class="col-xs-4">
                             <div class="form-group">
-                                <button ng-click="clearParams(classifProcess)" ng-show="classifProcess.Classificacao.year" class="btn btn-block btn-default"
-                                    type="submit">
+                                <button ng-click="clearParams(classifProcess)" ng-show="classifProcess.Classificacao.year"
+                                    class="btn btn-block btn-default" type="submit">
                                     <i class="fa fa-eraser">
                                     </i>
                                     {{ 'LIMPARPARAMS' | translate }}
@@ -294,8 +306,8 @@
                             </div>
                         </div>
                     </div>
-                    <br/>
-                    <br/>
+                    <br />
+                    <br />
                 </form>
             </div>
             <div class="tab-pane" id="tab-resultados">
@@ -328,16 +340,17 @@
                                 {{ resultado.Classificacao.year }}
                             </td>
                             <td>
-                                {{ resultado.Classificacao.t0 | formatDate }} {{ 'A' | translate }} {{ resultado.Classificacao.t1 | formatDate }}
+                                {{ resultado.Classificacao.t0 | formatDate }} {{ 'A' | translate }} {{
+                                resultado.Classificacao.t1 | formatDate }}
                             </td>
                             <td>
-                                <button ng-click="setFormResultado(resultado)" class="btn btn-xs btn-default" type="button" data-toggle="tooltip" data-placement="left"
-                                    title="{{ 'PROCESSAR' | translate }}">
+                                <button ng-click="setFormResultado(resultado)" class="btn btn-xs btn-default" type="button"
+                                    data-toggle="tooltip" data-placement="left" title="{{ 'PROCESSAR' | translate }}">
                                     <i class="fa fa-edit">
                                     </i>
                                 </button>
-                                <button ng-click="processarResultado(resultado)" class="btn btn-xs btn-info" type="button" data-toggle="tooltip" data-placement="left"
-                                    title="{{ 'PROCESSAR' | translate }}">
+                                <button ng-click="processarResultado(resultado)" class="btn btn-xs btn-info" type="button"
+                                    data-toggle="tooltip" data-placement="left" title="{{ 'PROCESSAR' | translate }}">
                                     <i class="fa fa-gears">
                                     </i>
                                 </button>
@@ -355,8 +368,8 @@
                         </a>
                     </div>
                     <div class="col-xs-6">
-                        <button ng-show="classificacaoResultados.length > 0 && appAuthUser.Usuario.perfil_id != 10" ng-click="dialogClassificacoesListar($event)"
-                            class="btn btn-xs btn-info pull-right" type="button">
+                        <button ng-show="classificacaoResultados.length > 0 && appAuthUser.Usuario.perfil_id != 10"
+                            ng-click="dialogClassificacoesListar($event)" class="btn btn-xs btn-info pull-right" type="button">
                             <i class="fa fa-fw fa-reorder">
                             </i>
                             More details...
@@ -367,7 +380,81 @@
         </div>
     </div>
 </div>
-<div class="fill-40" style="background:#fff;padding: 10px">
+<div class="fill-40" style="background:#fff;padding: 10px;" ng-show="!newVersion">
     <div mapcarta class="fill">
     </div>
+</div>
+
+<div class="fill-60" ng-show="newVersion">
+    <section class="container-section-random">
+
+        <!-- in the sources container show three cards, side by side, or one atop the other on smaller viewports -->
+        <div class="container__sources">
+            <a ui-sref="modules.mosaic">
+                <div class="go-container"></div>
+            </a>
+
+            <div class="sources--cms">
+                <h3>Mosaic</h3>
+                <!--       <p>Contentful, Drupal, WordPress, etc.</p> -->
+            </div>
+
+        </div>
+
+        <!-- include a simple line to divide the container, and animate it to show a connection between the different containers  -->
+        <svg viewbox="0 0 10 100">
+            <line x1="5" x2="5" y1="0" y2="100" />
+        </svg>
+
+
+        <!-- in the build container show two cards, atop of one another and the first of one showing an SVG icon -->
+        <div class="container__sources">
+
+            <a ui-sref="modules.classification">
+                <div class="go-container"></div>
+            </a>
+
+            <div class="sources--cms">
+                <h3>Classification</h3>
+                <!--       <p>Contentful, Drupal, WordPress, etc.</p> -->
+            </div>
+
+        </div>
+
+        <!-- repeat the svg line to connect the second and third containers as well -->
+        <svg viewbox="0 0 10 100">
+            <line x1="5" x2="5" y1="0" y2="100" />
+        </svg>
+
+        <!-- in the deploy container show simply text, without a wrapping card -->
+        <div class="container__sources">
+            <a ui-sref="modules.temporal">
+                <div class="go-container"></div>
+            </a>
+            <div class="sources--cms">
+                <h3>Temporal Filter</h3>
+                <!--       <p>Contentful, Drupal, WordPress, etc.</p> -->
+            </div>
+        </div>
+
+        <svg viewbox="0 0 10 100">
+            <line x1="5" x2="5" y1="0" y2="100" />
+        </svg>
+
+        <!-- in the deploy container show simply text, without a wrapping card -->
+        <div class="container__sources">
+            <a ui-sref="modules.integration">
+                <div class="go-container"></div>
+            </a>
+            <div class="sources--cms">
+                <h3>Integration</h3>
+                <!--       <p>Contentful, Drupal, WordPress, etc.</p> -->
+            </div>
+        </div>
+
+        <div class="access-decision-tree">
+            <a href ng-click="newVersion = !newVersion">Workspace 1.0</a>
+        </div>
+
+    </section>
 </div>

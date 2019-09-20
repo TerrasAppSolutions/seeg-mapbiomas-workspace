@@ -12,6 +12,7 @@ class DATABASE_CONFIG {
             'datasource' => 'Database/Postgres',
             'persistent' => false,
             'host' => $appConfig['DB']['host'],
+            'port' => $appConfig['DB']['port'],
             'login' => $appConfig['DB']['login'],
             'password' => $appConfig['DB']['password'],
             'database' => $appConfig['DB']['database'],

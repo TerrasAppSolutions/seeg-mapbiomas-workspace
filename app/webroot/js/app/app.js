@@ -17,29 +17,47 @@ angular.module('MapBiomasApp', [
                         }
                     }
                 })
-                .state("filters", {
-                    url: "/filters",
+                .state("modules", {
+                    url: "/modules",
                     views: {
                         '': {
-                            templateUrl: 'js/app/views/filtros/filters.html',
+                            templateUrl: 'js/app/views/modules/modules.html',
                         }
                     }
                 })
-                .state("filters.temporal", {
+                .state("modules.mosaic", {
+                    url: "/mosaic",
+                    views: {
+                        '': {
+                            templateUrl: 'js/app/views/modules/mosaic.html',
+                            controller: 'MosaicController as vm'
+                        }
+                    }
+                })
+                .state("modules.classification", {
+                    url: "/classification",
+                    views: {
+                        '': {
+                            templateUrl: 'js/app/views/modules/classification.html',
+                            controller: 'ParameterizationController as vm'
+                        }
+                    }
+                })
+                .state("modules.temporal", {
                     url: "/temporal",
                     views: {
                         '': {
-                            templateUrl: 'js/app/views/filtros/temporal-filter.html',
+                            templateUrl: 'js/app/views/modules/temporal-filter.html',
                             controller: 'TemporalFilterController as vm'
                         }
                     },
                 })
-                .state("filters.integration", {
+                .state("modules.integration", {
                     url: "/integration",
                     views: {
                         '': {
-                            templateUrl: 'js/app/views/filtros/integration-filter.html',
-                            // controller: 'IntegrationFilterController as vm'
+                            templateUrl: 'js/app/views/modules/integration.html',
+                            controller: 'IntegrationController as vm'
                         }
                     },
                 })

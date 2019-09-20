@@ -36,6 +36,8 @@ angular.module('MapBiomas.controllers')
                 $scope.salvar_on = false;
                 $scope.elevation_on = false;
 
+                $scope.newVersion = true;
+
                 $scope.mapCartaOptions = {
                     toolTipCarta: false,
                     cartaName: "SB-21-Z-D",
@@ -72,6 +74,10 @@ angular.module('MapBiomas.controllers')
                 // lista arvores de decisao
                 decisionTreeList(true);
             };
+
+            /**
+             * Altera para nova versão do workspace
+             */
 
             /**
              * Salva os parametros de classificação
@@ -517,12 +523,17 @@ angular.module('MapBiomas.controllers')
                     conditions = {};
                 }
 
+                Mload.load("Loading decision trees", "Wait" + '...');
+
                 DecisionTreeService.query({
                     options: {
                         conditions: conditions,
                         order: ["DecisionTree.bioma_id DESC", "DecisionTree.id ASC"]
                     }
                 }, function (respData) {
+
+                    // console.log("DECISIONS TREE", respData);
+                    Mload.hide();
 
                     $scope.decisiontrees = _.map(respData, function (value) {
 

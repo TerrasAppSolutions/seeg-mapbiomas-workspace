@@ -1,0 +1,27 @@
+# classes
+CLASSITEM "[pixel]" 
+
+CLASS
+    EXPRESSION ([pixel] == 0)
+    STYLE
+        COLOR "#b22222" # red
+    END
+END
+
+CLASS
+    EXPRESSION ([pixel] >= 1 AND [pixel] <= 5)
+    STYLE
+        COLORRANGE "#ff8c00" "#ffffc0" # orange lightYellow 
+        DATARANGE 1 5
+        RANGEITEM "pixel"
+    END
+END
+
+CLASS
+    EXPRESSION ([pixel] >= 6 AND [pixel] <= 23)
+    STYLE
+        COLORRANGE "#f7f7a3" "#1a9641"   # lightYellow green
+        DATARANGE 6 23
+        RANGEITEM "pixel"
+    END
+END

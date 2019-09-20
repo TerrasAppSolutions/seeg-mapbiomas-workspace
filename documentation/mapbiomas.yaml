@@ -1,0 +1,540 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: "Mapbiomas API"
+  # description: Polls is a simple API allowing consumers to view polls and vote in them.
+  # license:
+  #   name: MIT
+  #   url: https://github.com/apiaryio/polls-api/blob/master/LICENSE
+host: mapbiomas-staging.terras.agr.br
+basePath: /
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /dashboard/services/territories:
+    get:
+      parameters:
+        - in: query
+          name: limit
+          type: integer
+          description: Quantos elementos serão retornados
+        - in: query
+          name: category
+          type: string
+          enum: [País, Estado, Municipio, Bioma]
+          description: Filtre por categoria
+        - in: query
+          name: page
+          type: integer
+          description: Paginação dos dados
+        - in: query
+          name: name
+          type: string
+          description: Dados de acordo com o nome do território
+        - in: query
+          name: language
+          type: string
+          enum: [en, pt]
+          description: Tradução da categoria
+      responses:
+        201:
+          description: ''
+          # schema:
+            # $ref: '#/definitions/ResponseTerritories'
+            
+  /dashboard/services/classifications:
+    get:
+      parameters:
+        - in: query
+          name: limit
+          type: integer
+          description: Quantos elementos serão retornados
+        - in: query
+          name: language
+          type: string
+          enum: [en, pt]
+          description: Tradução da categoria
+      responses:
+        201:
+          description: ''
+          # schema:
+            # $ref: '#/definitions/ResponseClassifications'
+            
+  /dashboard/services/statistics/transitions:
+    get:
+      parameters:
+        - in: query
+          name: territory_id
+          type: integer
+          description: Id do território
+        - in: query
+          name: year
+          type: array
+          items:
+            type: integer
+      responses:
+        201:
+          description: ''
+          # schema:
+            # $ref: '#/definitions/ResponseCoverage'
+            
+  /dashboard/services/statistics/coverage:
+    get:
+      parameters:
+        - in: query
+          name: territory_id
+          type: integer
+          description: Id do território
+        - in: query
+          name: year
+          type: integer
+          description: Ano dos dados
+        - in: query
+          name: classification_ids
+          type: array
+          items:
+            type: integer
+          description: Ids das classes
+      responses:
+        201:
+          description: ''
+          # schema:
+            # $ref: '#/definitions/ResponseCoverage'
+            
+  /dashboard/services/statistics/groupedcover:
+    get:
+      parameters:
+        - in: query
+          name: territory_id
+          type: integer
+          description: Id do território
+        - in: query
+          name: year
+          type: integer
+          description: Ano dos dados
+        - in: query
+          name: classification_id
+          type: array
+          items:
+            type: integer
+          description: Id da classe
+      responses:
+        201:
+          description: ''
+          # schema:
+            # $ref: '#/definitions/ResponseGroupedcover'
+  
+  /dashboard/services/statistics/infrastructure:
+    get:
+      parameters:
+        - in: query
+          name: limit
+          type: integer
+          description: limite de dados
+        - in: query
+          name: ano
+          type: integer
+          description: ano
+        - in: query
+          name: cat1
+          type: string
+          description: categoria de retorno
+      responses:
+        201:
+          description: ''
+          # schema:
+            # $ref: '#/definitions/ResponseGroupedcover'
+            
+  /dashboard/services/statistics/infra_levels:
+    get:
+      responses:
+        201:
+          description: ''
+          # schema:
+            # $ref: '#/definitions/ResponseGroupedcover'
+            
+  /dashboard/services/statistics/infra_hierarchy:
+    get:
+      parameters:
+        - in: query
+          name: language
+          type: string
+          enum: [en, pt]
+          description: Tradução da categoria
+      responses:
+        201:
+          description: ''
+          # schema:
+            # $ref: '#/definitions/ResponseGroupedcover'
+  
+  /dashboard/services/statistics/infra_buffer:
+    get:
+      parameters:
+        - in: query
+          name: territorio_id
+          type: integer
+          description: Id do território
+          required: true
+        - in: query
+          name: categoria_name
+          type: string
+          description: Ano dos dados
+          required: true
+        - in: query
+          name: categoria_id
+          type: array
+          items:
+            type: integer
+          description: Ids das classes
+          required: true
+        - in: query
+          name: buffer
+          type: string
+          enum: ['5k', '10k', '20k']
+          description: Buffer de interesse
+          required: true
+      responses:
+        201:
+          description: ''
+          # schema:
+            # $ref: '#/definitions/ResponseGroupedcover'
+            
+  /dashboard/services/statistics/coverage_infra:
+    get:
+      parameters:
+        - in: query
+          name: territory_id
+          type: integer
+          description: Id do território
+          required: true
+        - in: query
+          name: level_id
+          type: integer
+          description: id do nível
+          required: true
+        - in: query
+          name: buffer
+          type: string
+          enum: ['5k', '10k', '20k']
+          description: Buffer de interesse
+          required: true
+        - in: query
+          name: classification_ids
+          type: array
+          items:
+            type: integer
+          description: Ids das classes
+      responses:
+        201:
+          description: ''
+          # schema:
+            # $ref: '#/definitions/ResponseGroupedcover'
+            
+  /dashboard/services/statistics/groupedcover_infra:
+    get:
+      parameters:
+        - in: query
+          name: territory_id
+          type: integer
+          description: Id do território
+          required: true
+        - in: query
+          name: level_id
+          type: integer
+          description: id do nível
+          required: true
+        - in: query
+          name: buffer
+          type: string
+          enum: ['5k', '10k', '20k']
+          description: Buffer de interesse
+          required: true
+        - in: query
+          name: classification_ids
+          type: array
+          items:
+            type: integer
+          description: Ids das classes
+      responses:
+        201:
+          description: ''
+          # schema:
+            # $ref: '#/definitions/ResponseGroupedcover'
+
+
+
+# definitions:
+#   ResponseTerritories:
+#     type: "object"
+#     required:
+#     - "id"
+#     properties:
+#       id:
+#         type: "string"
+#         # format: uuid
+#         example: '[
+#           {
+#           "id": 1,
+#           "name": "AMAZONIA",
+#           "state": "",
+#           "category": "Bioma",
+#           "area": 344.73,
+#           "bounds": [
+#           [
+#           -16.299516633306,
+#           -73.990449969
+#           ],
+#           [
+#           5.2718410771728,
+#           -43.56500565494
+#           ]
+#           ]
+#           },
+#           {
+#           "id": 2,
+#           "name": "MATA ATLANTICA",
+#           "state": "",
+#           "category": "Bioma",
+#           "area": 97.03,
+#           "bounds": [
+#           [
+#           -29.978477098817,
+#           -55.665854704
+#           ],
+#           [
+#           -5.198272507575,
+#           -34.792884974
+#           ]
+#           ]
+#           }
+#           ]'
+          
+#   ResponseCoverage:
+#     type: "object"
+#     required:
+#     - "id"
+#     properties:
+#       id:
+#         type: "string"
+#         # format: uuid
+#         example: '[
+#             {
+#             "id": 3,
+#             "l1": 1,
+#             "l2": 2,
+#             "l3": 3,
+#             "territory": 10,
+#             "year": 2010,
+#             "area": 434725865.45685
+#             },
+#             {
+#             "id": 4,
+#             "l1": 1,
+#             "l2": 2,
+#             "l3": 4,
+#             "territory": 10,
+#             "year": 2010,
+#             "area": 75776905.244735
+#             }
+#           ]'
+          
+#   ResponseGroupedcover:
+#     type: "object"
+#     required:
+#     - "id"
+#     properties:
+#       id:
+#         type: "string"
+#         # format: uuid
+#         example: '[
+#           {
+#           "id": 12,
+#           "l1": 12,
+#           "l2": 12,
+#           "l3": 12,
+#           "territory": 2408102,
+#           "year": 2000,
+#           "area": 38.681518507082,
+#           "l": "2"
+#           },
+#           {
+#           "id": 12,
+#           "l1": 12,
+#           "l2": 12,
+#           "l3": 12,
+#           "territory": 2408102,
+#           "year": 2001,
+#           "area": 17.211501354068,
+#           "l": "2"
+#           }
+#           ]'
+          
+#   ResponseClassifications:
+#     type: "object"
+#     required:
+#     - "id"
+#     properties:
+#       id:
+#         type: "string"
+#         # format: uuid
+#         example: '[
+#         {
+#         "id": 15,
+#         "name": "Pastagem",
+#         "color": "#F0D991",
+#         "l1": 14,
+#         "l2": 15,
+#         "l3": 15
+#         },
+#         {
+#         "id": 23,
+#         "name": "Praias e dunas",
+#         "color": "#FFFF9E",
+#         "l1": 22,
+#         "l2": 23,
+#         "l3": 23
+#         },
+#         {
+#         "id": 18,
+#         "name": "Agricultura",
+#         "color": "#E974ED",
+#         "l1": 14,
+#         "l2": 18,
+#         "l3": 18
+#         },
+#         {
+#         "id": 22,
+#         "name": "Áreas não vegetadas",
+#         "color": "#EA9999",
+#         "l1": 22,
+#         "l2": 22,
+#         "l3": 22
+#         },
+#         {
+#         "id": 2,
+#         "name": "Formações Florestais Naturais",
+#         "color": "#1F4423",
+#         "l1": 1,
+#         "l2": 2,
+#         "l3": 2
+#         },
+#         {
+#         "id": 1,
+#         "name": "Floresta",
+#         "color": "#129912",
+#         "l1": 1,
+#         "l2": 1,
+#         "l3": 1
+#         },
+#         {
+#         "id": 11,
+#         "name": "Áreas Úmidas Naturais não Florestais",
+#         "color": "#45C2A5",
+#         "l1": 10,
+#         "l2": 11,
+#         "l3": 11
+#         },
+#         {
+#         "id": 12,
+#         "name": "Vegetação Campestre (Campos)",
+#         "color": "#B8AF4F",
+#         "l1": 10,
+#         "l2": 12,
+#         "l3": 12
+#         },
+#         {
+#         "id": 5,
+#         "name": "Mangue",
+#         "color": "#737300",
+#         "l1": 1,
+#         "l2": 2,
+#         "l3": 5
+#         },
+#         {
+#         "id": 14,
+#         "name": "Uso Agropecuário",
+#         "color": "#FFC278",
+#         "l1": 14,
+#         "l2": 14,
+#         "l3": 14
+#         },
+#         {
+#         "id": 24,
+#         "name": "Infraestrutura Urbana",
+#         "color": "#E60000",
+#         "l1": 22,
+#         "l2": 24,
+#         "l3": 24
+#         },
+#         {
+#         "id": 25,
+#         "name": "Outras áreas não vegetadas",
+#         "color": "#686868",
+#         "l1": 22,
+#         "l2": 25,
+#         "l3": 25
+#         },
+#         {
+#         "id": 26,
+#         "name": "Corpos Dágua",
+#         "color": "#004DFF",
+#         "l1": 26,
+#         "l2": 26,
+#         "l3": 26
+#         },
+#         {
+#         "id": 27,
+#         "name": "Não observado",
+#         "color": "#E1E1E1",
+#         "l1": 27,
+#         "l2": 27,
+#         "l3": 27
+#         },
+#         {
+#         "id": 10,
+#         "name": "Formações Naturais não Florestais",
+#         "color": "#BBFCAC",
+#         "l1": 10,
+#         "l2": 10,
+#         "l3": 10
+#         },
+#         {
+#         "id": 3,
+#         "name": "Formações Florestais",
+#         "color": "#006400",
+#         "l1": 1,
+#         "l2": 2,
+#         "l3": 3
+#         },
+#         {
+#         "id": 4,
+#         "name": "Formações Savanicas",
+#         "color": "#77A605",
+#         "l1": 1,
+#         "l2": 2,
+#         "l3": 4
+#         },
+#         {
+#         "id": 9,
+#         "name": "Florestas Plantadas",
+#         "color": "#935132",
+#         "l1": 1,
+#         "l2": 9,
+#         "l3": 9
+#         },
+#         {
+#         "id": 21,
+#         "name": "Agricultura ou Pastagem",
+#         "color": "#FFEFC3",
+#         "l1": 14,
+#         "l2": 21,
+#         "l3": 21
+#         }
+#         ]'
+
+ 
+
